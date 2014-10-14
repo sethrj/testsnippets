@@ -11,21 +11,47 @@
 //---------------------------------------------------------------------------//
 
 #define NEMESIS_DBC 0
-#include "new/View_Field.hh"
+#include "orig/View_Field.hh"
 
 typedef nemesis::View_Field<double> VF;
 
-void copy_vf(VF src, VF dest)
+#if 0
+void copy_vf(VF src, VF dst)
 {
     VF::iterator s = src.begin();
     VF::iterator s_end = src.end();
-    VF::iterator d = dest.begin();
+    VF::iterator d = dst.begin();
     while (s != s_end)
     {
         *d = *s;
         ++s; ++d;
     }
 }
+#else
+void copy_vf(VF src, VF dst)
+{
+    std::copy(src.begin(), src.end(), dst.begin());
+}
+#endif
+
+#if 0
+void fill_vf(VF dst, double val)
+{
+    VF::iterator d = dst.begin();
+    VF::iterator d_end = dst.end();
+    while (d != d_end)
+    {
+        *d = val;
+        ++d;
+    }
+}
+#else
+void fill_vf(VF dst, double val)
+{
+    std::fill(dst.begin(), dst.end(), val);
+}
+#endif
+
 
 //---------------------------------------------------------------------------//
 // end of view_field/test.cc

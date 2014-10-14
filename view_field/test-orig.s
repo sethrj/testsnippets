@@ -3,8 +3,8 @@
 # warning: MPFR header version 3.1.1-p2 differs from library version 3.1.2-p10.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -I /opt/gcc48/Exnihilo/include -D__DYNAMIC__ test.cc
-# -fPIC -mmacosx-version-min=10.9.4 -mtune=core2 -O2 -std=c++11
-# -fverbose-asm
+# -fPIC -mmacosx-version-min=10.9.4 -mtune=core2 -auxbase-strip test-orig.s
+# -O2 -std=c++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -fasynchronous-unwind-tables
 # -fauto-inc-dec -fbranch-count-reg -fcaller-saves
@@ -51,20 +51,37 @@
 	.globl __Z7copy_vfN7nemesis10View_FieldIdEES1_
 __Z7copy_vfN7nemesis10View_FieldIdEES1_:
 LFB1362:
-	movq	(%rsi), %rax	# MEM[(struct View_Field *)dest_2(D)], D.32356
+	movq	(%rsi), %rax	# MEM[(struct View_Field *)dst_2(D)], D.32466
 	movq	8(%rdi), %rdx	# MEM[(struct View_Field *)src_4(D) + 8B], tmp72
-	movq	(%rdi), %rsi	# MEM[(struct View_Field *)src_4(D)], D.32356
-	subq	%rsi, %rdx	# D.32356, tmp72
+	movq	(%rdi), %rsi	# MEM[(struct View_Field *)src_4(D)], D.32466
+	subq	%rsi, %rdx	# D.32466, tmp72
 	sarq	$3, %rdx	#, tmp72
 	testq	%rdx, %rdx	# tmp72
 	jne	L4	#,
 	rep; ret
 	.align 4,0x90
 L4:
-	salq	$3, %rdx	#, D.32358
-	movq	%rax, %rdi	# D.32356,
+	salq	$3, %rdx	#, D.32468
+	movq	%rax, %rdi	# D.32466,
 	jmp	_memmove	#
 LFE1362:
+	.align 4,0x90
+	.globl __Z7fill_vfN7nemesis10View_FieldIdEEd
+__Z7fill_vfN7nemesis10View_FieldIdEEd:
+LFB1363:
+	movq	8(%rdi), %rdx	# MEM[(struct View_Field *)dst_2(D) + 8B], D.32479
+	movq	(%rdi), %rax	# MEM[(struct View_Field *)dst_2(D)], __first
+	cmpq	%rax, %rdx	# __first, D.32479
+	je	L5	#,
+	.align 4,0x90
+L9:
+	movsd	%xmm0, (%rax)	# val, MEM[base: __first_11, offset: 0B]
+	addq	$8, %rax	#, __first
+	cmpq	%rax, %rdx	# __first, D.32479
+	jne	L9	#,
+L5:
+	rep; ret
+LFE1363:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -96,6 +113,17 @@ LASFDE1:
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1363-.
+	.set L$set$4,LFE1363-LFB1363
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
 	.constructor
 	.destructor
 	.align 1

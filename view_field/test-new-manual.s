@@ -3,7 +3,8 @@
 # warning: MPFR header version 3.1.1-p2 differs from library version 3.1.2-p10.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -I /opt/gcc48/Exnihilo/include -D__DYNAMIC__ test.cc
-# -fPIC -mmacosx-version-min=10.9.4 -mtune=core2 -O2 -fverbose-asm
+# -fPIC -mmacosx-version-min=10.9.4 -mtune=core2
+# -auxbase-strip test-new-manual.s -O2 -std=c++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -fasynchronous-unwind-tables
 # -fauto-inc-dec -fbranch-count-reg -fcaller-saves
@@ -49,21 +50,47 @@
 	.align 4,0x90
 	.globl __Z7copy_vfN7nemesis10View_FieldIdEES1_
 __Z7copy_vfN7nemesis10View_FieldIdEES1_:
-LFB1134:
-	movq	(%rsi), %rax	# MEM[(struct View_Field *)dest_2(D)], D.23501
-	movq	8(%rdi), %rdx	# MEM[(struct View_Field *)src_4(D) + 8B], tmp72
-	movq	(%rdi), %rsi	# MEM[(struct View_Field *)src_4(D)], D.23501
-	subq	%rsi, %rdx	# D.23501, tmp72
-	sarq	$3, %rdx	#, tmp72
-	testq	%rdx, %rdx	# tmp72
-	jne	L4	#,
-	rep; ret
+LFB1422:
+	movq	(%rdi), %rax	# MEM[(struct View_Field *)src_3(D)], s
+	movq	16(%rdi), %rcx	# MEM[(struct View_Field *)src_3(D) + 16B], SR.44
+	movq	(%rsi), %rdx	# MEM[(struct View_Field *)dst_6(D)], d
+	movl	8(%rdi), %r8d	# MEM[(struct View_Field *)src_3(D) + 8B], SR.39
+	movl	8(%rsi), %esi	# MEM[(struct View_Field *)dst_6(D) + 8B],
+	cmpq	%rax, %rcx	# s, SR.44
+	je	L1	#,
+	movl	%r8d, %edi	# SR.39, D.32897
+	salq	$3, %rsi	#, D.32897
+	salq	$3, %rdi	#, D.32897
 	.align 4,0x90
 L4:
-	salq	$3, %rdx	#, D.23503
-	movq	%rax, %rdi	# D.23501,
-	jmp	_memmove	#
-LFE1134:
+	movsd	(%rax), %xmm0	# MEM[base: _32, offset: 0], D.32898
+	addq	%rdi, %rax	# D.32897, ivtmp.82
+	movsd	%xmm0, (%rdx)	# D.32898, MEM[base: _33, offset: 0]
+	addq	%rsi, %rdx	# D.32897, ivtmp.81
+	cmpq	%rax, %rcx	# ivtmp.82, SR.44
+	jne	L4	#,
+L1:
+	rep; ret
+LFE1422:
+	.align 4,0x90
+	.globl __Z7fill_vfN7nemesis10View_FieldIdEEd
+__Z7fill_vfN7nemesis10View_FieldIdEEd:
+LFB1423:
+	movq	16(%rdi), %rdx	# MEM[(struct View_Field *)dst_3(D) + 16B], SR.66
+	movl	8(%rdi), %ecx	# MEM[(struct View_Field *)dst_3(D) + 8B], D.32909
+	movq	(%rdi), %rax	# MEM[(struct View_Field *)dst_3(D)], ivtmp.90
+	salq	$3, %rcx	#, D.32909
+	cmpq	%rax, %rdx	# ivtmp.90, SR.66
+	je	L6	#,
+	.align 4,0x90
+L10:
+	movsd	%xmm0, (%rax)	# val, MEM[base: _17, offset: 0]
+	addq	%rcx, %rax	# D.32909, ivtmp.90
+	cmpq	%rax, %rdx	# ivtmp.90, SR.66
+	jne	L10	#,
+L6:
+	rep; ret
+LFE1423:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -89,12 +116,23 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB1134-.
-	.set L$set$2,LFE1134-LFB1134
+	.quad	LFB1422-.
+	.set L$set$2,LFE1422-LFB1422
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1423-.
+	.set L$set$4,LFE1423-LFB1423
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
 	.constructor
 	.destructor
 	.align 1
