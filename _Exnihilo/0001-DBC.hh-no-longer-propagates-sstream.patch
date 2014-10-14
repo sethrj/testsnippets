@@ -1,0 +1,74 @@
+From 6a3e753342de5e3aa3b67bf380fe7356f1418c14 Mon Sep 17 00:00:00 2001
+From: Seth R Johnson <johnsonsr@ornl.gov>
+Date: Wed, 14 Aug 2013 14:36:05 -0400
+Subject: [PATCH] DBC.hh no longer propagates sstream
+
+Now if you use Validate in a piece of code, you *must* include <sstream> separately.
+---
+ packages/Nemesis/harness/DBC.hh     |  1 -
+ packages/Nemesis/harness/DBC_def.hh | 10 +++++++---
+ packages/Transcore/utils/SP.i.hh    |  3 +--
+ 3 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/packages/Nemesis/harness/DBC.hh b/packages/Nemesis/harness/DBC.hh
+index e1f1b8b..66ca56d 100644
+--- a/packages/Nemesis/harness/DBC.hh
++++ b/packages/Nemesis/harness/DBC.hh
+@@ -15,7 +15,6 @@
+ 
+ #include <stdexcept>
+ #include <string>
+-#include <sstream>
+ 
+ // add the harness package configure
+ #include <harness/config.h>
+diff --git a/packages/Nemesis/harness/DBC_def.hh b/packages/Nemesis/harness/DBC_def.hh
+index e66efb2..40a8fe4 100644
+--- a/packages/Nemesis/harness/DBC_def.hh
++++ b/packages/Nemesis/harness/DBC_def.hh
+@@ -122,6 +122,10 @@
+  *
+  * If NEMESIS_DBC is nonzero, we print out the file and line of failure.
+  * Otherwise we hide it from the user.
++ *
++ * \warning If you use Validate in a piece of code, you *must* \c #include
++ * \c <sstream> ! To avoid unnecessary header propagation we omit the inclusion
++ * from DBC.hh.
+  */
+ //---------------------------------------------------------------------------//
+ 
+@@ -181,9 +185,9 @@
+     { \
+         if (!(COND)) \
+         { \
+-            std::ostringstream msg; \
+-            msg << MSG_STREAM; \
+-            ::nemesis::toss_validation_cookies(msg.str(), __FILE__, __LINE__); \
++            ::std::ostringstream msg_; \
++            msg_ << MSG_STREAM; \
++            ::nemesis::toss_validation_cookies(msg_.str(), __FILE__, __LINE__); \
+         } \
+     } while (0)
+ 
+diff --git a/packages/Transcore/utils/SP.i.hh b/packages/Transcore/utils/SP.i.hh
+index 07feff6..ea67009 100644
+--- a/packages/Transcore/utils/SP.i.hh
++++ b/packages/Transcore/utils/SP.i.hh
+@@ -7,13 +7,12 @@
+  * \note   Copyright (C) 2008 Oak Ridge National Laboratory, UT-Battelle, LLC.
+  */
+ //---------------------------------------------------------------------------//
+-// $Id: SP.i.hh,v 1.1 2008/01/03 16:09:16 9te Exp $
+-//---------------------------------------------------------------------------//
+ 
+ #ifndef utils_SP_i_hh
+ #define utils_SP_i_hh
+ 
+ #include <typeinfo>
++#include <sstream>
+ 
+ namespace denovo
+ {
+-- 
+1.8.3.4
+

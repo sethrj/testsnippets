@@ -1,0 +1,129 @@
+From 910f2f31d113264f477f60e0594fe75f4ad3de3a Mon Sep 17 00:00:00 2001
+From: Seth R Johnson <johnsonsr@ornl.gov>
+Date: Wed, 14 Aug 2013 13:22:39 -0400
+Subject: [PATCH] Added code safety measures to Device/Pseudo_Device
+
+These should prevent GPU and CPU pointers from being unintentionally
+accessed from the wrong architecture when using the "Pseudo_Cuda"
+compilation correctly (i.e. compiling only kernel/wrapper code with
+nvcc, compiling everything else from g++, and using only our wrapper
+functions to do copies and so forth.)
+---
+ packages/Transcore/cuda_utils/Device_Vector.hh     | 23 ++++++++++++++++++++++
+ packages/Transcore/cuda_utils/Device_Vector.t.hh   |  4 ++--
+ .../Transcore/cuda_utils/Pseudo_Device_Vector.hh   | 16 +++++++++++++++
+ 3 files changed, 41 insertions(+), 2 deletions(-)
+
+diff --git a/packages/Transcore/cuda_utils/Device_Vector.hh b/packages/Transcore/cuda_utils/Device_Vector.hh
+index daf47ea..0d3ee1b 100644
+--- a/packages/Transcore/cuda_utils/Device_Vector.hh
++++ b/packages/Transcore/cuda_utils/Device_Vector.hh
+@@ -111,9 +111,16 @@ class Device_Vector
+      * \warning This will always return a pointer to data on the device. Never
+      * try to access the underlying data in host (CPU) code. To assign data
+      * from the host, use the assign() function.
++     *
++     * \warning If this is called from a part of the code *not* in a .cu or
++     * .cuh file (i.e., being compiled by nvcc), it will raise an error. This
++     * is to prevent unintentional use of device-located pointers in host code.
+      */
+     pointer data()
+     {
++#ifndef __NVCC__
++        Require(false);
++#endif
+         d_is_initialized = true;
+         return d_data;
+     }
+@@ -124,14 +131,30 @@ class Device_Vector
+      * \warning This will always return a pointer to data on the device. Never
+      * try to access the underlying data in host (CPU) code. To copy the data
+      * to the host, use the \c device_to_host function.
++     *
++     * \warning If this is called from a part of the code *not* in a .cu or
++     * .cuh file (i.e., being compiled by nvcc), it will raise an error. This
++     * is to prevent unintentional use of device-located pointers in host code.
+      */
+     const_pointer cdata() const
+     {
++#ifndef __NVCC__
++        Require(false);
++#endif
+         Require(d_is_initialized);
+         return d_data;
+     }
+     const_pointer data() const { return cdata(); }
+ 
++    // >>> FRIENDS
++    // (We make these friends so that we can get around the #ifndef __NVCC__
++    // check)
++    template<typename U> friend void device_to_host(
++            const Device_Vector<U>& in,
++            fields::View_Field<U> out);
++    template<typename U> friend void device_to_host(
++            const Device_Vector<U>& in,
++            Host_Vector<U>& out);
+ 
+   private:
+     //! Number of elements
+diff --git a/packages/Transcore/cuda_utils/Device_Vector.t.hh b/packages/Transcore/cuda_utils/Device_Vector.t.hh
+index e9b511a..d9cf6ee 100644
+--- a/packages/Transcore/cuda_utils/Device_Vector.t.hh
++++ b/packages/Transcore/cuda_utils/Device_Vector.t.hh
+@@ -232,12 +232,12 @@ void device_to_host(const Device_Vector<T>& in, Host_Vector<T>& out)
+     if (out.is_mapped())
+     {
+         // Copy to device-mapped writable pointer
+-        CudaCall(cudaMemcpy(out.data(), in.data(), in.size() * sizeof(T),
++        CudaCall(cudaMemcpy(out.data(), in.d_data, in.size() * sizeof(T),
+                     cudaMemcpyDeviceToDevice));
+     }
+     else
+     {
+-        CudaCall(cudaMemcpy(&out[0], in.data(), in.size() * sizeof(T),
++        CudaCall(cudaMemcpy(&out[0], in.d_data, in.size() * sizeof(T),
+                     cudaMemcpyDeviceToHost));
+     }
+ }
+diff --git a/packages/Transcore/cuda_utils/Pseudo_Device_Vector.hh b/packages/Transcore/cuda_utils/Pseudo_Device_Vector.hh
+index 9e8a240..5bdc441 100644
+--- a/packages/Transcore/cuda_utils/Pseudo_Device_Vector.hh
++++ b/packages/Transcore/cuda_utils/Pseudo_Device_Vector.hh
+@@ -130,18 +130,34 @@ class Pseudo_Device_Vector
+      * \brief Access the underlying data for read/write in fake GPU kernels
+      *
+      * This is needed by kernel call wrappers. It sets the initialized flag.
++     *
++     * \warning Since this is only meant for emulating device code in a C++
++     * kernel, it will raise a runtime error (if DBC is enabled) if called in
++     * part of the code being compiled by the Nvidida compiler, even though it
++     * could be used legitimately in other circumstances.
+      */
+     pointer data()
+     {
++#ifdef __NVCC__
++        Require(false);
++#endif
+         d_is_initialized = true;
+         return &d_storage[0];
+     }
+ 
+     /*!
+      * \brief Access the underlying data for read-only in fake GPU kernels
++     *
++     * \warning Since this is only meant for emulating device code in a C++
++     * kernel, it will raise a runtime error (if DBC is enabled) if called in
++     * part of the code being compiled by the Nvidida compiler, even though it
++     * could be used legitimately in other circumstances.
+      */
+     const_pointer cdata() const
+     {
++#ifdef __NVCC__
++        Require(false);
++#endif
+         Require(d_is_initialized);
+         return &d_storage[0];
+     }
+-- 
+1.8.3.4
+
