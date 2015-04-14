@@ -17,13 +17,27 @@ typedef nemesis::View_Field<double> VF;
 
 void copy_vf(VF src, VF dst)
 {
-    std::copy(src.begin(), src.end(), dst.begin());
+    VF::iterator s = src.begin();
+    VF::iterator s_end = src.end();
+    VF::iterator d = dst.begin();
+    while (s != s_end)
+    {
+        *d = *s;
+        ++s; ++d;
+    }
 }
 
 void fill_vf(VF dst, double val)
 {
-    std::fill(dst.begin(), dst.end(), val);
+    VF::iterator d = dst.begin();
+    VF::iterator d_end = dst.end();
+    while (d != d_end)
+    {
+        *d = val;
+        ++d;
+    }
 }
+
 
 //---------------------------------------------------------------------------//
 // end of view_field/test.cc

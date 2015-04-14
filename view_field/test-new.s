@@ -4,7 +4,7 @@
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -I /opt/gcc48/Exnihilo/include -D__DYNAMIC__ test.cc
 # -fPIC -mmacosx-version-min=10.9.4 -mtune=core2 -auxbase-strip test-new.s
-# -O2 -std=c++11 -fverbose-asm
+# -O3 -std=c++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -fasynchronous-unwind-tables
 # -fauto-inc-dec -fbranch-count-reg -fcaller-saves
@@ -12,17 +12,18 @@
 # -fcrossjumping -fcse-follow-jumps -fdefer-pop
 # -fdelete-null-pointer-checks -fdevirtualize -fearly-inlining
 # -feliminate-unused-debug-types -fexceptions -fexpensive-optimizations
-# -fforward-propagate -ffunction-cse -fgcse -fgcse-lm
+# -fforward-propagate -ffunction-cse -fgcse -fgcse-after-reload -fgcse-lm
 # -fguess-branch-probability -fhoist-adjacent-loads -fident -fif-conversion
 # -fif-conversion2 -findirect-inlining -finline -finline-atomics
-# -finline-functions-called-once -finline-small-functions -fipa-cp
-# -fipa-profile -fipa-pure-const -fipa-reference -fipa-sra
-# -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
-# -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
-# -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
-# -fnext-runtime -fobjc-abi-version= -fomit-frame-pointer
-# -foptimize-register-move -foptimize-sibling-calls -foptimize-strlen
-# -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays -free
+# -finline-functions -finline-functions-called-once
+# -finline-small-functions -fipa-cp -fipa-cp-clone -fipa-profile
+# -fipa-pure-const -fipa-reference -fipa-sra -fira-hoist-pressure
+# -fira-share-save-slots -fira-share-spill-slots -fivopts
+# -fkeep-static-consts -fleading-underscore -fmath-errno -fmerge-constants
+# -fmerge-debug-strings -fmove-loop-invariants -fnext-runtime
+# -fobjc-abi-version= -fomit-frame-pointer -foptimize-register-move
+# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeephole
+# -fpeephole2 -fpredictive-commoning -fprefetch-loop-arrays -free
 # -freg-struct-return -fregmove -freorder-blocks -freorder-functions
 # -frerun-cse-after-loop -fsched-critical-path-heuristic
 # -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
@@ -34,17 +35,19 @@
 # -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
 # -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop
 # -ftree-copyrename -ftree-cselim -ftree-dce -ftree-dominator-opts
-# -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-if-convert
-# -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-optimize
-# -ftree-parallelize-loops= -ftree-phiprop -ftree-pre -ftree-pta
-# -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize
-# -ftree-slsr -ftree-sra -ftree-switch-conversion -ftree-tail-merge
-# -ftree-ter -ftree-vect-loop-version -ftree-vrp -funit-at-a-time
-# -funwind-tables -fverbose-asm -fzero-initialized-in-bss -gstrict-dwarf
-# -m128bit-long-double -m64 -m80387 -maccumulate-outgoing-args
-# -malign-stringops -matt-stubs -mconstant-cfstrings -mfancy-math-387
-# -mfp-ret-in-387 -mfxsr -mieee-fp -mlong-double-80 -mmmx -mno-sse4
-# -mpush-args -mred-zone -msse -msse2 -msse3
+# -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-distribute-patterns
+# -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+# -ftree-loop-optimize -ftree-parallelize-loops= -ftree-partial-pre
+# -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+# -ftree-sink -ftree-slp-vectorize -ftree-slsr -ftree-sra
+# -ftree-switch-conversion -ftree-tail-merge -ftree-ter
+# -ftree-vect-loop-version -ftree-vectorize -ftree-vrp -funit-at-a-time
+# -funswitch-loops -funwind-tables -fvect-cost-model -fverbose-asm
+# -fzero-initialized-in-bss -gstrict-dwarf -m128bit-long-double -m64
+# -m80387 -maccumulate-outgoing-args -malign-stringops -matt-stubs
+# -mconstant-cfstrings -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp
+# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+# -msse3
 
 	.text
 	.align 4,0x90
@@ -69,9 +72,9 @@ LFB1422:
 	salq	$3, %rdi	#, D.33648
 	.align 4,0x90
 L4:
-	movsd	(%rcx), %xmm0	# MEM[base: _36, offset: 0], D.33649
+	movsd	(%rcx), %xmm0	# MEM[base: _34, offset: 0], D.33649
 	addq	%rdi, %rcx	# D.33648, ivtmp.193
-	movsd	%xmm0, (%rdx)	# D.33649, MEM[base: _42, offset: 0]
+	movsd	%xmm0, (%rdx)	# D.33649, MEM[base: _36, offset: 0]
 	addq	%rsi, %rdx	# D.33648, ivtmp.194
 	subq	$1, %rax	#, __n
 	jne	L4	#,
