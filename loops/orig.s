@@ -59,39 +59,51 @@ LCOLDB0:
 LHOTB0:
 	.align 1,0x90
 	.align 4,0x90
-	.globl __ZN4Loop6loopmeEPFviE
-__ZN4Loop6loopmeEPFviE:
+	.globl __ZN4Loop6loopmeEPFvPiE
+__ZN4Loop6loopmeEPFvPiE:
 LFB0:
-	movl	(%rdi), %eax	# this_4(D)->loopmax,
-	testl	%eax, %eax	#
-	jle	L8	#,
-	pushq	%r12	#
+	pushq	%r13	#
 LCFI0:
-	movq	%rsi, %r12	# f, f
-	pushq	%rbp	#
+	pushq	%r12	#
 LCFI1:
-	movq	%rdi, %rbp	# this, this
-	pushq	%rbx	#
+	pushq	%rbp	#
 LCFI2:
+	pushq	%rbx	#
+LCFI3:
+	subq	$24, %rsp	#,
+LCFI4:
+	movl	(%rdi), %eax	# this_5(D)->loopmax,
+	movl	$0, 12(%rsp)	#, result
+	testl	%eax, %eax	#
+	jle	L4	#,
+	movq	%rsi, %r12	# f, f
+	movq	%rdi, %rbp	# this, this
 	xorl	%ebx, %ebx	# i
+	leaq	12(%rsp), %r13	#, tmp97
 	.align 4,0x90
-L6:
-	xorl	%edi, %edi	#
+L3:
+	movq	%r13, %rdi	# tmp97,
 	addl	$1, %ebx	#, i
 	call	*%r12	# f
-	cmpl	%ebx, 0(%rbp)	# i, this_4(D)->loopmax
-	jg	L6	#,
-	popq	%rbx	#
-LCFI3:
-	xorl	%eax, %eax	#
-	popq	%rbp	#
-LCFI4:
-	popq	%r12	#
+	cmpl	%ebx, 0(%rbp)	# i, this_5(D)->loopmax
+	jg	L3	#,
+	movl	12(%rsp), %eax	# result, D.2138
+L2:
+	addq	$24, %rsp	#,
 LCFI5:
+	popq	%rbx	#
+LCFI6:
+	popq	%rbp	#
+LCFI7:
+	popq	%r12	#
+LCFI8:
+	popq	%r13	#
+LCFI9:
 	ret
-L8:
-	xorl	%eax, %eax	#
-	ret
+L4:
+LCFI10:
+	xorl	%eax, %eax	# D.2138
+	jmp	L2	#
 LFE0:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE0:
@@ -131,40 +143,64 @@ LASFDE1:
 	.long L$set$3
 	.byte	0xe
 	.byte	0x10
-	.byte	0x8c
+	.byte	0x8d
 	.byte	0x2
 	.byte	0x4
 	.set L$set$4,LCFI1-LCFI0
 	.long L$set$4
 	.byte	0xe
 	.byte	0x18
-	.byte	0x86
+	.byte	0x8c
 	.byte	0x3
 	.byte	0x4
 	.set L$set$5,LCFI2-LCFI1
 	.long L$set$5
 	.byte	0xe
 	.byte	0x20
-	.byte	0x83
+	.byte	0x86
 	.byte	0x4
 	.byte	0x4
 	.set L$set$6,LCFI3-LCFI2
 	.long L$set$6
-	.byte	0xc3
 	.byte	0xe
-	.byte	0x18
+	.byte	0x28
+	.byte	0x83
+	.byte	0x5
 	.byte	0x4
 	.set L$set$7,LCFI4-LCFI3
 	.long L$set$7
-	.byte	0xc6
 	.byte	0xe
-	.byte	0x10
+	.byte	0x40
 	.byte	0x4
 	.set L$set$8,LCFI5-LCFI4
 	.long L$set$8
-	.byte	0xcc
+	.byte	0xa
+	.byte	0xe
+	.byte	0x28
+	.byte	0x4
+	.set L$set$9,LCFI6-LCFI5
+	.long L$set$9
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$10,LCFI7-LCFI6
+	.long L$set$10
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$11,LCFI8-LCFI7
+	.long L$set$11
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$12,LCFI9-LCFI8
+	.long L$set$12
 	.byte	0xe
 	.byte	0x8
+	.byte	0x4
+	.set L$set$13,LCFI10-LCFI9
+	.long L$set$13
+	.byte	0xb
 	.align 3
 LEFDE1:
 	.constructor
