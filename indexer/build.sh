@@ -5,7 +5,8 @@
 # Date  : Mon Nov 23 11:04:54 2015
 ###############################################################################
 
-CXX=/opt/local/bin/g++-mp-5
+#CXX=/opt/local/bin/g++-mp-5
+CXX=/usr/bin/llvm-g++
 SOURCE=${HOME}/_code/Exnihilo/packages
 BUILD=${HOME}/_code/_build/Exnihilo-serial-debug/Exnihilo/packages
 

@@ -51,6 +51,14 @@ void flat_index(Dims3 dims, value_type& i, Dims3 coords)
     i = Indexer_Impl<value_type, 3>::index(dims, coords);
 }
 
+#if 0
+using Dims8 = nemesis::Vector_Lite<value_type, 8>;
+void index(Dims8 dims, value_type i, Dims8& coords)
+{
+    coords = Indexer_Impl<value_type, 8>::index(dims, i);
+}
+#endif
+
 //---------------------------------------------------------------------------//
 // end of indexer/test.cc
 //---------------------------------------------------------------------------//
