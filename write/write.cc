@@ -39,10 +39,13 @@ void write(Writer& w, const std::string& a, const std::string& b)
     w.b = 0;
 }
 
-void do_whatever(Writer& w)
+struct Poop
+{
+void write(Writer& w)
 {
     write(w, "poop", 4);
 }
+};
 
 }
 
