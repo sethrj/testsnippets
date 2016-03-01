@@ -20,10 +20,23 @@ struct Writer
     int b;
 };
 
+template<class T>
+void write(Writer& w, const std::string& a, T b)
+{
+    w.a = a;
+    w.b = static_cast<int>(b);
+}
+
 void write(Writer& w, const std::string& a, int b)
 {
     w.a = a;
     w.b = b;
+}
+
+void write(Writer& w, const std::string& a, const std::string& b)
+{
+    w.a = a + b;
+    w.b = 0;
 }
 
 void do_whatever(Writer& w)
