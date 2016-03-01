@@ -43,6 +43,7 @@ struct Poop
 {
 void write(Writer& w)
 {
+    using ::derp::write;
     write(w, "poop", 4);
 }
 };
