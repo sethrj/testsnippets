@@ -29,13 +29,13 @@ void divmod_two_shift(int input, int* axis, int* sign)
 void divmod_two_mask(int input, int* axis, int* sign)
 {
     *axis = input / 2;
-    *sign = (input & 0x1 == 1 ? 1 : -1);
+    *sign = ((input & 0x1) == 1 ? 1 : -1);
 }
 
 void divmod_two_shift_mask(int input, int* axis, int* sign)
 {
     *axis = input >> 1;
-    *sign = (input & 0x1 ? 1 : -1);
+    *sign = ((input & 0x1) ? 1 : -1);
 }
 
 void divmod_two_shift_mult(int input, int* axis, int* sign)
@@ -43,6 +43,12 @@ void divmod_two_shift_mult(int input, int* axis, int* sign)
     *axis = input >> 1;
     *sign = ((input & 0x1) << 1) - 1;
     //*sign = 2 * (input & 0x1) - 1;
+}
+
+void divmod_two_shift_mult2(int input, int* axis, int* sign)
+{
+    *axis = input / 2;
+    *sign = 2 * (input % 2) - 1;
 }
 
 //---------------------------------------------------------------------------//

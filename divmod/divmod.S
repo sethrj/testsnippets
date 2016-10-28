@@ -1,11 +1,11 @@
-# GNU C++11 (MacPorts gcc5 5.3.0_1) version 5.3.0 (x86_64-apple-darwin15)
-#	compiled by GNU C version 5.3.0, GMP version 6.1.0, MPFR version 3.1.3, MPC version 1.0.3
+# GNU C++11 (MacPorts gcc5 5.4.0_0) version 5.4.0 (x86_64-apple-darwin15)
+#	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.3, MPC version 1.0.3
 # warning: GMP header version 6.1.0 differs from library version 6.1.1.
 # warning: MPFR header version 3.1.3 differs from library version 3.1.4.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ divmod.cc -fPIC
 # -mmacosx-version-min=10.11.6 -mtune=core2 -auxbase-strip divmod.S -O2
-# -std=c++11 -fverbose-asm
+# -Wall -Wextra -std=c++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -65,11 +65,11 @@ LFB0:
 	movq	%rdx, %rdi	# axis, axis
 	cltd
 	idivl	%esi	# divisor
-	movl	%eax, (%rdi)	# D.2183, *axis_6(D)
+	movl	%eax, (%rdi)	# D.2194, *axis_6(D)
 	cmpl	$1, %edx	#, tmp94
 	movl	$-1, %eax	#, tmp97
-	cmovne	%eax, %edx	# tmp94,, tmp97, D.2183
-	movl	%edx, (%rcx)	# D.2183, *sign_9(D)
+	cmovne	%eax, %edx	# tmp94,, tmp97, D.2194
+	movl	%edx, (%rcx)	# D.2194, *sign_9(D)
 	ret
 LFE0:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -87,8 +87,8 @@ LFB1:
 	movl	%edi, %eax	# input, tmp92
 	shrl	$31, %eax	#, tmp92
 	addl	%edi, %eax	# input, tmp93
-	sarl	%eax	# D.2186
-	movl	%eax, (%rsi)	# D.2186, *axis_5(D)
+	sarl	%eax	# D.2197
+	movl	%eax, (%rsi)	# D.2197, *axis_5(D)
 	movl	%edi, %eax	# input, tmp96
 	shrl	$31, %eax	#, tmp96
 	addl	%eax, %edi	# tmp96, tmp97
@@ -96,8 +96,8 @@ LFB1:
 	subl	%eax, %edi	# tmp96, tmp99
 	movl	$-1, %eax	#, tmp100
 	cmpl	$1, %edi	#, tmp99
-	cmovne	%eax, %edi	# tmp99,, tmp100, D.2186
-	movl	%edi, (%rdx)	# D.2186, *sign_8(D)
+	cmovne	%eax, %edi	# tmp99,, tmp100, D.2197
+	movl	%edi, (%rdx)	# D.2197, *sign_8(D)
 	ret
 LFE1:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -122,8 +122,8 @@ LFB2:
 	subl	%eax, %edi	# tmp94, tmp97
 	movl	$-1, %eax	#, tmp98
 	cmpl	$1, %edi	#, tmp97
-	cmovne	%eax, %edi	# tmp97,, tmp98, D.2189
-	movl	%edi, (%rdx)	# D.2189, *sign_8(D)
+	cmovne	%eax, %edi	# tmp97,, tmp98, D.2200
+	movl	%edi, (%rdx)	# D.2200, *sign_8(D)
 	ret
 LFE2:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -141,13 +141,13 @@ LFB3:
 	movl	%edi, %eax	# input, tmp93
 	shrl	$31, %eax	#, tmp93
 	addl	%edi, %eax	# input, tmp94
-	andl	$1, %edi	#, D.2192
-	sarl	%eax	# D.2192
-	cmpl	$1, %edi	#, D.2192
-	movl	%eax, (%rsi)	# D.2192, *axis_5(D)
-	sbbl	%eax, %eax	# D.2192
-	orl	$1, %eax	#, D.2192
-	movl	%eax, (%rdx)	# D.2192, *sign_8(D)
+	andl	$1, %edi	#, D.2203
+	sarl	%eax	# D.2203
+	cmpl	$1, %edi	#, D.2203
+	movl	%eax, (%rsi)	# D.2203, *axis_5(D)
+	sbbl	%eax, %eax	# D.2203
+	orl	$1, %eax	#, D.2203
+	movl	%eax, (%rdx)	# D.2203, *sign_8(D)
 	ret
 LFE3:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -163,13 +163,13 @@ LHOTB4:
 __Z21divmod_two_shift_maskiPiS_:
 LFB4:
 	movl	%edi, %eax	# input, tmp93
-	andl	$1, %edi	#, D.2195
+	andl	$1, %edi	#, D.2206
 	sarl	%eax	# tmp93
-	cmpl	$1, %edi	#, D.2195
+	cmpl	$1, %edi	#, D.2206
 	movl	%eax, (%rsi)	# tmp93, *axis_5(D)
-	sbbl	%eax, %eax	# D.2195
-	orl	$1, %eax	#, D.2195
-	movl	%eax, (%rdx)	# D.2195, *sign_8(D)
+	sbbl	%eax, %eax	# D.2206
+	orl	$1, %eax	#, D.2206
+	movl	%eax, (%rdx)	# D.2206, *sign_8(D)
 	ret
 LFE4:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -185,7 +185,7 @@ LHOTB5:
 __Z21divmod_two_shift_multiPiS_:
 LFB5:
 	movl	%edi, %eax	# input, tmp94
-	andl	$1, %edi	#, D.2198
+	andl	$1, %edi	#, D.2209
 	sarl	%eax	# tmp94
 	movl	%eax, (%rsi)	# tmp94, *axis_4(D)
 	movl	$-1, %eax	#,
@@ -197,6 +197,32 @@ LFE5:
 LCOLDE5:
 	.text
 LHOTE5:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB6:
+	.text
+LHOTB6:
+	.align 4,0x90
+	.globl __Z22divmod_two_shift_mult2iPiS_
+__Z22divmod_two_shift_mult2iPiS_:
+LFB6:
+	movl	%edi, %eax	# input, tmp94
+	shrl	$31, %eax	#, tmp94
+	addl	%edi, %eax	# input, tmp95
+	sarl	%eax	# D.2212
+	movl	%eax, (%rsi)	# D.2212, *axis_4(D)
+	movl	%edi, %eax	# input, tmp99
+	shrl	$31, %eax	#, tmp99
+	addl	%eax, %edi	# tmp99, tmp100
+	andl	$1, %edi	#, tmp101
+	subl	%eax, %edi	# tmp99, D.2212
+	leal	-1(%rdi,%rdi), %eax	#, tmp104
+	movl	%eax, (%rdx)	# tmp104, *sign_9(D)
+	ret
+LFE6:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE6:
+	.text
+LHOTE6:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -283,6 +309,17 @@ LASFDE11:
 	.byte	0
 	.align 3
 LEFDE11:
+LSFDE13:
+	.set L$set$13,LEFDE13-LASFDE13
+	.long L$set$13
+LASFDE13:
+	.long	LASFDE13-EH_frame1
+	.quad	LFB6-.
+	.set L$set$14,LFE6-LFB6
+	.quad L$set$14
+	.byte	0
+	.align 3
+LEFDE13:
 	.constructor
 	.destructor
 	.align 1
