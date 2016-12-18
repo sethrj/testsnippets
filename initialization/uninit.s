@@ -1,268 +1,475 @@
-	.section	__TEXT,__text,regular,pure_instructions
-	.macosx_version_min 10, 11
-	.globl	__Z17rejection_sample1I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.weak_definition	__Z17rejection_sample1I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.align	4, 0x90
-__Z17rejection_sample1I13UninitializedET_NSt3__18functionIFbRKS1_EEE: ## @_Z17rejection_sample1I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.cfi_startproc
-## BB#0:
-	pushq	%rbp
-Ltmp0:
-	.cfi_def_cfa_offset 16
-Ltmp1:
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-Ltmp2:
-	.cfi_def_cfa_register %rbp
-	pushq	%r14
-	pushq	%rbx
-	subq	$16, %rsp
-Ltmp3:
-	.cfi_offset %rbx, -32
-Ltmp4:
-	.cfi_offset %r14, -24
-	movq	%rdi, %rbx
-	leaq	-32(%rbp), %r14
-	.align	4, 0x90
-LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
-	callq	__Z6samplev
-	movl	%eax, -32(%rbp)
-	callq	__Z6samplev
-	movl	%eax, -28(%rbp)
-	callq	__Z6samplev
-	movl	%eax, -24(%rbp)
-	movq	32(%rbx), %rdi
-	testq	%rdi, %rdi
-	je	LBB0_4
-## BB#2:                                ##   in Loop: Header=BB0_1 Depth=1
-	movq	(%rdi), %rax
-	movq	%r14, %rsi
-	callq	*48(%rax)
-	testb	%al, %al
-	je	LBB0_1
-## BB#3:
-	movq	-32(%rbp), %rax
-	movl	-24(%rbp), %edx
-	addq	$16, %rsp
-	popq	%rbx
-	popq	%r14
-	popq	%rbp
-	retq
-LBB0_4:
-	movl	$8, %edi
-	callq	___cxa_allocate_exception
-	movq	__ZTVNSt3__117bad_function_callE@GOTPCREL(%rip), %rcx
-	addq	$16, %rcx
-	movq	%rcx, (%rax)
-	movq	__ZTINSt3__117bad_function_callE@GOTPCREL(%rip), %rsi
-	movq	__ZNSt3__117bad_function_callD1Ev@GOTPCREL(%rip), %rdx
-	movq	%rax, %rdi
-	callq	___cxa_throw
-	.cfi_endproc
+# GNU C++11 (MacPorts gcc5 5.4.0_0) version 5.4.0 (x86_64-apple-darwin15)
+#	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.3, MPC version 1.0.3
+# warning: GMP header version 6.1.0 differs from library version 6.1.1.
+# warning: MPFR header version 3.1.3 differs from library version 3.1.4.
+# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+# options passed:  -D__DYNAMIC__ uninit.cpp -fPIC
+# -mmacosx-version-min=10.11.6 -mtune=core2 -O2 -Wall -Wextra -std=c++11
+# -fverbose-asm
+# options enabled:  -Wnonportable-cfstrings -fPIC
+# -faggressive-loop-optimizations -falign-labels
+# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
+# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
+# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
+# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
+# -fchkp-use-static-const-bounds -fchkp-use-wrappers
+# -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+# -fcrossjumping -fcse-follow-jumps -fdefer-pop
+# -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
+# -fearly-inlining -feliminate-unused-debug-types -fexceptions
+# -fexpensive-optimizations -fforward-propagate -ffunction-cse -fgcse
+# -fgcse-lm -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads
+# -fident -fif-conversion -fif-conversion2 -findirect-inlining -finline
+# -finline-atomics -finline-functions-called-once -finline-small-functions
+# -fipa-cp -fipa-cp-alignment -fipa-icf -fipa-icf-functions
+# -fipa-icf-variables -fipa-profile -fipa-pure-const -fipa-ra
+# -fipa-reference -fipa-sra -fira-hoist-pressure -fira-share-save-slots
+# -fira-share-spill-slots -fisolate-erroneous-paths-dereference -fivopts
+# -fkeep-static-consts -fleading-underscore -flifetime-dse -flra-remat
+# -flto-odr-type-merging -fmath-errno -fmerge-constants
+# -fmerge-debug-strings -fmove-loop-invariants -fnext-runtime
+# -fobjc-abi-version= -fomit-frame-pointer -foptimize-sibling-calls
+# -foptimize-strlen -fpartial-inlining -fpeephole -fpeephole2
+# -fprefetch-loop-arrays -free -freg-struct-return -freorder-blocks
+# -freorder-blocks-and-partition -freorder-functions -frerun-cse-after-loop
+# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+# -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
+# -fsemantic-interposition -fshow-column -fshrink-wrap -fsigned-zeros
+# -fsplit-ivs-in-unroller -fsplit-wide-types -fssa-phiopt -fstdarg-opt
+# -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
+# -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
+# -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
+# -ftree-coalesce-vars -ftree-copy-prop -ftree-copyrename -ftree-cselim
+# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+# -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+# -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
+# -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
+# -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
+# -ftree-vrp -funit-at-a-time -funwind-tables -fverbose-asm
+# -fzero-initialized-in-bss -gstrict-dwarf -m128bit-long-double -m64
+# -m80387 -malign-stringops -matt-stubs -mconstant-cfstrings
+# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp -mlong-double-80 -mmmx
+# -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mvzeroupper
 
-	.globl	__Z17rejection_sample2I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.weak_definition	__Z17rejection_sample2I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.align	4, 0x90
-__Z17rejection_sample2I13UninitializedET_NSt3__18functionIFbRKS1_EEE: ## @_Z17rejection_sample2I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.cfi_startproc
-## BB#0:
-	pushq	%rbp
-Ltmp5:
-	.cfi_def_cfa_offset 16
-Ltmp6:
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-Ltmp7:
-	.cfi_def_cfa_register %rbp
-	pushq	%r14
-	pushq	%rbx
-	subq	$16, %rsp
-Ltmp8:
-	.cfi_offset %rbx, -32
-Ltmp9:
-	.cfi_offset %r14, -24
-	movq	%rdi, %rbx
-	leaq	-32(%rbp), %r14
-	.align	4, 0x90
-LBB1_1:                                 ## =>This Inner Loop Header: Depth=1
-	callq	__Z6samplev
-	movl	%eax, -32(%rbp)
-	callq	__Z6samplev
-	movl	%eax, -28(%rbp)
-	callq	__Z6samplev
-	movl	%eax, -24(%rbp)
-	movq	32(%rbx), %rdi
-	testq	%rdi, %rdi
-	je	LBB1_4
-## BB#2:                                ##   in Loop: Header=BB1_1 Depth=1
-	movq	(%rdi), %rax
-	movq	%r14, %rsi
-	callq	*48(%rax)
-	testb	%al, %al
-	je	LBB1_1
-## BB#3:
-	movq	-32(%rbp), %rax
-	movl	-24(%rbp), %edx
-	addq	$16, %rsp
-	popq	%rbx
-	popq	%r14
-	popq	%rbp
-	retq
-LBB1_4:
-	movl	$8, %edi
-	callq	___cxa_allocate_exception
-	movq	__ZTVNSt3__117bad_function_callE@GOTPCREL(%rip), %rcx
-	addq	$16, %rcx
-	movq	%rcx, (%rax)
-	movq	__ZTINSt3__117bad_function_callE@GOTPCREL(%rip), %rsi
-	movq	__ZNSt3__117bad_function_callD1Ev@GOTPCREL(%rip), %rdx
-	movq	%rax, %rdi
-	callq	___cxa_throw
-	.cfi_endproc
-
-	.globl	__Z17rejection_sample3I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.weak_definition	__Z17rejection_sample3I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.align	4, 0x90
-__Z17rejection_sample3I13UninitializedET_NSt3__18functionIFbRKS1_EEE: ## @_Z17rejection_sample3I13UninitializedET_NSt3__18functionIFbRKS1_EEE
-	.cfi_startproc
-## BB#0:
-	pushq	%rbp
-Ltmp10:
-	.cfi_def_cfa_offset 16
-Ltmp11:
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-Ltmp12:
-	.cfi_def_cfa_register %rbp
-	pushq	%r15
-	pushq	%r14
-	pushq	%rbx
-	subq	$24, %rsp
-Ltmp13:
-	.cfi_offset %rbx, -40
-Ltmp14:
-	.cfi_offset %r14, -32
-Ltmp15:
-	.cfi_offset %r15, -24
-	movq	%rdi, %rbx
-	movq	_global_bool@GOTPCREL(%rip), %r15
-	cmpb	$0, (%r15)
-	je	LBB2_6
-## BB#1:
-	leaq	-40(%rbp), %r14
-	.align	4, 0x90
-LBB2_2:                                 ## =>This Inner Loop Header: Depth=1
-	callq	__Z6samplev
-	movl	%eax, -40(%rbp)
-	callq	__Z6samplev
-	movl	%eax, -36(%rbp)
-	callq	__Z6samplev
-	movl	%eax, -32(%rbp)
-	movq	32(%rbx), %rdi
-	testq	%rdi, %rdi
-	je	LBB2_7
-## BB#3:                                ##   in Loop: Header=BB2_2 Depth=1
-	movq	(%rdi), %rax
-	movq	%r14, %rsi
-	callq	*48(%rax)
-	testb	%al, %al
-	jne	LBB2_5
-## BB#4:                                ##   in Loop: Header=BB2_2 Depth=1
-	movb	(%r15), %al
-	testb	%al, %al
-	jne	LBB2_2
-LBB2_5:
-	movq	-40(%rbp), %rax
-	movl	-32(%rbp), %edx
-LBB2_6:
-	addq	$24, %rsp
-	popq	%rbx
-	popq	%r14
-	popq	%r15
-	popq	%rbp
-	retq
-LBB2_7:
-	movl	$8, %edi
-	callq	___cxa_allocate_exception
-	movq	__ZTVNSt3__117bad_function_callE@GOTPCREL(%rip), %rcx
-	addq	$16, %rcx
-	movq	%rcx, (%rax)
-	movq	__ZTINSt3__117bad_function_callE@GOTPCREL(%rip), %rsi
-	movq	__ZNSt3__117bad_function_callD1Ev@GOTPCREL(%rip), %rdx
-	movq	%rax, %rdi
-	callq	___cxa_throw
-	.cfi_endproc
-
-	.globl	__ZNSt3__117bad_function_callD1Ev
-	.weak_def_can_be_hidden	__ZNSt3__117bad_function_callD1Ev
-	.align	4, 0x90
-__ZNSt3__117bad_function_callD1Ev:      ## @_ZNSt3__117bad_function_callD1Ev
-	.cfi_startproc
-## BB#0:
-	pushq	%rbp
-Ltmp16:
-	.cfi_def_cfa_offset 16
-Ltmp17:
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-Ltmp18:
-	.cfi_def_cfa_register %rbp
-	popq	%rbp
-	jmp	__ZNSt9exceptionD2Ev    ## TAILCALL
-	.cfi_endproc
-
-	.globl	__ZNSt3__117bad_function_callD0Ev
-	.weak_def_can_be_hidden	__ZNSt3__117bad_function_callD0Ev
-	.align	4, 0x90
-__ZNSt3__117bad_function_callD0Ev:      ## @_ZNSt3__117bad_function_callD0Ev
-	.cfi_startproc
-## BB#0:
-	pushq	%rbp
-Ltmp19:
-	.cfi_def_cfa_offset 16
-Ltmp20:
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-Ltmp21:
-	.cfi_def_cfa_register %rbp
-	pushq	%rbx
-	pushq	%rax
-Ltmp22:
-	.cfi_offset %rbx, -24
-	movq	%rdi, %rbx
-	callq	__ZNSt9exceptionD2Ev
-	movq	%rbx, %rdi
-	addq	$8, %rsp
-	popq	%rbx
-	popq	%rbp
-	jmp	__ZdlPv                 ## TAILCALL
-	.cfi_endproc
-
-	.section	__TEXT,__const
-	.globl	__ZTSNSt3__117bad_function_callE ## @_ZTSNSt3__117bad_function_callE
-	.weak_definition	__ZTSNSt3__117bad_function_callE
-	.align	4
-__ZTSNSt3__117bad_function_callE:
-	.asciz	"NSt3__117bad_function_callE"
-
-	.section	__DATA,__data
-	.globl	__ZTINSt3__117bad_function_callE ## @_ZTINSt3__117bad_function_callE
-	.weak_definition	__ZTINSt3__117bad_function_callE
-	.align	4
-__ZTINSt3__117bad_function_callE:
-	.quad	__ZTVN10__cxxabiv120__si_class_type_infoE+16
-	.quad	__ZTSNSt3__117bad_function_callE
-	.quad	__ZTISt9exception
-
-	.globl	__ZTVNSt3__117bad_function_callE ## @_ZTVNSt3__117bad_function_callE
-	.weak_def_can_be_hidden	__ZTVNSt3__117bad_function_callE
-	.align	3
-__ZTVNSt3__117bad_function_callE:
-	.quad	0
-	.quad	__ZTINSt3__117bad_function_callE
-	.quad	__ZNSt3__117bad_function_callD1Ev
-	.quad	__ZNSt3__117bad_function_callD0Ev
-	.quad	__ZNKSt9exception4whatEv
-
-
-.subsections_via_symbols
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB0:
+	.text
+LHOTB0:
+	.align 4,0x90
+	.globl __Z17rejection_sample1I13UninitializedET_St8functionIFbRKS1_EE
+__Z17rejection_sample1I13UninitializedET_St8functionIFbRKS1_EE:
+LFB1302:
+	pushq	%rbp	#
+LCFI0:
+	movq	%rsi, %rbp	# accept, accept
+	pushq	%rbx	#
+LCFI1:
+	movq	%rdi, %rbx	# .result_ptr, .result_ptr
+	subq	$8, %rsp	#,
+LCFI2:
+	.align 4,0x90
+L3:
+	call	__Z6samplev	#
+	movsd	%xmm0, (%rbx)	# D.29612, <retval>.v
+	call	__Z6samplev	#
+	movsd	%xmm0, 8(%rbx)	# D.29612, <retval>.v
+	call	__Z6samplev	#
+	cmpq	$0, 16(%rbp)	#, MEM[(bool (*<T574f>) (union _Any_data &, const union _Any_data &, _Manager_operation) *)accept_13(D) + 16B]
+	movsd	%xmm0, 16(%rbx)	# D.29612, <retval>.v
+	je	L8	#,
+	movq	%rbx, %rsi	# .result_ptr,
+	movq	%rbp, %rdi	# accept,
+	call	*24(%rbp)	# MEM[(const struct function *)accept_13(D)]._M_invoker
+	testb	%al, %al	# D.29616
+	je	L3	#,
+	addq	$8, %rsp	#,
+LCFI3:
+	movq	%rbx, %rax	# .result_ptr,
+	popq	%rbx	#
+LCFI4:
+	popq	%rbp	#
+LCFI5:
+	ret
+L8:
+LCFI6:
+	call	__ZSt25__throw_bad_function_callv	#
+LFE1302:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE0:
+	.text
+LHOTE0:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB1:
+	.text
+LHOTB1:
+	.align 4,0x90
+	.globl __Z17rejection_sample2I13UninitializedET_St8functionIFbRKS1_EE
+__Z17rejection_sample2I13UninitializedET_St8functionIFbRKS1_EE:
+LFB1303:
+	pushq	%rbp	#
+LCFI7:
+	movq	%rsi, %rbp	# accept, accept
+	pushq	%rbx	#
+LCFI8:
+	movq	%rdi, %rbx	# .result_ptr, .result_ptr
+	subq	$8, %rsp	#,
+LCFI9:
+	.align 4,0x90
+L11:
+	call	__Z6samplev	#
+	movsd	%xmm0, (%rbx)	# D.29622, <retval>.v
+	call	__Z6samplev	#
+	movsd	%xmm0, 8(%rbx)	# D.29622, <retval>.v
+	call	__Z6samplev	#
+	cmpq	$0, 16(%rbp)	#, MEM[(bool (*<T574f>) (union _Any_data &, const union _Any_data &, _Manager_operation) *)accept_12(D) + 16B]
+	movsd	%xmm0, 16(%rbx)	# D.29622, <retval>.v
+	je	L15	#,
+	movq	%rbx, %rsi	# .result_ptr,
+	movq	%rbp, %rdi	# accept,
+	call	*24(%rbp)	# MEM[(const struct function *)accept_12(D)]._M_invoker
+	testb	%al, %al	# D.29626
+	je	L11	#,
+	addq	$8, %rsp	#,
+LCFI10:
+	movq	%rbx, %rax	# .result_ptr,
+	popq	%rbx	#
+LCFI11:
+	popq	%rbp	#
+LCFI12:
+	ret
+L15:
+LCFI13:
+	call	__ZSt25__throw_bad_function_callv	#
+LFE1303:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE1:
+	.text
+LHOTE1:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB2:
+	.text
+LHOTB2:
+	.align 4,0x90
+	.globl __Z17rejection_sample3I13UninitializedET_St8functionIFbRKS1_EE
+__Z17rejection_sample3I13UninitializedET_St8functionIFbRKS1_EE:
+LFB1304:
+	pushq	%r12	#
+LCFI14:
+	movq	_global_bool@GOTPCREL(%rip), %r12	#, tmp99
+	pushq	%rbp	#
+LCFI15:
+	movq	%rsi, %rbp	# accept, accept
+	pushq	%rbx	#
+LCFI16:
+	movq	%rdi, %rbx	# .result_ptr, .result_ptr
+	jmp	L20	#
+	.align 4,0x90
+L23:
+	call	__Z6samplev	#
+	movsd	%xmm0, (%rbx)	# D.29633, <retval>.v
+	call	__Z6samplev	#
+	movsd	%xmm0, 8(%rbx)	# D.29633, <retval>.v
+	call	__Z6samplev	#
+	cmpq	$0, 16(%rbp)	#, MEM[(bool (*<T574f>) (union _Any_data &, const union _Any_data &, _Manager_operation) *)accept_14(D) + 16B]
+	movsd	%xmm0, 16(%rbx)	# D.29633, <retval>.v
+	je	L22	#,
+	movq	%rbx, %rsi	# .result_ptr,
+	movq	%rbp, %rdi	# accept,
+	call	*24(%rbp)	# MEM[(const struct function *)accept_14(D)]._M_invoker
+	testb	%al, %al	# D.29632
+	jne	L16	#,
+L20:
+	cmpb	$0, (%r12)	#, global_bool
+	jne	L23	#,
+L16:
+	movq	%rbx, %rax	# .result_ptr,
+	popq	%rbx	#
+LCFI17:
+	popq	%rbp	#
+LCFI18:
+	popq	%r12	#
+LCFI19:
+	ret
+L22:
+LCFI20:
+	call	__ZSt25__throw_bad_function_callv	#
+LFE1304:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE2:
+	.text
+LHOTE2:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB3:
+	.text
+LHOTB3:
+	.align 4,0x90
+	.globl __Z25rejection_sample_unrolledI13UninitializedET_St8functionIFbRKS1_EE
+__Z25rejection_sample_unrolledI13UninitializedET_St8functionIFbRKS1_EE:
+LFB1305:
+	pushq	%rbp	#
+LCFI21:
+	movq	%rsi, %rbp	# accept, accept
+	pushq	%rbx	#
+LCFI22:
+	movq	%rdi, %rbx	# .result_ptr, .result_ptr
+	subq	$8, %rsp	#,
+LCFI23:
+	.align 4,0x90
+L33:
+	call	__Z6samplev	#
+	movsd	%xmm0, (%rbx)	# D.29642, <retval>.v
+	call	__Z6samplev	#
+	movsd	%xmm0, 8(%rbx)	# D.29642, <retval>.v
+	call	__Z6samplev	#
+	cmpq	$0, 16(%rbp)	#, MEM[(bool (*<T574f>) (union _Any_data &, const union _Any_data &, _Manager_operation) *)accept_13(D) + 16B]
+	movsd	%xmm0, 16(%rbx)	# D.29642, <retval>.v
+	je	L34	#,
+	movq	%rbx, %rsi	# .result_ptr,
+	movq	%rbp, %rdi	# accept,
+	call	*24(%rbp)	# MEM[(const struct function *)accept_13(D)]._M_invoker
+	testb	%al, %al	# success
+	je	L33	#,
+	addq	$8, %rsp	#,
+LCFI24:
+	movq	%rbx, %rax	# .result_ptr,
+	popq	%rbx	#
+LCFI25:
+	popq	%rbp	#
+LCFI26:
+	ret
+L34:
+LCFI27:
+	call	__ZSt25__throw_bad_function_callv	#
+LFE1305:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE3:
+	.text
+LHOTE3:
+	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
+EH_frame1:
+	.set L$set$0,LECIE1-LSCIE1
+	.long L$set$0
+LSCIE1:
+	.long	0
+	.byte	0x1
+	.ascii "zR\0"
+	.byte	0x1
+	.byte	0x78
+	.byte	0x10
+	.byte	0x1
+	.byte	0x10
+	.byte	0xc
+	.byte	0x7
+	.byte	0x8
+	.byte	0x90
+	.byte	0x1
+	.align 3
+LECIE1:
+LSFDE1:
+	.set L$set$1,LEFDE1-LASFDE1
+	.long L$set$1
+LASFDE1:
+	.long	LASFDE1-EH_frame1
+	.quad	LFB1302-.
+	.set L$set$2,LFE1302-LFB1302
+	.quad L$set$2
+	.byte	0
+	.byte	0x4
+	.set L$set$3,LCFI0-LFB1302
+	.long L$set$3
+	.byte	0xe
+	.byte	0x10
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$4,LCFI1-LCFI0
+	.long L$set$4
+	.byte	0xe
+	.byte	0x18
+	.byte	0x83
+	.byte	0x3
+	.byte	0x4
+	.set L$set$5,LCFI2-LCFI1
+	.long L$set$5
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$6,LCFI3-LCFI2
+	.long L$set$6
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$7,LCFI4-LCFI3
+	.long L$set$7
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$8,LCFI5-LCFI4
+	.long L$set$8
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$9,LCFI6-LCFI5
+	.long L$set$9
+	.byte	0xb
+	.align 3
+LEFDE1:
+LSFDE3:
+	.set L$set$10,LEFDE3-LASFDE3
+	.long L$set$10
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1303-.
+	.set L$set$11,LFE1303-LFB1303
+	.quad L$set$11
+	.byte	0
+	.byte	0x4
+	.set L$set$12,LCFI7-LFB1303
+	.long L$set$12
+	.byte	0xe
+	.byte	0x10
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$13,LCFI8-LCFI7
+	.long L$set$13
+	.byte	0xe
+	.byte	0x18
+	.byte	0x83
+	.byte	0x3
+	.byte	0x4
+	.set L$set$14,LCFI9-LCFI8
+	.long L$set$14
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$15,LCFI10-LCFI9
+	.long L$set$15
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$16,LCFI11-LCFI10
+	.long L$set$16
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$17,LCFI12-LCFI11
+	.long L$set$17
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$18,LCFI13-LCFI12
+	.long L$set$18
+	.byte	0xb
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$19,LEFDE5-LASFDE5
+	.long L$set$19
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB1304-.
+	.set L$set$20,LFE1304-LFB1304
+	.quad L$set$20
+	.byte	0
+	.byte	0x4
+	.set L$set$21,LCFI14-LFB1304
+	.long L$set$21
+	.byte	0xe
+	.byte	0x10
+	.byte	0x8c
+	.byte	0x2
+	.byte	0x4
+	.set L$set$22,LCFI15-LCFI14
+	.long L$set$22
+	.byte	0xe
+	.byte	0x18
+	.byte	0x86
+	.byte	0x3
+	.byte	0x4
+	.set L$set$23,LCFI16-LCFI15
+	.long L$set$23
+	.byte	0xe
+	.byte	0x20
+	.byte	0x83
+	.byte	0x4
+	.byte	0x4
+	.set L$set$24,LCFI17-LCFI16
+	.long L$set$24
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$25,LCFI18-LCFI17
+	.long L$set$25
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$26,LCFI19-LCFI18
+	.long L$set$26
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$27,LCFI20-LCFI19
+	.long L$set$27
+	.byte	0xb
+	.align 3
+LEFDE5:
+LSFDE7:
+	.set L$set$28,LEFDE7-LASFDE7
+	.long L$set$28
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB1305-.
+	.set L$set$29,LFE1305-LFB1305
+	.quad L$set$29
+	.byte	0
+	.byte	0x4
+	.set L$set$30,LCFI21-LFB1305
+	.long L$set$30
+	.byte	0xe
+	.byte	0x10
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$31,LCFI22-LCFI21
+	.long L$set$31
+	.byte	0xe
+	.byte	0x18
+	.byte	0x83
+	.byte	0x3
+	.byte	0x4
+	.set L$set$32,LCFI23-LCFI22
+	.long L$set$32
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$33,LCFI24-LCFI23
+	.long L$set$33
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$34,LCFI25-LCFI24
+	.long L$set$34
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$35,LCFI26-LCFI25
+	.long L$set$35
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$36,LCFI27-LCFI26
+	.long L$set$36
+	.byte	0xb
+	.align 3
+LEFDE7:
+	.constructor
+	.destructor
+	.align 1
+	.subsections_via_symbols

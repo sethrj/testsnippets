@@ -13,6 +13,7 @@
 template Uninitialized rejection_sample1(std::function<bool(const Uninitialized&)>);
 template Uninitialized rejection_sample2(std::function<bool(const Uninitialized&)>);
 template Uninitialized rejection_sample3(std::function<bool(const Uninitialized&)>);
+template Uninitialized   rejection_sample_unrolled(std::function<bool(const Uninitialized&)>);
 
 //---------------------------------------------------------------------------//
 // end of initialization/uninit.cpp

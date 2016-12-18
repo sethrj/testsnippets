@@ -13,7 +13,7 @@
 
 #include <functional>
 
-using data_type = int;
+using data_type = double;
 
 struct Initialized
 {
@@ -22,6 +22,13 @@ struct Initialized
     Initialized()
     {
         v[0] = v[1] = v[2] = 0;
+    }
+
+    Initialized(data_type a, data_type b, data_type c)
+    {
+        v[0] = a;
+        v[1] = b;
+        v[2] = c;
     }
 };
 
@@ -91,6 +98,26 @@ T rejection_sample3(std::function<bool(const T&)> accept)
     return result;
 }
 
+//---------------------------------------------------------------------------//
+// Case 1: a bool
+template<class T>
+T rejection_sample_unrolled(std::function<bool(const T&)> accept)
+{
+    T result;
+    result.v[0] = sample();
+    result.v[1] = sample();
+    result.v[2] = sample();
+    bool success = accept(result);
+    while (!success)
+    {
+        result.v[0] = sample();
+        result.v[1] = sample();
+        result.v[2] = sample();
+        if (accept(result))
+            success = true;
+    }
+    return result;
+}
 //---------------------------------------------------------------------------//
 #endif // initialization_common_hpp
 
