@@ -3,7 +3,7 @@
 # warning: GMP header version 6.1.0 differs from library version 6.1.2.
 # warning: MPFR header version 3.1.3 differs from library version 3.1.4.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ comparison-single-ref.cc -fPIC
+# options passed:  -D__DYNAMIC__ enum_return.cc -fPIC
 # -mmacosx-version-min=10.11.6 -mtune=core2 -O2 -Wall -Wextra -std=c++11
 # -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -54,173 +54,93 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mvzeroupper
 
 	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB0:
+	.text
+LHOTB0:
+	.align 4,0x90
+	.globl __Z8total_mt13Particle_Type
+__Z8total_mt13Particle_Type:
+LFB8:
+	cmpl	$1, %edi	#, pt
+	sbbl	%eax, %eax	# D.2168
+	andl	$-500, %eax	#, D.2168
+	addl	$501, %eax	#, D.2168
+	ret
+LFE8:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE0:
+	.text
+LHOTE0:
+	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDB1:
 	.text
 LHOTB1:
 	.align 4,0x90
-	.globl __Z19is_flagged_minusonePKf
-__Z19is_flagged_minusonePKf:
-LFB412:
-	movss	LC0(%rip), %xmm0	#, tmp96
-	movl	$0, %edx	#, tmp98
-	ucomiss	(%rdi), %xmm0	# *d_2(D), tmp96
-	setnp	%al	#, tmp95
-	cmovne	%edx, %eax	# tmp95,, tmp98, D.5683
+	.globl __Z15total_mt_noenum13Particle_Type
+__Z15total_mt_noenum13Particle_Type:
+LFB6:
+	cmpl	$1, %edi	#, pt
+	sbbl	%eax, %eax	# D.2173
+	andl	$-500, %eax	#, D.2173
+	addl	$501, %eax	#, D.2173
 	ret
-LFE412:
+LFE6:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE1:
 	.text
 LHOTE1:
 	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB2:
+	.text
+LHOTB2:
+	.align 4,0x90
+	.globl __Z21total_mt_noenum_triad13Particle_Type
+__Z21total_mt_noenum_triad13Particle_Type:
+LFB2:
+	cmpl	$1, %edi	#, pt
+	sbbl	%eax, %eax	# D.2176
+	andl	$-500, %eax	#, D.2176
+	addl	$501, %eax	#, D.2176
+	ret
+LFE2:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE2:
+	.text
+LHOTE2:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB3:
+	.text
+LHOTB3:
+	.align 4,0x90
+	.globl __Z12total_mt_mul13Particle_Type
+__Z12total_mt_mul13Particle_Type:
+LFB3:
+	imull	$500, %edi, %eax	#, pt, D.2179
+	addl	$1, %eax	#, D.2179
+	ret
+LFE3:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE3:
+	.text
+LHOTE3:
+	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDB4:
 	.text
 LHOTB4:
 	.align 4,0x90
-	.globl __Z14is_flagged_infPKf
-__Z14is_flagged_infPKf:
-LFB413:
-	movss	LC2(%rip), %xmm1	#, tmp96
-	movss	(%rdi), %xmm0	# *d_2(D), *d_2(D)
-	andps	%xmm1, %xmm0	# tmp96, D.5686
-	ucomiss	LC3(%rip), %xmm0	#, D.5686
-	seta	%al	#, D.5687
+	.globl __Z12total_mt_opt13Particle_Type
+__Z12total_mt_opt13Particle_Type:
+LFB4:
+	cmpl	$1, %edi	#, pt
+	sbbl	%eax, %eax	# D.2182
+	andl	$-500, %eax	#, D.2182
+	addl	$501, %eax	#, D.2182
 	ret
-LFE413:
+LFE4:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE4:
 	.text
 LHOTE4:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB5:
-	.text
-LHOTB5:
-	.align 4,0x90
-	.globl __Z14is_flagged_nanPKf
-__Z14is_flagged_nanPKf:
-LFB414:
-	movss	(%rdi), %xmm0	# *d_2(D), D.5690
-	ucomiss	%xmm0, %xmm0	# D.5690, D.5690
-	setp	%al	#, D.5691
-	ret
-LFE414:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE5:
-	.text
-LHOTE5:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB6:
-	.text
-LHOTB6:
-	.align 4,0x90
-	.globl __Z16is_flagged_unionPKf
-__Z16is_flagged_unionPKf:
-LFB415:
-	cmpl	$-1, (%rdi)	#, MEM[(const union Float_Unpack *)d_1(D)].i
-	sete	%al	#, D.5695
-	ret
-LFE415:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE6:
-	.text
-LHOTE6:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB7:
-	.text
-LHOTB7:
-	.align 4,0x90
-	.globl __Z17set_flag_minusonePf
-__Z17set_flag_minusonePf:
-LFB416:
-	movl	$0xbf800000, (%rdi)	#, *d_2(D)
-	ret
-LFE416:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE7:
-	.text
-LHOTE7:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB9:
-	.text
-LHOTB9:
-	.align 4,0x90
-	.globl __Z12set_flag_infPf
-__Z12set_flag_infPf:
-LFB417:
-	movl	$0x7f800000, (%rdi)	#, *d_2(D)
-	ret
-LFE417:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE9:
-	.text
-LHOTE9:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB11:
-	.text
-LHOTB11:
-	.align 4,0x90
-	.globl __Z12set_flag_nanPf
-__Z12set_flag_nanPf:
-LFB418:
-	movl	$0x7fc00000, (%rdi)	#, *d_2(D)
-	ret
-LFE418:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE11:
-	.text
-LHOTE11:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB12:
-	.text
-LHOTB12:
-	.align 4,0x90
-	.globl __Z14set_flag_unionPf
-__Z14set_flag_unionPf:
-LFB419:
-	movl	$-1, (%rdi)	#, MEM[(union Float_Unpack *)d_1(D)].i
-	ret
-LFE419:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE12:
-	.text
-LHOTE12:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB13:
-	.text
-LHOTB13:
-	.align 4,0x90
-	.globl __Z21flagged_compare_unionPKff
-__Z21flagged_compare_unionPKff:
-LFB420:
-	movl	(%rdi), %edx	# MEM[(const union Float_Unpack *)ref_3(D)].i, D.5707
-	xorl	%eax, %eax	# D.5706
-	cmpl	$-1, %edx	#, D.5707
-	je	L10	#,
-	movd	%edx, %xmm1	# D.5707, tmp95
-	ucomiss	%xmm1, %xmm0	# tmp95, actual
-	seta	%al	#, D.5706
-L10:
-	ret
-LFE420:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE13:
-	.text
-LHOTE13:
-	.literal4
-	.align 2
-LC0:
-	.long	3212836864
-	.literal16
-	.align 4
-LC2:
-	.long	2147483647
-	.long	0
-	.long	0
-	.long	0
-	.literal4
-	.align 2
-LC3:
-	.long	2139095039
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -246,8 +166,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB412-.
-	.set L$set$2,LFE412-LFB412
+	.quad	LFB8-.
+	.set L$set$2,LFE8-LFB8
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -257,8 +177,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB413-.
-	.set L$set$4,LFE413-LFB413
+	.quad	LFB6-.
+	.set L$set$4,LFE6-LFB6
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -268,8 +188,8 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB414-.
-	.set L$set$6,LFE414-LFB414
+	.quad	LFB2-.
+	.set L$set$6,LFE2-LFB2
 	.quad L$set$6
 	.byte	0
 	.align 3
@@ -279,8 +199,8 @@ LSFDE7:
 	.long L$set$7
 LASFDE7:
 	.long	LASFDE7-EH_frame1
-	.quad	LFB415-.
-	.set L$set$8,LFE415-LFB415
+	.quad	LFB3-.
+	.set L$set$8,LFE3-LFB3
 	.quad L$set$8
 	.byte	0
 	.align 3
@@ -290,56 +210,12 @@ LSFDE9:
 	.long L$set$9
 LASFDE9:
 	.long	LASFDE9-EH_frame1
-	.quad	LFB416-.
-	.set L$set$10,LFE416-LFB416
+	.quad	LFB4-.
+	.set L$set$10,LFE4-LFB4
 	.quad L$set$10
 	.byte	0
 	.align 3
 LEFDE9:
-LSFDE11:
-	.set L$set$11,LEFDE11-LASFDE11
-	.long L$set$11
-LASFDE11:
-	.long	LASFDE11-EH_frame1
-	.quad	LFB417-.
-	.set L$set$12,LFE417-LFB417
-	.quad L$set$12
-	.byte	0
-	.align 3
-LEFDE11:
-LSFDE13:
-	.set L$set$13,LEFDE13-LASFDE13
-	.long L$set$13
-LASFDE13:
-	.long	LASFDE13-EH_frame1
-	.quad	LFB418-.
-	.set L$set$14,LFE418-LFB418
-	.quad L$set$14
-	.byte	0
-	.align 3
-LEFDE13:
-LSFDE15:
-	.set L$set$15,LEFDE15-LASFDE15
-	.long L$set$15
-LASFDE15:
-	.long	LASFDE15-EH_frame1
-	.quad	LFB419-.
-	.set L$set$16,LFE419-LFB419
-	.quad L$set$16
-	.byte	0
-	.align 3
-LEFDE15:
-LSFDE17:
-	.set L$set$17,LEFDE17-LASFDE17
-	.long L$set$17
-LASFDE17:
-	.long	LASFDE17-EH_frame1
-	.quad	LFB420-.
-	.set L$set$18,LFE420-LFB420
-	.quad L$set$18
-	.byte	0
-	.align 3
-LEFDE17:
 	.constructor
 	.destructor
 	.align 1

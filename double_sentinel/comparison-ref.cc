@@ -61,6 +61,11 @@ void set_flag_union(double *d)
     u->i[1] = 0xffffffffu;
 }
 
+bool flagged_compare_union(const double* ref, double actual)
+{
+    return !is_flagged_union(ref) && *ref < actual;
+}
+
 //---------------------------------------------------------------------------//
 // end of double_sentinel/comparison.cc
 //---------------------------------------------------------------------------//

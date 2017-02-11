@@ -61,6 +61,11 @@ void set_flag_union(float *d)
     u->i = 0xffffffffu;
 }
 
+bool flagged_compare_union(const float* ref, float actual)
+{
+    return !is_flagged_union(ref) && *ref < actual;
+}
+
 //---------------------------------------------------------------------------//
 // end of float_sentinel/comparison.cc
 //---------------------------------------------------------------------------//

@@ -1,10 +1,11 @@
 # GNU C++11 (MacPorts gcc5 5.4.0_0) version 5.4.0 (x86_64-apple-darwin15)
 #	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.3, MPC version 1.0.3
-# warning: GMP header version 6.1.0 differs from library version 6.1.1.
+# warning: GMP header version 6.1.0 differs from library version 6.1.2.
 # warning: MPFR header version 3.1.3 differs from library version 3.1.4.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ comparison-ref.cc -fPIC
-# -mmacosx-version-min=10.11.6 -mtune=core2 -O2 -std=c++11 -fverbose-asm
+# -mmacosx-version-min=10.11.6 -mtune=core2 -O2 -Wall -Wextra -std=c++11
+# -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -64,7 +65,7 @@ LFB412:
 	movl	$0, %edx	#, tmp98
 	ucomisd	(%rdi), %xmm0	# *d_2(D), tmp96
 	setnp	%al	#, tmp95
-	cmovne	%edx, %eax	# tmp95,, tmp98, D.5665
+	cmovne	%edx, %eax	# tmp95,, tmp98, D.5683
 	ret
 LFE412:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -81,9 +82,9 @@ __Z14is_flagged_infPKd:
 LFB413:
 	movsd	(%rdi), %xmm0	# *d_2(D), *d_2(D)
 	movsd	LC2(%rip), %xmm1	#, tmp96
-	andpd	%xmm1, %xmm0	# tmp96, D.5668
-	ucomisd	LC3(%rip), %xmm0	#, D.5668
-	seta	%al	#, D.5669
+	andpd	%xmm1, %xmm0	# tmp96, D.5686
+	ucomisd	LC3(%rip), %xmm0	#, D.5686
+	seta	%al	#, D.5687
 	ret
 LFE413:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -98,9 +99,9 @@ LHOTB5:
 	.globl __Z14is_flagged_nanPKd
 __Z14is_flagged_nanPKd:
 LFB414:
-	movsd	(%rdi), %xmm0	# *d_2(D), D.5672
-	ucomisd	%xmm0, %xmm0	# D.5672, D.5672
-	setp	%al	#, D.5673
+	movsd	(%rdi), %xmm0	# *d_2(D), D.5690
+	ucomisd	%xmm0, %xmm0	# D.5690, D.5690
+	setp	%al	#, D.5691
 	ret
 LFE414:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -116,7 +117,7 @@ LHOTB6:
 __Z16is_flagged_unionPKd:
 LFB415:
 	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)d_1(D)].i
-	sete	%al	#, D.5677
+	sete	%al	#, D.5695
 	ret
 LFE415:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -186,6 +187,26 @@ LFE419:
 LCOLDE12:
 	.text
 LHOTE12:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB13:
+	.text
+LHOTB13:
+	.align 4,0x90
+	.globl __Z21flagged_compare_unionPKdd
+__Z21flagged_compare_unionPKdd:
+LFB420:
+	xorl	%eax, %eax	# D.5706
+	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)ref_3(D)].i
+	je	L10	#,
+	ucomisd	(%rdi), %xmm0	# *ref_3(D), actual
+	seta	%al	#, D.5706
+L10:
+	ret
+LFE420:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE13:
+	.text
+LHOTE13:
 	.literal8
 	.align 3
 LC0:
@@ -319,6 +340,17 @@ LASFDE15:
 	.byte	0
 	.align 3
 LEFDE15:
+LSFDE17:
+	.set L$set$17,LEFDE17-LASFDE17
+	.long L$set$17
+LASFDE17:
+	.long	LASFDE17-EH_frame1
+	.quad	LFB420-.
+	.set L$set$18,LFE420-LFB420
+	.quad L$set$18
+	.byte	0
+	.align 3
+LEFDE17:
 	.constructor
 	.destructor
 	.align 1
