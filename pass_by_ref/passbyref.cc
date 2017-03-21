@@ -24,26 +24,31 @@ template<class T>
 void do_by_val(T);
 
 template<class T>
-void call_ref(const T& input)
+T do_things();
+
+template<class T>
+void call_ref()
 {
-     T value = input;
+     T value = do_things<T>();
      do_by_ref(value);
 }
 
 template<class T>
-void call_val(const T& input)
+void call_val()
 {
-     T value = input;
+     T value = do_things<T>();
      do_by_val(value);
 }
 
 using namespace std;
-template void call_ref(const Vector_Lite<uint32_t>&);
-template void call_val(const Vector_Lite<uint32_t>&);
-template void call_ref(const Vector_Lite<double>&);
-template void call_val(const Vector_Lite<double>&);
-template void call_ref(const uint32_t&);
-template void call_val(const double&);
+template void call_ref<Vector_Lite<uint32_t> >();
+template void call_val<Vector_Lite<uint32_t> >();
+template void call_ref<Vector_Lite<double>   >();
+template void call_val<Vector_Lite<double>   >();
+template void call_ref<uint32_t              >();
+template void call_val<uint32_t              >();
+template void call_ref<double                >();
+template void call_val<double                >();
 
 //---------------------------------------------------------------------------//
 // end of pass_by_ref/passbyref.cc

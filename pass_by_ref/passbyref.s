@@ -1,9 +1,9 @@
 	.section	__TEXT,__text,regular,pure_instructions
 	.macosx_version_min 10, 11
-	.globl	__Z8call_refI11Vector_LiteIjEEvRKT_
-	.weak_definition	__Z8call_refI11Vector_LiteIjEEvRKT_
+	.globl	__Z8call_refI11Vector_LiteIjEEvv
+	.weak_definition	__Z8call_refI11Vector_LiteIjEEvv
 	.align	4, 0x90
-__Z8call_refI11Vector_LiteIjEEvRKT_:    ## @_Z8call_refI11Vector_LiteIjEEvRKT_
+__Z8call_refI11Vector_LiteIjEEvv:       ## @_Z8call_refI11Vector_LiteIjEEvv
 	.cfi_startproc
 ## BB#0:
 	pushq	%rbp
@@ -15,10 +15,9 @@ Ltmp1:
 Ltmp2:
 	.cfi_def_cfa_register %rbp
 	subq	$16, %rsp
-	movl	8(%rdi), %eax
-	movl	%eax, -8(%rbp)
-	movq	(%rdi), %rax
+	callq	__Z9do_thingsI11Vector_LiteIjEET_v
 	movq	%rax, -16(%rbp)
+	movl	%edx, -8(%rbp)
 	leaq	-16(%rbp), %rdi
 	callq	__Z9do_by_refI11Vector_LiteIjEEvRKT_
 	addq	$16, %rsp
@@ -26,10 +25,10 @@ Ltmp2:
 	retq
 	.cfi_endproc
 
-	.globl	__Z8call_valI11Vector_LiteIjEEvRKT_
-	.weak_definition	__Z8call_valI11Vector_LiteIjEEvRKT_
+	.globl	__Z8call_valI11Vector_LiteIjEEvv
+	.weak_definition	__Z8call_valI11Vector_LiteIjEEvv
 	.align	4, 0x90
-__Z8call_valI11Vector_LiteIjEEvRKT_:    ## @_Z8call_valI11Vector_LiteIjEEvRKT_
+__Z8call_valI11Vector_LiteIjEEvv:       ## @_Z8call_valI11Vector_LiteIjEEvv
 	.cfi_startproc
 ## BB#0:
 	pushq	%rbp
@@ -40,17 +39,17 @@ Ltmp4:
 	movq	%rsp, %rbp
 Ltmp5:
 	.cfi_def_cfa_register %rbp
-	movq	(%rdi), %rax
-	movl	8(%rdi), %esi
+	callq	__Z9do_thingsI11Vector_LiteIjEET_v
 	movq	%rax, %rdi
+	movl	%edx, %esi
 	popq	%rbp
 	jmp	__Z9do_by_valI11Vector_LiteIjEEvT_ ## TAILCALL
 	.cfi_endproc
 
-	.globl	__Z8call_refI11Vector_LiteIdEEvRKT_
-	.weak_definition	__Z8call_refI11Vector_LiteIdEEvRKT_
+	.globl	__Z8call_refI11Vector_LiteIdEEvv
+	.weak_definition	__Z8call_refI11Vector_LiteIdEEvv
 	.align	4, 0x90
-__Z8call_refI11Vector_LiteIdEEvRKT_:    ## @_Z8call_refI11Vector_LiteIdEEvRKT_
+__Z8call_refI11Vector_LiteIdEEvv:       ## @_Z8call_refI11Vector_LiteIdEEvv
 	.cfi_startproc
 ## BB#0:
 	pushq	%rbp
@@ -61,63 +60,66 @@ Ltmp7:
 	movq	%rsp, %rbp
 Ltmp8:
 	.cfi_def_cfa_register %rbp
-	subq	$32, %rsp
-	movq	16(%rdi), %rax
-	movq	%rax, -8(%rbp)
-	movq	(%rdi), %rax
-	movq	8(%rdi), %rcx
-	movq	%rcx, -16(%rbp)
-	movq	%rax, -24(%rbp)
-	leaq	-24(%rbp), %rdi
+	pushq	%rbx
+	subq	$24, %rsp
+Ltmp9:
+	.cfi_offset %rbx, -24
+	leaq	-32(%rbp), %rbx
+	movq	%rbx, %rdi
+	callq	__Z9do_thingsI11Vector_LiteIdEET_v
+	movq	%rbx, %rdi
 	callq	__Z9do_by_refI11Vector_LiteIdEEvRKT_
-	addq	$32, %rsp
+	addq	$24, %rsp
+	popq	%rbx
 	popq	%rbp
 	retq
 	.cfi_endproc
 
-	.globl	__Z8call_valI11Vector_LiteIdEEvRKT_
-	.weak_definition	__Z8call_valI11Vector_LiteIdEEvRKT_
+	.globl	__Z8call_valI11Vector_LiteIdEEvv
+	.weak_definition	__Z8call_valI11Vector_LiteIdEEvv
 	.align	4, 0x90
-__Z8call_valI11Vector_LiteIdEEvRKT_:    ## @_Z8call_valI11Vector_LiteIdEEvRKT_
+__Z8call_valI11Vector_LiteIdEEvv:       ## @_Z8call_valI11Vector_LiteIdEEvv
 	.cfi_startproc
 ## BB#0:
 	pushq	%rbp
-Ltmp9:
-	.cfi_def_cfa_offset 16
 Ltmp10:
+	.cfi_def_cfa_offset 16
+Ltmp11:
 	.cfi_offset %rbp, -16
 	movq	%rsp, %rbp
-Ltmp11:
+Ltmp12:
 	.cfi_def_cfa_register %rbp
-	subq	$32, %rsp
-	movq	16(%rdi), %rax
+	subq	$48, %rsp
+	leaq	-24(%rbp), %rdi
+	callq	__Z9do_thingsI11Vector_LiteIdEET_v
+	movq	-8(%rbp), %rax
 	movq	%rax, 16(%rsp)
-	movq	(%rdi), %rax
-	movq	8(%rdi), %rcx
+	movq	-24(%rbp), %rax
+	movq	-16(%rbp), %rcx
 	movq	%rcx, 8(%rsp)
 	movq	%rax, (%rsp)
 	callq	__Z9do_by_valI11Vector_LiteIdEEvT_
-	addq	$32, %rsp
+	addq	$48, %rsp
 	popq	%rbp
 	retq
 	.cfi_endproc
 
-	.globl	__Z8call_refIjEvRKT_
-	.weak_definition	__Z8call_refIjEvRKT_
+	.globl	__Z8call_refIjEvv
+	.weak_definition	__Z8call_refIjEvv
 	.align	4, 0x90
-__Z8call_refIjEvRKT_:                   ## @_Z8call_refIjEvRKT_
+__Z8call_refIjEvv:                      ## @_Z8call_refIjEvv
 	.cfi_startproc
 ## BB#0:
 	pushq	%rbp
-Ltmp12:
-	.cfi_def_cfa_offset 16
 Ltmp13:
+	.cfi_def_cfa_offset 16
+Ltmp14:
 	.cfi_offset %rbp, -16
 	movq	%rsp, %rbp
-Ltmp14:
+Ltmp15:
 	.cfi_def_cfa_register %rbp
 	subq	$16, %rsp
-	movl	(%rdi), %eax
+	callq	__Z9do_thingsIjET_v
 	movl	%eax, -4(%rbp)
 	leaq	-4(%rbp), %rdi
 	callq	__Z9do_by_refIjEvRKT_
@@ -126,21 +128,65 @@ Ltmp14:
 	retq
 	.cfi_endproc
 
-	.globl	__Z8call_valIdEvRKT_
-	.weak_definition	__Z8call_valIdEvRKT_
+	.globl	__Z8call_valIjEvv
+	.weak_definition	__Z8call_valIjEvv
 	.align	4, 0x90
-__Z8call_valIdEvRKT_:                   ## @_Z8call_valIdEvRKT_
+__Z8call_valIjEvv:                      ## @_Z8call_valIjEvv
 	.cfi_startproc
 ## BB#0:
 	pushq	%rbp
-Ltmp15:
-	.cfi_def_cfa_offset 16
 Ltmp16:
+	.cfi_def_cfa_offset 16
+Ltmp17:
 	.cfi_offset %rbp, -16
 	movq	%rsp, %rbp
-Ltmp17:
+Ltmp18:
 	.cfi_def_cfa_register %rbp
-	movsd	(%rdi), %xmm0           ## xmm0 = mem[0],zero
+	callq	__Z9do_thingsIjET_v
+	movl	%eax, %edi
+	popq	%rbp
+	jmp	__Z9do_by_valIjEvT_     ## TAILCALL
+	.cfi_endproc
+
+	.globl	__Z8call_refIdEvv
+	.weak_definition	__Z8call_refIdEvv
+	.align	4, 0x90
+__Z8call_refIdEvv:                      ## @_Z8call_refIdEvv
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp19:
+	.cfi_def_cfa_offset 16
+Ltmp20:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp21:
+	.cfi_def_cfa_register %rbp
+	subq	$16, %rsp
+	callq	__Z9do_thingsIdET_v
+	movsd	%xmm0, -8(%rbp)
+	leaq	-8(%rbp), %rdi
+	callq	__Z9do_by_refIdEvRKT_
+	addq	$16, %rsp
+	popq	%rbp
+	retq
+	.cfi_endproc
+
+	.globl	__Z8call_valIdEvv
+	.weak_definition	__Z8call_valIdEvv
+	.align	4, 0x90
+__Z8call_valIdEvv:                      ## @_Z8call_valIdEvv
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp22:
+	.cfi_def_cfa_offset 16
+Ltmp23:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp24:
+	.cfi_def_cfa_register %rbp
+	callq	__Z9do_thingsIdET_v
 	popq	%rbp
 	jmp	__Z9do_by_valIdEvT_     ## TAILCALL
 	.cfi_endproc
