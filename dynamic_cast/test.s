@@ -1,0 +1,733 @@
+# GNU C++11 (MacPorts gcc5 5.4.0_1) version 5.4.0 (x86_64-apple-darwin15)
+#	compiled by GNU C version 5.4.0, GMP version 6.1.2, MPFR version 3.1.4, MPC version 1.0.3
+# warning: MPFR header version 3.1.4 differs from library version 3.1.5.
+# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.11.6
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -std=char++11 -fverbose-asm
+# options enabled:  -Wnonportable-cfstrings -fPIC
+# -faggressive-loop-optimizations -falign-labels
+# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
+# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
+# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
+# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
+# -fchkp-use-static-const-bounds -fchkp-use-wrappers
+# -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+# -fcrossjumping -fcse-follow-jumps -fdefer-pop
+# -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
+# -fearly-inlining -feliminate-unused-debug-types -fexceptions
+# -fexpensive-optimizations -fforward-propagate -ffunction-cse -fgcse
+# -fgcse-lm -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads
+# -fident -fif-conversion -fif-conversion2 -findirect-inlining -finline
+# -finline-atomics -finline-functions-called-once -finline-small-functions
+# -fipa-cp -fipa-cp-alignment -fipa-icf -fipa-icf-functions
+# -fipa-icf-variables -fipa-profile -fipa-pure-const -fipa-signed char restrict
+# -fipa-reference -fipa-sra -fira-hoist-pressure -fira-share-save-slots
+# -fira-share-spill-slots -fisolate-erroneous-paths-dereference -fivopts
+# -fkeep-static-consts -fleading-underscore -flifetime-dse -flra-remat
+# -flto-odr-type-merging -fmath-errno -fmerge-constants
+# -fmerge-debug-strings -fmove-loop-invariants -fnext-runtime
+# -fobjc-abi-version= -fomit-frame-pointer -foptimize-sibling-calls
+# -foptimize-strlen -fpartial-inlining -fpeephole -fpeephole2
+# -fprefetch-loop-arrays -free -freg-struct-return -freorder-blocks
+# -freorder-blocks-and-partition -freorder-functions -frerun-cse-after-loop
+# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+# -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
+# -fsemantic-interposition -fshow-column -fshrink-wrap -fsigned-zeros
+# -fsplit-ivs-in-unroller -fsplit-wide-types -fssa-phiopt -fstdarg-opt
+# -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
+# -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
+# -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
+# -ftree-coalesce-vars -ftree-copy-prop -ftree-copyrename -ftree-cselim
+# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+# -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+# -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
+# -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
+# -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
+# -ftree-vrp -funit-at-signed char-time -funwind-tables -fverbose-asm
+# -fzero-initialized-in-bss -gstrict-dwarf -m128bit-long-double -m64
+# -m80387 -malign-stringops -matt-stubs -mconstant-cfstrings
+# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp -mlong-double-80 -mmmx
+# -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mvzeroupper
+
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB0:
+	.text
+LHOTB0:
+	.align 4,0x90
+	.globl get_dynamic(Base const*)
+get_dynamic(Base const*):
+LFB922:
+	testq	%rdi, %rdi	# inst
+	je	L10	#,
+	pushq	%rbp	#
+LCFI0:
+	xorl	%ecx, %ecx	#
+	pushq	%rbx	#
+LCFI1:
+	movq	%rdi, %rbx	# inst, inst
+	subq	$8, %rsp	#,
+LCFI2:
+	movq	typeinfo for Base@GOTPCREL(%rip), %rbp	#, tmp94
+	movq	typeinfo for Derived_A@GOTPCREL(%rip), %rdx	#,
+	movq	%rbp, %rsi	# tmp94,
+	call	___dynamic_cast	#
+	testq	%rax, %rax	# double
+	je	L3	#,
+	addq	$8, %rsp	#,
+LCFI3:
+	movq	%rax, %rdi	# double,
+	popq	%rbx	#
+LCFI4:
+	popq	%rbp	#
+LCFI5:
+	jmp	Derived_A::get_a() const	#
+	.align 4,0x90
+L3:
+LCFI6:
+	movq	typeinfo for Derived_B@GOTPCREL(%rip), %rdx	#,
+	xorl	%ecx, %ecx	#
+	movq	%rbp, %rsi	# tmp94,
+	movq	%rbx, %rdi	# inst,
+	call	___dynamic_cast	#
+	testq	%rax, %rax	# double
+	je	L4	#,
+	addq	$8, %rsp	#,
+LCFI7:
+	movq	%rax, %rdi	# double,
+	popq	%rbx	#
+LCFI8:
+	popq	%rbp	#
+LCFI9:
+	jmp	Derived_B::get_b() const	#
+	.align 4,0x90
+L10:
+	movl	$-1, %eax	#,
+	ret
+	.align 4,0x90
+L4:
+LCFI10:
+	movq	typeinfo for Derived_C@GOTPCREL(%rip), %rdx	#,
+	xorl	%ecx, %ecx	#
+	movq	%rbx, %rdi	# inst,
+	movq	%rbp, %rsi	# tmp94,
+	call	___dynamic_cast	#
+	testq	%rax, %rax	# double
+	movq	%rax, %rdi	#, double
+	je	L2	#,
+	addq	$8, %rsp	#,
+LCFI11:
+	popq	%rbx	#
+LCFI12:
+	popq	%rbp	#
+LCFI13:
+	jmp	Derived_C::get_c() const	#
+L2:
+LCFI14:
+	popq	%rdx	#
+LCFI15:
+	orl	$-1, %eax	#,
+	popq	%rbx	#
+LCFI16:
+	popq	%rbp	#
+LCFI17:
+	ret
+LFE922:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE0:
+	.text
+LHOTE0:
+	.cstring
+LC1:
+	.ascii "Derived_A\0"
+LC2:
+	.ascii "Derived_B\0"
+LC3:
+	.ascii "Derived_C\0"
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB4:
+	.text
+LHOTB4:
+	.align 4,0x90
+	.globl get_cstr(Base const*)
+get_cstr(Base const*):
+LFB923:
+	pushq	%rbx	#
+LCFI18:
+	movq	(%rdi), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
+	movq	%rdi, %rbx	# inst, inst
+	call	*16(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_5 + 16B]
+	leaq	LC1(%rip), %rdi	#, tmp104
+	movl	$10, %ecx	#, tmp107
+	movq	%rax, %rsi	# D.24518, D.24518
+	repz; cmpsb
+	je	L17	#,
+	movq	(%rbx), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
+	movq	%rbx, %rdi	# inst,
+	call	*16(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_12 + 16B]
+	leaq	LC2(%rip), %rdi	#, tmp112
+	movl	$10, %ecx	#, tmp115
+	movq	%rax, %rsi	# D.24518, D.24518
+	repz; cmpsb
+	je	L18	#,
+	movq	(%rbx), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
+	movq	%rbx, %rdi	# inst,
+	call	*16(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_19 + 16B]
+	leaq	LC3(%rip), %rdi	#, tmp120
+	movl	$10, %ecx	#, tmp123
+	movq	%rax, %rsi	# D.24518, D.24518
+	repz; cmpsb
+	jne	L15	#,
+	movq	%rbx, %rdi	# inst,
+	popq	%rbx	#
+LCFI19:
+	jmp	Derived_C::get_c() const	#
+	.align 4,0x90
+L18:
+LCFI20:
+	movq	%rbx, %rdi	# inst,
+	popq	%rbx	#
+LCFI21:
+	jmp	Derived_B::get_b() const	#
+	.align 4,0x90
+L17:
+LCFI22:
+	movq	%rbx, %rdi	# inst,
+	popq	%rbx	#
+LCFI23:
+	jmp	Derived_A::get_a() const	#
+	.align 4,0x90
+L15:
+LCFI24:
+	movl	$-1, %eax	#,
+	popq	%rbx	#
+LCFI25:
+	ret
+LFE923:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE4:
+	.text
+LHOTE4:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB5:
+	.text
+LHOTB5:
+	.align 4,0x90
+	.globl get_str(Base const*)
+get_str(Base const*):
+LFB924:
+	pushq	%r12	#
+LCFI26:
+	movq	%rdi, %rsi	# inst,
+	pushq	%rbp	#
+LCFI27:
+	movq	%rdi, %rbp	# inst, inst
+	pushq	%rbx	#
+LCFI28:
+	subq	$32, %rsp	#,
+LCFI29:
+	movq	(%rdi), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
+	movq	%rsp, %rdi	# tmp136,
+	movq	%rsp, %rbx	#, tmp136
+LEHB0:
+	call	*24(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_5 + 24B]
+LEHE0:
+	leaq	LC1(%rip), %rsi	#,
+	movq	%rsp, %rdi	# tmp136,
+LEHB1:
+	call	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const	#
+LEHE1:
+	movq	(%rsp), %rdi	# MEM[(char * *)&D.22446], D.24530
+	movl	%eax, %r12d	#, D.24527
+	leaq	16(%rsp), %rax	#, tmp113
+	cmpq	%rax, %rdi	# tmp113, D.24530
+	je	L20	#,
+	call	operator delete(void*)	#
+L20:
+	testl	%r12d, %r12d	# D.24527
+	je	L42	#,
+	movq	0(%rbp), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
+	movq	%rbp, %rsi	# inst,
+	movq	%rbx, %rdi	# tmp136,
+LEHB2:
+	call	*24(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_13 + 24B]
+LEHE2:
+	leaq	LC2(%rip), %rsi	#,
+	movq	%rbx, %rdi	# tmp136,
+LEHB3:
+	call	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const	#
+LEHE3:
+	movq	(%rsp), %rdi	# MEM[(char * *)&D.22451], D.24530
+	movl	%eax, %r12d	#, D.24527
+	leaq	16(%rbx), %rax	#, tmp119
+	cmpq	%rax, %rdi	# tmp119, D.24530
+	je	L23	#,
+	call	operator delete(void*)	#
+L23:
+	testl	%r12d, %r12d	# D.24527
+	je	L43	#,
+	movq	0(%rbp), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
+	movq	%rbp, %rsi	# inst,
+	movq	%rbx, %rdi	# tmp136,
+LEHB4:
+	call	*24(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_21 + 24B]
+LEHE4:
+	leaq	LC3(%rip), %rsi	#,
+	movq	%rbx, %rdi	# tmp136,
+LEHB5:
+	call	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const	#
+LEHE5:
+	movq	(%rsp), %rdi	# MEM[(char * *)&D.22453], D.24530
+	addq	$16, %rbx	#, tmp125
+	movl	%eax, %r12d	#, D.24527
+	cmpq	%rbx, %rdi	# tmp125, D.24530
+	je	L25	#,
+	call	operator delete(void*)	#
+L25:
+	testl	%r12d, %r12d	# D.24527
+	movl	$-1, %eax	#, D.24527
+	jne	L36	#,
+	movq	%rbp, %rdi	# inst,
+LEHB6:
+	call	Derived_C::get_c() const	#
+L36:
+	addq	$32, %rsp	#,
+LCFI30:
+	popq	%rbx	#
+LCFI31:
+	popq	%rbp	#
+LCFI32:
+	popq	%r12	#
+LCFI33:
+	ret
+	.align 4,0x90
+L43:
+LCFI34:
+	movq	%rbp, %rdi	# inst,
+	call	Derived_B::get_b() const	#
+	addq	$32, %rsp	#,
+LCFI35:
+	popq	%rbx	#
+LCFI36:
+	popq	%rbp	#
+LCFI37:
+	popq	%r12	#
+LCFI38:
+	ret
+	.align 4,0x90
+L42:
+LCFI39:
+	movq	%rbp, %rdi	# inst,
+	call	Derived_A::get_a() const	#
+	addq	$32, %rsp	#,
+LCFI40:
+	popq	%rbx	#
+LCFI41:
+	popq	%rbp	#
+LCFI42:
+	popq	%r12	#
+LCFI43:
+	ret
+L35:
+LCFI44:
+L40:
+	movq	(%rsp), %rdi	#, D.24530
+	addq	$16, %rbx	#, tmp134
+	movq	%rax, %rbp	#, tmp135
+	cmpq	%rbx, %rdi	# tmp134, D.24530
+	je	L31	#,
+	call	operator delete(void*)	#
+L31:
+	movq	%rbp, %rdi	# tmp135,
+	call	__Unwind_Resume	#
+LEHE6:
+L34:
+	jmp	L40	#
+L33:
+	jmp	L40	#
+LFE924:
+	.section __DATA,__gcc_except_tab
+GCC_except_table0:
+LLSDA924:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x3
+	.byte	0x5b
+	.set L$set$0,LEHB0-LFB924
+	.long L$set$0
+	.set L$set$1,LEHE0-LEHB0
+	.long L$set$1
+	.long	0
+	.byte	0
+	.set L$set$2,LEHB1-LFB924
+	.long L$set$2
+	.set L$set$3,LEHE1-LEHB1
+	.long L$set$3
+	.set L$set$4,L33-LFB924
+	.long L$set$4
+	.byte	0
+	.set L$set$5,LEHB2-LFB924
+	.long L$set$5
+	.set L$set$6,LEHE2-LEHB2
+	.long L$set$6
+	.long	0
+	.byte	0
+	.set L$set$7,LEHB3-LFB924
+	.long L$set$7
+	.set L$set$8,LEHE3-LEHB3
+	.long L$set$8
+	.set L$set$9,L34-LFB924
+	.long L$set$9
+	.byte	0
+	.set L$set$10,LEHB4-LFB924
+	.long L$set$10
+	.set L$set$11,LEHE4-LEHB4
+	.long L$set$11
+	.long	0
+	.byte	0
+	.set L$set$12,LEHB5-LFB924
+	.long L$set$12
+	.set L$set$13,LEHE5-LEHB5
+	.long L$set$13
+	.set L$set$14,L35-LFB924
+	.long L$set$14
+	.byte	0
+	.set L$set$15,LEHB6-LFB924
+	.long L$set$15
+	.set L$set$16,LEHE6-LEHB6
+	.long L$set$16
+	.long	0
+	.byte	0
+	.text
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE5:
+	.text
+LHOTE5:
+	.globl typeinfo name for Base
+	.weak_definition typeinfo name for Base
+	.section __TEXT,__const_coal,coalesced
+typeinfo name for Base:
+	.ascii "Base\0"
+	.globl typeinfo for Base
+	.weak_definition typeinfo for Base
+	.section __DATA,__const_coal,coalesced
+	.align 3
+typeinfo for Base:
+# <anonymous>:
+# <anonymous>:
+	.quad	vtable for __cxxabiv1::__class_type_info+16
+# <anonymous>:
+	.quad	typeinfo name for Base
+	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
+EH_frame1:
+	.set L$set$17,LECIE1-LSCIE1
+	.long L$set$17
+LSCIE1:
+	.long	0
+	.byte	0x1
+	.ascii "zPLR\0"
+	.byte	0x1
+	.byte	0x78
+	.byte	0x10
+	.byte	0x7
+	.byte	0x9b
+	.long	___gxx_personality_v0+4@GOTPCREL
+	.byte	0x10
+	.byte	0x10
+	.byte	0xc
+	.byte	0x7
+	.byte	0x8
+	.byte	0x90
+	.byte	0x1
+	.align 3
+LECIE1:
+LSFDE1:
+	.set L$set$18,LEFDE1-LASFDE1
+	.long L$set$18
+LASFDE1:
+	.long	LASFDE1-EH_frame1
+	.quad	LFB922-.
+	.set L$set$19,LFE922-LFB922
+	.quad L$set$19
+	.byte	0x8
+	.quad	0
+	.byte	0x4
+	.set L$set$20,LCFI0-LFB922
+	.long L$set$20
+	.byte	0xe
+	.byte	0x10
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$21,LCFI1-LCFI0
+	.long L$set$21
+	.byte	0xe
+	.byte	0x18
+	.byte	0x83
+	.byte	0x3
+	.byte	0x4
+	.set L$set$22,LCFI2-LCFI1
+	.long L$set$22
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$23,LCFI3-LCFI2
+	.long L$set$23
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$24,LCFI4-LCFI3
+	.long L$set$24
+	.byte	0xc3
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$25,LCFI5-LCFI4
+	.long L$set$25
+	.byte	0xc6
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$26,LCFI6-LCFI5
+	.long L$set$26
+	.byte	0xb
+	.byte	0x4
+	.set L$set$27,LCFI7-LCFI6
+	.long L$set$27
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$28,LCFI8-LCFI7
+	.long L$set$28
+	.byte	0xc3
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$29,LCFI9-LCFI8
+	.long L$set$29
+	.byte	0xc6
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$30,LCFI10-LCFI9
+	.long L$set$30
+	.byte	0xe
+	.byte	0x20
+	.byte	0x83
+	.byte	0x3
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$31,LCFI11-LCFI10
+	.long L$set$31
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$32,LCFI12-LCFI11
+	.long L$set$32
+	.byte	0xc3
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$33,LCFI13-LCFI12
+	.long L$set$33
+	.byte	0xc6
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$34,LCFI14-LCFI13
+	.long L$set$34
+	.byte	0xb
+	.byte	0x4
+	.set L$set$35,LCFI15-LCFI14
+	.long L$set$35
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$36,LCFI16-LCFI15
+	.long L$set$36
+	.byte	0xc3
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$37,LCFI17-LCFI16
+	.long L$set$37
+	.byte	0xc6
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE1:
+LSFDE3:
+	.set L$set$38,LEFDE3-LASFDE3
+	.long L$set$38
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB923-.
+	.set L$set$39,LFE923-LFB923
+	.quad L$set$39
+	.byte	0x8
+	.quad	0
+	.byte	0x4
+	.set L$set$40,LCFI18-LFB923
+	.long L$set$40
+	.byte	0xe
+	.byte	0x10
+	.byte	0x83
+	.byte	0x2
+	.byte	0x4
+	.set L$set$41,LCFI19-LCFI18
+	.long L$set$41
+	.byte	0xa
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$42,LCFI20-LCFI19
+	.long L$set$42
+	.byte	0xb
+	.byte	0x4
+	.set L$set$43,LCFI21-LCFI20
+	.long L$set$43
+	.byte	0xa
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$44,LCFI22-LCFI21
+	.long L$set$44
+	.byte	0xb
+	.byte	0x4
+	.set L$set$45,LCFI23-LCFI22
+	.long L$set$45
+	.byte	0xa
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$46,LCFI24-LCFI23
+	.long L$set$46
+	.byte	0xb
+	.byte	0x4
+	.set L$set$47,LCFI25-LCFI24
+	.long L$set$47
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$48,LEFDE5-LASFDE5
+	.long L$set$48
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB924-.
+	.set L$set$49,LFE924-LFB924
+	.quad L$set$49
+	.byte	0x8
+	.quad	LLSDA924-.
+	.byte	0x4
+	.set L$set$50,LCFI26-LFB924
+	.long L$set$50
+	.byte	0xe
+	.byte	0x10
+	.byte	0x8c
+	.byte	0x2
+	.byte	0x4
+	.set L$set$51,LCFI27-LCFI26
+	.long L$set$51
+	.byte	0xe
+	.byte	0x18
+	.byte	0x86
+	.byte	0x3
+	.byte	0x4
+	.set L$set$52,LCFI28-LCFI27
+	.long L$set$52
+	.byte	0xe
+	.byte	0x20
+	.byte	0x83
+	.byte	0x4
+	.byte	0x4
+	.set L$set$53,LCFI29-LCFI28
+	.long L$set$53
+	.byte	0xe
+	.byte	0x40
+	.byte	0x4
+	.set L$set$54,LCFI30-LCFI29
+	.long L$set$54
+	.byte	0xa
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$55,LCFI31-LCFI30
+	.long L$set$55
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$56,LCFI32-LCFI31
+	.long L$set$56
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$57,LCFI33-LCFI32
+	.long L$set$57
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$58,LCFI34-LCFI33
+	.long L$set$58
+	.byte	0xb
+	.byte	0x4
+	.set L$set$59,LCFI35-LCFI34
+	.long L$set$59
+	.byte	0xa
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$60,LCFI36-LCFI35
+	.long L$set$60
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$61,LCFI37-LCFI36
+	.long L$set$61
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$62,LCFI38-LCFI37
+	.long L$set$62
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$63,LCFI39-LCFI38
+	.long L$set$63
+	.byte	0xb
+	.byte	0x4
+	.set L$set$64,LCFI40-LCFI39
+	.long L$set$64
+	.byte	0xa
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$65,LCFI41-LCFI40
+	.long L$set$65
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$66,LCFI42-LCFI41
+	.long L$set$66
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$67,LCFI43-LCFI42
+	.long L$set$67
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$68,LCFI44-LCFI43
+	.long L$set$68
+	.byte	0xb
+	.align 3
+LEFDE5:
+	.constructor
+	.destructor
+	.align 1
+	.subsections_via_symbols
