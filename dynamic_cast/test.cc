@@ -12,6 +12,7 @@
 
 #include <string>
 #include <cstring>
+#include <typeinfo>
 
 class Base
 {
@@ -101,6 +102,26 @@ int get_str(const Base* inst)
         return d->get_b();
     }
     else if (inst->get_type() == "Derived_C")
+    {
+        const Derived_C* d = static_cast<const Derived_C*>(inst);
+        return d->get_c();
+    }
+    return -1;
+}
+
+int get_typeid(const Base* inst)
+{
+    if (typeid(*inst) == typeid(Derived_A))
+    {
+        const Derived_A* d = static_cast<const Derived_A*>(inst);
+        return d->get_a();
+    }
+    else if (typeid(*inst) == typeid(Derived_B))
+    {
+        const Derived_B* d = static_cast<const Derived_B*>(inst);
+        return d->get_b();
+    }
+    else if (typeid(*inst) == typeid(Derived_C))
     {
         const Derived_C* d = static_cast<const Derived_C*>(inst);
         return d->get_c();

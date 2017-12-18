@@ -58,7 +58,7 @@ LHOTB0:
 	.align 4,0x90
 	.globl get_dynamic(Base const*)
 get_dynamic(Base const*):
-LFB922:
+LFB936:
 	testq	%rdi, %rdi	# inst
 	je	L10	#,
 	pushq	%rbp	#
@@ -133,7 +133,7 @@ LCFI16:
 	popq	%rbp	#
 LCFI17:
 	ret
-LFE922:
+LFE936:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE0:
 	.text
@@ -152,7 +152,7 @@ LHOTB4:
 	.align 4,0x90
 	.globl get_cstr(Base const*)
 get_cstr(Base const*):
-LFB923:
+LFB937:
 	pushq	%rbx	#
 LCFI18:
 	movq	(%rdi), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
@@ -160,7 +160,7 @@ LCFI18:
 	call	*16(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_5 + 16B]
 	leaq	LC1(%rip), %rdi	#, tmp104
 	movl	$10, %ecx	#, tmp107
-	movq	%rax, %rsi	# D.24518, D.24518
+	movq	%rax, %rsi	# D.24723, D.24723
 	repz; cmpsb
 	je	L17	#,
 	movq	(%rbx), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
@@ -168,7 +168,7 @@ LCFI18:
 	call	*16(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_12 + 16B]
 	leaq	LC2(%rip), %rdi	#, tmp112
 	movl	$10, %ecx	#, tmp115
-	movq	%rax, %rsi	# D.24518, D.24518
+	movq	%rax, %rsi	# D.24723, D.24723
 	repz; cmpsb
 	je	L18	#,
 	movq	(%rbx), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
@@ -176,7 +176,7 @@ LCFI18:
 	call	*16(%rax)	# MEM[(int (*__vtbl_ptr_type) () *)_19 + 16B]
 	leaq	LC3(%rip), %rdi	#, tmp120
 	movl	$10, %ecx	#, tmp123
-	movq	%rax, %rsi	# D.24518, D.24518
+	movq	%rax, %rsi	# D.24723, D.24723
 	repz; cmpsb
 	jne	L15	#,
 	movq	%rbx, %rdi	# inst,
@@ -204,7 +204,7 @@ LCFI24:
 	popq	%rbx	#
 LCFI25:
 	ret
-LFE923:
+LFE937:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE4:
 	.text
@@ -216,7 +216,7 @@ LHOTB5:
 	.align 4,0x90
 	.globl get_str(Base const*)
 get_str(Base const*):
-LFB924:
+LFB938:
 	pushq	%r12	#
 LCFI26:
 	movq	%rdi, %rsi	# inst,
@@ -238,14 +238,14 @@ LEHE0:
 LEHB1:
 	call	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const	#
 LEHE1:
-	movq	(%rsp), %rdi	# MEM[(char * *)&D.22446], D.24530
-	movl	%eax, %r12d	#, D.24527
+	movq	(%rsp), %rdi	# MEM[(char * *)&D.22578], D.24735
+	movl	%eax, %r12d	#, D.24732
 	leaq	16(%rsp), %rax	#, tmp113
-	cmpq	%rax, %rdi	# tmp113, D.24530
+	cmpq	%rax, %rdi	# tmp113, D.24735
 	je	L20	#,
 	call	operator delete(void*)	#
 L20:
-	testl	%r12d, %r12d	# D.24527
+	testl	%r12d, %r12d	# D.24732
 	je	L42	#,
 	movq	0(%rbp), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
 	movq	%rbp, %rsi	# inst,
@@ -258,14 +258,14 @@ LEHE2:
 LEHB3:
 	call	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const	#
 LEHE3:
-	movq	(%rsp), %rdi	# MEM[(char * *)&D.22451], D.24530
-	movl	%eax, %r12d	#, D.24527
+	movq	(%rsp), %rdi	# MEM[(char * *)&D.22583], D.24735
+	movl	%eax, %r12d	#, D.24732
 	leaq	16(%rbx), %rax	#, tmp119
-	cmpq	%rax, %rdi	# tmp119, D.24530
+	cmpq	%rax, %rdi	# tmp119, D.24735
 	je	L23	#,
 	call	operator delete(void*)	#
 L23:
-	testl	%r12d, %r12d	# D.24527
+	testl	%r12d, %r12d	# D.24732
 	je	L43	#,
 	movq	0(%rbp), %rax	# inst_4(D)->_vptr.Base, inst_4(D)->_vptr.Base
 	movq	%rbp, %rsi	# inst,
@@ -278,15 +278,15 @@ LEHE4:
 LEHB5:
 	call	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const	#
 LEHE5:
-	movq	(%rsp), %rdi	# MEM[(char * *)&D.22453], D.24530
+	movq	(%rsp), %rdi	# MEM[(char * *)&D.22585], D.24735
 	addq	$16, %rbx	#, tmp125
-	movl	%eax, %r12d	#, D.24527
-	cmpq	%rbx, %rdi	# tmp125, D.24530
+	movl	%eax, %r12d	#, D.24732
+	cmpq	%rbx, %rdi	# tmp125, D.24735
 	je	L25	#,
 	call	operator delete(void*)	#
 L25:
-	testl	%r12d, %r12d	# D.24527
-	movl	$-1, %eax	#, D.24527
+	testl	%r12d, %r12d	# D.24732
+	movl	$-1, %eax	#, D.24732
 	jne	L36	#,
 	movq	%rbp, %rdi	# inst,
 LEHB6:
@@ -332,10 +332,10 @@ LCFI43:
 L35:
 LCFI44:
 L40:
-	movq	(%rsp), %rdi	#, D.24530
+	movq	(%rsp), %rdi	#, D.24735
 	addq	$16, %rbx	#, tmp134
 	movq	%rax, %rbp	#, tmp135
-	cmpq	%rbx, %rdi	# tmp134, D.24530
+	cmpq	%rbx, %rdi	# tmp134, D.24735
 	je	L31	#,
 	call	operator delete(void*)	#
 L31:
@@ -346,54 +346,54 @@ L34:
 	jmp	L40	#
 L33:
 	jmp	L40	#
-LFE924:
+LFE938:
 	.section __DATA,__gcc_except_tab
 GCC_except_table0:
-LLSDA924:
+LLSDA938:
 	.byte	0xff
 	.byte	0xff
 	.byte	0x3
 	.byte	0x5b
-	.set L$set$0,LEHB0-LFB924
+	.set L$set$0,LEHB0-LFB938
 	.long L$set$0
 	.set L$set$1,LEHE0-LEHB0
 	.long L$set$1
 	.long	0
 	.byte	0
-	.set L$set$2,LEHB1-LFB924
+	.set L$set$2,LEHB1-LFB938
 	.long L$set$2
 	.set L$set$3,LEHE1-LEHB1
 	.long L$set$3
-	.set L$set$4,L33-LFB924
+	.set L$set$4,L33-LFB938
 	.long L$set$4
 	.byte	0
-	.set L$set$5,LEHB2-LFB924
+	.set L$set$5,LEHB2-LFB938
 	.long L$set$5
 	.set L$set$6,LEHE2-LEHB2
 	.long L$set$6
 	.long	0
 	.byte	0
-	.set L$set$7,LEHB3-LFB924
+	.set L$set$7,LEHB3-LFB938
 	.long L$set$7
 	.set L$set$8,LEHE3-LEHB3
 	.long L$set$8
-	.set L$set$9,L34-LFB924
+	.set L$set$9,L34-LFB938
 	.long L$set$9
 	.byte	0
-	.set L$set$10,LEHB4-LFB924
+	.set L$set$10,LEHB4-LFB938
 	.long L$set$10
 	.set L$set$11,LEHE4-LEHB4
 	.long L$set$11
 	.long	0
 	.byte	0
-	.set L$set$12,LEHB5-LFB924
+	.set L$set$12,LEHB5-LFB938
 	.long L$set$12
 	.set L$set$13,LEHE5-LEHB5
 	.long L$set$13
-	.set L$set$14,L35-LFB924
+	.set L$set$14,L35-LFB938
 	.long L$set$14
 	.byte	0
-	.set L$set$15,LEHB6-LFB924
+	.set L$set$15,LEHB6-LFB938
 	.long L$set$15
 	.set L$set$16,LEHE6-LEHB6
 	.long L$set$16
@@ -404,6 +404,109 @@ LLSDA924:
 LCOLDE5:
 	.text
 LHOTE5:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDB6:
+	.text
+LHOTB6:
+	.align 4,0x90
+	.globl get_typeid(Base const*)
+get_typeid(Base const*):
+LFB939:
+	pushq	%rbp	#
+LCFI45:
+	pushq	%rbx	#
+LCFI46:
+	subq	$8, %rsp	#,
+LCFI47:
+	testq	%rdi, %rdi	# inst
+	je	L45	#,
+	movq	(%rdi), %rax	# inst_3(D)->_vptr.Base, inst_3(D)->_vptr.Base
+	movq	%rdi, %rbp	# inst, inst
+	movq	-8(%rax), %rax	# MEM[(int (*__vtbl_ptr_type) () *)_5 + -8B], MEM[(int (*__vtbl_ptr_type) () *)_5 + -8B]
+	movq	8(%rax), %rbx	# MEM[(const char * *)_6 + 8B], D.24746
+	movq	typeinfo for Derived_A@GOTPCREL(%rip), %rax	#, tmp104
+	movq	8(%rax), %rsi	# MEM[(const char * *)&_ZTI9Derived_A + 8B], D.24746
+	cmpq	%rsi, %rbx	# D.24746, D.24746
+	je	L46	#,
+	cmpb	$42, (%rbx)	#, *_17
+	je	L47	#,
+	movq	%rbx, %rdi	# D.24746,
+	call	_strcmp	#
+	testl	%eax, %eax	# D.24742
+	je	L46	#,
+	movq	typeinfo for Derived_B@GOTPCREL(%rip), %rax	#, tmp107
+	movq	8(%rax), %rsi	# MEM[(const char * *)&_ZTI9Derived_B + 8B], D.24746
+	cmpq	%rsi, %rbx	# D.24746, D.24746
+	je	L49	#,
+	movq	%rbx, %rdi	# D.24746,
+	call	_strcmp	#
+	testl	%eax, %eax	# D.24742
+	je	L49	#,
+	movq	typeinfo for Derived_C@GOTPCREL(%rip), %rax	#, tmp108
+	movq	8(%rax), %rsi	# MEM[(const char * *)&_ZTI9Derived_C + 8B], D.24746
+	cmpq	%rsi, %rbx	# D.24746, D.24746
+	je	L53	#,
+	movq	%rbx, %rdi	# D.24746,
+	call	_strcmp	#
+	testl	%eax, %eax	# D.24742
+	jne	L68	#,
+L53:
+	addq	$8, %rsp	#,
+LCFI48:
+	movq	%rbp, %rdi	# inst,
+	popq	%rbx	#
+LCFI49:
+	popq	%rbp	#
+LCFI50:
+	jmp	Derived_C::get_c() const	#
+	.align 4,0x90
+L46:
+LCFI51:
+	addq	$8, %rsp	#,
+LCFI52:
+	movq	%rbp, %rdi	# inst,
+	popq	%rbx	#
+LCFI53:
+	popq	%rbp	#
+LCFI54:
+	jmp	Derived_A::get_a() const	#
+	.align 4,0x90
+L47:
+LCFI55:
+	movq	typeinfo for Derived_B@GOTPCREL(%rip), %rax	#, tmp106
+	cmpq	8(%rax), %rbx	# MEM[(const char * *)&_ZTI9Derived_B + 8B], D.24746
+	je	L49	#,
+	movq	typeinfo for Derived_C@GOTPCREL(%rip), %rax	#, tmp109
+	cmpq	8(%rax), %rbx	# MEM[(const char * *)&_ZTI9Derived_C + 8B], D.24746
+	je	L53	#,
+L68:
+	popq	%rdx	#
+LCFI56:
+	orl	$-1, %eax	#,
+	popq	%rbx	#
+LCFI57:
+	popq	%rbp	#
+LCFI58:
+	ret
+	.align 4,0x90
+L49:
+LCFI59:
+	addq	$8, %rsp	#,
+LCFI60:
+	movq	%rbp, %rdi	# inst,
+	popq	%rbx	#
+LCFI61:
+	popq	%rbp	#
+LCFI62:
+	jmp	Derived_B::get_b() const	#
+L45:
+LCFI63:
+	call	___cxa_bad_typeid	#
+LFE939:
+	.section __TEXT,__text_cold,regular,pure_instructions
+LCOLDE6:
+	.text
+LHOTE6:
 	.globl typeinfo name for Base
 	.weak_definition typeinfo name for Base
 	.section __TEXT,__const_coal,coalesced
@@ -447,13 +550,13 @@ LSFDE1:
 	.long L$set$18
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB922-.
-	.set L$set$19,LFE922-LFB922
+	.quad	LFB936-.
+	.set L$set$19,LFE936-LFB936
 	.quad L$set$19
 	.byte	0x8
 	.quad	0
 	.byte	0x4
-	.set L$set$20,LCFI0-LFB922
+	.set L$set$20,LCFI0-LFB936
 	.long L$set$20
 	.byte	0xe
 	.byte	0x10
@@ -565,13 +668,13 @@ LSFDE3:
 	.long L$set$38
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB923-.
-	.set L$set$39,LFE923-LFB923
+	.quad	LFB937-.
+	.set L$set$39,LFE937-LFB937
 	.quad L$set$39
 	.byte	0x8
 	.quad	0
 	.byte	0x4
-	.set L$set$40,LCFI18-LFB923
+	.set L$set$40,LCFI18-LFB937
 	.long L$set$40
 	.byte	0xe
 	.byte	0x10
@@ -619,13 +722,13 @@ LSFDE5:
 	.long L$set$48
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB924-.
-	.set L$set$49,LFE924-LFB924
+	.quad	LFB938-.
+	.set L$set$49,LFE938-LFB938
 	.quad L$set$49
 	.byte	0x8
-	.quad	LLSDA924-.
+	.quad	LLSDA938-.
 	.byte	0x4
-	.set L$set$50,LCFI26-LFB924
+	.set L$set$50,LCFI26-LFB938
 	.long L$set$50
 	.byte	0xe
 	.byte	0x10
@@ -727,6 +830,117 @@ LASFDE5:
 	.byte	0xb
 	.align 3
 LEFDE5:
+LSFDE7:
+	.set L$set$69,LEFDE7-LASFDE7
+	.long L$set$69
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB939-.
+	.set L$set$70,LFE939-LFB939
+	.quad L$set$70
+	.byte	0x8
+	.quad	0
+	.byte	0x4
+	.set L$set$71,LCFI45-LFB939
+	.long L$set$71
+	.byte	0xe
+	.byte	0x10
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$72,LCFI46-LCFI45
+	.long L$set$72
+	.byte	0xe
+	.byte	0x18
+	.byte	0x83
+	.byte	0x3
+	.byte	0x4
+	.set L$set$73,LCFI47-LCFI46
+	.long L$set$73
+	.byte	0xe
+	.byte	0x20
+	.byte	0x4
+	.set L$set$74,LCFI48-LCFI47
+	.long L$set$74
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$75,LCFI49-LCFI48
+	.long L$set$75
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$76,LCFI50-LCFI49
+	.long L$set$76
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$77,LCFI51-LCFI50
+	.long L$set$77
+	.byte	0xb
+	.byte	0x4
+	.set L$set$78,LCFI52-LCFI51
+	.long L$set$78
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$79,LCFI53-LCFI52
+	.long L$set$79
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$80,LCFI54-LCFI53
+	.long L$set$80
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$81,LCFI55-LCFI54
+	.long L$set$81
+	.byte	0xb
+	.byte	0x4
+	.set L$set$82,LCFI56-LCFI55
+	.long L$set$82
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$83,LCFI57-LCFI56
+	.long L$set$83
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$84,LCFI58-LCFI57
+	.long L$set$84
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$85,LCFI59-LCFI58
+	.long L$set$85
+	.byte	0xb
+	.byte	0x4
+	.set L$set$86,LCFI60-LCFI59
+	.long L$set$86
+	.byte	0xa
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$87,LCFI61-LCFI60
+	.long L$set$87
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$88,LCFI62-LCFI61
+	.long L$set$88
+	.byte	0xe
+	.byte	0x8
+	.byte	0x4
+	.set L$set$89,LCFI63-LCFI62
+	.long L$set$89
+	.byte	0xb
+	.align 3
+LEFDE7:
 	.constructor
 	.destructor
 	.align 1
