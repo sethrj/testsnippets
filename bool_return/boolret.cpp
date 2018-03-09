@@ -1,9 +1,9 @@
 extern "C" {
-bool has_flags(int inp, int flags) {
-    return inp & flags;
+bool has_flags(signed char inp) {
+    return inp & 0x4;
 }
 
-void ftn_has_flags(int* inp, int* flags, bool* result) {
-    *result = *inp & *flags;
+void ftn_has_flags(const signed char* inp, bool* result) {
+    *result = *inp & 0x4;
 }
 }

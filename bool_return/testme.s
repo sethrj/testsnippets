@@ -62,19 +62,16 @@ LFB0:
 	subq	$24, %rsp	#,
 LCFI0:
 	movl	(%rdi), %eax	# *a_3(D), *a_3(D)
-	leaq	13(%rsp), %rdx	#, tmp98
-	leaq	14(%rsp), %rdi	#, tmp100
-	movb	%al, 14(%rsp)	# *a_3(D), D.3389
-	movl	(%rsi), %eax	# *b_7(D), *b_7(D)
-	leaq	15(%rsp), %rsi	#, tmp99
-	movb	%al, 15(%rsp)	# *b_7(D), D.3390
+	leaq	14(%rsp), %rsi	#, tmp94
+	leaq	15(%rsp), %rdi	#, tmp95
+	movb	%al, 15(%rsp)	# *a_3(D), D.3388
 	call	_ftn_has_flags	#
-	cmpb	$1, 13(%rsp)	#, res
+	cmpb	$1, 14(%rsp)	#, res
 	sbbl	%eax, %eax	# fresult
 	addq	$24, %rsp	#,
 LCFI1:
 	notl	%eax	# fresult
-	andl	$3, %eax	#, fresult
+	andl	$4, %eax	#, fresult
 	ret
 LFE0:
 	.section __TEXT,__text_cold,regular,pure_instructions

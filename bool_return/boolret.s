@@ -58,8 +58,9 @@ LHOTB0:
 	.globl _has_flags
 _has_flags:
 LFB0:
-	testb	%dil, %sil	# inp, flags
-	setne	%al	#, D.2370
+	movl	%edi, %eax	# inp, tmp93
+	shrb	$2, %al	#, tmp93
+	andl	$1, %eax	#, D.2366
 	ret
 LFE0:
 	.section __TEXT,__text_cold,regular,pure_instructions
@@ -74,10 +75,10 @@ LHOTB1:
 	.globl _ftn_has_flags
 _ftn_has_flags:
 LFB1:
-	movsbl	(%rdi), %ecx	# *inp_2(D), D.2376
-	movzbl	(%rsi), %eax	# *flags_5(D), D.2376
-	testl	%eax, %ecx	# D.2376, D.2376
-	setne	(%rdx)	#, *result_10(D)
+	movzbl	(%rdi), %eax	# *inp_2(D), *inp_2(D)
+	shrb	$2, %al	#, tmp92
+	andl	$1, %eax	#, tmp94
+	movb	%al, (%rsi)	# tmp94, *result_5(D)
 	ret
 LFE1:
 	.section __TEXT,__text_cold,regular,pure_instructions
