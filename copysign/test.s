@@ -2,9 +2,9 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ comparison-single-ref.cc -fPIC
-# -mmacosx-version-min=10.13.5 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -std=char++11 -fverbose-asm
+# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.5
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
+# -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -55,120 +55,57 @@
 
 	.text
 	.align 4,0x90
-	.globl is_flagged_minusone(float const*)
-is_flagged_minusone(float const*):
-LFB417:
-# 24:     return *double == -1.0;
-	movss	lC0(%rip), %xmm0	#, tmp95
-	movl	$0, %edx	#, tmp97
-	ucomiss	(%rdi), %xmm0	# *d_3(D), tmp95
-	setnp	%al	#, tmp94
-	cmovne	%edx, %eax	# tmp94,, tmp97, tmp90
-# 25: }
+	.globl copysign_to_unity(double)
+copysign_to_unity(double):
+LFB246:
+# 5:     return std::copysign(1.0, inp);
+	andpd	lC1(%rip), %xmm0	#, <retval>
+	orpd	lC0(%rip), %xmm0	#, <retval>
+# 6: }
 	ret
-LFE417:
+LFE246:
 	.align 4,0x90
-	.globl is_flagged_inf(float const*)
-is_flagged_inf(float const*):
-LFB418:
-# /opt/local/include/gcc7/char++/cmath:592:   { return __builtin_isinf(__x); }
-	movss	(%rdi), %xmm0	# *d_3(D), *d_3(D)
-	andps	lC1(%rip), %xmm0	#, tmp93
-	ucomiss	lC2(%rip), %xmm0	#, tmp93
-	seta	%al	#, tmp92
-# 30: }
+	.globl ternary_copysign(double)
+ternary_copysign(double):
+LFB247:
+# 10:     return inp > 0 ? 1 : -1;
+	ucomisd	lC4(%rip), %xmm0	#, inp
+	jbe	L6	#,
+	movsd	lC2(%rip), %xmm0	#, <retval>
+# 11: }
 	ret
-LFE418:
 	.align 4,0x90
-	.globl is_flagged_nan(float const*)
-is_flagged_nan(float const*):
-LFB419:
-# 34:     return std::isnan(*double);
-	movss	(%rdi), %xmm0	# *d_3(D), _1
-# /opt/local/include/gcc7/char++/cmath:619:   { return __builtin_isnan(__x); }
-	ucomiss	%xmm0, %xmm0	# _1, _1
-	setp	%al	#, tmp91
-# 35: }
+L6:
+# 10:     return inp > 0 ? 1 : -1;
+	movsd	lC3(%rip), %xmm0	#, <retval>
 	ret
-LFE419:
-	.align 4,0x90
-	.globl is_flagged_union(float const*)
-is_flagged_union(float const*):
-LFB420:
-# 40:     return u->int == 0xffffffffu;
-	cmpl	$-1, (%rdi)	#, MEM[(const union Float_Unpack *)d_2(D)].int
-	sete	%al	#, tmp91
-# 41: }
-	ret
-LFE420:
-	.align 4,0x90
-	.globl set_flag_minusone(float*)
-set_flag_minusone(float*):
-LFB421:
-# 45:     *double = -1.0;
-	movl	$0xbf800000, (%rdi)	#, *d_2(D)
-# 46: }
-	ret
-LFE421:
-	.align 4,0x90
-	.globl set_flag_inf(float*)
-set_flag_inf(float*):
-LFB422:
-# 50:     *double = std::numeric_limits<float>::infinity();
-	movl	$0x7f800000, (%rdi)	#, *d_2(D)
-# 51: }
-	ret
-LFE422:
-	.align 4,0x90
-	.globl set_flag_nan(float*)
-set_flag_nan(float*):
-LFB423:
-# 55:     *double = std::numeric_limits<float>::quiet_NaN();
-	movl	$0x7fc00000, (%rdi)	#, *d_2(D)
-# 56: }
-	ret
-LFE423:
-	.align 4,0x90
-	.globl set_flag_union(float*)
-set_flag_union(float*):
-LFB424:
-# 61:     u->int = 0xffffffffu;
-	movl	$-1, (%rdi)	#, MEM[(union Float_Unpack *)d_1(D)].int
-# 62: }
-	ret
-LFE424:
-	.align 4,0x90
-	.globl flagged_compare_union(float const*, float)
-flagged_compare_union(float const*, float):
-LFB425:
-# 40:     return u->int == 0xffffffffu;
-	movl	(%rdi), %edx	# MEM[(const union Float_Unpack *)ref_3(D)].int, _4
-# 66:     return !is_flagged_union(ref) && *ref < actual;
-	xorl	%eax, %eax	# <retval>
-	cmpl	$-1, %edx	#, _4
-	je	L10	#,
-	movd	%edx, %xmm1	# _4, tmp94
-	ucomiss	%xmm1, %xmm0	# tmp94, actual
-	seta	%al	#, <retval>
-L10:
-# 67: }
-	ret
-LFE425:
-	.literal4
-	.align 2
-lC0:
-	.long	3212836864
+LFE247:
 	.literal16
 	.align 4
+lC0:
+	.long	0
+	.long	1072693248
+	.long	0
+	.long	0
+	.align 4
 lC1:
-	.long	2147483647
+	.long	0
+	.long	-2147483648
 	.long	0
 	.long	0
-	.long	0
-	.literal4
-	.align 2
+	.literal8
+	.align 3
 lC2:
-	.long	2139095039
+	.long	0
+	.long	1072693248
+	.align 3
+lC3:
+	.long	0
+	.long	-1074790400
+	.align 3
+lC4:
+	.long	0
+	.long	0
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -194,8 +131,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB417-.
-	.set L$set$2,LFE417-LFB417
+	.quad	LFB246-.
+	.set L$set$2,LFE246-LFB246
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -205,89 +142,12 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB418-.
-	.set L$set$4,LFE418-LFB418
+	.quad	LFB247-.
+	.set L$set$4,LFE247-LFB247
 	.quad L$set$4
 	.byte	0
 	.align 3
 LEFDE3:
-LSFDE5:
-	.set L$set$5,LEFDE5-LASFDE5
-	.long L$set$5
-LASFDE5:
-	.long	LASFDE5-EH_frame1
-	.quad	LFB419-.
-	.set L$set$6,LFE419-LFB419
-	.quad L$set$6
-	.byte	0
-	.align 3
-LEFDE5:
-LSFDE7:
-	.set L$set$7,LEFDE7-LASFDE7
-	.long L$set$7
-LASFDE7:
-	.long	LASFDE7-EH_frame1
-	.quad	LFB420-.
-	.set L$set$8,LFE420-LFB420
-	.quad L$set$8
-	.byte	0
-	.align 3
-LEFDE7:
-LSFDE9:
-	.set L$set$9,LEFDE9-LASFDE9
-	.long L$set$9
-LASFDE9:
-	.long	LASFDE9-EH_frame1
-	.quad	LFB421-.
-	.set L$set$10,LFE421-LFB421
-	.quad L$set$10
-	.byte	0
-	.align 3
-LEFDE9:
-LSFDE11:
-	.set L$set$11,LEFDE11-LASFDE11
-	.long L$set$11
-LASFDE11:
-	.long	LASFDE11-EH_frame1
-	.quad	LFB422-.
-	.set L$set$12,LFE422-LFB422
-	.quad L$set$12
-	.byte	0
-	.align 3
-LEFDE11:
-LSFDE13:
-	.set L$set$13,LEFDE13-LASFDE13
-	.long L$set$13
-LASFDE13:
-	.long	LASFDE13-EH_frame1
-	.quad	LFB423-.
-	.set L$set$14,LFE423-LFB423
-	.quad L$set$14
-	.byte	0
-	.align 3
-LEFDE13:
-LSFDE15:
-	.set L$set$15,LEFDE15-LASFDE15
-	.long L$set$15
-LASFDE15:
-	.long	LASFDE15-EH_frame1
-	.quad	LFB424-.
-	.set L$set$16,LFE424-LFB424
-	.quad L$set$16
-	.byte	0
-	.align 3
-LEFDE15:
-LSFDE17:
-	.set L$set$17,LEFDE17-LASFDE17
-	.long L$set$17
-LASFDE17:
-	.long	LASFDE17-EH_frame1
-	.quad	LFB425-.
-	.set L$set$18,LFE425-LFB425
-	.quad L$set$18
-	.byte	0
-	.align 3
-LEFDE17:
 	.constructor
 	.destructor
 	.align 1

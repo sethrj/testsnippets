@@ -40,26 +40,26 @@ bool is_flagged_union(double d)
     return u.i[1] == 0xffffffffu;
 }
 
-void set_flag_minusone(double *d)
+double get_flag_minusone()
 {
-    *d = -1.0;
+    return -1.0;
 }
 
-void set_flag_inf(double *d)
+double get_flag_inf()
 {
-    *d = std::numeric_limits<double>::infinity();
+    return std::numeric_limits<double>::infinity();
 }
 
-void set_flag_nan(double *d)
+double get_flag_nan()
 {
-    *d = std::numeric_limits<double>::quiet_NaN();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
-void set_flag_union(double *d)
+double get_flag_union()
 {
     Double_Unpack u;
     u.i[1] = 0xffffffffu;
-    *d = u.d;
+    return u.d;
 }
 
 //---------------------------------------------------------------------------//
