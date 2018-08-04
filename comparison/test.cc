@@ -5,8 +5,6 @@
  * \date   Thu Sep 07 09:32:04 2017
  * \brief  test class definitions.
  * \note   Copyright (c) 2017 Oak Ridge National Laboratory, UT-Battelle, LLC.
- *
- *  g++ -O2 -Wall -Wextra -std=c++11 -fverbose-asm test.cc -o - -S | c++filt > test.s
  */
 //---------------------------------------------------------------------------//
 
