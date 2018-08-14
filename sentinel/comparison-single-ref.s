@@ -3,7 +3,7 @@
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ comparison-single-ref.cc -fPIC
-# -mmacosx-version-min=10.13.5 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels

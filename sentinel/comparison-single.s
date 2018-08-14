@@ -2,7 +2,7 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ comparison-ref.cc -fPIC
+# options passed:  -D__DYNAMIC__ comparison-single.cc -fPIC
 # -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -55,143 +55,128 @@
 
 	.text
 	.align 4,0x90
-	.globl is_flagged_zero(double const*)
-is_flagged_zero(double const*):
+	.globl is_true(bool)
+is_true(bool):
 LFB417:
-# 23:     return *double == 0.0;
-	pxor	%xmm0, %xmm0	# tmp95
-	ucomisd	(%rdi), %xmm0	# *d_3(D), tmp95
-	movl	$0, %edx	#, tmp97
-	setnp	%al	#, tmp94
-	cmovne	%edx, %eax	# tmp94,, tmp97, tmp90
-# 24: }
+# 15: }
+	movl	%edi, %eax	# bool,
 	ret
 LFE417:
 	.align 4,0x90
-	.globl is_flagged_minusone(double const*)
-is_flagged_minusone(double const*):
+	.globl is_flagged_zero(float)
+is_flagged_zero(float):
 LFB418:
-# 28:     return *double == -1.0;
-	movsd	lC1(%rip), %xmm0	#, tmp95
-	movl	$0, %edx	#, tmp97
-	ucomisd	(%rdi), %xmm0	# *d_3(D), tmp95
-	setnp	%al	#, tmp94
-	cmovne	%edx, %eax	# tmp94,, tmp97, tmp90
-# 29: }
+# 19:     return double == 0.0;
+	pxor	%xmm1, %xmm1	# tmp94
+	ucomiss	%xmm1, %xmm0	# tmp94, double
+	movl	$0, %edx	#, tmp96
+	setnp	%al	#, tmp93
+	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+# 20: }
 	ret
 LFE418:
 	.align 4,0x90
-	.globl is_flagged_inf(double const*)
-is_flagged_inf(double const*):
+	.globl is_flagged_minusone(float)
+is_flagged_minusone(float):
 LFB419:
-# /opt/local/include/gcc7/char++/cmath:600:   { return __builtin_isinf(__x); }
-	movsd	(%rdi), %xmm0	# *d_3(D), *d_3(D)
-	andpd	lC2(%rip), %xmm0	#, tmp93
-	ucomisd	lC3(%rip), %xmm0	#, tmp93
-	seta	%al	#, tmp92
-# 34: }
+# 24:     return double == -1.0;
+	movss	lC1(%rip), %xmm1	#, tmp94
+	movl	$0, %edx	#, tmp96
+	ucomiss	%xmm1, %xmm0	# tmp94, double
+	setnp	%al	#, tmp93
+	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+# 25: }
 	ret
 LFE419:
 	.align 4,0x90
-	.globl is_flagged_nan(double const*)
-is_flagged_nan(double const*):
+	.globl is_flagged_inf(float)
+is_flagged_inf(float):
 LFB420:
-# 38:     return std::isnan(*double);
-	movsd	(%rdi), %xmm0	# *d_3(D), _1
-# /opt/local/include/gcc7/char++/cmath:627:   { return __builtin_isnan(__x); }
-	ucomisd	%xmm0, %xmm0	# _1, _1
-	setp	%al	#, tmp91
-# 39: }
+# /opt/local/include/gcc7/char++/cmath:592:   { return __builtin_isinf(__x); }
+	andps	lC2(%rip), %xmm0	#, tmp92
+	ucomiss	lC3(%rip), %xmm0	#, tmp92
+	seta	%al	#, tmp91
+# 30: }
 	ret
 LFE420:
 	.align 4,0x90
-	.globl is_flagged_union(double const*)
-is_flagged_union(double const*):
+	.globl is_flagged_nan(float)
+is_flagged_nan(float):
 LFB421:
-# 44:     return u->int[1] == 0xffffffffu;
-	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)d_2(D)].int
-	sete	%al	#, tmp91
-# 45: }
+# /opt/local/include/gcc7/char++/cmath:619:   { return __builtin_isnan(__x); }
+	ucomiss	%xmm0, %xmm0	# double, double
+	setp	%al	#, tmp90
+# 35: }
 	ret
 LFE421:
 	.align 4,0x90
-	.globl set_flag_minusone(double*)
-set_flag_minusone(double*):
+	.globl is_flagged_union(float)
+is_flagged_union(float):
 LFB422:
-# 49:     *double = -1.0;
-	movq	lC1(%rip), %rax	#, tmp89
-	movq	%rax, (%rdi)	# tmp89, *d_2(D)
-# 50: }
+# 38: {
+	movd	%xmm0, %eax	# double, double
+# 40:     return u.i == 0xffffffffu;
+	cmpl	$-1, %eax	#, double
+	sete	%al	#, tmp91
+# 41: }
 	ret
 LFE422:
 	.align 4,0x90
-	.globl set_flag_inf(double*)
-set_flag_inf(double*):
+	.globl get_flag_minusone()
+get_flag_minusone():
 LFB423:
-# 54:     *double = std::numeric_limits<double>::infinity();
-	movq	lC4(%rip), %rax	#, tmp89
-	movq	%rax, (%rdi)	# tmp89, *d_2(D)
-# 55: }
+# 46: }
+	movss	lC1(%rip), %xmm0	#,
 	ret
 LFE423:
 	.align 4,0x90
-	.globl set_flag_nan(double*)
-set_flag_nan(double*):
+	.globl get_flag_inf()
+get_flag_inf():
 LFB424:
-# 59:     *double = std::numeric_limits<double>::quiet_NaN();
-	movq	lC5(%rip), %rax	#, tmp89
-	movq	%rax, (%rdi)	# tmp89, *d_2(D)
-# 60: }
+# 51: }
+	movss	lC4(%rip), %xmm0	#,
 	ret
 LFE424:
 	.align 4,0x90
-	.globl set_flag_union(double*)
-set_flag_union(double*):
+	.globl get_flag_nan()
+get_flag_nan():
 LFB425:
-# 65:     u->int[1] = 0xffffffffu;
-	movl	$-1, 4(%rdi)	#, MEM[(union Double_Unpack *)d_1(D)].int
-# 66: }
+# 56: }
+	movss	lC5(%rip), %xmm0	#,
 	ret
 LFE425:
 	.align 4,0x90
-	.globl flagged_compare_union(double const*, double)
-flagged_compare_union(double const*, double):
+	.globl get_flag_union()
+get_flag_union():
 LFB426:
-# 70:     return !is_flagged_union(ref) && *ref < actual;
-	xorl	%eax, %eax	# <retval>
-	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)ref_4(D)].int
-	je	L11	#,
-	ucomisd	(%rdi), %xmm0	# *ref_4(D), actual
-	seta	%al	#, <retval>
-L11:
-# 71: }
+# 63: }
+	movss	lC6(%rip), %xmm0	#,
 	ret
 LFE426:
-	.literal8
-	.align 3
+	.literal4
+	.align 2
 lC1:
-	.long	0
-	.long	-1074790400
+	.long	3212836864
 	.literal16
 	.align 4
 lC2:
-	.long	4294967295
 	.long	2147483647
 	.long	0
 	.long	0
-	.literal8
-	.align 3
+	.long	0
+	.literal4
+	.align 2
 lC3:
-	.long	4294967295
-	.long	2146435071
-	.align 3
+	.long	2139095039
+	.align 2
 lC4:
-	.long	0
-	.long	2146435072
-	.align 3
+	.long	2139095040
+	.align 2
 lC5:
-	.long	0
-	.long	2146959360
+	.long	2143289344
+	.align 2
+lC6:
+	.long	4294967295
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
