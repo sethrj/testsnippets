@@ -55,109 +55,130 @@
 
 	.text
 	.align 4,0x90
+	.globl is_true(bool)
+is_true(bool):
+LFB417:
+# 24: }
+	movl	%edi, %eax	# bool,
+	ret
+LFE417:
+	.align 4,0x90
+	.globl is_flagged_zero(double)
+is_flagged_zero(double):
+LFB418:
+# 28:     return double == 0.0;
+	pxor	%xmm1, %xmm1	# tmp94
+	ucomisd	%xmm1, %xmm0	# tmp94, double
+	movl	$0, %edx	#, tmp96
+	setnp	%al	#, tmp93
+	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+# 29: }
+	ret
+LFE418:
+	.align 4,0x90
 	.globl is_flagged_minusone(double)
 is_flagged_minusone(double):
-LFB417:
-# 24:     return double == -1.0;
-	movsd	lC0(%rip), %xmm1	#, tmp94
+LFB419:
+# 33:     return double == -1.0;
+	movsd	lC1(%rip), %xmm1	#, tmp94
 	movl	$0, %edx	#, tmp96
 	ucomisd	%xmm1, %xmm0	# tmp94, double
 	setnp	%al	#, tmp93
 	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
-# 25: }
-	ret
-LFE417:
-	.align 4,0x90
-	.globl is_flagged_inf(double)
-is_flagged_inf(double):
-LFB418:
-# /opt/local/include/gcc7/char++/cmath:600:   { return __builtin_isinf(__x); }
-	andpd	lC1(%rip), %xmm0	#, tmp92
-	ucomisd	lC2(%rip), %xmm0	#, tmp92
-	seta	%al	#, tmp91
-# 30: }
-	ret
-LFE418:
-	.align 4,0x90
-	.globl is_flagged_nan(double)
-is_flagged_nan(double):
-LFB419:
-# /opt/local/include/gcc7/char++/cmath:627:   { return __builtin_isnan(__x); }
-	ucomisd	%xmm0, %xmm0	# double, double
-	setp	%al	#, tmp90
-# 35: }
+# 34: }
 	ret
 LFE419:
 	.align 4,0x90
+	.globl is_flagged_inf(double)
+is_flagged_inf(double):
+LFB420:
+# /opt/local/include/gcc7/char++/cmath:600:   { return __builtin_isinf(__x); }
+	andpd	lC2(%rip), %xmm0	#, tmp92
+	ucomisd	lC3(%rip), %xmm0	#, tmp92
+	seta	%al	#, tmp91
+# 39: }
+	ret
+LFE420:
+	.align 4,0x90
+	.globl is_flagged_nan(double)
+is_flagged_nan(double):
+LFB421:
+# /opt/local/include/gcc7/char++/cmath:627:   { return __builtin_isnan(__x); }
+	ucomisd	%xmm0, %xmm0	# double, double
+	setp	%al	#, tmp90
+# 44: }
+	ret
+LFE421:
+	.align 4,0x90
 	.globl is_flagged_union(double)
 is_flagged_union(double):
-LFB420:
-# 40:     return u.i[1] == 0xffffffffu;
+LFB422:
+# 49:     return u.i[1] == 0xffffffffu;
 	movd	%xmm0, %rax	# double, double
 	shrq	$32, %rax	#, tmp93
 	cmpl	$-1, %eax	#, tmp93
 	sete	%al	#, tmp94
-# 41: }
-	ret
-LFE420:
-	.align 4,0x90
-	.globl get_flag_minusone()
-get_flag_minusone():
-LFB421:
-# 46: }
-	movsd	lC0(%rip), %xmm0	#,
-	ret
-LFE421:
-	.align 4,0x90
-	.globl get_flag_inf()
-get_flag_inf():
-LFB422:
-# 51: }
-	movsd	lC3(%rip), %xmm0	#,
+# 50: }
 	ret
 LFE422:
 	.align 4,0x90
-	.globl get_flag_nan()
-get_flag_nan():
+	.globl get_flag_minusone()
+get_flag_minusone():
 LFB423:
-# 56: }
-	movsd	lC4(%rip), %xmm0	#,
+# 55: }
+	movsd	lC1(%rip), %xmm0	#,
 	ret
 LFE423:
 	.align 4,0x90
-	.globl get_flag_union()
-get_flag_union():
+	.globl get_flag_inf()
+get_flag_inf():
 LFB424:
-# 61:     u.i[1] = 0xffffffffu;
-	movabsq	$-4294967296, %rax	#, tmp90
-# 62:     return u.d;
-	movd	%rax, %xmm0	# tmp90, <retval>
-# 63: }
+# 60: }
+	movsd	lC4(%rip), %xmm0	#,
 	ret
 LFE424:
+	.align 4,0x90
+	.globl get_flag_nan()
+get_flag_nan():
+LFB425:
+# 65: }
+	movsd	lC5(%rip), %xmm0	#,
+	ret
+LFE425:
+	.align 4,0x90
+	.globl get_flag_union()
+get_flag_union():
+LFB426:
+# 70:     u.i[1] = 0xffffffffu;
+	movabsq	$-4294967296, %rax	#, tmp90
+# 71:     return u.d;
+	movd	%rax, %xmm0	# tmp90, <retval>
+# 72: }
+	ret
+LFE426:
 	.literal8
 	.align 3
-lC0:
+lC1:
 	.long	0
 	.long	-1074790400
 	.literal16
 	.align 4
-lC1:
+lC2:
 	.long	4294967295
 	.long	2147483647
 	.long	0
 	.long	0
 	.literal8
 	.align 3
-lC2:
+lC3:
 	.long	4294967295
 	.long	2146435071
 	.align 3
-lC3:
+lC4:
 	.long	0
 	.long	2146435072
 	.align 3
-lC4:
+lC5:
 	.long	0
 	.long	2146959360
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
@@ -268,6 +289,28 @@ LASFDE15:
 	.byte	0
 	.align 3
 LEFDE15:
+LSFDE17:
+	.set L$set$17,LEFDE17-LASFDE17
+	.long L$set$17
+LASFDE17:
+	.long	LASFDE17-EH_frame1
+	.quad	LFB425-.
+	.set L$set$18,LFE425-LFB425
+	.quad L$set$18
+	.byte	0
+	.align 3
+LEFDE17:
+LSFDE19:
+	.set L$set$19,LEFDE19-LASFDE19
+	.long L$set$19
+LASFDE19:
+	.long	LASFDE19-EH_frame1
+	.quad	LFB426-.
+	.set L$set$20,LFE426-LFB426
+	.quad L$set$20
+	.byte	0
+	.align 3
+LEFDE19:
 	.constructor
 	.destructor
 	.align 1

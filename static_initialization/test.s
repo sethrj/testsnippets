@@ -54,90 +54,82 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
+	.align 1,0x90
 	.align 4,0x90
-	.globl get_scaled(Engine&)
-get_scaled(Engine&):
-LFB2886:
-	pushq	%rbx	#
+	.globl std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()
+	.weak_definition std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()
+std::unique_ptr<int, std::default_delete<int> >::~unique_ptr():
+LFB2045:
+# /opt/local/include/gcc7/char++/bits/unique_ptr.h:267: 	if (__ptr != nullptr)
+	movq	(%rdi), %rdi	# MEM[(int * &)this_3(D)], _1
+	testq	%rdi, %rdi	# _1
+	je	L1	#,
+# /opt/local/include/gcc7/char++/bits/unique_ptr.h:78: 	delete __ptr;
+	jmp	operator delete(void*)	#
+	.align 4,0x90
+L1:
+# /opt/local/include/gcc7/char++/bits/unique_ptr.h:270:       }
+	ret
+LFE2045:
+	.align 4,0x90
+	.globl get_static_pointer()
+get_static_pointer():
+LFB1863:
+# 9:     static ptr_t s_pointer;
+	movzbl	guard variable for get_static_pointer()::s_pointer(%rip), %eax	#, _1
+	testb	%al, %al	# _1
+	je	L15	#,
+# 11: }
+	leaq	get_static_pointer()::s_pointer(%rip), %rax	#,
+	ret
+	.align 4,0x90
+L15:
+# 9:     static ptr_t s_pointer;
+	leaq	guard variable for get_static_pointer()::s_pointer(%rip), %rdi	#,
+# 8: {
+	subq	$8, %rsp	#,
 LCFI0:
-	movq	%rdi, %rbx	# long double, long double
-	subq	$16, %rsp	#,
+# 9:     static ptr_t s_pointer;
+	call	___cxa_guard_acquire	#
+	testl	%eax, %eax	# _2
+	je	L6	#,
+	leaq	guard variable for get_static_pointer()::s_pointer(%rip), %rdi	#,
+	call	___cxa_guard_release	#
+	movq	std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()@GOTPCREL(%rip), %rdi	#,
+	leaq	___dso_handle(%rip), %rdx	#,
+	leaq	get_static_pointer()::s_pointer(%rip), %rsi	#,
+	call	___cxa_atexit	#
+L6:
+# 11: }
+	leaq	get_static_pointer()::s_pointer(%rip), %rax	#,
+	addq	$8, %rsp	#,
 LCFI1:
-# /opt/local/include/gcc7/char++/bits/random.tcc:3330: 	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
-	call	Engine::operator()()	#
-	pxor	%xmm0, %xmm0	# tmp98
-	pxor	%xmm4, %xmm4	# tmp120
-	movq	%rbx, %rdi	# long double,
-	movl	%eax, %eax	# _31, _31
-	cvtsi2sdq	%rax, %xmm0	# _31, tmp98
-	addsd	%xmm4, %xmm0	# tmp120, tmp98
-	movsd	%xmm0, 8(%rsp)	# tmp98, %sfp
-	call	Engine::operator()()	#
-	pxor	%xmm0, %xmm0	# tmp104
-# /opt/local/include/gcc7/char++/bits/random.tcc:3334:       if (__builtin_expect(__ret >= _RealType(1), 0))
-	movsd	lC3(%rip), %xmm2	#, tmp118
-# /opt/local/include/gcc7/char++/bits/random.tcc:3330: 	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
-	movl	%eax, %eax	# _44, _44
-	cvtsi2sdq	%rax, %xmm0	# _44, tmp104
-	mulsd	lC1(%rip), %xmm0	#, tmp109
-	addsd	8(%rsp), %xmm0	# %sfp, __sum
-# /opt/local/include/gcc7/char++/bits/random.tcc:3333:       __ret = __sum / __tmp;
-	mulsd	lC2(%rip), %xmm0	#, __ret
-# /opt/local/include/gcc7/char++/bits/random.tcc:3334:       if (__builtin_expect(__ret >= _RealType(1), 0))
-	ucomisd	%xmm2, %xmm0	# tmp118, __ret
-	jnb	L11	#,
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	addsd	%xmm0, %xmm0	# __ret, tmp116
-# 36: }
-	addq	$16, %rsp	#,
-LCFI2:
-	popq	%rbx	#
-LCFI3:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	subsd	%xmm2, %xmm0	# tmp118, tmp115
-# 36: }
 	ret
+LFE1863:
 	.align 4,0x90
-L11:
-LCFI4:
-# /opt/local/include/gcc7/char++/bits/random.tcc:3337: 	  __ret = std::nextafter(_RealType(1), _RealType(0));
-	movapd	%xmm2, %xmm0	# tmp118,
-	movsd	%xmm2, 8(%rsp)	# tmp118, %sfp
-	pxor	%xmm1, %xmm1	#
-	call	_nextafter	#
-	movsd	8(%rsp), %xmm2	# %sfp, tmp118
-# 36: }
-	addq	$16, %rsp	#,
-LCFI5:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	addsd	%xmm0, %xmm0	# __ret, tmp116
-# 36: }
-	popq	%rbx	#
-LCFI6:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	subsd	%xmm2, %xmm0	# tmp118, tmp115
-# 36: }
+	.globl get_local_pointer()
+get_local_pointer():
+LFB1864:
+# 14: {
+	movq	%rdi, %rax	# .result_ptr, <retval>
+# 15:     ptr_t s_pointer;
+	movq	$0, (%rdi)	#, s_pointer_2(D)->_M_t._M_t.D.36077.D.34439._M_head_impl
+# 17: }
 	ret
-LFE2886:
-	.align 4,0x90
-	.globl get_uniform_manual(Engine&)
-get_uniform_manual(Engine&):
-LFB3240:
-	jmp	get_scaled(Engine&)	#
-LFE3240:
-	.literal8
-	.align 3
-lC1:
-	.long	0
-	.long	1106247680
-	.align 3
-lC2:
-	.long	0
-	.long	1005584384
-	.align 3
-lC3:
-	.long	0
-	.long	1072693248
+LFE1864:
+	.section __TEXT,__text_startup,regular,pure_instructions
+	.align 4
+__GLOBAL__sub_I_
+LFB2225:
+# 5: static ptr_t g_pointer;
+	movq	std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()@GOTPCREL(%rip), %rdi	#,
+	leaq	___dso_handle(%rip), %rdx	#,
+	leaq	g_pointer(%rip), %rsi	#,
+	jmp	___cxa_atexit	#
+LFE2225:
+	.zerofill __DATA,__bss3,guard variable for get_static_pointer()::s_pointer,8,3
+	.zerofill __DATA,__bss3,get_static_pointer()::s_pointer,8,3
+	.zerofill __DATA,__bss3,g_pointer,8,3
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -163,60 +155,58 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB2886-.
-	.set L$set$2,LFE2886-LFB2886
+	.quad	LFB2045-.
+	.set L$set$2,LFE2045-LFB2045
 	.quad L$set$2
 	.byte	0
-	.byte	0x4
-	.set L$set$3,LCFI0-LFB2886
-	.long L$set$3
-	.byte	0xe
-	.byte	0x10
-	.byte	0x83
-	.byte	0x2
-	.byte	0x4
-	.set L$set$4,LCFI1-LCFI0
-	.long L$set$4
-	.byte	0xe
-	.byte	0x20
-	.byte	0x4
-	.set L$set$5,LCFI2-LCFI1
-	.long L$set$5
-	.byte	0xa
-	.byte	0xe
-	.byte	0x10
-	.byte	0x4
-	.set L$set$6,LCFI3-LCFI2
-	.long L$set$6
-	.byte	0xe
-	.byte	0x8
-	.byte	0x4
-	.set L$set$7,LCFI4-LCFI3
-	.long L$set$7
-	.byte	0xb
-	.byte	0x4
-	.set L$set$8,LCFI5-LCFI4
-	.long L$set$8
-	.byte	0xe
-	.byte	0x10
-	.byte	0x4
-	.set L$set$9,LCFI6-LCFI5
-	.long L$set$9
-	.byte	0xe
-	.byte	0x8
 	.align 3
 LEFDE1:
 LSFDE3:
-	.set L$set$10,LEFDE3-LASFDE3
-	.long L$set$10
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB3240-.
-	.set L$set$11,LFE3240-LFB3240
-	.quad L$set$11
+	.quad	LFB1863-.
+	.set L$set$4,LFE1863-LFB1863
+	.quad L$set$4
 	.byte	0
+	.byte	0x4
+	.set L$set$5,LCFI0-LFB1863
+	.long L$set$5
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$6,LCFI1-LCFI0
+	.long L$set$6
+	.byte	0xe
+	.byte	0x8
 	.align 3
 LEFDE3:
+LSFDE5:
+	.set L$set$7,LEFDE5-LASFDE5
+	.long L$set$7
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB1864-.
+	.set L$set$8,LFE1864-LFB1864
+	.quad L$set$8
+	.byte	0
+	.align 3
+LEFDE5:
+LSFDE7:
+	.set L$set$9,LEFDE7-LASFDE7
+	.long L$set$9
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB2225-.
+	.set L$set$10,LFE2225-LFB2225
+	.quad L$set$10
+	.byte	0
+	.align 3
+LEFDE7:
+	.mod_init_func
+	.align 3
+	.quad	__GLOBAL__sub_I_test.cc
 	.constructor
 	.destructor
 	.align 1

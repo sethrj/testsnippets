@@ -10,37 +10,23 @@
 
 #include <random>
 #include <limits>
-
-class Engine
-{
-  public:
-    using result_type = unsigned int;
-    using size_type   = std::size_t;
-
-  public:
-    static constexpr result_type min() { return 0u; }
-    static constexpr result_type max() { return 0xffffffffu; }
-
-  public:
-    Engine();
-
-    result_type operator()();
-};
+#include "Dummy_RNG_Engine.hh"
+using RNG = Dummy_RNG_Engine;
 
 using float_type = double;
 
-float_type get_scaled(Engine& e)
+float_type get_scaled(RNG& e)
 {
     std::uniform_real_distribution<float_type> dist(-1,1);
     return dist(e);
 }
 
-float_type get_uniform_manual(Engine& e)
+float_type get_uniform_manual(RNG& e)
 {
     auto xi = std::generate_canonical<
                     float_type,
                     std::numeric_limits<float_type>::digits,
-                    Engine>(e);
+                    RNG>(e);
     return 2 * xi - 1;
 }
 

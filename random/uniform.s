@@ -2,9 +2,9 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
-# -fverbose-asm
+# options passed:  -D__DYNAMIC__ uniform.cc -fPIC
+# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -55,77 +55,108 @@
 
 	.text
 	.align 4,0x90
-	.globl get_scaled(Engine&)
-get_scaled(Engine&):
-LFB2886:
+	.globl double std::generate_canonical<double, 53ul, Dummy_RNG_Engine>(Dummy_RNG_Engine&)
+	.weak_definition double std::generate_canonical<double, 53ul, Dummy_RNG_Engine>(Dummy_RNG_Engine&)
+double std::generate_canonical<double, 53ul, Dummy_RNG_Engine>(Dummy_RNG_Engine&):
+LFB3077:
 	pushq	%rbx	#
 LCFI0:
-	movq	%rdi, %rbx	# long double, long double
+	movq	%rdi, %rbx	# __urng, __urng
 	subq	$16, %rsp	#,
 LCFI1:
 # /opt/local/include/gcc7/char++/bits/random.tcc:3330: 	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
-	call	Engine::operator()()	#
-	pxor	%xmm0, %xmm0	# tmp98
-	pxor	%xmm4, %xmm4	# tmp120
-	movq	%rbx, %rdi	# long double,
-	movl	%eax, %eax	# _31, _31
-	cvtsi2sdq	%rax, %xmm0	# _31, tmp98
-	addsd	%xmm4, %xmm0	# tmp120, tmp98
-	movsd	%xmm0, 8(%rsp)	# tmp98, %sfp
-	call	Engine::operator()()	#
-	pxor	%xmm0, %xmm0	# tmp104
+	call	Dummy_RNG_Engine::operator()()	#
+	pxor	%xmm0, %xmm0	# tmp96
+	pxor	%xmm4, %xmm4	# tmp115
+	movq	%rbx, %rdi	# __urng,
+	movl	%eax, %eax	# _29, _29
+	cvtsi2sdq	%rax, %xmm0	# _29, tmp96
+	addsd	%xmm4, %xmm0	# tmp115, tmp96
+	movsd	%xmm0, 8(%rsp)	# tmp96, %sfp
+	call	Dummy_RNG_Engine::operator()()	#
+	pxor	%xmm0, %xmm0	# tmp102
 # /opt/local/include/gcc7/char++/bits/random.tcc:3334:       if (__builtin_expect(__ret >= _RealType(1), 0))
-	movsd	lC3(%rip), %xmm2	#, tmp118
+	movsd	lC3(%rip), %xmm2	#, tmp111
 # /opt/local/include/gcc7/char++/bits/random.tcc:3330: 	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
-	movl	%eax, %eax	# _44, _44
-	cvtsi2sdq	%rax, %xmm0	# _44, tmp104
-	mulsd	lC1(%rip), %xmm0	#, tmp109
+	movl	%eax, %eax	# _42, _42
+	cvtsi2sdq	%rax, %xmm0	# _42, tmp102
+	mulsd	lC1(%rip), %xmm0	#, tmp107
 	addsd	8(%rsp), %xmm0	# %sfp, __sum
 # /opt/local/include/gcc7/char++/bits/random.tcc:3333:       __ret = __sum / __tmp;
-	mulsd	lC2(%rip), %xmm0	#, __ret
+	mulsd	lC2(%rip), %xmm0	#, <retval>
 # /opt/local/include/gcc7/char++/bits/random.tcc:3334:       if (__builtin_expect(__ret >= _RealType(1), 0))
-	ucomisd	%xmm2, %xmm0	# tmp118, __ret
-	jnb	L11	#,
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	addsd	%xmm0, %xmm0	# __ret, tmp116
-# 36: }
+	ucomisd	%xmm2, %xmm0	# tmp111, <retval>
+	jnb	L12	#,
+# /opt/local/include/gcc7/char++/bits/random.tcc:3344:     }
 	addq	$16, %rsp	#,
 LCFI2:
 	popq	%rbx	#
 LCFI3:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	subsd	%xmm2, %xmm0	# tmp118, tmp115
-# 36: }
 	ret
 	.align 4,0x90
-L11:
+L12:
 LCFI4:
-# /opt/local/include/gcc7/char++/bits/random.tcc:3337: 	  __ret = std::nextafter(_RealType(1), _RealType(0));
-	movapd	%xmm2, %xmm0	# tmp118,
-	movsd	%xmm2, 8(%rsp)	# tmp118, %sfp
-	pxor	%xmm1, %xmm1	#
-	call	_nextafter	#
-	movsd	8(%rsp), %xmm2	# %sfp, tmp118
-# 36: }
 	addq	$16, %rsp	#,
 LCFI5:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	addsd	%xmm0, %xmm0	# __ret, tmp116
-# 36: }
+# /opt/local/include/gcc7/char++/bits/random.tcc:3337: 	  __ret = std::nextafter(_RealType(1), _RealType(0));
+	movapd	%xmm2, %xmm0	# tmp111,
+	pxor	%xmm1, %xmm1	#
+# /opt/local/include/gcc7/char++/bits/random.tcc:3344:     }
 	popq	%rbx	#
 LCFI6:
+# /opt/local/include/gcc7/char++/bits/random.tcc:3337: 	  __ret = std::nextafter(_RealType(1), _RealType(0));
+	jmp	_nextafter	#
+LFE3077:
+	.align 4,0x90
+	.globl calc_uniform_canonical(Dummy_RNG_Engine&)
+calc_uniform_canonical(Dummy_RNG_Engine&):
+LFB2888:
+	subq	$8, %rsp	#,
+LCFI7:
+# 41:     return 123 * std::generate_canonical<real_type, bits, RNG>(__float128);
+	call	double std::generate_canonical<double, 53ul, Dummy_RNG_Engine>(Dummy_RNG_Engine&)	#
+	mulsd	lC4(%rip), %xmm0	#, tmp90
+# 42: }
+	addq	$8, %rsp	#,
+LCFI8:
+	ret
+LFE2888:
+	.align 4,0x90
+	.globl calc_uniform_unity(Dummy_RNG_Engine&)
+calc_uniform_unity(Dummy_RNG_Engine&):
+LFB2886:
+	subq	$8, %rsp	#,
+LCFI9:
+# /opt/local/include/gcc7/char++/bits/random.h:185: 	                            _Engine>(_M_g);
+	call	double std::generate_canonical<double, 53ul, Dummy_RNG_Engine>(Dummy_RNG_Engine&)	#
 # /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	subsd	%xmm2, %xmm0	# tmp118, tmp115
-# 36: }
+	addsd	lC0(%rip), %xmm0	#, tmp90
+# 30: }
+	addq	$8, %rsp	#,
+LCFI10:
 	ret
 LFE2886:
 	.align 4,0x90
-	.globl get_uniform_manual(Engine&)
-get_uniform_manual(Engine&):
-LFB3240:
-	jmp	get_scaled(Engine&)	#
-LFE3240:
+	.globl calc_uniform(Dummy_RNG_Engine&)
+calc_uniform(Dummy_RNG_Engine&):
+LFB2887:
+	subq	$8, %rsp	#,
+LCFI11:
+# /opt/local/include/gcc7/char++/bits/random.h:185: 	                            _Engine>(_M_g);
+	call	double std::generate_canonical<double, 53ul, Dummy_RNG_Engine>(Dummy_RNG_Engine&)	#
+# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
+	mulsd	lC4(%rip), %xmm0	#, tmp92
+	addsd	lC0(%rip), %xmm0	#, tmp91
+# 36: }
+	addq	$8, %rsp	#,
+LCFI12:
+	ret
+LFE2887:
 	.literal8
+	.align 3
+lC0:
+	.long	0
+	.long	0
 	.align 3
 lC1:
 	.long	0
@@ -138,6 +169,10 @@ lC2:
 lC3:
 	.long	0
 	.long	1072693248
+	.align 3
+lC4:
+	.long	0
+	.long	1079951360
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -163,12 +198,12 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB2886-.
-	.set L$set$2,LFE2886-LFB2886
+	.quad	LFB3077-.
+	.set L$set$2,LFE3077-LFB3077
 	.quad L$set$2
 	.byte	0
 	.byte	0x4
-	.set L$set$3,LCFI0-LFB2886
+	.set L$set$3,LCFI0-LFB3077
 	.long L$set$3
 	.byte	0xe
 	.byte	0x10
@@ -211,12 +246,64 @@ LSFDE3:
 	.long L$set$10
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB3240-.
-	.set L$set$11,LFE3240-LFB3240
+	.quad	LFB2888-.
+	.set L$set$11,LFE2888-LFB2888
 	.quad L$set$11
 	.byte	0
+	.byte	0x4
+	.set L$set$12,LCFI7-LFB2888
+	.long L$set$12
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$13,LCFI8-LCFI7
+	.long L$set$13
+	.byte	0xe
+	.byte	0x8
 	.align 3
 LEFDE3:
+LSFDE5:
+	.set L$set$14,LEFDE5-LASFDE5
+	.long L$set$14
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB2886-.
+	.set L$set$15,LFE2886-LFB2886
+	.quad L$set$15
+	.byte	0
+	.byte	0x4
+	.set L$set$16,LCFI9-LFB2886
+	.long L$set$16
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$17,LCFI10-LCFI9
+	.long L$set$17
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE5:
+LSFDE7:
+	.set L$set$18,LEFDE7-LASFDE7
+	.long L$set$18
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB2887-.
+	.set L$set$19,LFE2887-LFB2887
+	.quad L$set$19
+	.byte	0
+	.byte	0x4
+	.set L$set$20,LCFI11-LFB2887
+	.long L$set$20
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$21,LCFI12-LCFI11
+	.long L$set$21
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE7:
 	.constructor
 	.destructor
 	.align 1

@@ -6,7 +6,6 @@
  * \brief  uniform class definitions.
  * \note   Copyright (c) 2017 Oak Ridge National Laboratory, UT-Battelle, LLC.
  *
-g++ -fverbose-asm -O2 -S -std=c++11 -Wall -Wextra uniform.cc -o - | c++filt > uniform.s
  *
  */
 //---------------------------------------------------------------------------//
@@ -14,27 +13,32 @@ g++ -fverbose-asm -O2 -S -std=c++11 -Wall -Wextra uniform.cc -o - | c++filt > un
 // #include <Nemesis/config.h>
 // #undef NEMESIS_DBC
 // #define NEMESIS_DBC 0
+// #include "Nemesis/sprng/Random.hh"
+// using RNG = nemesis::random::RNG_Engine;
 
 #include <limits>
 #include <random>
 
-//#include "Nemesis/sprng/Random.hh"
-//using RNG = nemesis::random::RNG_Engine;
 #include "Dummy_RNG_Engine.hh"
 using RNG = Dummy_RNG_Engine;
+using real_type = double;
 
-using float_type = double;
-
-float_type calc_uniform(RNG& g)
+real_type calc_uniform_unity(RNG& g)
 {
-    std::uniform_real_distribution<float_type> u(0, 123.0);
+    std::uniform_real_distribution<real_type> u;
     return u(g);
 }
 
-float_type calc_uniform_canonical(RNG& g)
+real_type calc_uniform(RNG& g)
 {
-    constexpr size_t bits = std::numeric_limits<float_type>::digits;
-    return 123 * std::generate_canonical<float_type, bits, RNG>(10);
+    std::uniform_real_distribution<real_type> u(0, 123.0);
+    return u(g);
+}
+
+real_type calc_uniform_canonical(RNG& g)
+{
+    constexpr size_t bits = std::numeric_limits<real_type>::digits;
+    return 123 * std::generate_canonical<real_type, bits, RNG>(g);
 }
 
 //---------------------------------------------------------------------------//

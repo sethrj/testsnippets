@@ -18,6 +18,15 @@ union Double_Unpack
     uint32_t i[2];
 };
 
+bool is_true(bool b)
+{
+    return b;
+}
+
+bool is_flagged_zero(double d)
+{
+    return d == 0.0;
+}
 
 bool is_flagged_minusone(double d)
 {

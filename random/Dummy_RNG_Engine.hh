@@ -11,6 +11,7 @@
 #ifndef random_Dummy_RNG_Engine_hh
 #define random_Dummy_RNG_Engine_hh
 
+#include <cstdint>
 #include <cstddef>
 
 //===========================================================================//
@@ -24,7 +25,7 @@ struct Dummy_RNG_Engine
   public:
     //@{
     //! Typedefs
-    using result_type = unsigned int;
+    using result_type = std::uint32_t;
     using size_type   = std::size_t;
     //@}
 
@@ -37,7 +38,7 @@ struct Dummy_RNG_Engine
     //! Largest possible integer output
     static constexpr result_type max() { return 0xffffffffu; }
 
-    // Generate a random integer (half as efficient as generating a double)
+    // Generate a random integer
     result_type operator()();
 };
 

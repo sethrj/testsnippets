@@ -2,9 +2,9 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
-# -fverbose-asm
+# options passed:  -D__DYNAMIC__ test.cpp -fPIC
+# -mmacosx-version-min=10.13.5 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -55,89 +55,45 @@
 
 	.text
 	.align 4,0x90
-	.globl get_scaled(Engine&)
-get_scaled(Engine&):
-LFB2886:
-	pushq	%rbx	#
-LCFI0:
-	movq	%rdi, %rbx	# long double, long double
-	subq	$16, %rsp	#,
-LCFI1:
-# /opt/local/include/gcc7/char++/bits/random.tcc:3330: 	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
-	call	Engine::operator()()	#
-	pxor	%xmm0, %xmm0	# tmp98
-	pxor	%xmm4, %xmm4	# tmp120
-	movq	%rbx, %rdi	# long double,
-	movl	%eax, %eax	# _31, _31
-	cvtsi2sdq	%rax, %xmm0	# _31, tmp98
-	addsd	%xmm4, %xmm0	# tmp120, tmp98
-	movsd	%xmm0, 8(%rsp)	# tmp98, %sfp
-	call	Engine::operator()()	#
-	pxor	%xmm0, %xmm0	# tmp104
-# /opt/local/include/gcc7/char++/bits/random.tcc:3334:       if (__builtin_expect(__ret >= _RealType(1), 0))
-	movsd	lC3(%rip), %xmm2	#, tmp118
-# /opt/local/include/gcc7/char++/bits/random.tcc:3330: 	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
-	movl	%eax, %eax	# _44, _44
-	cvtsi2sdq	%rax, %xmm0	# _44, tmp104
-	mulsd	lC1(%rip), %xmm0	#, tmp109
-	addsd	8(%rsp), %xmm0	# %sfp, __sum
-# /opt/local/include/gcc7/char++/bits/random.tcc:3333:       __ret = __sum / __tmp;
-	mulsd	lC2(%rip), %xmm0	#, __ret
-# /opt/local/include/gcc7/char++/bits/random.tcc:3334:       if (__builtin_expect(__ret >= _RealType(1), 0))
-	ucomisd	%xmm2, %xmm0	# tmp118, __ret
-	jnb	L11	#,
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	addsd	%xmm0, %xmm0	# __ret, tmp116
-# 36: }
-	addq	$16, %rsp	#,
-LCFI2:
-	popq	%rbx	#
-LCFI3:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	subsd	%xmm2, %xmm0	# tmp118, tmp115
-# 36: }
+	.globl void construct<double>(void*)
+void construct<double>(void*):
+LFB1150:
+# 6:     new (data) T();
+	testq	%rdi, %rdi	# data
+	je	L1	#,
+	movq	$0x000000000, (%rdi)	#, MEM[(double *)data_2(D)]
+L1:
+# 7: }
 	ret
+LFE1150:
 	.align 4,0x90
-L11:
-LCFI4:
-# /opt/local/include/gcc7/char++/bits/random.tcc:3337: 	  __ret = std::nextafter(_RealType(1), _RealType(0));
-	movapd	%xmm2, %xmm0	# tmp118,
-	movsd	%xmm2, 8(%rsp)	# tmp118, %sfp
-	pxor	%xmm1, %xmm1	#
-	call	_nextafter	#
-	movsd	8(%rsp), %xmm2	# %sfp, tmp118
-# 36: }
-	addq	$16, %rsp	#,
-LCFI5:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	addsd	%xmm0, %xmm0	# __ret, tmp116
-# 36: }
-	popq	%rbx	#
-LCFI6:
-# /opt/local/include/gcc7/char++/bits/random.h:1823: 	  return (__aurng() * (__p.b() - __p.a())) + __p.a();
-	subsd	%xmm2, %xmm0	# tmp118, tmp115
-# 36: }
+	.globl void construct_and_zero<double>(void*)
+void construct_and_zero<double>(void*):
+LFB1151:
+# 14:     *my_t = 0;
+	movq	$0x000000000, (%rdi)	#, MEM[(double *)data_1(D)]
+# 15: }
 	ret
-LFE2886:
+LFE1151:
 	.align 4,0x90
-	.globl get_uniform_manual(Engine&)
-get_uniform_manual(Engine&):
-LFB3240:
-	jmp	get_scaled(Engine&)	#
-LFE3240:
-	.literal8
-	.align 3
-lC1:
-	.long	0
-	.long	1106247680
-	.align 3
-lC2:
-	.long	0
-	.long	1005584384
-	.align 3
-lC3:
-	.long	0
-	.long	1072693248
+	.globl void construct<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(void*)
+void construct<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(void*):
+LFB1152:
+# 6:     new (data) T();
+	testq	%rdi, %rdi	# data
+	je	L8	#,
+# /opt/local/include/gcc7/char++/bits/basic_string.h:182: 	return std::pointer_traits<pointer>::pointer_to(*_M_local_buf);
+	leaq	16(%rdi), %rax	#, tmp89
+# /opt/local/include/gcc7/char++/bits/basic_string.h:172:       { _M_string_length = __length; }
+	movq	$0, 8(%rdi)	#, MEM[(size_type *)data_2(D) + 8B]
+# /opt/local/include/gcc7/char++/bits/basic_string.h:182: 	return std::pointer_traits<pointer>::pointer_to(*_M_local_buf);
+	movq	%rax, (%rdi)	# tmp89, MEM[(struct _Alloc_hider *)data_2(D)]._M_p
+# /opt/local/include/gcc7/char++/bits/char_traits.h:285:       { __c1 = __c2; }
+	movb	$0, 16(%rdi)	#, MEM[(char_type &)data_2(D) + 16]
+L8:
+# 7: }
+	ret
+LFE1152:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -163,60 +119,34 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB2886-.
-	.set L$set$2,LFE2886-LFB2886
+	.quad	LFB1150-.
+	.set L$set$2,LFE1150-LFB1150
 	.quad L$set$2
 	.byte	0
-	.byte	0x4
-	.set L$set$3,LCFI0-LFB2886
-	.long L$set$3
-	.byte	0xe
-	.byte	0x10
-	.byte	0x83
-	.byte	0x2
-	.byte	0x4
-	.set L$set$4,LCFI1-LCFI0
-	.long L$set$4
-	.byte	0xe
-	.byte	0x20
-	.byte	0x4
-	.set L$set$5,LCFI2-LCFI1
-	.long L$set$5
-	.byte	0xa
-	.byte	0xe
-	.byte	0x10
-	.byte	0x4
-	.set L$set$6,LCFI3-LCFI2
-	.long L$set$6
-	.byte	0xe
-	.byte	0x8
-	.byte	0x4
-	.set L$set$7,LCFI4-LCFI3
-	.long L$set$7
-	.byte	0xb
-	.byte	0x4
-	.set L$set$8,LCFI5-LCFI4
-	.long L$set$8
-	.byte	0xe
-	.byte	0x10
-	.byte	0x4
-	.set L$set$9,LCFI6-LCFI5
-	.long L$set$9
-	.byte	0xe
-	.byte	0x8
 	.align 3
 LEFDE1:
 LSFDE3:
-	.set L$set$10,LEFDE3-LASFDE3
-	.long L$set$10
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB3240-.
-	.set L$set$11,LFE3240-LFB3240
-	.quad L$set$11
+	.quad	LFB1151-.
+	.set L$set$4,LFE1151-LFB1151
+	.quad L$set$4
 	.byte	0
 	.align 3
 LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB1152-.
+	.set L$set$6,LFE1152-LFB1152
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
 	.constructor
 	.destructor
 	.align 1
