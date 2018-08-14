@@ -53,8 +53,8 @@ double return_double(double x)
 double flip_sign_flag_if_call(double x, bool adj)
 {
     if (adj)
-        return flip_sign_int(x)
-    return return_dobule(x);
+        return flip_sign_int(x);
+    return return_double(x);
 }
 
 //---------------------------------------------------------------------------//
