@@ -2,7 +2,7 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ unrolled.cc -fPIC
+# options passed:  -D__DYNAMIC__ objects-unreachable.cc -fPIC
 # -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -57,45 +57,35 @@
 	.align 4,0x90
 	.globl calc_gen_intersection(Surface_Type, double const*, double const*, double const*)
 calc_gen_intersection(Surface_Type, double const*, double const*, double const*):
-LFB0:
-# 9:     switch (short)
+LFB2:
+# 31:     switch (short)
 	cmpb	$1, %dil	#, short
+# 21:         return (d_position - pos[N]) / dir[N];
+	movsd	(%rsi), %xmm0	# *coeff_ptr_7(D), *coeff_ptr_7(D)
+# 31:     switch (short)
 	je	L3	#,
 	cmpb	$2, %dil	#, short
 	je	L4	#,
-	testb	%dil, %dil	# short
-	je	L9	#,
-# 8:     double distance = -1;
-	movsd	lC0(%rip), %xmm0	#, <retval>
-# 17: }
-	ret
-	.align 4,0x90
-L9:
-# 11:         case (Surface_Type::PX): distance = (*coeff_ptr - pos[0]) / dir[0]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	(%rdx), %xmm0	# *pos_17(D), tmp105
-	divsd	(%rcx), %xmm0	# *dir_18(D), <retval>
+# 21:         return (d_position - pos[N]) / dir[N];
+	subsd	(%rdx), %xmm0	# *pos_8(D), tmp105
+	divsd	(%rcx), %xmm0	# *dir_9(D), <retval>
+# 33:         case (Surface_Type::PX): {distance = Ortho_Plane<0>(*coeff_ptr).calc_intersection(pos, dir);}; break;
 	ret
 	.align 4,0x90
 L4:
-# 13:         case (Surface_Type::PZ): distance = (*coeff_ptr - pos[2]) / dir[2]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	16(%rdx), %xmm0	# MEM[(const double *)pos_17(D) + 16B], tmp109
-	divsd	16(%rcx), %xmm0	# MEM[(const double *)dir_18(D) + 16B], <retval>
+# 21:         return (d_position - pos[N]) / dir[N];
+	subsd	16(%rdx), %xmm0	# MEM[(const double *)pos_8(D) + 16B], tmp109
+	divsd	16(%rcx), %xmm0	# MEM[(const double *)dir_9(D) + 16B], <retval>
+# 39: }
 	ret
 	.align 4,0x90
 L3:
-# 12:         case (Surface_Type::PY): distance = (*coeff_ptr - pos[1]) / dir[1]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	8(%rdx), %xmm0	# MEM[(const double *)pos_17(D) + 8B], tmp107
-	divsd	8(%rcx), %xmm0	# MEM[(const double *)dir_18(D) + 8B], <retval>
+# 21:         return (d_position - pos[N]) / dir[N];
+	subsd	8(%rdx), %xmm0	# MEM[(const double *)pos_8(D) + 8B], tmp107
+	divsd	8(%rcx), %xmm0	# MEM[(const double *)dir_9(D) + 8B], <retval>
+# 34:         case (Surface_Type::PY): {distance = Ortho_Plane<1>(*coeff_ptr).calc_intersection(pos, dir);}; break;
 	ret
-LFE0:
-	.literal8
-	.align 3
-lC0:
-	.long	0
-	.long	-1074790400
+LFE2:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -121,8 +111,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB0-.
-	.set L$set$2,LFE0-LFB0
+	.quad	LFB2-.
+	.set L$set$2,LFE2-LFB2
 	.quad L$set$2
 	.byte	0
 	.align 3

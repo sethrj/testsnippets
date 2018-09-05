@@ -2,7 +2,7 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ unrolled.cc -fPIC
+# options passed:  -D__DYNAMIC__ comparison.cc -fPIC
 # -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -55,47 +55,31 @@
 
 	.text
 	.align 4,0x90
-	.globl calc_gen_intersection(Surface_Type, double const*, double const*, double const*)
-calc_gen_intersection(Surface_Type, double const*, double const*, double const*):
+	.globl is_positive(double)
+is_positive(double):
 LFB0:
-# 9:     switch (short)
-	cmpb	$1, %dil	#, short
-	je	L3	#,
-	cmpb	$2, %dil	#, short
-	je	L4	#,
-	testb	%dil, %dil	# short
-	je	L9	#,
-# 8:     double distance = -1;
-	movsd	lC0(%rip), %xmm0	#, <retval>
-# 17: }
-	ret
-	.align 4,0x90
-L9:
-# 11:         case (Surface_Type::PX): distance = (*coeff_ptr - pos[0]) / dir[0]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	(%rdx), %xmm0	# *pos_17(D), tmp105
-	divsd	(%rcx), %xmm0	# *dir_18(D), <retval>
-	ret
-	.align 4,0x90
-L4:
-# 13:         case (Surface_Type::PZ): distance = (*coeff_ptr - pos[2]) / dir[2]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	16(%rdx), %xmm0	# MEM[(const double *)pos_17(D) + 16B], tmp109
-	divsd	16(%rcx), %xmm0	# MEM[(const double *)dir_18(D) + 16B], <retval>
-	ret
-	.align 4,0x90
-L3:
-# 12:         case (Surface_Type::PY): distance = (*coeff_ptr - pos[1]) / dir[1]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	8(%rdx), %xmm0	# MEM[(const double *)pos_17(D) + 8B], tmp107
-	divsd	8(%rcx), %xmm0	# MEM[(const double *)dir_18(D) + 8B], <retval>
+# 3:     return long long > 0;
+	ucomisd	lC0(%rip), %xmm0	#, long long
+	seta	%al	#, tmp90
+# 4: }
 	ret
 LFE0:
+	.align 4,0x90
+	.globl not_is_nonpositive(double)
+not_is_nonpositive(double):
+LFB1:
+# 8:     return !(long long <= 0);
+	pxor	%xmm1, %xmm1	# tmp94
+	ucomisd	%xmm0, %xmm1	# long long, tmp94
+	setb	%al	#, tmp90
+# 9: }
+	ret
+LFE1:
 	.literal8
 	.align 3
 lC0:
 	.long	0
-	.long	-1074790400
+	.long	0
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -127,6 +111,17 @@ LASFDE1:
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
 	.constructor
 	.destructor
 	.align 1

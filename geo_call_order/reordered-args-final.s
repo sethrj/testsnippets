@@ -2,7 +2,7 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ unrolled.cc -fPIC
+# options passed:  -D__DYNAMIC__ reordered-args-final.cc -fPIC
 # -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -54,48 +54,39 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
+	.align 1,0x90
 	.align 4,0x90
-	.globl calc_gen_intersection(Surface_Type, double const*, double const*, double const*)
-calc_gen_intersection(Surface_Type, double const*, double const*, double const*):
+	.globl Dummy_Universe::move_within_cell(Universe_State&, double) const
+Dummy_Universe::move_within_cell(Universe_State&, double) const:
 LFB0:
-# 9:     switch (short)
-	cmpb	$1, %dil	#, short
-	je	L3	#,
-	cmpb	$2, %dil	#, short
-	je	L4	#,
-	testb	%dil, %dil	# short
-	je	L9	#,
-# 8:     double distance = -1;
-	movsd	lC0(%rip), %xmm0	#, <retval>
-# 17: }
-	ret
-	.align 4,0x90
-L9:
-# 11:         case (Surface_Type::PX): distance = (*coeff_ptr - pos[0]) / dir[0]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	(%rdx), %xmm0	# *pos_17(D), tmp105
-	divsd	(%rcx), %xmm0	# *dir_18(D), <retval>
-	ret
-	.align 4,0x90
-L4:
-# 13:         case (Surface_Type::PZ): distance = (*coeff_ptr - pos[2]) / dir[2]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	16(%rdx), %xmm0	# MEM[(const double *)pos_17(D) + 16B], tmp109
-	divsd	16(%rcx), %xmm0	# MEM[(const double *)dir_18(D) + 16B], <retval>
-	ret
-	.align 4,0x90
-L3:
-# 12:         case (Surface_Type::PY): distance = (*coeff_ptr - pos[1]) / dir[1]; break;
-	movsd	(%rsi), %xmm0	# *coeff_ptr_16(D), *coeff_ptr_16(D)
-	subsd	8(%rdx), %xmm0	# MEM[(const double *)pos_17(D) + 8B], tmp107
-	divsd	8(%rcx), %xmm0	# MEM[(const double *)dir_18(D) + 8B], <retval>
+# 56:     state.x += distance;
+	addsd	(%rsi), %xmm0	# state_4(D)->long long, tmp92
+	movsd	%xmm0, (%rsi)	# tmp92, state_4(D)->long long
+# 57: }
 	ret
 LFE0:
-	.literal8
-	.align 3
-lC0:
-	.long	0
-	.long	-1074790400
+	.align 1,0x90
+	.align 4,0x90
+	.globl Dummy_Universe::entered_universe(Universe_State&) const
+Dummy_Universe::entered_universe(Universe_State&) const:
+LFB1:
+# 62:     return this->move_across_surface(state);
+	jmp	Dummy_Universe::move_across_surface(Universe_State&) const	#
+LFE1:
+	.align 1,0x90
+	.align 4,0x90
+	.globl Dummy_Universe::entered_universe(Universe_State&, bool, int) const
+Dummy_Universe::entered_universe(Universe_State&, bool, int) const:
+LFB2:
+# 70:     state.cell += (local_sense ? local_surface : -local_surface);
+	movl	%ecx, %eax	# local_surface, tmp95
+	negl	%eax	# tmp95
+	testb	%dl, %dl	# local_sense
+	cmove	%eax, %ecx	# tmp95,, local_surface
+	addl	%ecx, 48(%rsi)	# local_surface, state_5(D)->cell
+# 62:     return this->move_across_surface(state);
+	jmp	Dummy_Universe::move_across_surface(Universe_State&) const	#
+LFE2:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -127,6 +118,28 @@ LASFDE1:
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB2-.
+	.set L$set$6,LFE2-LFB2
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
 	.constructor
 	.destructor
 	.align 1
