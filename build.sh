@@ -10,7 +10,7 @@ CXX=g++-mp-7
 for filename in $*; do
   basename="${filename%.*}"
   $CXX -Wall -Wextra -Werror -O2 ${CXXFLAGS} \
-     -std=c++11 \
+     -std=c++17 \
      -fverbose-asm -S  -c ${filename} -o - \
      | c++filt | sed -e "s/${filename}://" \
      > ${basename}.s
