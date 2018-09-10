@@ -1,0 +1,18 @@
+Changing 
+```
+    if (value < lower)
+        value = lower;
+    else if (value > upper)
+        value = upper;
+    return value;
+```
+to
+```
+    if (value < lower)
+        value = lower;
+    if (value > upper)
+        value = upper;
+    return value;
+```
+
+vastly simplifies the assembly
