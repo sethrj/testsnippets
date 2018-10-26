@@ -1,9 +1,9 @@
-# GNU C++11 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
+# GNU C++14 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++z
 # -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
@@ -57,7 +57,7 @@
 	.align 4,0x90
 	.globl lt1(std::pair<int, int>, std::pair<int, int>)
 lt1(std::pair<int, int>, std::pair<int, int>):
-LFB73:
+LFB139:
 # 19:     if (a.first < b.first)
 	cmpl	%esi, %edi	# bool, signed char
 # 20:         return true;
@@ -76,11 +76,11 @@ LFB73:
 L1:
 # 27: }
 	ret
-LFE73:
+LFE139:
 	.align 4,0x90
-	.globl lt2(std::pair<int, int>, std::pair<int, int>)
-lt2(std::pair<int, int>, std::pair<int, int>):
-LFB74:
+	.globl lt1e2(std::pair<int, int>, std::pair<int, int>)
+lt1e2(std::pair<int, int>, std::pair<int, int>):
+LFB140:
 # 31:     if (a.first != b.first)
 	cmpl	%esi, %edi	# bool, signed char
 	jne	L9	#,
@@ -92,171 +92,186 @@ L9:
 	setl	%al	#, <retval>
 # 34: }
 	ret
-LFE74:
+LFE140:
 	.align 4,0x90
-	.globl lt3(std::pair<int, int>, std::pair<int, int>)
-lt3(std::pair<int, int>, std::pair<int, int>):
-LFB75:
-# 39:             || (a.first == b.first && (a.second < b.second)));
-	cmpl	%esi, %edi	# bool, signed char
-	movl	$1, %eax	#, <retval>
-	jl	L10	#,
-	movl	$0, %eax	#, <retval>
-	je	L14	#,
-L10:
-# 40: }
-	ret
-	.align 4,0x90
-L14:
-# 39:             || (a.first == b.first && (a.second < b.second)));
-	sarq	$32, %rdi	#, tmp94
-	sarq	$32, %rsi	#, tmp95
-	cmpl	%esi, %edi	# tmp95, tmp94
-	setl	%al	#, <retval>
-# 40: }
-	ret
-LFE75:
-	.align 4,0x90
-	.globl lt4(std::pair<int, int>, std::pair<int, int>)
-lt4(std::pair<int, int>, std::pair<int, int>):
-LFB84:
+	.globl lt1e2eee(std::pair<int, int>, std::pair<int, int>)
+lt1e2eee(std::pair<int, int>, std::pair<int, int>):
+LFB151:
 	movq	%rdi, %rdx	# signed char, tmp94
 	movq	%rsi, %rax	# bool, tmp95
 	sarq	$32, %rdx	#, tmp94
 	sarq	$32, %rax	#, tmp95
 	cmpl	%esi, %edi	# bool, signed char
-	jne	L18	#,
+	jne	L13	#,
 	cmpl	%eax, %edx	# tmp95, tmp94
-L18:
+L13:
 	setl	%al	#, <retval>
 	ret
-LFE84:
+LFE151:
+	.align 4,0x90
+	.globl lt3(std::pair<int, int>, std::pair<int, int>)
+lt3(std::pair<int, int>, std::pair<int, int>):
+LFB142:
+# 47:             || (a.first == b.first && (a.second < b.second)));
+	cmpl	%esi, %edi	# bool, signed char
+	movl	$1, %eax	#, <retval>
+	jl	L14	#,
+	movl	$0, %eax	#, <retval>
+	je	L18	#,
+L14:
+# 48: }
+	ret
+	.align 4,0x90
+L18:
+# 47:             || (a.first == b.first && (a.second < b.second)));
+	sarq	$32, %rdi	#, tmp94
+	sarq	$32, %rsi	#, tmp95
+	cmpl	%esi, %edi	# tmp95, tmp94
+	setl	%al	#, <retval>
+# 48: }
+	ret
+LFE142:
+	.align 4,0x90
+	.globl lt4(std::pair<int, int>, std::pair<int, int>)
+lt4(std::pair<int, int>, std::pair<int, int>):
+LFB153:
+	movq	%rdi, %rdx	# signed char, tmp94
+	movq	%rsi, %rax	# bool, tmp95
+	sarq	$32, %rdx	#, tmp94
+	sarq	$32, %rax	#, tmp95
+	cmpl	%esi, %edi	# bool, signed char
+	jne	L22	#,
+	cmpl	%eax, %edx	# tmp95, tmp94
+L22:
+	setl	%al	#, <retval>
+	ret
+LFE153:
 	.align 4,0x90
 	.globl lt1a(std::pair<int, int>, std::pair<int, int>)
 lt1a(std::pair<int, int>, std::pair<int, int>):
-LFB77:
+LFB144:
 	movq	%rdi, %rcx	# signed char, tmp96
 	movq	%rsi, %rdx	# bool, tmp97
-# 51:         return (a.first < b.first); // true
+# 59:         return (a.first < b.first); // true
 	movl	$1, %eax	#, <retval>
 	sarq	$32, %rcx	#, tmp96
 	sarq	$32, %rdx	#, tmp97
-# 50:     if (a.first < b.first)
+# 58:     if (a.first < b.first)
 	cmpl	%esi, %edi	# bool, signed char
-	jl	L19	#,
-# 52:     else if (a.first > b.first)
+	jl	L23	#,
+# 60:     else if (a.first > b.first)
 	setle	%al	#, tmp99
-# 54:     else if (a.second < b.second)
+# 62:     else if (a.second < b.second)
 	cmpl	%edx, %ecx	# tmp97, tmp96
 	setl	%dl	#, tmp101
 	andl	%edx, %eax	# tmp101, <retval>
-L19:
-# 58: }
+L23:
+# 66: }
 	ret
-LFE77:
+LFE144:
 	.align 4,0x90
 	.globl lt1b(std::pair<int, int>, std::pair<int, int>)
 lt1b(std::pair<int, int>, std::pair<int, int>):
-LFB78:
-# 62:     if (a.first < b.first)
+LFB145:
+# 70:     if (a.first < b.first)
 	cmpl	%esi, %edi	# bool, signed char
-# 63:         return (a.first < b.first); // true
+# 71:         return (a.first < b.first); // true
 	movl	$1, %eax	#, <retval>
-# 62:     if (a.first < b.first)
-	jl	L22	#,
-# 65:         return (a.first <= b.first); // false
+# 70:     if (a.first < b.first)
+	jl	L26	#,
+# 73:         return (a.first <= b.first); // false
 	movl	$0, %eax	#, <retval>
-# 64:     else if (a.first > b.first)
-	jg	L22	#,
-# 67:         return (a.second < b.second); // true
+# 72:     else if (a.first > b.first)
+	jg	L26	#,
+# 75:         return (a.second < b.second); // true
 	sarq	$32, %rdi	#, tmp94
 	sarq	$32, %rsi	#, tmp95
 	cmpl	%esi, %edi	# tmp95, tmp94
 	setl	%al	#, <retval>
-L22:
-# 68: }
+L26:
+# 76: }
 	ret
-LFE78:
+LFE145:
 	.align 4,0x90
 	.globl lt1c(std::pair<int, int>, std::pair<int, int>)
 lt1c(std::pair<int, int>, std::pair<int, int>):
-LFB79:
-# 74:     else if (a.first < b.first)
+LFB146:
+# 82:     else if (a.first < b.first)
 	cmpl	%esi, %edi	# bool, signed char
 	setl	%al	#, <retval>
-# 72:     if (a.first == b.first)
-	cmpl	%esi, %edi	# bool, signed char
-	je	L29	#,
-# 78: }
-	ret
-	.align 4,0x90
-L29:
-# 73:         return (a.second < b.second);
-	sarq	$32, %rdi	#, tmp94
-	sarq	$32, %rsi	#, tmp95
-	cmpl	%esi, %edi	# tmp95, tmp94
-	setl	%al	#, <retval>
-# 78: }
-	ret
-LFE79:
-	.align 4,0x90
-	.globl lt1d(std::pair<int, int>, std::pair<int, int>)
-lt1d(std::pair<int, int>, std::pair<int, int>):
-LFB80:
-# 85:         return (a.first < b.first);
-	cmpl	%esi, %edi	# bool, signed char
-	setl	%al	#, <retval>
-# 82:     if (a.first == b.first)
+# 80:     if (a.first == b.first)
 	cmpl	%esi, %edi	# bool, signed char
 	je	L33	#,
 # 86: }
 	ret
 	.align 4,0x90
 L33:
-# 83:         return (a.second < b.second);
+# 81:         return (a.second < b.second);
 	sarq	$32, %rdi	#, tmp94
 	sarq	$32, %rsi	#, tmp95
 	cmpl	%esi, %edi	# tmp95, tmp94
 	setl	%al	#, <retval>
 # 86: }
 	ret
-LFE80:
+LFE146:
+	.align 4,0x90
+	.globl lt1d(std::pair<int, int>, std::pair<int, int>)
+lt1d(std::pair<int, int>, std::pair<int, int>):
+LFB147:
+# 93:         return (a.first < b.first);
+	cmpl	%esi, %edi	# bool, signed char
+	setl	%al	#, <retval>
+# 90:     if (a.first == b.first)
+	cmpl	%esi, %edi	# bool, signed char
+	je	L37	#,
+# 94: }
+	ret
+	.align 4,0x90
+L37:
+# 91:         return (a.second < b.second);
+	sarq	$32, %rdi	#, tmp94
+	sarq	$32, %rsi	#, tmp95
+	cmpl	%esi, %edi	# tmp95, tmp94
+	setl	%al	#, <retval>
+# 94: }
+	ret
+LFE147:
 	.align 4,0x90
 	.globl lt1e(std::pair<int, int>, std::pair<int, int>)
 lt1e(std::pair<int, int>, std::pair<int, int>):
-LFB86:
+LFB155:
 	movq	%rdi, %rdx	# signed char, tmp94
 	movq	%rsi, %rax	# bool, tmp95
 	sarq	$32, %rdx	#, tmp94
 	sarq	$32, %rax	#, tmp95
 	cmpl	%esi, %edi	# bool, signed char
-	jne	L37	#,
+	jne	L41	#,
 	cmpl	%eax, %edx	# tmp95, tmp94
-L37:
+L41:
 	setl	%al	#, <retval>
 	ret
-LFE86:
+LFE155:
 	.align 4,0x90
 	.globl lt1f(std::pair<int, int>, std::pair<int, int>)
 lt1f(std::pair<int, int>, std::pair<int, int>):
-LFB82:
-# 98:     if (LIKELY(a.first != b.first))
+LFB149:
+# 106:     if (LIKELY(a.first != b.first))
 	cmpl	%esi, %edi	# bool, signed char
-	je	L39	#,
-# 101:         return (a.second < b.second);
+	je	L43	#,
+# 109:         return (a.second < b.second);
 	setl	%al	#, <retval>
-# 102: }
+# 110: }
 	ret
 	.align 4,0x90
-L39:
-# 101:         return (a.second < b.second);
+L43:
+# 109:         return (a.second < b.second);
 	sarq	$32, %rdi	#, tmp95
 	sarq	$32, %rsi	#, tmp96
 	cmpl	%esi, %edi	# tmp96, tmp95
 	setl	%al	#, <retval>
-# 102: }
+# 110: }
 	ret
-LFE82:
+LFE149:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -282,8 +297,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB73-.
-	.set L$set$2,LFE73-LFB73
+	.quad	LFB139-.
+	.set L$set$2,LFE139-LFB139
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -293,8 +308,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB74-.
-	.set L$set$4,LFE74-LFB74
+	.quad	LFB140-.
+	.set L$set$4,LFE140-LFB140
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -304,8 +319,8 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB75-.
-	.set L$set$6,LFE75-LFB75
+	.quad	LFB151-.
+	.set L$set$6,LFE151-LFB151
 	.quad L$set$6
 	.byte	0
 	.align 3
@@ -315,8 +330,8 @@ LSFDE7:
 	.long L$set$7
 LASFDE7:
 	.long	LASFDE7-EH_frame1
-	.quad	LFB84-.
-	.set L$set$8,LFE84-LFB84
+	.quad	LFB142-.
+	.set L$set$8,LFE142-LFB142
 	.quad L$set$8
 	.byte	0
 	.align 3
@@ -326,8 +341,8 @@ LSFDE9:
 	.long L$set$9
 LASFDE9:
 	.long	LASFDE9-EH_frame1
-	.quad	LFB77-.
-	.set L$set$10,LFE77-LFB77
+	.quad	LFB153-.
+	.set L$set$10,LFE153-LFB153
 	.quad L$set$10
 	.byte	0
 	.align 3
@@ -337,8 +352,8 @@ LSFDE11:
 	.long L$set$11
 LASFDE11:
 	.long	LASFDE11-EH_frame1
-	.quad	LFB78-.
-	.set L$set$12,LFE78-LFB78
+	.quad	LFB144-.
+	.set L$set$12,LFE144-LFB144
 	.quad L$set$12
 	.byte	0
 	.align 3
@@ -348,8 +363,8 @@ LSFDE13:
 	.long L$set$13
 LASFDE13:
 	.long	LASFDE13-EH_frame1
-	.quad	LFB79-.
-	.set L$set$14,LFE79-LFB79
+	.quad	LFB145-.
+	.set L$set$14,LFE145-LFB145
 	.quad L$set$14
 	.byte	0
 	.align 3
@@ -359,8 +374,8 @@ LSFDE15:
 	.long L$set$15
 LASFDE15:
 	.long	LASFDE15-EH_frame1
-	.quad	LFB80-.
-	.set L$set$16,LFE80-LFB80
+	.quad	LFB146-.
+	.set L$set$16,LFE146-LFB146
 	.quad L$set$16
 	.byte	0
 	.align 3
@@ -370,8 +385,8 @@ LSFDE17:
 	.long L$set$17
 LASFDE17:
 	.long	LASFDE17-EH_frame1
-	.quad	LFB86-.
-	.set L$set$18,LFE86-LFB86
+	.quad	LFB147-.
+	.set L$set$18,LFE147-LFB147
 	.quad L$set$18
 	.byte	0
 	.align 3
@@ -381,12 +396,23 @@ LSFDE19:
 	.long L$set$19
 LASFDE19:
 	.long	LASFDE19-EH_frame1
-	.quad	LFB82-.
-	.set L$set$20,LFE82-LFB82
+	.quad	LFB155-.
+	.set L$set$20,LFE155-LFB155
 	.quad L$set$20
 	.byte	0
 	.align 3
 LEFDE19:
+LSFDE21:
+	.set L$set$21,LEFDE21-LASFDE21
+	.long L$set$21
+LASFDE21:
+	.long	LASFDE21-EH_frame1
+	.quad	LFB149-.
+	.set L$set$22,LFE149-LFB149
+	.quad L$set$22
+	.byte	0
+	.align 3
+LEFDE21:
 	.constructor
 	.destructor
 	.align 1

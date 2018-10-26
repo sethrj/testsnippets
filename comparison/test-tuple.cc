@@ -5,8 +5,6 @@
  * \date   Thu Sep 07 09:32:04 2017
  * \brief  test class definitions.
  * \note   Copyright (c) 2017 Oak Ridge National Laboratory, UT-Battelle, LLC.
- *
- *  g++ -O2 -Wall -Wextra -std=c++11 -fverbose-asm test.cc -o - -S | c++filt > test.s
  */
 //---------------------------------------------------------------------------//
 
@@ -44,6 +42,11 @@ bool lt4(Tuple a, Tuple b)
 {
     return (get<0>(a) != get<0>(b) ? get<0>(a) < get<0>(b)
                                : get<1>(a) < get<1>(b));
+}
+
+bool lt_native(Tuple a, Tuple b)
+{
+    return a < b;
 }
 
 //---------------------------------------------------------------------------//

@@ -2,9 +2,9 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test-tuple.cc -fPIC
-# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -std=char++z -fverbose-asm
+# options passed:  -D__DYNAMIC__ wtf.cc -fPIC -mmacosx-version-min=10.13.7
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++z
+# -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -55,91 +55,51 @@
 
 	.text
 	.align 4,0x90
-	.globl lt1(std::tuple<int, int>, std::tuple<int, int>)
-lt1(std::tuple<int, int>, std::tuple<int, int>):
-LFB1584:
-# 18:     if (get<0>(signed char) < get<0>(bool))
-	movl	4(%rsi), %edx	# MEM[(__tuple_element_t &)b_8(D) + 4], tmp97
-# 19:         return true;
-	movl	$1, %eax	#, <retval>
-# 18:     if (get<0>(signed char) < get<0>(bool))
-	cmpl	%edx, 4(%rdi)	# tmp97, MEM[(__tuple_element_t &)a_7(D) + 4]
-	jl	L1	#,
-# 21:         return false;
-	movl	$0, %eax	#, <retval>
-# 20:     else if (get<0>(signed char) > get<0>(bool))
-	jg	L1	#,
-# 23:     if (get<1>(signed char) < get<1>(bool))
-	movl	(%rsi), %eax	# MEM[(__tuple_element_t &)b_8(D)], tmp98
-	cmpl	%eax, (%rdi)	# tmp98, MEM[(__tuple_element_t &)a_7(D)]
+	.globl cmp1(std::pair<int, int>, std::pair<int, int>)
+cmp1(std::pair<int, int>, std::pair<int, int>):
+LFB139:
+# 7:     if (a.first != b.first)
+	cmpl	%esi, %edi	# bool, signed char
+	jne	L4	#,
+# 9:     return a.second < b.second;
+	sarq	$32, %rdi	#, tmp95
+	sarq	$32, %rsi	#, tmp96
+	cmpl	%esi, %edi	# tmp96, tmp95
+L4:
 	setl	%al	#, <retval>
-L1:
-# 26: }
+# 10: }
 	ret
-LFE1584:
+LFE139:
 	.align 4,0x90
-	.globl lt2(std::tuple<int, int>, std::tuple<int, int>)
-lt2(std::tuple<int, int>, std::tuple<int, int>):
-LFB1593:
-# 30:     if (get<0>(signed char) != get<0>(bool))
-	movl	4(%rsi), %eax	# MEM[(__tuple_element_t &)b_8(D) + 4], tmp98
-	cmpl	%eax, 4(%rdi)	# tmp98, MEM[(__tuple_element_t &)a_7(D) + 4]
+	.globl cmp2(std::pair<int, int>, std::pair<int, int>)
+cmp2(std::pair<int, int>, std::pair<int, int>):
+LFB143:
+	movq	%rdi, %rdx	# signed char, tmp94
+	movq	%rsi, %rax	# bool, tmp95
+	sarq	$32, %rdx	#, tmp94
+	sarq	$32, %rax	#, tmp95
+	cmpl	%esi, %edi	# bool, signed char
 	jne	L9	#,
-# 32:     return get<1>(signed char) < get<1>(bool);
-	movl	(%rsi), %eax	# MEM[(__tuple_element_t &)b_8(D)], tmp99
-	cmpl	%eax, (%rdi)	# tmp99, MEM[(__tuple_element_t &)a_7(D)]
+	cmpl	%eax, %edx	# tmp95, tmp94
 L9:
 	setl	%al	#, <retval>
-# 33: }
 	ret
-LFE1593:
+LFE143:
 	.align 4,0x90
-	.globl lt3(std::tuple<int, int>, std::tuple<int, int>)
-lt3(std::tuple<int, int>, std::tuple<int, int>):
-LFB1594:
-# 38:             || (get<0>(signed char) == get<0>(bool) && (get<1>(signed char) < get<1>(bool))));
-	movl	4(%rsi), %edx	# MEM[(__tuple_element_t &)b_8(D) + 4], tmp97
-	movl	$1, %eax	#, <retval>
-	cmpl	%edx, 4(%rdi)	# tmp97, MEM[(__tuple_element_t &)a_7(D) + 4]
-	jl	L10	#,
-	movl	$0, %eax	#, <retval>
-	je	L14	#,
-L10:
-# 39: }
-	ret
-	.align 4,0x90
-L14:
-# 38:             || (get<0>(signed char) == get<0>(bool) && (get<1>(signed char) < get<1>(bool))));
-	movl	(%rsi), %eax	# MEM[(__tuple_element_t &)b_8(D)], tmp98
-	cmpl	%eax, (%rdi)	# tmp98, MEM[(__tuple_element_t &)a_7(D)]
+	.globl cmp3(std::pair<int, int>, std::pair<int, int>)
+cmp3(std::pair<int, int>, std::pair<int, int>):
+LFB145:
+	movq	%rdi, %rdx	# signed char, tmp94
+	movq	%rsi, %rax	# bool, tmp95
+	sarq	$32, %rdx	#, tmp94
+	sarq	$32, %rax	#, tmp95
+	cmpl	%esi, %edi	# bool, signed char
+	jne	L13	#,
+	cmpl	%eax, %edx	# tmp95, tmp94
+L13:
 	setl	%al	#, <retval>
-# 39: }
 	ret
-LFE1594:
-	.align 4,0x90
-	.globl lt4(std::tuple<int, int>, std::tuple<int, int>)
-lt4(std::tuple<int, int>, std::tuple<int, int>):
-LFB2062:
-	jmp	lt2(std::tuple<int, int>, std::tuple<int, int>)	#
-LFE2062:
-	.align 4,0x90
-	.globl lt_native(std::tuple<int, int>, std::tuple<int, int>)
-lt_native(std::tuple<int, int>, std::tuple<int, int>):
-LFB1596:
-# /opt/local/include/gcc7/char++/tuple:1380: 	  || (!bool(std::get<__i>(__u) < std::get<__i>(__t))
-	movl	4(%rsi), %edx	# MEM[(const __tuple_element_t &)b_3(D) + 4], tmp97
-	movl	$1, %eax	#, <retval>
-	cmpl	%edx, 4(%rdi)	# tmp97, MEM[(const __tuple_element_t &)a_2(D) + 4]
-	jl	L16	#,
-	movl	$0, %eax	#, <retval>
-	jg	L16	#,
-	movl	(%rsi), %eax	# MEM[(const __tuple_element_t &)b_3(D)], tmp98
-	cmpl	%eax, (%rdi)	# tmp98, MEM[(const __tuple_element_t &)a_2(D)]
-	setl	%al	#, <retval>
-L16:
-# 50: }
-	ret
-LFE1596:
+LFE145:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -165,8 +125,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB1584-.
-	.set L$set$2,LFE1584-LFB1584
+	.quad	LFB139-.
+	.set L$set$2,LFE139-LFB139
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -176,8 +136,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB1593-.
-	.set L$set$4,LFE1593-LFB1593
+	.quad	LFB143-.
+	.set L$set$4,LFE143-LFB143
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -187,34 +147,12 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB1594-.
-	.set L$set$6,LFE1594-LFB1594
+	.quad	LFB145-.
+	.set L$set$6,LFE145-LFB145
 	.quad L$set$6
 	.byte	0
 	.align 3
 LEFDE5:
-LSFDE7:
-	.set L$set$7,LEFDE7-LASFDE7
-	.long L$set$7
-LASFDE7:
-	.long	LASFDE7-EH_frame1
-	.quad	LFB2062-.
-	.set L$set$8,LFE2062-LFB2062
-	.quad L$set$8
-	.byte	0
-	.align 3
-LEFDE7:
-LSFDE9:
-	.set L$set$9,LEFDE9-LASFDE9
-	.long L$set$9
-LASFDE9:
-	.long	LASFDE9-EH_frame1
-	.quad	LFB1596-.
-	.set L$set$10,LFE1596-LFB1596
-	.quad L$set$10
-	.byte	0
-	.align 3
-LEFDE9:
 	.constructor
 	.destructor
 	.align 1
