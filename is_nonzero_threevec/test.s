@@ -2,9 +2,9 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test-nonpod.cc -fPIC
-# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -std=char++z -fverbose-asm
+# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++z
+# -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -54,30 +54,32 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
+	.align 1,0x90
 	.align 4,0x90
-	.globl table_lookup(bool, bool)
-table_lookup(bool, bool):
-LFB1394:
-# 8:     return g_results[signed char][bool];
-	leaq	g_results(%rip), %rdx	#, tmp98
-	movzbl	%sil, %esi	# bool, bool
-	movzbl	%dil, %edi	# signed char, signed char
-	salq	$2, %rsi	#, tmp102
-	leaq	(%rsi,%rdi,8), %rax	#, tmp100
-	movl	(%rdx,%rax), %eax	# MEM[(const value_type &)_5], tmp104
-# 9: }
+	.globl three_vec::is_nonzero()
+three_vec::is_nonzero():
+LFB0:
+# 12:         || value[2] != 0.0;
+	pxor	%xmm0, %xmm0	# tmp92
+	ucomisd	(%rdi), %xmm0	# this_6(D)->value, tmp92
+	jp	L4	#,
+	jne	L4	#,
+# 11:         || value[1] != 0.0
+	ucomisd	8(%rdi), %xmm0	# this_6(D)->value, tmp92
+	jp	L4	#,
+	jne	L4	#,
+# 12:         || value[2] != 0.0;
+	ucomisd	16(%rdi), %xmm0	# this_6(D)->value, tmp92
+	movl	$1, %edx	#, tmp102
+	setp	%al	#, tmp99
+	cmovne	%edx, %eax	# tmp99,, tmp102, <retval>
 	ret
-LFE1394:
-	.const
-	.align 4
-g_results:
-# _M_elems:
-# _M_elems:
-	.long	2
-	.long	0
-# _M_elems:
-	.long	3
-	.long	5
+	.align 4,0x90
+L4:
+	movl	$1, %eax	#, <retval>
+# 13: }
+	ret
+LFE0:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -103,8 +105,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB1394-.
-	.set L$set$2,LFE1394-LFB1394
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3

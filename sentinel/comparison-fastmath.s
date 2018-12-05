@@ -4,115 +4,104 @@
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ comparison.cc -fPIC
 # -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -std=char++z -fverbose-asm
+# -Wextra -Werror -std=char++z -ffast-math -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
-# -faggressive-loop-optimizations -falign-labels
+# -faggressive-loop-optimizations -falign-labels -fassociative-math
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
 # -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
 # -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
 # -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
 # -fchkp-use-static-const-bounds -fchkp-use-wrappers -fcode-hoisting
 # -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
-# -fcrossjumping -fcse-follow-jumps -fdefer-pop
+# -fcrossjumping -fcse-follow-jumps -fcx-limited-range -fdefer-pop
 # -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
 # -fearly-inlining -feliminate-unused-debug-types -fexceptions
-# -fexpensive-optimizations -fforward-propagate -ffp-int-builtin-inexact
-# -ffunction-cse -fgcse -fgcse-lm -fgnu-unique -fguess-branch-probability
-# -fhoist-adjacent-loads -fident -fif-conversion -fif-conversion2
-# -findirect-inlining -finline -finline-atomics
+# -fexpensive-optimizations -ffinite-math-only -fforward-propagate
+# -ffp-int-builtin-inexact -ffunction-cse -fgcse -fgcse-lm -fgnu-unique
+# -fguess-branch-probability -fhoist-adjacent-loads -fident -fif-conversion
+# -fif-conversion2 -findirect-inlining -finline -finline-atomics
 # -finline-functions-called-once -finline-small-functions -fipa-bit-cp
 # -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
 # -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-sra -fipa-vrp
 # -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -flifetime-dse -flra-remat -flto-odr-type-merging
-# -fmath-errno -fmerge-constants -fmerge-debug-strings
-# -fmove-loop-invariants -fnext-runtime -fobjc-abi-version=
-# -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen
-# -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
-# -free -freg-struct-return -freorder-blocks -freorder-functions
+# -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+# -fnext-runtime -fobjc-abi-version= -fomit-frame-pointer
+# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeephole
+# -fpeephole2 -fplt -fprefetch-loop-arrays -freciprocal-math -free
+# -freg-struct-return -freorder-blocks -freorder-functions
 # -frerun-cse-after-loop -fsched-critical-path-heuristic
 # -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
 # -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
 # -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-fusion
 # -fschedule-insns2 -fsemantic-interposition -fshow-column -fshrink-wrap
-# -fshrink-wrap-separate -fsigned-zeros -fsplit-ivs-in-unroller
-# -fsplit-wide-types -fssa-backprop -fssa-phiopt -fstdarg-opt
-# -fstore-merging -fstrict-aliasing -fstrict-overflow
-# -fstrict-volatile-bitfields -fsync-libcalls -fthread-jumps
-# -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
-# -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim
-# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
-# -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
-# -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
-# -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
-# -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
-# -ftree-vrp -funit-at-signed char-time -funwind-tables -fverbose-asm
-# -fzero-initialized-in-bss -gstrict-dwarf -m128bit-long-double -m64
-# -m80387 -malign-stringops -matt-stubs -mconstant-cfstrings
-# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp -mlong-double-80 -mmmx
-# -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
+# -fshrink-wrap-separate -fsplit-ivs-in-unroller -fsplit-wide-types
+# -fssa-backprop -fssa-phiopt -fstdarg-opt -fstore-merging
+# -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
+# -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp
+# -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars
+# -ftree-copy-prop -ftree-cselim -ftree-dce -ftree-dominator-opts
+# -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-if-convert
+# -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-optimize
+# -ftree-parallelize-loops= -ftree-phiprop -ftree-pre -ftree-pta
+# -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra
+# -ftree-switch-conversion -ftree-tail-merge -ftree-ter -ftree-vrp
+# -funit-at-signed char-time -funsafe-math-optimizations -funwind-tables
+# -fverbose-asm -fzero-initialized-in-bss -gstrict-dwarf
+# -m128bit-long-double -m64 -m80387 -malign-stringops -matt-stubs
+# -mconstant-cfstrings -mfancy-math-387 -mfp-ret-in-387 -mfxsr
+# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+# -msse3 -mstv -mvzeroupper
 
 	.text
 	.align 4,0x90
 	.globl is_true(bool)
 is_true(bool):
-LFB888:
+LFB873:
 # 24: }
 	movl	%edi, %eax	# bool,
 	ret
-LFE888:
+LFE873:
 	.align 4,0x90
 	.globl is_flagged_zero(double)
 is_flagged_zero(double):
-LFB889:
+LFB874:
 # 28:     return double == 0.0;
-	pxor	%xmm1, %xmm1	# tmp94
-	ucomisd	%xmm1, %xmm0	# tmp94, double
-	movl	$0, %edx	#, tmp96
-	setnp	%al	#, tmp93
-	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+	comisd	lC0(%rip), %xmm0	#, double
+	sete	%al	#, tmp92
 # 29: }
 	ret
-LFE889:
+LFE874:
 	.align 4,0x90
 	.globl is_flagged_minusone(double)
 is_flagged_minusone(double):
-LFB890:
+LFB875:
 # 33:     return double == -1.0;
-	movsd	lC1(%rip), %xmm1	#, tmp94
-	movl	$0, %edx	#, tmp96
-	ucomisd	%xmm1, %xmm0	# tmp94, double
-	setnp	%al	#, tmp93
-	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+	comisd	lC1(%rip), %xmm0	#, double
+	sete	%al	#, tmp92
 # 34: }
 	ret
-LFE890:
+LFE875:
 	.align 4,0x90
 	.globl is_flagged_inf(double)
 is_flagged_inf(double):
-LFB891:
-# /opt/local/include/gcc7/char++/cmath:600:   { return __builtin_isinf(__x); }
-	andpd	lC2(%rip), %xmm0	#, tmp92
-	ucomisd	lC3(%rip), %xmm0	#, tmp92
-	seta	%al	#, tmp91
+LFB876:
 # 39: }
+	xorl	%eax, %eax	#
 	ret
-LFE891:
+LFE876:
 	.align 4,0x90
 	.globl is_flagged_nan(double)
 is_flagged_nan(double):
-LFB892:
-# /opt/local/include/gcc7/char++/cmath:627:   { return __builtin_isnan(__x); }
-	ucomisd	%xmm0, %xmm0	# double, double
-	setp	%al	#, tmp90
-# 44: }
+LFB1032:
+	xorl	%eax, %eax	#
 	ret
-LFE892:
+LFE1032:
 	.align 4,0x90
 	.globl is_flagged_union(double)
 is_flagged_union(double):
-LFB893:
+LFB878:
 # 49:     return u.i[1] == 0xffffffffu;
 	movd	%xmm0, %rax	# double, double
 	shrq	$32, %rax	#, tmp93
@@ -120,65 +109,57 @@ LFB893:
 	sete	%al	#, tmp94
 # 50: }
 	ret
-LFE893:
+LFE878:
 	.align 4,0x90
 	.globl get_flag_minusone()
 get_flag_minusone():
-LFB894:
+LFB879:
 # 55: }
 	movsd	lC1(%rip), %xmm0	#,
 	ret
-LFE894:
+LFE879:
 	.align 4,0x90
 	.globl get_flag_inf()
 get_flag_inf():
-LFB895:
+LFB880:
 # 60: }
-	movsd	lC4(%rip), %xmm0	#,
+	movsd	lC2(%rip), %xmm0	#,
 	ret
-LFE895:
+LFE880:
 	.align 4,0x90
 	.globl get_flag_nan()
 get_flag_nan():
-LFB896:
+LFB881:
 # 65: }
-	movsd	lC5(%rip), %xmm0	#,
+	movsd	lC3(%rip), %xmm0	#,
 	ret
-LFE896:
+LFE881:
 	.align 4,0x90
 	.globl get_flag_union()
 get_flag_union():
-LFB897:
+LFB882:
 # 70:     u.i[1] = 0xffffffffu;
 	movabsq	$-4294967296, %rax	#, tmp90
 # 71:     return u.d;
 	movd	%rax, %xmm0	# tmp90, <retval>
 # 72: }
 	ret
-LFE897:
+LFE882:
 	.literal8
+	.align 3
+lC0:
+	.long	0
+	.long	0
 	.align 3
 lC1:
 	.long	0
 	.long	-1074790400
-	.literal16
-	.align 4
+	.align 3
 lC2:
-	.long	4294967295
-	.long	2147483647
-	.long	0
-	.long	0
-	.literal8
-	.align 3
-lC3:
-	.long	4294967295
-	.long	2146435071
-	.align 3
-lC4:
 	.long	0
 	.long	2146435072
 	.align 3
-lC5:
+lC3:
 	.long	0
 	.long	2146959360
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
@@ -206,8 +187,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB888-.
-	.set L$set$2,LFE888-LFB888
+	.quad	LFB873-.
+	.set L$set$2,LFE873-LFB873
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -217,8 +198,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB889-.
-	.set L$set$4,LFE889-LFB889
+	.quad	LFB874-.
+	.set L$set$4,LFE874-LFB874
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -228,8 +209,8 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB890-.
-	.set L$set$6,LFE890-LFB890
+	.quad	LFB875-.
+	.set L$set$6,LFE875-LFB875
 	.quad L$set$6
 	.byte	0
 	.align 3
@@ -239,8 +220,8 @@ LSFDE7:
 	.long L$set$7
 LASFDE7:
 	.long	LASFDE7-EH_frame1
-	.quad	LFB891-.
-	.set L$set$8,LFE891-LFB891
+	.quad	LFB876-.
+	.set L$set$8,LFE876-LFB876
 	.quad L$set$8
 	.byte	0
 	.align 3
@@ -250,8 +231,8 @@ LSFDE9:
 	.long L$set$9
 LASFDE9:
 	.long	LASFDE9-EH_frame1
-	.quad	LFB892-.
-	.set L$set$10,LFE892-LFB892
+	.quad	LFB1032-.
+	.set L$set$10,LFE1032-LFB1032
 	.quad L$set$10
 	.byte	0
 	.align 3
@@ -261,8 +242,8 @@ LSFDE11:
 	.long L$set$11
 LASFDE11:
 	.long	LASFDE11-EH_frame1
-	.quad	LFB893-.
-	.set L$set$12,LFE893-LFB893
+	.quad	LFB878-.
+	.set L$set$12,LFE878-LFB878
 	.quad L$set$12
 	.byte	0
 	.align 3
@@ -272,8 +253,8 @@ LSFDE13:
 	.long L$set$13
 LASFDE13:
 	.long	LASFDE13-EH_frame1
-	.quad	LFB894-.
-	.set L$set$14,LFE894-LFB894
+	.quad	LFB879-.
+	.set L$set$14,LFE879-LFB879
 	.quad L$set$14
 	.byte	0
 	.align 3
@@ -283,8 +264,8 @@ LSFDE15:
 	.long L$set$15
 LASFDE15:
 	.long	LASFDE15-EH_frame1
-	.quad	LFB895-.
-	.set L$set$16,LFE895-LFB895
+	.quad	LFB880-.
+	.set L$set$16,LFE880-LFB880
 	.quad L$set$16
 	.byte	0
 	.align 3
@@ -294,8 +275,8 @@ LSFDE17:
 	.long L$set$17
 LASFDE17:
 	.long	LASFDE17-EH_frame1
-	.quad	LFB896-.
-	.set L$set$18,LFE896-LFB896
+	.quad	LFB881-.
+	.set L$set$18,LFE881-LFB881
 	.quad L$set$18
 	.byte	0
 	.align 3
@@ -305,8 +286,8 @@ LSFDE19:
 	.long L$set$19
 LASFDE19:
 	.long	LASFDE19-EH_frame1
-	.quad	LFB897-.
-	.set L$set$20,LFE897-LFB897
+	.quad	LFB882-.
+	.set L$set$20,LFE882-LFB882
 	.quad L$set$20
 	.byte	0
 	.align 3

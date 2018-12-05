@@ -8,9 +8,14 @@
 
 #include <tuple>
 #include <array>
+#include <iosfwd>
 
-using Space_Vector = std::array<double, 3>;
+using Position = std::array<double, 3>;
+using Direction = std::array<double, 3>;
 
+//---------------------------------------------------------------------------//
+// DEFINITIONS
+//---------------------------------------------------------------------------//
 struct Particle
 {
 };
@@ -38,28 +43,19 @@ enum Event
 {
     SOURCE,
     UNBANK,
-    MOVE,
     RELOCATE,
+    MOVE,
     POSITION,
     DIRECTION,
     END_EVENT
 };
 
+//---------------------------------------------------------------------------//
+// EVENT TRAITS
+//---------------------------------------------------------------------------//
+
 template<Event E>
 struct Event_Traits;
-
-#define DECLARE_EVENT_TRAITS(EVENT, ARGS...) \
-template<> \
-struct Event_Traits<EVENT> \
-{ \
-    using argument_type = std::tuple<ARGS>; \
-    static const char name[]; \
-    static const char description[]; \
-}
-
-#define DEFINE_EVENT_TRAITS(EVENT, NAME, DESCRIPTION) \
-const char Event_Traits<EVENT>::name[] = NAME; \
-const char Event_Traits<EVENT>::description[] = DESCRIPTION
 
 template<>
 struct Event_Traits<MOVE>
@@ -67,30 +63,60 @@ struct Event_Traits<MOVE>
     using argument_type = std::tuple<double>;
 };
 
-DECLARE_EVENT_TRAITS(RELOCATE, Space_Vector, Space_Vector);
-
-// .cc
-
-DEFINE_EVENT_TRAITS(RELOCATE, "relocate", "change position and direction");
+template<>
+struct Event_Traits<RELOCATE>
+{
+    using argument_type = std::tuple<Position, Direction>;
+    static const char name[];
+    static const char description[];
+};
 
 template<>
 struct Event_Traits<POSITION>
 {
-    using argument_type = std::tuple<Space_Vector>;
+    using argument_type = std::tuple<Position>;
 };
 
 template<>
 struct Event_Traits<DIRECTION>
 {
-    using argument_type = std::tuple<Space_Vector>;
+    using argument_type = std::tuple<Direction>;
 };
 
-Space_Vector do_stuff(Event_Traits<RELOCATE>::argument_type t)
+//---------------------------------------------------------------------------//
+// EVENT TRAIT I/O
+//---------------------------------------------------------------------------//
+#if 0
+
+// .cc
+#include <iostream>
+
+template<Event E>
+void describe(std::ostream& os,
+              const typename Event_Traits<E>::argument_type&)
 {
-    return std::get<0>(t);
+    os << Event_Traits<E>::name;
 }
 
-#if 0
+const char Event_Traits<RELOCATE>::name[] = "relocate";
+const char Event_Traits<RELOCATE>::description[] = "change position and direction";
+
+template<>
+void describe<RELOCATE>(std::ostream& os,
+              const Event_Traits<RELOCATE>::argument_type& arg)
+{
+    using Traits_t = Event_Traits<RELOCATE>;
+    const auto& pos = std::get<0>(arg);
+    const auto& dir = std::get<1>(arg);
+    os << Traits_t::name << " to " << pos[0] << ',' << pos[1] << ',' << pos[2]
+        << " along " << dir[0] << ',' << dir[1] << ',' << dir[2];
+}
+#endif
+
+//---------------------------------------------------------------------------//
+// EVENT DISPATCHING
+//---------------------------------------------------------------------------//
+
 class Event_Dispatcher
 {
   public:

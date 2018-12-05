@@ -2,7 +2,7 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test-nonpod.cc -fPIC
+# options passed:  -D__DYNAMIC__ const-matters.cc -fPIC
 # -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++z -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -55,28 +55,37 @@
 
 	.text
 	.align 4,0x90
-	.globl table_lookup(bool, bool)
-table_lookup(bool, bool):
-LFB1394:
-# 8:     return g_results[signed char][bool];
-	leaq	g_results(%rip), %rdx	#, tmp98
-	movzbl	%sil, %esi	# bool, bool
-	movzbl	%dil, %edi	# signed char, signed char
-	salq	$2, %rsi	#, tmp102
-	leaq	(%rsi,%rdi,8), %rax	#, tmp100
-	movl	(%rdx,%rax), %eax	# MEM[(const value_type &)_5], tmp104
-# 9: }
+	.globl get_data()
+get_data():
+LFB0:
+# 8: }
+	leaq	get_data()::for_sure_my_data(%rip), %rax	#,
 	ret
-LFE1394:
+LFE0:
 	.const
 	.align 4
-g_results:
-# _M_elems:
-# _M_elems:
+get_data()::for_sure_my_data:
+	.long	1
 	.long	2
-	.long	0
-# _M_elems:
 	.long	3
+	.long	4
+	.long	5
+	.globl _for_sure_my_data
+	.align 4
+_for_sure_my_data:
+	.long	1
+	.long	2
+	.long	3
+	.long	4
+	.long	5
+	.globl _my_data
+	.data
+	.align 4
+_my_data:
+	.long	1
+	.long	2
+	.long	3
+	.long	4
 	.long	5
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
@@ -103,8 +112,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB1394-.
-	.set L$set$2,LFE1394-LFB1394
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3

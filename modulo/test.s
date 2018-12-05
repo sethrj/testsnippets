@@ -2,9 +2,9 @@
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test-nonpod.cc -fPIC
-# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -std=char++z -fverbose-asm
+# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++z
+# -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -55,29 +55,26 @@
 
 	.text
 	.align 4,0x90
-	.globl table_lookup(bool, bool)
-table_lookup(bool, bool):
-LFB1394:
-# 8:     return g_results[signed char][bool];
-	leaq	g_results(%rip), %rdx	#, tmp98
-	movzbl	%sil, %esi	# bool, bool
-	movzbl	%dil, %edi	# signed char, signed char
-	salq	$2, %rsi	#, tmp102
-	leaq	(%rsi,%rdi,8), %rax	#, tmp100
-	movl	(%rdx,%rax), %eax	# MEM[(const value_type &)_5], tmp104
-# 9: }
+	.globl modulo(int, int)
+modulo(int, int):
+LFB0:
+# 2: {
+	movl	%edi, %eax	# long long, long long
+# 3:     return long long % unsigned long long;
+	cltd
+	idivl	%esi	# unsigned long long
+# 4: }
+	movl	%edx, %eax	# tmp91,
 	ret
-LFE1394:
-	.const
-	.align 4
-g_results:
-# _M_elems:
-# _M_elems:
-	.long	2
-	.long	0
-# _M_elems:
-	.long	3
-	.long	5
+LFE0:
+	.align 4,0x90
+	.globl modulo_actual()
+modulo_actual():
+LFB1:
+# 9: }
+	movl	$-1, %eax	#,
+	ret
+LFE1:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -103,12 +100,23 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB1394-.
-	.set L$set$2,LFE1394-LFB1394
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
 	.constructor
 	.destructor
 	.align 1
