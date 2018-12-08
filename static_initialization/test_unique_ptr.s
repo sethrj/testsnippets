@@ -1,10 +1,10 @@
-# GNU C++11 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
+# GNU C++14 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
 #	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
-# -fverbose-asm
+# options passed:  -D__DYNAMIC__ test_unique_ptr.cc -fPIC
+# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -std=char++z -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-labels
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -59,22 +59,23 @@
 	.globl std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()
 	.weak_definition std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()
 std::unique_ptr<int, std::default_delete<int> >::~unique_ptr():
-LFB2045:
+LFB2471:
 # /opt/local/include/gcc7/char++/bits/unique_ptr.h:267: 	if (__ptr != nullptr)
 	movq	(%rdi), %rdi	# MEM[(int * &)this_3(D)], _1
 	testq	%rdi, %rdi	# _1
 	je	L1	#,
 # /opt/local/include/gcc7/char++/bits/unique_ptr.h:78: 	delete __ptr;
-	jmp	operator delete(void*)	#
+	movl	$4, %esi	#,
+	jmp	operator delete(void*, unsigned long)	#
 	.align 4,0x90
 L1:
 # /opt/local/include/gcc7/char++/bits/unique_ptr.h:270:       }
 	ret
-LFE2045:
+LFE2471:
 	.align 4,0x90
 	.globl get_static_pointer()
 get_static_pointer():
-LFB1863:
+LFB2235:
 # 9:     static ptr_t s_pointer;
 	movzbl	guard variable for get_static_pointer()::s_pointer(%rip), %eax	#, _1
 	testb	%al, %al	# _1
@@ -105,28 +106,28 @@ L6:
 	addq	$8, %rsp	#,
 LCFI1:
 	ret
-LFE1863:
+LFE2235:
 	.align 4,0x90
 	.globl get_local_pointer()
 get_local_pointer():
-LFB1864:
+LFB2236:
 # 14: {
 	movq	%rdi, %rax	# .result_ptr, <retval>
 # 15:     ptr_t s_pointer;
-	movq	$0, (%rdi)	#, s_pointer_2(D)->_M_t._M_t.D.36077.D.34439._M_head_impl
+	movq	$0, (%rdi)	#, *s_pointer_2(D)
 # 17: }
 	ret
-LFE1864:
+LFE2236:
 	.section __TEXT,__text_startup,regular,pure_instructions
 	.align 4
 __GLOBAL__sub_I_
-LFB2225:
+LFB2759:
 # 5: static ptr_t g_pointer;
 	movq	std::unique_ptr<int, std::default_delete<int> >::~unique_ptr()@GOTPCREL(%rip), %rdi	#,
 	leaq	___dso_handle(%rip), %rdx	#,
 	leaq	g_pointer(%rip), %rsi	#,
 	jmp	___cxa_atexit	#
-LFE2225:
+LFE2759:
 	.zerofill __DATA,__bss3,guard variable for get_static_pointer()::s_pointer,8,3
 	.zerofill __DATA,__bss3,get_static_pointer()::s_pointer,8,3
 	.zerofill __DATA,__bss3,g_pointer,8,3
@@ -155,8 +156,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB2045-.
-	.set L$set$2,LFE2045-LFB2045
+	.quad	LFB2471-.
+	.set L$set$2,LFE2471-LFB2471
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -166,12 +167,12 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB1863-.
-	.set L$set$4,LFE1863-LFB1863
+	.quad	LFB2235-.
+	.set L$set$4,LFE2235-LFB2235
 	.quad L$set$4
 	.byte	0
 	.byte	0x4
-	.set L$set$5,LCFI0-LFB1863
+	.set L$set$5,LCFI0-LFB2235
 	.long L$set$5
 	.byte	0xe
 	.byte	0x10
@@ -187,8 +188,8 @@ LSFDE5:
 	.long L$set$7
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB1864-.
-	.set L$set$8,LFE1864-LFB1864
+	.quad	LFB2236-.
+	.set L$set$8,LFE2236-LFB2236
 	.quad L$set$8
 	.byte	0
 	.align 3
@@ -198,15 +199,15 @@ LSFDE7:
 	.long L$set$9
 LASFDE7:
 	.long	LASFDE7-EH_frame1
-	.quad	LFB2225-.
-	.set L$set$10,LFE2225-LFB2225
+	.quad	LFB2759-.
+	.set L$set$10,LFE2759-LFB2759
 	.quad L$set$10
 	.byte	0
 	.align 3
 LEFDE7:
 	.mod_init_func
 	.align 3
-	.quad	__GLOBAL__sub_I_test.cc
+	.quad	__GLOBAL__sub_I_test_unique_ptr.cc
 	.constructor
 	.destructor
 	.align 1
