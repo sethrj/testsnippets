@@ -20,7 +20,7 @@ def main(json_filename):
         contents = json.load(f)
 
     for cmd in contents:
-        if cmd['file'].endswith('omnibus.cc'):
+        if cmd['file'].endswith('Surfaces.cc'):
             process_and_print(cmd['command'])
             break
 
