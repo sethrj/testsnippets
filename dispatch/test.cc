@@ -6,6 +6,7 @@
  */
 //---------------------------------------------------------------------------//
 
+#include <functional>
 #include <tuple>
 #include <array>
 #include <iosfwd>
@@ -122,24 +123,25 @@ class Event_Dispatcher
   public:
     // Templated function: particle reference and event arguments
     template<Event E, Priority P>
-    using function_type<E,P> = std::function<void(
+    using function_type = std::function<void(
         typename Priority_Traits<P>::Particle_Ref_t,
         typename Event_Traits<E>::argument_type)>;
 
+    template<Event E, Priority P>
     struct Entry
     {
         const void*   caller;
-        function_type cb;
+        function_type<E,P> cb;
     };
 
-    std::vector<Entry<RELOCATE, BEFORE>> relocate_cb;
+    std::vector<Entry<RELOCATE, Priority::BEFORE>> relocate_cb;
 
   public:
     // Connect an
     template<Event E, Priority P, class T>
     void connect(const T* caller, function_type<E,P> callback)
     {
-        relocate_cb.push_back(
+        relocate_cb.push_back({caller, std::move(callback)});
     }
 
     // Emit an event of type E from the caller
@@ -148,7 +150,6 @@ class Event_Dispatcher
     {
     }
 };
-#endif
 
 //---------------------------------------------------------------------------//
 // end of testsnippets/dispatch/test.cc
