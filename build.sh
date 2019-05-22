@@ -5,7 +5,10 @@
 # Date  : Thu Jul 05 13:36:51 2018
 ###############################################################################
 
-CXX=g++-mp-7
+if [ -z "$CXX" ]; then
+  echo "\$CXX is not defined"
+  exit 1
+fi
 
 for filename in $*; do
   basename="${filename%.*}"
