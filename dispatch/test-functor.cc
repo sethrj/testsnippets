@@ -61,8 +61,6 @@ struct Particle_t
 };
 
 // >>> ACCESSOR class, used by Actions to interact with type-safe particle and
-// thread data
-// TODO: specialize on "void" type so that one or both of these can be empty
 
 template<class PS, class TS>
 struct Accessor
@@ -88,23 +86,22 @@ template<class A>
 struct Callback_Traits<A, Event::MOVE>
 {
     using Accessor_t = typename Action_Traits<A>::Accessor_t;
-    using Memfunptr_t = void (A::*)(Accessor_t accessor, double distance) const;
+    using Args_t = std::tuple<Accessor_t, double>;
 };
 
 template<class A>
 struct Callback_Traits<A, Event::RELOCATE>
 {
     using Accessor_t  = typename Action_Traits<A>::Accessor_t;
-    using Memfunptr_t = void (A::*)(Accessor_t        accessor,
-                                    const_Vector_View pos,
-                                    const_Vector_View dir) const;
+    using Args_t = std::tuple<Accessor_t, const_Vector_View,
+          const_Vector_View>;
 };
 
 template<class A>
 struct Callback_Traits<A, Event::END_HISTORY>
 {
     using Accessor_t  = typename Action_Traits<A>::Accessor_t;
-    using Memfunptr_t = void (A::*)(Accessor_t accessor) const;
+    using Args_t = std::tuple<Accessor_t>;
 };
 
 // >>> CALLBACK HELPER: dispatches call to Action, converting the type-deleted
@@ -196,6 +193,12 @@ void Action::end_history(Accessor_t access) const
 {
     double len = access.particle.length;
     access.thread.length += len;
+    access.thread.length_sq += len * len;
+    access.particle.length = 0;
+}
+
+}
+
     access.thread.length_sq += len * len;
     access.particle.length = 0;
 }

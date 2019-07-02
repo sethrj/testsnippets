@@ -59,10 +59,10 @@
 	.globl myaction::Action::move(Accessor<myaction::Particle_State, myaction::Thread_State>, double) const
 myaction::Action::move(Accessor<myaction::Particle_State, myaction::Thread_State>, double) const:
 LFB2907:
-# 200:     access.particle.length += double;
+# 190:     access.particle.length += double;
 	addsd	(%rsi), %xmm0	# access$particle_6->length, tmp96
 	movsd	%xmm0, (%rsi)	# tmp96, access$particle_6->length
-# 201: }
+# 191: }
 	ret
 LFE2907:
 	.align 1,0x90
@@ -70,21 +70,21 @@ LFE2907:
 	.globl myaction::Action::end_history(Accessor<myaction::Particle_State, myaction::Thread_State>) const
 myaction::Action::end_history(Accessor<myaction::Particle_State, myaction::Thread_State>) const:
 LFB2908:
-# 205:     double len = access.particle.length;
+# 195:     double len = access.particle.length;
 	movsd	(%rsi), %xmm0	# access$particle_11->length, len
-# 206:     access.thread.length += len;
+# 196:     access.thread.length += len;
 	movsd	(%rdx), %xmm1	# access$thread_12->length, tmp100
 	addsd	%xmm0, %xmm1	# len, tmp100
-# 207:     access.thread.length_sq += len * len;
+# 197:     access.thread.length_sq += len * len;
 	mulsd	%xmm0, %xmm0	# len, tmp102
 	addsd	8(%rdx), %xmm0	# access$thread_12->length_sq, tmp103
-# 206:     access.thread.length += len;
+# 196:     access.thread.length += len;
 	movsd	%xmm1, (%rdx)	# tmp100, access$thread_12->length
-# 207:     access.thread.length_sq += len * len;
+# 197:     access.thread.length_sq += len * len;
 	movsd	%xmm0, 8(%rdx)	# tmp103, access$thread_12->length_sq
-# 208:     access.particle.length = 0;
+# 198:     access.particle.length = 0;
 	movq	$0x000000000, (%rsi)	#, access$particle_11->length
-# 209: }
+# 199: }
 	ret
 LFE2908:
 	.align 4,0x90
@@ -96,20 +96,20 @@ LFB3277:
 	movq	(%rdi), %rax	# MEM[(struct Event_Callback * const &)__functor_3(D)], __ptr
 # /opt/local/include/gcc7/char++/bits/std_function.h:316: 	(*_Base::_M_get_pointer(__functor))(
 	movsd	(%rdx), %xmm0	# *__args#1_4(D), _1
-# 144:             p.ps.get<Particle_State_t>(action.particle_state_id()),
+# 132:             p.ps.get<Particle_State_t>(action.particle_state_id()),
 	movq	(%rax), %rdi	# MEM[(struct Event_Callback *)__ptr_6].action, _8
-# 35:         return *reinterpret_cast<T*>(this->data + offset);
+# 37:         return *reinterpret_cast<T*>(this->data + offset);
 	movslq	(%rdi), %rcx	# MEM[(int *)_8], MEM[(int *)_8]
-# 46:         return *reinterpret_cast<T*>(this->data + offset);
+# 48:         return *reinterpret_cast<T*>(this->data + offset);
 	movslq	4(%rdi), %rdx	# MEM[(int *)_8 + 4B], MEM[(int *)_8 + 4B]
-# 147:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
+# 135:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
 	addq	16(%rax), %rdi	# MEM[(struct Event_Callback *)__ptr_6].memptr.__delta, _19
 	movq	8(%rax), %rax	# MEM[(struct Event_Callback *)__ptr_6].memptr.__pfn, _20
-# 35:         return *reinterpret_cast<T*>(this->data + offset);
+# 37:         return *reinterpret_cast<T*>(this->data + offset);
 	addq	56(%rsi), %rcx	# MEM[(struct Packed_Particle_State *)__args#0_5(D) + 56B].data, tmp114
-# 46:         return *reinterpret_cast<T*>(this->data + offset);
+# 48:         return *reinterpret_cast<T*>(this->data + offset);
 	addq	64(%rsi), %rdx	# MEM[(struct Packed_Thread_State *)__args#0_5(D) + 64B].data, tmp118
-# 147:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
+# 135:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
 	testb	$1, %al	#, _20
 	je	L5	#,
 	movq	(%rdi), %rsi	# MEM[(int (*__vtbl_ptr_type) () * *)_19], MEM[(int (*__vtbl_ptr_type) () * *)_19]
@@ -125,20 +125,20 @@ std::_Function_handler<void (Particle_t&), Event_Callback<myaction::Action, (Eve
 LFB3289:
 # /opt/local/include/gcc7/char++/bits/std_function.h:172: 	  const _Functor* __ptr =
 	movq	(%rdi), %rax	# MEM[(struct Event_Callback * const &)__functor_2(D)], __ptr
-# 144:             p.ps.get<Particle_State_t>(action.particle_state_id()),
+# 132:             p.ps.get<Particle_State_t>(action.particle_state_id()),
 	movq	(%rax), %rdi	# MEM[(struct Event_Callback *)__ptr_4].action, _6
-# 35:         return *reinterpret_cast<T*>(this->data + offset);
+# 37:         return *reinterpret_cast<T*>(this->data + offset);
 	movslq	(%rdi), %rcx	# MEM[(int *)_6], MEM[(int *)_6]
-# 46:         return *reinterpret_cast<T*>(this->data + offset);
+# 48:         return *reinterpret_cast<T*>(this->data + offset);
 	movslq	4(%rdi), %rdx	# MEM[(int *)_6 + 4B], MEM[(int *)_6 + 4B]
-# 147:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
+# 135:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
 	addq	16(%rax), %rdi	# MEM[(struct Event_Callback *)__ptr_4].memptr.__delta, _17
 	movq	8(%rax), %rax	# MEM[(struct Event_Callback *)__ptr_4].memptr.__pfn, _18
-# 35:         return *reinterpret_cast<T*>(this->data + offset);
+# 37:         return *reinterpret_cast<T*>(this->data + offset);
 	addq	56(%rsi), %rcx	# MEM[(struct Packed_Particle_State *)__args#0_3(D) + 56B].data, tmp112
-# 46:         return *reinterpret_cast<T*>(this->data + offset);
+# 48:         return *reinterpret_cast<T*>(this->data + offset);
 	addq	64(%rsi), %rdx	# MEM[(struct Packed_Thread_State *)__args#0_3(D) + 64B].data, tmp116
-# 147:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
+# 135:         CALL_MEMFUNPTR(action, memptr)(accessor, std::forward<Args>(args)...);
 	testb	$1, %al	#, _18
 	je	L10	#,
 	movq	(%rdi), %rsi	# MEM[(int (*__vtbl_ptr_type) () * *)_17], MEM[(int (*__vtbl_ptr_type) () * *)_17]
@@ -309,65 +309,65 @@ L26:
 LFE3290:
 	.align 1,0x90
 	.align 4,0x90
-	.globl myaction::Action::Action(Event_Manager&)
-myaction::Action::Action(Event_Manager&):
+	.globl myaction::Action::Action(Event_Container&)
+myaction::Action::Action(Event_Container&):
 LFB2906:
-# 191:     , d_tsid(0x5678)
+# 181:     , d_tsid(0x5678)
 	movabsq	$95073396068916, %rax	#, tmp128
-# 189: Action::Action(Event_Manager& em)
+# 179: Action::Action(Event_Container& events)
 	pushq	%rbp	#
 LCFI22:
 	movq	%rdi, %rbp	# this, this
 	pushq	%rbx	#
 LCFI23:
-	movq	%rsi, %rbx	# em, em
+	movq	%rsi, %rbx	# events, events
 	subq	$40, %rsp	#,
 LCFI24:
-# 191:     , d_tsid(0x5678)
+# 181:     , d_tsid(0x5678)
 	movq	%rax, (%rdi)	# tmp128, MEM[(int *)this_4(D)]
 # /opt/local/include/gcc7/char++/bits/std_function.h:268: 	{ __functor._M_access<_Functor*>() = new _Functor(std::move(__f)); }
 	movl	$24, %edi	#,
 # /opt/local/include/gcc7/char++/bits/std_function.h:271:     _Function_base() : _M_manager(nullptr) { }
-	movq	$0, 16(%rsp)	#, MEM[(struct _Function_base *)&D.63053]._M_manager
+	movq	$0, 16(%rsp)	#, MEM[(struct _Function_base *)&D.63061]._M_manager
 LEHB0:
 # /opt/local/include/gcc7/char++/bits/std_function.h:268: 	{ __functor._M_access<_Functor*>() = new _Functor(std::move(__f)); }
 	call	operator new(unsigned long)	#
 LEHE0:
 # /opt/local/include/gcc7/char++/bits/move.h:198:       _Tp __tmp = _GLIBCXX_MOVE(__a);
-	movq	8(%rsp), %rdx	# MEM[(union _Any_data & {ref-all})&D.63053], __tmp
+	movq	8(%rsp), %rdx	# MEM[(union _Any_data & {ref-all})&D.63061], __tmp
 	leaq	myaction::Action::move(Accessor<myaction::Particle_State, myaction::Thread_State>, double) const(%rip), %rcx	#, tmp129
 # /opt/local/include/gcc7/char++/bits/std_function.h:268: 	{ __functor._M_access<_Functor*>() = new _Functor(std::move(__f)); }
-	movq	%rax, (%rsp)	# tmp102, MEM[(struct Event_Callback * &)&D.63053]
+	movq	%rax, (%rsp)	# tmp102, MEM[(struct Event_Callback * &)&D.63061]
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	8(%rbx), %rdi	# MEM[(union _Any_data & {ref-all})em_11(D)], MEM[(union _Any_data & {ref-all})em_11(D)]
+	movq	8(%rbx), %rdi	# MEM[(union _Any_data & {ref-all})events_11(D)], MEM[(union _Any_data & {ref-all})events_11(D)]
 	movq	%rbp, (%rax)	# this, MEM[(struct Event_Callback *)_27]
 	movq	%rcx, 8(%rax)	# tmp129, MEM[(struct Event_Callback *)_27 + 8B]
-	movq	(%rbx), %rsi	# MEM[(union _Any_data & {ref-all})em_11(D)], MEM[(union _Any_data & {ref-all})em_11(D)]
+	movq	(%rbx), %rsi	# MEM[(union _Any_data & {ref-all})events_11(D)], MEM[(union _Any_data & {ref-all})events_11(D)]
 	movq	$0, 16(%rax)	#, MEM[(struct Event_Callback *)_27 + 16B]
 # /opt/local/include/gcc7/char++/bits/move.h:198:       _Tp __tmp = _GLIBCXX_MOVE(__a);
-	movq	(%rsp), %rax	# MEM[(union _Any_data & {ref-all})&D.63053], __tmp
+	movq	(%rsp), %rax	# MEM[(union _Any_data & {ref-all})&D.63061], __tmp
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
-	movq	%rdx, 8(%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})em_11(D)]
+	movq	%rdx, 8(%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})events_11(D)]
 	movq	std::_Function_base::_Base_manager<Event_Callback<myaction::Action, (Event)5> >::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)@GOTPCREL(%rip), %rdx	#, tmp106
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	%rdi, 8(%rsp)	# MEM[(union _Any_data & {ref-all})em_11(D)], MEM[(union _Any_data * {ref-all})&D.63053]
-	movq	%rsi, (%rsp)	# MEM[(union _Any_data & {ref-all})em_11(D)], MEM[(union _Any_data * {ref-all})&D.63053]
+	movq	%rdi, 8(%rsp)	# MEM[(union _Any_data & {ref-all})events_11(D)], MEM[(union _Any_data * {ref-all})&D.63061]
+	movq	%rsi, (%rsp)	# MEM[(union _Any_data & {ref-all})events_11(D)], MEM[(union _Any_data * {ref-all})&D.63061]
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
-	movq	%rax, (%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})em_11(D)]
+	movq	%rax, (%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})events_11(D)]
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	16(%rbx), %rax	# MEM[(bool (*type) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)em_11(D) + 16], _24
+	movq	16(%rbx), %rax	# MEM[(bool (*type) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)events_11(D) + 16], _24
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
-	movq	%rdx, 16(%rbx)	# tmp106, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)em_11(D) + 16]
+	movq	%rdx, 16(%rbx)	# tmp106, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)events_11(D) + 16]
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	24(%rbx), %rdx	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)em_11(D) + 24], MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)em_11(D) + 24]
+	movq	24(%rbx), %rdx	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)events_11(D) + 24], MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)events_11(D) + 24]
 # /opt/local/include/gcc7/char++/bits/std_function.h:275:       if (_M_manager)
 	testq	%rax, %rax	# _24
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	%rax, 16(%rsp)	# _24, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)&D.63053 + 16]
-	movq	%rdx, 24(%rsp)	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)em_11(D) + 24], MEM[(void (*<Tbb83>) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)&D.63053 + 24]
+	movq	%rax, 16(%rsp)	# _24, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)&D.63061 + 16]
+	movq	%rdx, 24(%rsp)	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)events_11(D) + 24], MEM[(void (*<Tbb86>) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)&D.63061 + 24]
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
 	movq	std::_Function_handler<void (Particle_t&, double), Event_Callback<myaction::Action, (Event)5> >::_M_invoke(std::_Any_data const&, Particle_t&, double&&)@GOTPCREL(%rip), %rdx	#, tmp109
-	movq	%rdx, 24(%rbx)	# tmp109, MEM[(void (*<Tbb83>) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)em_11(D) + 24]
+	movq	%rdx, 24(%rbx)	# tmp109, MEM[(void (*<Tbb86>) (const union _Any_data & {ref-all}, struct Particle_t &, double &) &)events_11(D) + 24]
 # /opt/local/include/gcc7/char++/bits/std_function.h:275:       if (_M_manager)
 	je	L36	#,
 # /opt/local/include/gcc7/char++/bits/std_function.h:276: 	_M_manager(_M_functor, _M_functor, __destroy_functor);
@@ -377,47 +377,47 @@ LEHE0:
 	call	*%rax	# _24
 L36:
 # /opt/local/include/gcc7/char++/bits/std_function.h:271:     _Function_base() : _M_manager(nullptr) { }
-	movq	$0, 16(%rsp)	#, MEM[(struct _Function_base *)&D.63048]._M_manager
+	movq	$0, 16(%rsp)	#, MEM[(struct _Function_base *)&D.63056]._M_manager
 # /opt/local/include/gcc7/char++/bits/std_function.h:268: 	{ __functor._M_access<_Functor*>() = new _Functor(std::move(__f)); }
 	movl	$24, %edi	#,
 LEHB1:
 	call	operator new(unsigned long)	#
 LEHE1:
 # /opt/local/include/gcc7/char++/bits/move.h:198:       _Tp __tmp = _GLIBCXX_MOVE(__a);
-	movq	8(%rsp), %rdx	# MEM[(union _Any_data & {ref-all})&D.63048], __tmp
+	movq	8(%rsp), %rdx	# MEM[(union _Any_data & {ref-all})&D.63056], __tmp
 	leaq	myaction::Action::end_history(Accessor<myaction::Particle_State, myaction::Thread_State>) const(%rip), %rcx	#, tmp130
 # /opt/local/include/gcc7/char++/bits/std_function.h:268: 	{ __functor._M_access<_Functor*>() = new _Functor(std::move(__f)); }
-	movq	%rax, (%rsp)	# tmp115, MEM[(struct Event_Callback * &)&D.63048]
+	movq	%rax, (%rsp)	# tmp115, MEM[(struct Event_Callback * &)&D.63056]
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	40(%rbx), %rdi	# MEM[(union _Any_data & {ref-all})em_11(D) + 32], MEM[(union _Any_data & {ref-all})em_11(D) + 32]
+	movq	40(%rbx), %rdi	# MEM[(union _Any_data & {ref-all})events_11(D) + 32], MEM[(union _Any_data & {ref-all})events_11(D) + 32]
 	movq	%rbp, (%rax)	# this, MEM[(struct Event_Callback *)_30]
 	movq	%rcx, 8(%rax)	# tmp130, MEM[(struct Event_Callback *)_30 + 8B]
-	movq	32(%rbx), %rsi	# MEM[(union _Any_data & {ref-all})em_11(D) + 32], MEM[(union _Any_data & {ref-all})em_11(D) + 32]
+	movq	32(%rbx), %rsi	# MEM[(union _Any_data & {ref-all})events_11(D) + 32], MEM[(union _Any_data & {ref-all})events_11(D) + 32]
 	movq	$0, 16(%rax)	#, MEM[(struct Event_Callback *)_30 + 16B]
 # /opt/local/include/gcc7/char++/bits/move.h:198:       _Tp __tmp = _GLIBCXX_MOVE(__a);
-	movq	(%rsp), %rax	# MEM[(union _Any_data & {ref-all})&D.63048], __tmp
+	movq	(%rsp), %rax	# MEM[(union _Any_data & {ref-all})&D.63056], __tmp
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
-	movq	%rdx, 40(%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})em_11(D) + 32B]
+	movq	%rdx, 40(%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})events_11(D) + 32B]
 	movq	std::_Function_base::_Base_manager<Event_Callback<myaction::Action, (Event)15> >::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)@GOTPCREL(%rip), %rdx	#, tmp119
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	%rdi, 8(%rsp)	# MEM[(union _Any_data & {ref-all})em_11(D) + 32], MEM[(union _Any_data * {ref-all})&D.63048]
-	movq	%rsi, (%rsp)	# MEM[(union _Any_data & {ref-all})em_11(D) + 32], MEM[(union _Any_data * {ref-all})&D.63048]
+	movq	%rdi, 8(%rsp)	# MEM[(union _Any_data & {ref-all})events_11(D) + 32], MEM[(union _Any_data * {ref-all})&D.63056]
+	movq	%rsi, (%rsp)	# MEM[(union _Any_data & {ref-all})events_11(D) + 32], MEM[(union _Any_data * {ref-all})&D.63056]
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
-	movq	%rax, 32(%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})em_11(D) + 32B]
+	movq	%rax, 32(%rbx)	# __tmp, MEM[(union _Any_data * {ref-all})events_11(D) + 32B]
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	48(%rbx), %rax	# MEM[(bool (*type) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)em_11(D) + 48], _20
+	movq	48(%rbx), %rax	# MEM[(bool (*type) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)events_11(D) + 48], _20
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
-	movq	%rdx, 48(%rbx)	# tmp119, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)em_11(D) + 48]
+	movq	%rdx, 48(%rbx)	# tmp119, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)events_11(D) + 48]
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	56(%rbx), %rdx	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &) &)em_11(D) + 56], MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &) &)em_11(D) + 56]
+	movq	56(%rbx), %rdx	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &) &)events_11(D) + 56], MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &) &)events_11(D) + 56]
 # /opt/local/include/gcc7/char++/bits/std_function.h:275:       if (_M_manager)
 	testq	%rax, %rax	# _20
 # /opt/local/include/gcc7/char++/bits/move.h:199:       __a = _GLIBCXX_MOVE(__b);
-	movq	%rax, 16(%rsp)	# _20, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)&D.63048 + 16]
-	movq	%rdx, 24(%rsp)	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &) &)em_11(D) + 56], MEM[(void (*<Tbcba>) (const union _Any_data & {ref-all}, struct Particle_t &) &)&D.63048 + 24]
+	movq	%rax, 16(%rsp)	# _20, MEM[(bool (*<T6bc1>) (union _Any_data & {ref-all}, const union _Any_data & {ref-all}, _Manager_operation) &)&D.63056 + 16]
+	movq	%rdx, 24(%rsp)	# MEM[(void (*type) (const union _Any_data & {ref-all}, struct Particle_t &) &)events_11(D) + 56], MEM[(void (*<Tbcbd>) (const union _Any_data & {ref-all}, struct Particle_t &) &)&D.63056 + 24]
 # /opt/local/include/gcc7/char++/bits/move.h:200:       __b = _GLIBCXX_MOVE(__tmp);
 	movq	std::_Function_handler<void (Particle_t&), Event_Callback<myaction::Action, (Event)15> >::_M_invoke(std::_Any_data const&, Particle_t&)@GOTPCREL(%rip), %rdx	#, tmp122
-	movq	%rdx, 56(%rbx)	# tmp122, MEM[(void (*<Tbcba>) (const union _Any_data & {ref-all}, struct Particle_t &) &)em_11(D) + 56]
+	movq	%rdx, 56(%rbx)	# tmp122, MEM[(void (*<Tbcbd>) (const union _Any_data & {ref-all}, struct Particle_t &) &)events_11(D) + 56]
 # /opt/local/include/gcc7/char++/bits/std_function.h:275:       if (_M_manager)
 	je	L34	#,
 # /opt/local/include/gcc7/char++/bits/std_function.h:276: 	_M_manager(_M_functor, _M_functor, __destroy_functor);
@@ -426,7 +426,7 @@ LEHE1:
 	movq	%rdi, %rsi	# tmp126,
 	call	*%rax	# _20
 L34:
-# 196: }
+# 186: }
 	addq	$40, %rsp	#,
 LCFI25:
 	popq	%rbx	#
@@ -438,7 +438,7 @@ L43:
 LCFI28:
 	movq	%rax, %rbx	#, tmp112
 # /opt/local/include/gcc7/char++/bits/std_function.h:275:       if (_M_manager)
-	movq	16(%rsp), %rax	# MEM[(struct _Function_base *)&D.63053]._M_manager, _28
+	movq	16(%rsp), %rax	# MEM[(struct _Function_base *)&D.63061]._M_manager, _28
 	testq	%rax, %rax	# _28
 	je	L42	#,
 # /opt/local/include/gcc7/char++/bits/std_function.h:276: 	_M_manager(_M_functor, _M_functor, __destroy_functor);
@@ -454,7 +454,7 @@ LEHE2:
 L44:
 	movq	%rax, %rbx	#, tmp125
 # /opt/local/include/gcc7/char++/bits/std_function.h:275:       if (_M_manager)
-	movq	16(%rsp), %rax	# MEM[(struct _Function_base *)&D.63048]._M_manager, _31
+	movq	16(%rsp), %rax	# MEM[(struct _Function_base *)&D.63056]._M_manager, _31
 	testq	%rax, %rax	# _31
 	je	L42	#,
 # /opt/local/include/gcc7/char++/bits/std_function.h:276: 	_M_manager(_M_functor, _M_functor, __destroy_functor);
@@ -494,10 +494,10 @@ LLSDA2906:
 	.text
 	.align 1,0x90
 	.align 4,0x90
-	.globl myaction::Action::Action(Event_Manager&)
-myaction::Action::Action(Event_Manager&):
+	.globl myaction::Action::Action(Event_Container&)
+myaction::Action::Action(Event_Container&):
 LFB3457:
-	jmp	myaction::Action::Action(Event_Manager&)	#
+	jmp	myaction::Action::Action(Event_Container&)	#
 LFE3457:
 	.globl typeinfo name for Event_Callback<myaction::Action, (Event)5>
 	.weak_definition typeinfo name for Event_Callback<myaction::Action, (Event)5>
