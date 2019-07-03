@@ -13,7 +13,7 @@ fi
 for filename in $*; do
   basename="${filename%.*}"
   $CXX -Wall -Wextra -Werror -O2 ${CXXFLAGS} \
-     -std=c++17 \
+     -std=c++11 \
      -fverbose-asm -S  -c ${filename} -o - \
      | c++filt | sed -e "s/${filename}://" \
      > ${basename}.s
