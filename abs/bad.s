@@ -2,7 +2,7 @@
 #	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0
+# options passed:  -D__DYNAMIC__ bad.cc -fPIC -mmacosx-version-min=10.14.0
 # -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
 # -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -54,19 +54,45 @@
 
 	.text
 	.align 4,0x90
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-	movq	(%rdi), %rdi	# MEM[(double * const &)a_4(D)], pretmp_11
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.globl ok_abs(double)
+ok_abs(double):
+LFB10:
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/bits/std_abs.h:72:   { return __builtin_fabs(__x); }
+	andpd	lC0(%rip), %xmm0	#, tmp84
+# 7: }
+	ret	
+LFE10:
+	.align 4,0x90
+	.globl meh_abs(double)
+meh_abs(double):
+LFB14:
+	andpd	lC0(%rip), %xmm0	#, tmp84
+	ret	
+LFE14:
+	.align 4,0x90
+	.globl bad_abs(double)
+bad_abs(double):
+LFB12:
+# 19:     return abs(void);
+	cvttsd2sil	%xmm0, %eax	# tmp91, tmp87
+# 19:     return abs(void);
+	pxor	%xmm0, %xmm0	# tmp86
+# 19:     return abs(void);
+	cltd
+	xorl	%edx, %eax	# tmp88, tmp89
+	subl	%edx, %eax	# tmp88, tmp90
+# 19:     return abs(void);
+	cvtsi2sdl	%eax, %xmm0	# tmp90, tmp86
+# 20: }
+	ret	
+LFE12:
+	.literal16
+	.align 4
+lC0:
+	.long	4294967295
+	.long	2147483647
+	.long	0
+	.long	0
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -92,12 +118,34 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB10-.
+	.set L$set$2,LFE10-LFB10
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB14-.
+	.set L$set$4,LFE14-LFB14
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB12-.
+	.set L$set$6,LFE12-LFB12
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
 	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
 	.constructor
 	.destructor

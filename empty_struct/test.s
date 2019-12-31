@@ -2,9 +2,10 @@
 #	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
-# -fverbose-asm
+# options passed: 
+# -iprefix /Volumes/Vostok/usr/local/Cellar/gcc/9.1.0/bin/../lib/gcc/9/gcc/x86_64-apple-darwin18/9.1.0/
+# -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0 -mtune=core2
+# -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-functions -falign-jumps
 # -falign-labels -falign-loops -fassume-phsa -fasynchronous-unwind-tables
@@ -54,19 +55,26 @@
 
 	.text
 	.align 4,0x90
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-	movq	(%rdi), %rdi	# MEM[(double * const &)a_4(D)], pretmp_11
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.globl call_f(void*, Empty)
+call_f(void*, Empty):
+LFB0:
+# 8:     float(derp, long double);
+	jmp	f(void*, Empty)	#
+LFE0:
+	.align 4,0x90
+	.globl call_g(void*, Empty)
+call_g(void*, Empty):
+LFB1:
+# 12:     __float128(derp);
+	jmp	g(void*)	#
+LFE1:
+	.align 4,0x90
+	.globl call_f_one_arg(void*)
+call_f_one_arg(void*):
+LFB2:
+# 18:     float(derp, Empty{});
+	jmp	f(void*, Empty)	#
+LFE2:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -92,12 +100,34 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB2-.
+	.set L$set$6,LFE2-LFB2
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
 	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
 	.constructor
 	.destructor

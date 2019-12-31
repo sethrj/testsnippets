@@ -1,17 +1,14 @@
-# GNU C++11 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
-#	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
+# GNU C++11 (Homebrew GCC 9.1.0) version 9.1.0 (x86_64-apple-darwin18)
+#	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ comparison-ref.cc -fPIC
-# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
-# -faggressive-loop-optimizations -falign-labels
-# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
-# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
-# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
-# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
-# -fchkp-use-static-const-bounds -fchkp-use-wrappers -fcode-hoisting
+# -faggressive-loop-optimizations -falign-functions -falign-jumps
+# -falign-labels -falign-loops -fassume-phsa -fasynchronous-unwind-tables
+# -fauto-inc-dec -fbranch-count-reg -fcaller-saves -fcode-hoisting
 # -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
 # -fcrossjumping -fcse-follow-jumps -fdefer-pop
 # -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
@@ -22,27 +19,29 @@
 # -findirect-inlining -finline -finline-atomics
 # -finline-functions-called-once -finline-small-functions -fipa-bit-cp
 # -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
-# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-sra -fipa-vrp
-# -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
+# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-reference-addressable
+# -fipa-sra -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
+# -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -flifetime-dse -flra-remat -flto-odr-type-merging
 # -fmath-errno -fmerge-constants -fmerge-debug-strings
 # -fmove-loop-invariants -fnext-runtime -fobjc-abi-version=
 # -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen
 # -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
-# -free -freg-struct-return -freorder-blocks -freorder-functions
-# -frerun-cse-after-loop -fsched-critical-path-heuristic
-# -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
-# -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
-# -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-fusion
-# -fschedule-insns2 -fsemantic-interposition -fshow-column -fshrink-wrap
+# -free -freg-struct-return -freorder-blocks -freorder-blocks-and-partition
+# -freorder-functions -frerun-cse-after-loop
+# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+# -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
+# -fsemantic-interposition -fshow-column -fshrink-wrap
 # -fshrink-wrap-separate -fsigned-zeros -fsplit-ivs-in-unroller
 # -fsplit-wide-types -fssa-backprop -fssa-phiopt -fstdarg-opt
-# -fstore-merging -fstrict-aliasing -fstrict-overflow
-# -fstrict-volatile-bitfields -fsync-libcalls -fthread-jumps
-# -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
-# -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim
-# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+# -fstore-merging -fstrict-aliasing -fstrict-volatile-bitfields
+# -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
+# -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
+# -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim -ftree-dce
+# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
 # -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
 # -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
 # -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
@@ -59,38 +58,39 @@
 is_flagged_zero(double const*):
 LFB417:
 # 23:     return *double == 0.0;
-	pxor	%xmm0, %xmm0	# tmp95
-	ucomisd	(%rdi), %xmm0	# *d_3(D), tmp95
-	movl	$0, %edx	#, tmp97
-	setnp	%al	#, tmp94
-	cmovne	%edx, %eax	# tmp94,, tmp97, tmp90
+	pxor	%xmm0, %xmm0	# tmp90
+	ucomisd	(%rdi), %xmm0	# *d_3(D), tmp90
+	movl	$0, %edx	#, tmp92
+	setnp	%al	#, tmp89
+	cmovne	%edx, %eax	# tmp89,, tmp92, tmp85
 # 24: }
-	ret
+	ret	
 LFE417:
 	.align 4,0x90
 	.globl is_flagged_minusone(double const*)
 is_flagged_minusone(double const*):
 LFB418:
 # 28:     return *double == -1.0;
-	movsd	lC1(%rip), %xmm0	#, tmp95
-	movl	$0, %edx	#, tmp97
-	ucomisd	(%rdi), %xmm0	# *d_3(D), tmp95
-	setnp	%al	#, tmp94
-	cmovne	%edx, %eax	# tmp94,, tmp97, tmp90
+	movsd	lC1(%rip), %xmm0	#, tmp90
+	movl	$0, %edx	#, tmp92
+	ucomisd	(%rdi), %xmm0	# *d_3(D), tmp90
+	setnp	%al	#, tmp89
+	cmovne	%edx, %eax	# tmp89,, tmp92, tmp85
 # 29: }
-	ret
+	ret	
 LFE418:
 	.align 4,0x90
 	.globl is_flagged_inf(double const*)
 is_flagged_inf(double const*):
 LFB419:
-# /opt/local/include/gcc7/char++/cmath:600:   { return __builtin_isinf(__x); }
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/cmath:593:   { return __builtin_isinf(__x); }
 	movsd	(%rdi), %xmm0	# *d_3(D), *d_3(D)
-	andpd	lC2(%rip), %xmm0	#, tmp93
-	ucomisd	lC3(%rip), %xmm0	#, tmp93
-	seta	%al	#, tmp92
+	andpd	lC2(%rip), %xmm0	#, tmp88
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/cmath:593:   { return __builtin_isinf(__x); }
+	ucomisd	lC3(%rip), %xmm0	#, tmp88
+	seta	%al	#, tmp87
 # 34: }
-	ret
+	ret	
 LFE419:
 	.align 4,0x90
 	.globl is_flagged_nan(double const*)
@@ -98,60 +98,60 @@ is_flagged_nan(double const*):
 LFB420:
 # 38:     return std::isnan(*double);
 	movsd	(%rdi), %xmm0	# *d_3(D), _1
-# /opt/local/include/gcc7/char++/cmath:627:   { return __builtin_isnan(__x); }
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/cmath:620:   { return __builtin_isnan(__x); }
 	ucomisd	%xmm0, %xmm0	# _1, _1
-	setp	%al	#, tmp91
+	setp	%al	#, tmp86
 # 39: }
-	ret
+	ret	
 LFE420:
 	.align 4,0x90
 	.globl is_flagged_union(double const*)
 is_flagged_union(double const*):
 LFB421:
 # 44:     return u->int[1] == 0xffffffffu;
-	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)d_2(D)].int
-	sete	%al	#, tmp91
+	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)d_2(D)]
+	sete	%al	#, tmp86
 # 45: }
-	ret
+	ret	
 LFE421:
 	.align 4,0x90
 	.globl set_flag_minusone(double*)
 set_flag_minusone(double*):
 LFB422:
 # 49:     *double = -1.0;
-	movq	lC1(%rip), %rax	#, tmp89
-	movq	%rax, (%rdi)	# tmp89, *d_2(D)
+	movq	lC1(%rip), %rax	#, tmp85
+	movq	%rax, (%rdi)	# tmp85, *d_2(D)
 # 50: }
-	ret
+	ret	
 LFE422:
 	.align 4,0x90
 	.globl set_flag_inf(double*)
 set_flag_inf(double*):
 LFB423:
 # 54:     *double = std::numeric_limits<double>::infinity();
-	movq	lC4(%rip), %rax	#, tmp89
-	movq	%rax, (%rdi)	# tmp89, *d_2(D)
+	movq	lC4(%rip), %rax	#, tmp85
+	movq	%rax, (%rdi)	# tmp85, *d_2(D)
 # 55: }
-	ret
+	ret	
 LFE423:
 	.align 4,0x90
 	.globl set_flag_nan(double*)
 set_flag_nan(double*):
 LFB424:
 # 59:     *double = std::numeric_limits<double>::quiet_NaN();
-	movq	lC5(%rip), %rax	#, tmp89
-	movq	%rax, (%rdi)	# tmp89, *d_2(D)
+	movq	lC5(%rip), %rax	#, tmp85
+	movq	%rax, (%rdi)	# tmp85, *d_2(D)
 # 60: }
-	ret
+	ret	
 LFE424:
 	.align 4,0x90
 	.globl set_flag_union(double*)
 set_flag_union(double*):
 LFB425:
 # 65:     u->int[1] = 0xffffffffu;
-	movl	$-1, 4(%rdi)	#, MEM[(union Double_Unpack *)d_1(D)].int
+	movl	$-1, 4(%rdi)	#, MEM[(union Double_Unpack *)d_1(D)]
 # 66: }
-	ret
+	ret	
 LFE425:
 	.align 4,0x90
 	.globl flagged_compare_union(double const*, double)
@@ -159,13 +159,14 @@ flagged_compare_union(double const*, double):
 LFB426:
 # 70:     return !is_flagged_union(ref) && *ref < actual;
 	xorl	%eax, %eax	# <retval>
-	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)ref_4(D)].int
+	cmpl	$-1, 4(%rdi)	#, MEM[(const union Double_Unpack *)ref_4(D)]
 	je	L11	#,
-	ucomisd	(%rdi), %xmm0	# *ref_4(D), actual
+# 70:     return !is_flagged_union(ref) && *ref < actual;
+	comisd	(%rdi), %xmm0	# *ref_4(D), actual
 	seta	%al	#, <retval>
 L11:
 # 71: }
-	ret
+	ret	
 LFE426:
 	.literal8
 	.align 3
@@ -322,6 +323,7 @@ LASFDE19:
 	.byte	0
 	.align 3
 LEFDE19:
+	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
 	.constructor
 	.destructor
 	.align 1

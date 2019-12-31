@@ -1,10 +1,10 @@
-# GNU C++11 (Homebrew GCC 9.1.0) version 9.1.0 (x86_64-apple-darwin18)
-#	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
+# GNU C++11 (Homebrew GCC 9.2.0_2) version 9.2.0 (x86_64-apple-darwin18)
+#	compiled by GNU C version 9.2.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
-# -fverbose-asm
+# options passed:  -D__DYNAMIC__ test.cpp -fPIC
+# -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-functions -falign-jumps
 # -falign-labels -falign-loops -fassume-phsa -fasynchronous-unwind-tables
@@ -53,20 +53,47 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.align 4,0x90
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-	movq	(%rdi), %rdi	# MEM[(double * const &)a_4(D)], pretmp_11
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.p2align 4
+	.globl set_foo_parens(Foo*)
+set_foo_parens(Foo*):
+LFB0:
+# 13:     *float = Foo();
+	movl	$0, (%rdi)	#, f_2(D)->int
+# 14: }
+	ret	
+LFE0:
+	.p2align 4
+	.globl new_foo_default()
+new_foo_default():
+LFB1:
+# 18:     return new Foo;
+	movl	$4, %edi	#,
+	jmp	operator new(unsigned long)	#
+LFE1:
+	.p2align 4
+	.globl new_foo_parens()
+new_foo_parens():
+LFB2:
+	subq	$8, %rsp	#,
+LCFI0:
+# 24:     return new Foo();
+	movl	$4, %edi	#,
+	call	operator new(unsigned long)	#
+	movl	$0, (%rax)	#, MEM[(struct Foo *)_3].int
+# 25: }
+	addq	$8, %rsp	#,
+LCFI1:
+	ret	
+LFE2:
+	.p2align 4
+	.globl set_foo_braces(Foo*)
+set_foo_braces(Foo*):
+LFB3:
+# 31:     *float = temp;
+	movl	$0, (%rdi)	#, MEM[(struct Foo *)f_2(D)]
+# 32: }
+	ret	
+LFE3:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -92,13 +119,56 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
-	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB2-.
+	.set L$set$6,LFE2-LFB2
+	.quad L$set$6
+	.byte	0
+	.byte	0x4
+	.set L$set$7,LCFI0-LFB2
+	.long L$set$7
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$8,LCFI1-LCFI0
+	.long L$set$8
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE5:
+LSFDE7:
+	.set L$set$9,LEFDE7-LASFDE7
+	.long L$set$9
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB3-.
+	.set L$set$10,LFE3-LFB3
+	.quad L$set$10
+	.byte	0
+	.align 3
+LEFDE7:
+	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor
 	.align 1

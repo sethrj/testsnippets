@@ -1,5 +1,5 @@
-# GNU C++11 (Homebrew GCC 9.1.0) version 9.1.0 (x86_64-apple-darwin18)
-#	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
+# GNU C++11 (Homebrew GCC 9.2.0) version 9.2.0 (x86_64-apple-darwin18)
+#	compiled by GNU C version 9.2.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0
@@ -53,20 +53,39 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.align 4,0x90
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-	movq	(%rdi), %rdi	# MEM[(double * const &)a_4(D)], pretmp_11
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.p2align 4
+	.globl to_fortran(unsigned int)
+to_fortran(unsigned int):
+LFB0:
+# 4:     return (int == static_cast<unsigned int>(-1) ? int(0) : int(int + u));
+	leal	1(%rdi), %eax	#, tmp86
+	cmpl	$-1, %edi	#, int
+	movl	$0, %edx	#, tmp87
+	cmove	%edx, %eax	# tmp86,, tmp87, <retval>
+# 5: }
+	ret	
+LFE0:
+	.p2align 4
+	.globl to_fortran_simple(unsigned int)
+to_fortran_simple(unsigned int):
+LFB1:
+# 10:     return static_cast<int>(int + u);
+	leal	1(%rdi), %eax	#, tmp85
+# 11: }
+	ret	
+LFE1:
+	.p2align 4
+	.globl dumb_test(unsigned int)
+dumb_test(unsigned int):
+LFB2:
+# 15:     return (int == static_cast<unsigned int>(0) ? int(1) : int(int + u));
+	leal	1(%rdi), %eax	#, tmp86
+	testl	%edi, %edi	# int
+	movl	$1, %edx	#, tmp87
+	cmove	%edx, %eax	# tmp86,, tmp87, <retval>
+# 16: }
+	ret	
+LFE2:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -92,13 +111,35 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
-	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB2-.
+	.set L$set$6,LFE2-LFB2
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
+	.ident	"GCC: (Homebrew GCC 9.2.0) 9.2.0"
 	.constructor
 	.destructor
 	.align 1

@@ -1,8 +1,8 @@
-# GNU C++11 (Homebrew GCC 9.1.0) version 9.1.0 (x86_64-apple-darwin18)
-#	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
+# GNU C++11 (Homebrew GCC 9.2.0) version 9.2.0 (x86_64-apple-darwin18)
+#	compiled by GNU C version 9.2.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ comparison.cc -fPIC
+# options passed:  -D__DYNAMIC__ Daughters.cc -fPIC
 # -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -53,65 +53,132 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.align 4,0x90
-	.globl is_positive(double)
-is_positive(double):
-LFB246:
-# 5:     return long long > 0;
-	comisd	lC0(%rip), %xmm0	#, tmp87
-	seta	%al	#, tmp85
-# 6: }
-	ret	
-LFE246:
-	.align 4,0x90
-	.globl not_is_nonpositive(double)
-not_is_nonpositive(double):
-LFB247:
-# 10:     return !(long long <= 0);
-	pxor	%xmm1, %xmm1	# tmp89
-	comisd	%xmm0, %xmm1	# tmp90, tmp89
-# 10:     return !(long long <= 0);
-	setb	%al	#, tmp85
+	.align 1,0x90
+	.p2align 4
+	.globl DInlined::do_stuff() const
+DInlined::do_stuff() const:
+LFB4:
 # 11: }
 	ret	
-LFE247:
-	.align 4,0x90
-	.globl are_equal(double, double)
-are_equal(double, double):
-LFB248:
-# 15:     return !std::isnan(long long) && !std::isnan(unsigned long long) && (long long == unsigned long long);
-	ucomisd	%xmm0, %xmm0	# long long, long long
-	movl	$0, %ecx	#, tmp97
-	setnp	%al	#, tmp91
-	ucomisd	%xmm1, %xmm0	# unsigned long long, long long
-	setnp	%dl	#, tmp96
-	cmovne	%ecx, %edx	# tmp96,, tmp97, tmp92
-	andl	%edx, %eax	# tmp92, tmp98
-# 15:     return !std::isnan(long long) && !std::isnan(unsigned long long) && (long long == unsigned long long);
-	ucomisd	%xmm1, %xmm1	# unsigned long long, unsigned long long
-	setnp	%dl	#, tmp100
-# 15:     return !std::isnan(long long) && !std::isnan(unsigned long long) && (long long == unsigned long long);
-	andl	%edx, %eax	# tmp100, tmp89
-# 16: }
+LFE4:
+	.align 1,0x90
+	.p2align 4
+	.globl DInlined::~DInlined()
+	.weak_definition DInlined::~DInlined()
+DInlined::~DInlined():
+LFB12:
+# 3: class DInlined : public BaseInlined
 	ret	
-LFE248:
-	.align 4,0x90
-	.globl are_equal_short(double, double)
-are_equal_short(double, double):
-LFB249:
-# 20:     return (long long == unsigned long long);
-	ucomisd	%xmm1, %xmm0	# unsigned long long, long long
-	movl	$0, %edx	#, tmp90
-	setnp	%al	#, tmp89
-	cmovne	%edx, %eax	# tmp89,, tmp90, tmp85
-# 21: }
+LFE12:
+	.align 1,0x90
+	.p2align 4
+	.globl DInlined::~DInlined()
+	.weak_definition DInlined::~DInlined()
+DInlined::~DInlined():
+LFB13:
+# 3: class DInlined : public BaseInlined
+	jmp	operator delete(void*)	#
+LFE13:
+	.align 1,0x90
+	.p2align 4
+	.globl DExternal::~DExternal()
+	.weak_definition DExternal::~DExternal()
+DExternal::~DExternal():
+LFB8:
+# 13: class DExternal : public BaseExternal
+	leaq	16+vtable for DExternal(%rip), %rax	#, tmp86
+	movq	%rax, (%rdi)	# tmp86, this_3(D)->D.2169._vptr.BaseExternal
+	jmp	BaseExternal::~BaseExternal()	#
+LFE8:
+	.align 1,0x90
+	.p2align 4
+	.globl DExternal::~DExternal()
+	.weak_definition DExternal::~DExternal()
+DExternal::~DExternal():
+LFB9:
+	leaq	16+vtable for DExternal(%rip), %rax	#, tmp86
+	pushq	%rbp	#
+LCFI0:
+# 13: class DExternal : public BaseExternal
+	movq	%rdi, %rbp	# tmp85, this
+	movq	%rax, (%rdi)	# tmp86, this_2(D)->D.2169._vptr.BaseExternal
+	call	BaseExternal::~BaseExternal()	#
+	movq	%rbp, %rdi	# this,
+	popq	%rbp	#
+LCFI1:
+	jmp	operator delete(void*)	#
+LFE9:
+	.align 1,0x90
+	.p2align 4
+	.globl DExternal::do_stuff() const
+DExternal::do_stuff() const:
+LFB15:
 	ret	
-LFE249:
-	.literal8
+LFE15:
+	.globl typeinfo name for BaseInlined
+	.weak_definition typeinfo name for BaseInlined
+	.const
 	.align 3
-lC0:
-	.long	0
-	.long	0
+typeinfo name for BaseInlined:
+	.ascii "BaseInlined\0"
+	.globl typeinfo for BaseInlined
+	.weak_definition typeinfo for BaseInlined
+	.const_data
+	.align 3
+typeinfo for BaseInlined:
+# <anonymous>:
+# <anonymous>:
+	.quad	vtable for __cxxabiv1::__class_type_info+16
+# <anonymous>:
+	.quad	typeinfo name for BaseInlined
+	.globl typeinfo name for DInlined
+	.const
+	.align 3
+typeinfo name for DInlined:
+	.ascii "DInlined\0"
+	.globl typeinfo for DInlined
+	.const_data
+	.align 3
+typeinfo for DInlined:
+# <anonymous>:
+# <anonymous>:
+	.quad	vtable for __cxxabiv1::__si_class_type_info+16
+# <anonymous>:
+	.quad	typeinfo name for DInlined
+# <anonymous>:
+	.quad	typeinfo for BaseInlined
+	.globl typeinfo name for DExternal
+	.const
+	.align 3
+typeinfo name for DExternal:
+	.ascii "DExternal\0"
+	.globl typeinfo for DExternal
+	.const_data
+	.align 3
+typeinfo for DExternal:
+# <anonymous>:
+# <anonymous>:
+	.quad	vtable for __cxxabiv1::__si_class_type_info+16
+# <anonymous>:
+	.quad	typeinfo name for DExternal
+# <anonymous>:
+	.quad	typeinfo for BaseExternal
+	.globl vtable for DInlined
+	.align 3
+vtable for DInlined:
+	.quad	0
+	.quad	typeinfo for DInlined
+	.quad	DInlined::~DInlined()
+	.quad	DInlined::~DInlined()
+	.quad	DInlined::do_stuff() const
+	.globl vtable for DExternal
+	.align 3
+vtable for DExternal:
+	.quad	0
+	.quad	typeinfo for DExternal
+	.quad	DExternal::~DExternal()
+	.quad	DExternal::~DExternal()
+	.quad	DExternal::do_stuff() const
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -137,8 +204,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB246-.
-	.set L$set$2,LFE246-LFB246
+	.quad	LFB4-.
+	.set L$set$2,LFE4-LFB4
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -148,8 +215,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB247-.
-	.set L$set$4,LFE247-LFB247
+	.quad	LFB12-.
+	.set L$set$4,LFE12-LFB12
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -159,8 +226,8 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB248-.
-	.set L$set$6,LFE248-LFB248
+	.quad	LFB13-.
+	.set L$set$6,LFE13-LFB13
 	.quad L$set$6
 	.byte	0
 	.align 3
@@ -170,13 +237,47 @@ LSFDE7:
 	.long L$set$7
 LASFDE7:
 	.long	LASFDE7-EH_frame1
-	.quad	LFB249-.
-	.set L$set$8,LFE249-LFB249
+	.quad	LFB8-.
+	.set L$set$8,LFE8-LFB8
 	.quad L$set$8
 	.byte	0
 	.align 3
 LEFDE7:
-	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
+LSFDE9:
+	.set L$set$9,LEFDE9-LASFDE9
+	.long L$set$9
+LASFDE9:
+	.long	LASFDE9-EH_frame1
+	.quad	LFB9-.
+	.set L$set$10,LFE9-LFB9
+	.quad L$set$10
+	.byte	0
+	.byte	0x4
+	.set L$set$11,LCFI0-LFB9
+	.long L$set$11
+	.byte	0xe
+	.byte	0x10
+	.byte	0x86
+	.byte	0x2
+	.byte	0x4
+	.set L$set$12,LCFI1-LCFI0
+	.long L$set$12
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE9:
+LSFDE11:
+	.set L$set$13,LEFDE11-LASFDE11
+	.long L$set$13
+LASFDE11:
+	.long	LASFDE11-EH_frame1
+	.quad	LFB15-.
+	.set L$set$14,LFE15-LFB15
+	.quad L$set$14
+	.byte	0
+	.align 3
+LEFDE11:
+	.ident	"GCC: (Homebrew GCC 9.2.0) 9.2.0"
 	.constructor
 	.destructor
 	.align 1

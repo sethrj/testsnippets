@@ -1,17 +1,14 @@
-# GNU C++14 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
-#	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
+# GNU C++11 (Homebrew GCC 9.1.0) version 9.1.0 (x86_64-apple-darwin18)
+#	compiled by GNU C version 9.1.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ comparison.cc -fPIC
-# -mmacosx-version-min=10.13.7 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -std=char++z -fverbose-asm
+# -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
-# -faggressive-loop-optimizations -falign-labels
-# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
-# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
-# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
-# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
-# -fchkp-use-static-const-bounds -fchkp-use-wrappers -fcode-hoisting
+# -faggressive-loop-optimizations -falign-functions -falign-jumps
+# -falign-labels -falign-loops -fassume-phsa -fasynchronous-unwind-tables
+# -fauto-inc-dec -fbranch-count-reg -fcaller-saves -fcode-hoisting
 # -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
 # -fcrossjumping -fcse-follow-jumps -fdefer-pop
 # -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
@@ -22,27 +19,29 @@
 # -findirect-inlining -finline -finline-atomics
 # -finline-functions-called-once -finline-small-functions -fipa-bit-cp
 # -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
-# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-sra -fipa-vrp
-# -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
+# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-reference-addressable
+# -fipa-sra -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
+# -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -flifetime-dse -flra-remat -flto-odr-type-merging
 # -fmath-errno -fmerge-constants -fmerge-debug-strings
 # -fmove-loop-invariants -fnext-runtime -fobjc-abi-version=
 # -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen
 # -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
-# -free -freg-struct-return -freorder-blocks -freorder-functions
-# -frerun-cse-after-loop -fsched-critical-path-heuristic
-# -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
-# -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
-# -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-fusion
-# -fschedule-insns2 -fsemantic-interposition -fshow-column -fshrink-wrap
+# -free -freg-struct-return -freorder-blocks -freorder-blocks-and-partition
+# -freorder-functions -frerun-cse-after-loop
+# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+# -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
+# -fsemantic-interposition -fshow-column -fshrink-wrap
 # -fshrink-wrap-separate -fsigned-zeros -fsplit-ivs-in-unroller
 # -fsplit-wide-types -fssa-backprop -fssa-phiopt -fstdarg-opt
-# -fstore-merging -fstrict-aliasing -fstrict-overflow
-# -fstrict-volatile-bitfields -fsync-libcalls -fthread-jumps
-# -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
-# -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim
-# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+# -fstore-merging -fstrict-aliasing -fstrict-volatile-bitfields
+# -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
+# -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
+# -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim -ftree-dce
+# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
 # -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
 # -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
 # -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
@@ -57,105 +56,107 @@
 	.align 4,0x90
 	.globl is_true(bool)
 is_true(bool):
-LFB888:
+LFB417:
+# 22: {
+	movl	%edi, %eax	# tmp86, bool
 # 24: }
-	movl	%edi, %eax	# bool,
-	ret
-LFE888:
+	ret	
+LFE417:
 	.align 4,0x90
 	.globl is_flagged_zero(double)
 is_flagged_zero(double):
-LFB889:
+LFB418:
 # 28:     return double == 0.0;
-	pxor	%xmm1, %xmm1	# tmp94
-	ucomisd	%xmm1, %xmm0	# tmp94, double
-	movl	$0, %edx	#, tmp96
-	setnp	%al	#, tmp93
-	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+	pxor	%xmm1, %xmm1	# tmp89
+	ucomisd	%xmm1, %xmm0	# tmp89, double
+	movl	$0, %edx	#, tmp91
+	setnp	%al	#, tmp88
+	cmovne	%edx, %eax	# tmp88,, tmp91, tmp84
 # 29: }
-	ret
-LFE889:
+	ret	
+LFE418:
 	.align 4,0x90
 	.globl is_flagged_minusone(double)
 is_flagged_minusone(double):
-LFB890:
+LFB419:
 # 33:     return double == -1.0;
-	movsd	lC1(%rip), %xmm1	#, tmp94
-	movl	$0, %edx	#, tmp96
-	ucomisd	%xmm1, %xmm0	# tmp94, double
-	setnp	%al	#, tmp93
-	cmovne	%edx, %eax	# tmp93,, tmp96, tmp89
+	movsd	lC1(%rip), %xmm1	#, tmp89
+	movl	$0, %edx	#, tmp91
+	ucomisd	%xmm1, %xmm0	# tmp89, double
+	setnp	%al	#, tmp88
+	cmovne	%edx, %eax	# tmp88,, tmp91, tmp84
 # 34: }
-	ret
-LFE890:
+	ret	
+LFE419:
 	.align 4,0x90
 	.globl is_flagged_inf(double)
 is_flagged_inf(double):
-LFB891:
-# /opt/local/include/gcc7/char++/cmath:600:   { return __builtin_isinf(__x); }
-	andpd	lC2(%rip), %xmm0	#, tmp92
-	ucomisd	lC3(%rip), %xmm0	#, tmp92
-	seta	%al	#, tmp91
+LFB420:
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/cmath:593:   { return __builtin_isinf(__x); }
+	andpd	lC2(%rip), %xmm0	#, tmp87
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/cmath:593:   { return __builtin_isinf(__x); }
+	ucomisd	lC3(%rip), %xmm0	#, tmp87
+	seta	%al	#, tmp86
 # 39: }
-	ret
-LFE891:
+	ret	
+LFE420:
 	.align 4,0x90
 	.globl is_flagged_nan(double)
 is_flagged_nan(double):
-LFB892:
-# /opt/local/include/gcc7/char++/cmath:627:   { return __builtin_isnan(__x); }
-	ucomisd	%xmm0, %xmm0	# double, double
-	setp	%al	#, tmp90
+LFB421:
+# /usr/local/Cellar/gcc/9.1.0/include/char++/9.1.0/cmath:620:   { return __builtin_isnan(__x); }
+	ucomisd	%xmm0, %xmm0	# tmp86, tmp86
+	setp	%al	#, tmp85
 # 44: }
-	ret
-LFE892:
+	ret	
+LFE421:
 	.align 4,0x90
 	.globl is_flagged_union(double)
 is_flagged_union(double):
-LFB893:
+LFB422:
 # 49:     return u.i[1] == 0xffffffffu;
-	movd	%xmm0, %rax	# double, double
-	shrq	$32, %rax	#, tmp93
-	cmpl	$-1, %eax	#, tmp93
-	sete	%al	#, tmp94
+	movq	%xmm0, %rax	# tmp90, double
+	shrq	$32, %rax	#, tmp88
+	cmpl	$-1, %eax	#, tmp88
+	sete	%al	#, tmp89
 # 50: }
-	ret
-LFE893:
+	ret	
+LFE422:
 	.align 4,0x90
 	.globl get_flag_minusone()
 get_flag_minusone():
-LFB894:
+LFB423:
 # 55: }
 	movsd	lC1(%rip), %xmm0	#,
-	ret
-LFE894:
+	ret	
+LFE423:
 	.align 4,0x90
 	.globl get_flag_inf()
 get_flag_inf():
-LFB895:
+LFB424:
 # 60: }
 	movsd	lC4(%rip), %xmm0	#,
-	ret
-LFE895:
+	ret	
+LFE424:
 	.align 4,0x90
 	.globl get_flag_nan()
 get_flag_nan():
-LFB896:
+LFB425:
 # 65: }
 	movsd	lC5(%rip), %xmm0	#,
-	ret
-LFE896:
+	ret	
+LFE425:
 	.align 4,0x90
 	.globl get_flag_union()
 get_flag_union():
-LFB897:
+LFB426:
 # 70:     u.i[1] = 0xffffffffu;
-	movabsq	$-4294967296, %rax	#, tmp90
+	movabsq	$-4294967296, %rax	#, tmp85
 # 71:     return u.d;
-	movd	%rax, %xmm0	# tmp90, <retval>
+	movq	%rax, %xmm0	# tmp85, <retval>
 # 72: }
-	ret
-LFE897:
+	ret	
+LFE426:
 	.literal8
 	.align 3
 lC1:
@@ -206,8 +207,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB888-.
-	.set L$set$2,LFE888-LFB888
+	.quad	LFB417-.
+	.set L$set$2,LFE417-LFB417
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -217,8 +218,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB889-.
-	.set L$set$4,LFE889-LFB889
+	.quad	LFB418-.
+	.set L$set$4,LFE418-LFB418
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -228,8 +229,8 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB890-.
-	.set L$set$6,LFE890-LFB890
+	.quad	LFB419-.
+	.set L$set$6,LFE419-LFB419
 	.quad L$set$6
 	.byte	0
 	.align 3
@@ -239,8 +240,8 @@ LSFDE7:
 	.long L$set$7
 LASFDE7:
 	.long	LASFDE7-EH_frame1
-	.quad	LFB891-.
-	.set L$set$8,LFE891-LFB891
+	.quad	LFB420-.
+	.set L$set$8,LFE420-LFB420
 	.quad L$set$8
 	.byte	0
 	.align 3
@@ -250,8 +251,8 @@ LSFDE9:
 	.long L$set$9
 LASFDE9:
 	.long	LASFDE9-EH_frame1
-	.quad	LFB892-.
-	.set L$set$10,LFE892-LFB892
+	.quad	LFB421-.
+	.set L$set$10,LFE421-LFB421
 	.quad L$set$10
 	.byte	0
 	.align 3
@@ -261,8 +262,8 @@ LSFDE11:
 	.long L$set$11
 LASFDE11:
 	.long	LASFDE11-EH_frame1
-	.quad	LFB893-.
-	.set L$set$12,LFE893-LFB893
+	.quad	LFB422-.
+	.set L$set$12,LFE422-LFB422
 	.quad L$set$12
 	.byte	0
 	.align 3
@@ -272,8 +273,8 @@ LSFDE13:
 	.long L$set$13
 LASFDE13:
 	.long	LASFDE13-EH_frame1
-	.quad	LFB894-.
-	.set L$set$14,LFE894-LFB894
+	.quad	LFB423-.
+	.set L$set$14,LFE423-LFB423
 	.quad L$set$14
 	.byte	0
 	.align 3
@@ -283,8 +284,8 @@ LSFDE15:
 	.long L$set$15
 LASFDE15:
 	.long	LASFDE15-EH_frame1
-	.quad	LFB895-.
-	.set L$set$16,LFE895-LFB895
+	.quad	LFB424-.
+	.set L$set$16,LFE424-LFB424
 	.quad L$set$16
 	.byte	0
 	.align 3
@@ -294,8 +295,8 @@ LSFDE17:
 	.long L$set$17
 LASFDE17:
 	.long	LASFDE17-EH_frame1
-	.quad	LFB896-.
-	.set L$set$18,LFE896-LFB896
+	.quad	LFB425-.
+	.set L$set$18,LFE425-LFB425
 	.quad L$set$18
 	.byte	0
 	.align 3
@@ -305,12 +306,13 @@ LSFDE19:
 	.long L$set$19
 LASFDE19:
 	.long	LASFDE19-EH_frame1
-	.quad	LFB897-.
-	.set L$set$20,LFE897-LFB897
+	.quad	LFB426-.
+	.set L$set$20,LFE426-LFB426
 	.quad L$set$20
 	.byte	0
 	.align 3
 LEFDE19:
+	.ident	"GCC: (Homebrew GCC 9.1.0) 9.1.0"
 	.constructor
 	.destructor
 	.align 1

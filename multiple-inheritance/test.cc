@@ -1,3 +1,5 @@
+#include <memory>
+
 struct State;
 
 struct Context
@@ -84,4 +86,14 @@ const Event_Interface* as_event(const Physics& p)
 const Action_Interface* as_action(const Physics& p)
 {
     return &p;
+}
+
+std::shared_ptr<Physics> make_sp()
+{
+    return std::make_shared<Physics>();
+}
+
+std::shared_ptr<State_Interface> sp_downcast(std::shared_ptr<Physics> p)
+{
+    return {std::move(p)};
 }
