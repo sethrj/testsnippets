@@ -53,27 +53,37 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-	movq	(%rdi), %r8	# MEM[(double * const &)a_4(D)], pretmp_11
-# 29:         func_a(a.begin(), bool);
-	leaq	8(%rsp), %rdi	#, tmp88
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-# 29:         func_a(a.begin(), bool);
-	movl	$6, %ecx	#, tmp90
-	movq	%rdi, %rsi	# tmp88, tmp89
-	rep movsl
-	movq	%r8, %rdi	# pretmp_11,
-# 27:     if (choice)
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
+	.globl apply_or(bool)
+apply_or(bool):
+LFB0:
+# 6:     inp = inp || extern_bool();
+	testb	%dil, %dil	# inp
+# 5: {
+	movl	%edi, %eax	# tmp86, inp
+# 6:     inp = inp || extern_bool();
+	jne	L2	#,
+# 6:     inp = inp || extern_bool();
+	jmp	extern_bool()	#
 L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+# 8: }
+	ret	
+LFE0:
+	.globl apply_or_logic(bool)
+apply_or_logic(bool):
+LFB1:
+	pushq	%rbx	#
+LCFI0:
+# 11: {
+	movl	%edi, %ebx	# tmp87, inp
+# 12:     inp |= extern_bool();
+	call	extern_bool()	#
+# 12:     inp |= extern_bool();
+	orl	%ebx, %eax	# inp, tmp86
+# 14: }
+	popq	%rbx	#
+LCFI1:
+	ret	
+LFE1:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -99,12 +109,35 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.byte	0x4
+	.set L$set$5,LCFI0-LFB1
+	.long L$set$5
+	.byte	0xe
+	.byte	0x10
+	.byte	0x83
+	.byte	0x2
+	.byte	0x4
+	.set L$set$6,LCFI1-LCFI0
+	.long L$set$6
+	.byte	0xe
+	.byte	0x8
+	.align 3
+LEFDE3:
 	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor

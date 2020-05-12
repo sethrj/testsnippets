@@ -53,27 +53,31 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-	movq	(%rdi), %r8	# MEM[(double * const &)a_4(D)], pretmp_11
-# 29:         func_a(a.begin(), bool);
-	leaq	8(%rsp), %rdi	#, tmp88
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-# 29:         func_a(a.begin(), bool);
-	movl	$6, %ecx	#, tmp90
-	movq	%rdi, %rsi	# tmp88, tmp89
-	rep movsl
-	movq	%r8, %rdi	# pretmp_11,
-# 27:     if (choice)
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.globl transform_input(Input)
+transform_input(Input):
+LFB0:
+# 23:     int result = extern_transform(i.foo);
+	jmp	extern_transform(int)	#
+LFE0:
+	.globl transform_input_2(Input)
+transform_input_2(Input):
+LFB1:
+# 29:     i.foo = extern_transform(i.foo);
+	jmp	extern_transform(int)	#
+LFE1:
+	.globl transform_const_input(const_Input)
+transform_const_input(const_Input):
+LFB2:
+# 35:     int result = extern_transform(i.foo);
+	jmp	extern_transform(int)	#
+LFE2:
+	.globl transform_const_input_ref(const_Input_Ref)
+transform_const_input_ref(const_Input_Ref):
+LFB3:
+# 40:     int result = extern_transform(i.foo);
+	movl	(%rdi), %edi	# *_1,
+	jmp	extern_transform(int)	#
+LFE3:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -99,12 +103,45 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB2-.
+	.set L$set$6,LFE2-LFB2
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
+LSFDE7:
+	.set L$set$7,LEFDE7-LASFDE7
+	.long L$set$7
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB3-.
+	.set L$set$8,LFE3-LFB3
+	.quad L$set$8
+	.byte	0
+	.align 3
+LEFDE7:
 	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor

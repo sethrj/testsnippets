@@ -15,12 +15,15 @@ class Foo
 
 void do_something(Foo&);
 
+// Calls implicit move
 Foo do_foo(Foo orig)
 {
     do_something(orig);
     return orig;
 }
 
+// Explicit move uses local registers, fewer `movq` instructions.
+// However, inlined version is equivalent.
 Foo do_foo_2(Foo orig)
 {
     Foo result = std::move(orig);

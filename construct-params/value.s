@@ -2,9 +2,9 @@
 #	compiled by GNU C version 9.2.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0
-# -mtune=core2 -auxbase-strip - -short&& -Wall -Wextra -Werror -std=char++11
-# -fverbose-asm
+# options passed:  -D__DYNAMIC__ value.cc -fPIC
+# -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -short&& -Wall
+# -Wextra -Werror -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -fassume-phsa
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -53,27 +53,27 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-	movq	(%rdi), %r8	# MEM[(double * const &)a_4(D)], pretmp_11
-# 29:         func_a(a.begin(), bool);
-	leaq	8(%rsp), %rdi	#, tmp88
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-# 29:         func_a(a.begin(), bool);
-	movl	$6, %ecx	#, tmp90
-	movq	%rdi, %rsi	# tmp88, tmp89
+	.globl make_foo(Params)
+make_foo(Params):
+LFB3:
+	leaq	8(%rsp), %rsi	#, tmp84
+# 12: {
+	movq	%rdi, %rax	# tmp92, .result_ptr
+	movl	$10, %ecx	#, tmp85
+	leaq	-80(%rsp), %rdi	#, tmp83
 	rep movsl
-	movq	%r8, %rdi	# pretmp_11,
-# 27:     if (choice)
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	leaq	-40(%rsp), %rdi	#, tmp86
+	movl	$10, %ecx	#, tmp88
+	leaq	-80(%rsp), %rsi	#, tmp87
+	rep movsl
+# 8:     explicit FooView(Params p) : data_(p) {}
+	leaq	-40(%rsp), %rsi	#, tmp90
+	movq	%rax, %rdi	# .result_ptr, .result_ptr
+	movl	$10, %ecx	#, tmp91
+	rep movsl
+# 14: }
+	ret	
+LFE3:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -99,8 +99,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB3-.
+	.set L$set$2,LFE3-LFB3
 	.quad L$set$2
 	.byte	0
 	.align 3

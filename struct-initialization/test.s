@@ -3,32 +3,32 @@
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.14.0
-# -mtune=core2 -auxbase-strip - -short&& -Wall -Wextra -Werror -std=char++11
+# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
 # -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
-# -faggressive-loop-optimizations -fassume-phsa
-# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
-# -fcaller-saves -fcode-hoisting -fcombine-stack-adjustments -fcommon
-# -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
-# -fdefer-pop -fdelete-null-pointer-checks -fdevirtualize
-# -fdevirtualize-speculatively -fearly-inlining
-# -feliminate-unused-debug-types -fexceptions -fexpensive-optimizations
-# -fforward-propagate -ffp-int-builtin-inexact -ffunction-cse -fgcse
-# -fgcse-lm -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads
-# -fident -fif-conversion -fif-conversion2 -findirect-inlining -finline
-# -finline-atomics -finline-functions -finline-functions-called-once
-# -finline-small-functions -fipa-bit-cp -fipa-cp -fipa-icf
-# -fipa-icf-functions -fipa-icf-variables -fipa-profile -fipa-pure-const
-# -fipa-signed char restrict -fipa-reference -fipa-reference-addressable -fipa-sra
-# -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
+# -faggressive-loop-optimizations -falign-functions -falign-jumps
+# -falign-labels -falign-loops -fassume-phsa -fasynchronous-unwind-tables
+# -fauto-inc-dec -fbranch-count-reg -fcaller-saves -fcode-hoisting
+# -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+# -fcrossjumping -fcse-follow-jumps -fdefer-pop
+# -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
+# -fearly-inlining -feliminate-unused-debug-types -fexceptions
+# -fexpensive-optimizations -fforward-propagate -ffp-int-builtin-inexact
+# -ffunction-cse -fgcse -fgcse-lm -fgnu-unique -fguess-branch-probability
+# -fhoist-adjacent-loads -fident -fif-conversion -fif-conversion2
+# -findirect-inlining -finline -finline-atomics
+# -finline-functions-called-once -finline-small-functions -fipa-bit-cp
+# -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
+# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-reference-addressable
+# -fipa-sra -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
 # -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -flifetime-dse -flra-remat -flto-odr-type-merging
 # -fmath-errno -fmerge-constants -fmerge-debug-strings
 # -fmove-loop-invariants -fnext-runtime -fobjc-abi-version=
-# -fomit-frame-pointer -foptimize-sibling-calls -fpartial-inlining
-# -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays -free
-# -freg-struct-return -freorder-blocks -freorder-blocks-and-partition
+# -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen
+# -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
+# -free -freg-struct-return -freorder-blocks -freorder-blocks-and-partition
 # -freorder-functions -frerun-cse-after-loop
 # -fsched-critical-path-heuristic -fsched-dep-count-heuristic
 # -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
@@ -53,27 +53,39 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-	movq	(%rdi), %r8	# MEM[(double * const &)a_4(D)], pretmp_11
-# 29:         func_a(a.begin(), bool);
-	leaq	8(%rsp), %rdi	#, tmp88
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-# 29:         func_a(a.begin(), bool);
-	movl	$6, %ecx	#, tmp90
-	movq	%rdi, %rsi	# tmp88, tmp89
-	rep movsl
-	movq	%r8, %rdi	# pretmp_11,
-# 27:     if (choice)
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.cstring
+lC0:
+	.ascii "hi\0"
+	.text
+	.p2align 4
+	.globl make_bar(Bar*)
+make_bar(Bar*):
+LFB3:
+# 11:     *bool = Bar{};
+	leaq	lC0(%rip), %rax	#, tmp85
+	movl	$8224, (%rdi)	#, MEM[(struct Bar *)b_2(D)]
+	movq	%rax, 8(%rdi)	# tmp85, MEM[(struct Bar *)b_2(D) + 8B]
+# 12: };
+	ret	
+LFE3:
+	.p2align 4
+	.globl make_bar2(Bar*)
+make_bar2(Bar*):
+LFB11:
+	leaq	lC0(%rip), %rax	#, tmp85
+	movl	$8224, (%rdi)	#, MEM[(struct Bar *)b_2(D)]
+	movq	%rax, 8(%rdi)	# tmp85, MEM[(struct Bar *)b_2(D) + 8B]
+	ret	
+LFE11:
+	.p2align 4
+	.globl make_bar3(Bar*)
+make_bar3(Bar*):
+LFB13:
+	leaq	lC0(%rip), %rax	#, tmp85
+	movl	$8224, (%rdi)	#, MEM[(struct Bar *)b_2(D)]
+	movq	%rax, 8(%rdi)	# tmp85, MEM[(struct Bar *)b_2(D) + 8B]
+	ret	
+LFE13:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -99,12 +111,34 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB3-.
+	.set L$set$2,LFE3-LFB3
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB11-.
+	.set L$set$4,LFE11-LFB11
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB13-.
+	.set L$set$6,LFE13-LFB13
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
 	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor

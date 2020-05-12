@@ -21,6 +21,13 @@ char expand(VB::const_iterator first)
     return expanded;
 }
 
+char expand(const VB& vec)
+{
+    char expanded;
+    expanded  = vec[0] | (vec[1] << 1);
+    return expanded;
+}
+
 //---------------------------------------------------------------------------//
 // end of bool_expand/expand.cc
 //---------------------------------------------------------------------------//

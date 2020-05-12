@@ -53,27 +53,62 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl do_something(std::vector<double, std::allocator<double> >&, Bob, bool)
-do_something(std::vector<double, std::allocator<double> >&, Bob, bool):
-LFB832:
-	movq	(%rdi), %r8	# MEM[(double * const &)a_4(D)], pretmp_11
-# 29:         func_a(a.begin(), bool);
-	leaq	8(%rsp), %rdi	#, tmp88
-# 27:     if (choice)
-	testb	%sil, %sil	# tmp95
-# 29:         func_a(a.begin(), bool);
-	movl	$6, %ecx	#, tmp90
-	movq	%rdi, %rsi	# tmp88, tmp89
-	rep movsl
-	movq	%r8, %rdi	# pretmp_11,
-# 27:     if (choice)
-	je	L2	#,
-# 29:         func_a(a.begin(), bool);
-	jmp	func_a(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-L2:
-# 33:         func_b(a.begin(), bool);
-	jmp	func_b(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, Bob)	#
-LFE832:
+	.globl get_index(int, Face)
+get_index(int, Face):
+LFB3:
+# 23:     return start + face.is_positive();
+	andl	$1, %esi	#, tmp88
+	leal	(%rsi,%rdi), %eax	#, tmp87
+# 24: }
+	ret	
+LFE3:
+	.globl get_index_2(int, Face)
+get_index_2(int, Face):
+LFB4:
+# 28:     return start + face.is_positive() ? 1 : 0;
+	andl	$1, %esi	#, tmp90
+# 28:     return start + face.is_positive() ? 1 : 0;
+	xorl	%eax, %eax	# tmp92
+	addl	%edi, %esi	# tmp94, tmp90
+	setne	%al	#, tmp92
+# 29: }
+	ret	
+LFE4:
+	.globl get_index_3(int, Face)
+get_index_3(int, Face):
+LFB5:
+# 33:     return start + (face.storage & 0x1);
+	andl	$1, %esi	#, tmp88
+# 33:     return start + (face.storage & 0x1);
+	leal	(%rsi,%rdi), %eax	#, tmp87
+# 34: }
+	ret	
+LFE5:
+	.globl opposite_face(Face)
+opposite_face(Face):
+LFB6:
+# 38:     return Face::construct(face.axis(), !face.is_positive());
+	movl	%edi, %eax	# face, tmp92
+# 17:         return Face{axis << 1 | (is_positive & 0x1)};
+	andl	$-2, %edi	#, tmp94
+# 38:     return Face::construct(face.axis(), !face.is_positive());
+	notl	%eax	# tmp92
+# 38:     return Face::construct(face.axis(), !face.is_positive());
+	andl	$1, %eax	#, tmp93
+# 17:         return Face{axis << 1 | (is_positive & 0x1)};
+	orl	%edi, %eax	# tmp94, tmp95
+# 39: }
+	ret	
+LFE6:
+	.globl opposite_face_manual(Face)
+opposite_face_manual(Face):
+LFB7:
+# 45:     result.storage ^= 0x1;
+	movl	%edi, %eax	# tmp89, tmp89
+	xorl	$1, %eax	#, tmp89
+# 47: }
+	ret	
+LFE7:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -99,12 +134,56 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB832-.
-	.set L$set$2,LFE832-LFB832
+	.quad	LFB3-.
+	.set L$set$2,LFE3-LFB3
 	.quad L$set$2
 	.byte	0
 	.align 3
 LEFDE1:
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB4-.
+	.set L$set$4,LFE4-LFB4
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+LSFDE5:
+	.set L$set$5,LEFDE5-LASFDE5
+	.long L$set$5
+LASFDE5:
+	.long	LASFDE5-EH_frame1
+	.quad	LFB5-.
+	.set L$set$6,LFE5-LFB5
+	.quad L$set$6
+	.byte	0
+	.align 3
+LEFDE5:
+LSFDE7:
+	.set L$set$7,LEFDE7-LASFDE7
+	.long L$set$7
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB6-.
+	.set L$set$8,LFE6-LFB6
+	.quad L$set$8
+	.byte	0
+	.align 3
+LEFDE7:
+LSFDE9:
+	.set L$set$9,LEFDE9-LASFDE9
+	.long L$set$9
+LASFDE9:
+	.long	LASFDE9-EH_frame1
+	.quad	LFB7-.
+	.set L$set$10,LFE7-LFB7
+	.quad L$set$10
+	.byte	0
+	.align 3
+LEFDE9:
 	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor
