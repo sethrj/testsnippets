@@ -49,6 +49,11 @@ bool lt_native(Tuple a, Tuple b)
     return a < b;
 }
 
+bool lt_tie(int a0, int a1, int b0, int b1)
+{
+    return std::tie(a0, a1) < std::tie(b0, b1);
+}
+
 //---------------------------------------------------------------------------//
 // end of comparison/test.cc
 //---------------------------------------------------------------------------//

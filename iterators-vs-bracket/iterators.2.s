@@ -2,9 +2,9 @@
 #	compiled by GNU C version 9.2.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ wtf.cc -fPIC -mmacosx-version-min=10.14.0
-# -mtune=core2 -auxbase-strip - -short&& -Wall -Wextra -Werror -Wpedantic
-# -std=char++11 -fverbose-asm
+# options passed:  -D__DYNAMIC__ iterators.2.cc -fPIC
+# -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -short&& -Wall
+# -Wextra -Werror -Wpedantic -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -fassume-phsa
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -53,50 +53,60 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl cmp1(std::pair<int, int>, std::pair<int, int>)
-cmp1(std::pair<int, int>, std::pair<int, int>):
-LFB76:
-# 7:     if (a.first != b.first)
-	cmpl	%esi, %edi	# bool, signed char
-	jne	L4	#,
-# 9:     return a.second < b.second;
-	sarq	$32, %rdi	#, tmp90
-# 9:     return a.second < b.second;
-	sarq	$32, %rsi	#, tmp91
-	cmpl	%esi, %edi	# tmp91, tmp90
-L4:
-	setl	%al	#, <retval>
-# 10: }
+	.globl with_iterators(double const*, float const*, float const*)
+with_iterators(double const*, float const*, float const*):
+LFB0:
+	pushq	%r12	#
+LCFI0:
+	movq	%rdx, %r12	# tmp96, xs_end
+	pushq	%rbp	#
+LCFI1:
+# 9:     auto erg_iter = energy + 1;
+	leaq	8(%rdi), %rbp	#, erg_iter
+# 5: {
+	pushq	%rbx	#
+LCFI2:
+# 8:     auto xsp_iter = xs_iter + 1;
+	leaq	8(%rsi), %rbx	#, xsp_iter
+L8:
+# 12:         if ((*xsm_iter < *xs_iter) && (*xs_iter > *xsp_iter))
+	movss	-8(%rbx), %xmm1	# MEM[base: xsp_iter_9, offset: -8B], _1
+# 12:         if ((*xsm_iter < *xs_iter) && (*xs_iter > *xsp_iter))
+	movss	-4(%rbx), %xmm0	# MEM[base: xsp_iter_9, offset: -4B], _2
+# 12:         if ((*xsm_iter < *xs_iter) && (*xs_iter > *xsp_iter))
+	comiss	%xmm1, %xmm0	# _1, _2
+	jbe	L2	#,
+# 12:         if ((*xsm_iter < *xs_iter) && (*xs_iter > *xsp_iter))
+	comiss	(%rbx), %xmm0	# MEM[base: xsp_iter_9, offset: 0B], _2
+	ja	L15	#,
+L2:
+# 16:         else if ((*xsm_iter > *xs_iter) && (*xs_iter < *xsp_iter))
+	comiss	%xmm0, %xmm1	# _2, _1
+	jbe	L5	#,
+# 16:         else if ((*xsm_iter > *xs_iter) && (*xs_iter < *xsp_iter))
+	movss	(%rbx), %xmm1	# MEM[base: xsp_iter_9, offset: 0B], MEM[base: xsp_iter_9, offset: 0B]
+	comiss	%xmm0, %xmm1	# _2, MEM[base: xsp_iter_9, offset: 0B]
+	jbe	L5	#,
+L15:
+# 18:             push_back(*erg_iter);
+	movsd	0(%rbp), %xmm0	# MEM[base: erg_iter_10, offset: 0B],
+	call	push_back(double)	#
+L5:
+# 21:         ++xsm_iter, ++xs_iter, ++xsp_iter, ++erg_iter;
+	addq	$4, %rbx	#, xsp_iter
+	addq	$8, %rbp	#, erg_iter
+# 22:     } while (xsp_iter != xs_end);
+	cmpq	%r12, %rbx	# xs_end, xsp_iter
+	jne	L8	#,
+# 23: }
+	popq	%rbx	#
+LCFI3:
+	popq	%rbp	#
+LCFI4:
+	popq	%r12	#
+LCFI5:
 	ret	
-LFE76:
-	.globl cmp2(std::pair<int, int>, std::pair<int, int>)
-cmp2(std::pair<int, int>, std::pair<int, int>):
-LFB80:
-	movq	%rdi, %rdx	# signed char, tmp89
-	movq	%rsi, %rax	# bool, tmp90
-	sarq	$32, %rdx	#, tmp89
-	sarq	$32, %rax	#, tmp90
-	cmpl	%esi, %edi	# bool, signed char
-	jne	L9	#,
-	cmpl	%eax, %edx	# tmp90, tmp89
-L9:
-	setl	%al	#, <retval>
-	ret	
-LFE80:
-	.globl cmp3(std::pair<int, int>, std::pair<int, int>)
-cmp3(std::pair<int, int>, std::pair<int, int>):
-LFB82:
-	movq	%rdi, %rdx	# signed char, tmp89
-	movq	%rsi, %rax	# bool, tmp90
-	sarq	$32, %rdx	#, tmp89
-	sarq	$32, %rax	#, tmp90
-	cmpl	%esi, %edi	# bool, signed char
-	jne	L13	#,
-	cmpl	%eax, %edx	# tmp90, tmp89
-L13:
-	setl	%al	#, <retval>
-	ret	
-LFE82:
+LFE0:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -122,34 +132,48 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB76-.
-	.set L$set$2,LFE76-LFB76
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
+	.byte	0x4
+	.set L$set$3,LCFI0-LFB0
+	.long L$set$3
+	.byte	0xe
+	.byte	0x10
+	.byte	0x8c
+	.byte	0x2
+	.byte	0x4
+	.set L$set$4,LCFI1-LCFI0
+	.long L$set$4
+	.byte	0xe
+	.byte	0x18
+	.byte	0x86
+	.byte	0x3
+	.byte	0x4
+	.set L$set$5,LCFI2-LCFI1
+	.long L$set$5
+	.byte	0xe
+	.byte	0x20
+	.byte	0x83
+	.byte	0x4
+	.byte	0x4
+	.set L$set$6,LCFI3-LCFI2
+	.long L$set$6
+	.byte	0xe
+	.byte	0x18
+	.byte	0x4
+	.set L$set$7,LCFI4-LCFI3
+	.long L$set$7
+	.byte	0xe
+	.byte	0x10
+	.byte	0x4
+	.set L$set$8,LCFI5-LCFI4
+	.long L$set$8
+	.byte	0xe
+	.byte	0x8
 	.align 3
 LEFDE1:
-LSFDE3:
-	.set L$set$3,LEFDE3-LASFDE3
-	.long L$set$3
-LASFDE3:
-	.long	LASFDE3-EH_frame1
-	.quad	LFB80-.
-	.set L$set$4,LFE80-LFB80
-	.quad L$set$4
-	.byte	0
-	.align 3
-LEFDE3:
-LSFDE5:
-	.set L$set$5,LEFDE5-LASFDE5
-	.long L$set$5
-LASFDE5:
-	.long	LASFDE5-EH_frame1
-	.quad	LFB82-.
-	.set L$set$6,LFE82-LFB82
-	.quad L$set$6
-	.byte	0
-	.align 3
-LEFDE5:
 	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor

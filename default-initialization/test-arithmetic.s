@@ -2,9 +2,9 @@
 #	compiled by GNU C version 9.2.0, GMP version 6.1.2, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.21-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ wtf.cc -fPIC -mmacosx-version-min=10.14.0
-# -mtune=core2 -auxbase-strip - -short&& -Wall -Wextra -Werror -Wpedantic
-# -std=char++11 -fverbose-asm
+# options passed:  -D__DYNAMIC__ test-arithmetic.cc -fPIC
+# -mmacosx-version-min=10.14.0 -mtune=core2 -auxbase-strip - -short&& -Wall
+# -Wextra -Werror -Wpedantic -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -fassume-phsa
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
@@ -53,50 +53,31 @@
 # -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mstv -mvzeroupper
 
 	.text
-	.globl cmp1(std::pair<int, int>, std::pair<int, int>)
-cmp1(std::pair<int, int>, std::pair<int, int>):
-LFB76:
-# 7:     if (a.first != b.first)
-	cmpl	%esi, %edi	# bool, signed char
-	jne	L4	#,
-# 9:     return a.second < b.second;
-	sarq	$32, %rdi	#, tmp90
-# 9:     return a.second < b.second;
-	sarq	$32, %rsi	#, tmp91
-	cmpl	%esi, %edi	# tmp91, tmp90
-L4:
-	setl	%al	#, <retval>
-# 10: }
+	.globl with_braces()
+with_braces():
+LFB0:
+# 24: }
+	xorps	%xmm0, %xmm0	#
 	ret	
-LFE76:
-	.globl cmp2(std::pair<int, int>, std::pair<int, int>)
-cmp2(std::pair<int, int>, std::pair<int, int>):
-LFB80:
-	movq	%rdi, %rdx	# signed char, tmp89
-	movq	%rsi, %rax	# bool, tmp90
-	sarq	$32, %rdx	#, tmp89
-	sarq	$32, %rax	#, tmp90
-	cmpl	%esi, %edi	# bool, signed char
-	jne	L9	#,
-	cmpl	%eax, %edx	# tmp90, tmp89
-L9:
-	setl	%al	#, <retval>
+LFE0:
+	.globl with_assign_braces()
+with_assign_braces():
+LFB5:
+	xorps	%xmm0, %xmm0	#
 	ret	
-LFE80:
-	.globl cmp3(std::pair<int, int>, std::pair<int, int>)
-cmp3(std::pair<int, int>, std::pair<int, int>):
-LFB82:
-	movq	%rdi, %rdx	# signed char, tmp89
-	movq	%rsi, %rax	# bool, tmp90
-	sarq	$32, %rdx	#, tmp89
-	sarq	$32, %rax	#, tmp90
-	cmpl	%esi, %edi	# bool, signed char
-	jne	L13	#,
-	cmpl	%eax, %edx	# tmp90, tmp89
-L13:
-	setl	%al	#, <retval>
+LFE5:
+	.globl with_auto_braces()
+with_auto_braces():
+LFB7:
+	xorps	%xmm0, %xmm0	#
 	ret	
-LFE82:
+LFE7:
+	.globl with_auto_parens()
+with_auto_parens():
+LFB9:
+	xorps	%xmm0, %xmm0	#
+	ret	
+LFE9:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -122,8 +103,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB76-.
-	.set L$set$2,LFE76-LFB76
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -133,8 +114,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB80-.
-	.set L$set$4,LFE80-LFB80
+	.quad	LFB5-.
+	.set L$set$4,LFE5-LFB5
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -144,12 +125,23 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB82-.
-	.set L$set$6,LFE82-LFB82
+	.quad	LFB7-.
+	.set L$set$6,LFE7-LFB7
 	.quad L$set$6
 	.byte	0
 	.align 3
 LEFDE5:
+LSFDE7:
+	.set L$set$7,LEFDE7-LASFDE7
+	.long L$set$7
+LASFDE7:
+	.long	LASFDE7-EH_frame1
+	.quad	LFB9-.
+	.set L$set$8,LFE9-LFB9
+	.quad L$set$8
+	.byte	0
+	.align 3
+LEFDE7:
 	.ident	"GCC: (Homebrew GCC 9.2.0_2) 9.2.0"
 	.constructor
 	.destructor

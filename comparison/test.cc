@@ -9,6 +9,7 @@
 //---------------------------------------------------------------------------//
 
 #include <utility>
+#include <tuple>
 
 using Pair_Int = std::pair<int, int>;
 
@@ -99,6 +100,17 @@ bool lt1f(Pair_Int a, Pair_Int b)
         return (a.first < b.first);
     else
         return (a.second < b.second);
+}
+
+
+bool lt_native(Pair_Int a, Pair_Int b)
+{
+    return a < b;
+}
+
+bool lt_tie(Pair_Int a, Pair_Int b)
+{
+    return std::tie(a.first, a.second) < std::tie(b.first, b.second);
 }
 
 //---------------------------------------------------------------------------//
