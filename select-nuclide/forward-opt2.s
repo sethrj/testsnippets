@@ -4,7 +4,7 @@
 # warning: MPFR header version .0.2 differs from library version 4.1.0.
 # warning: MPC header version 1.1.0 differs from library version 1.2.1.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ backward2-unsigned.cc -fPIC -mtune=haswell
+# options passed:  -D__DYNAMIC__ forward-opt2.cc -fPIC -mtune=haswell
 # -march=haswell -mmacosx-version-min=10.15.0 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -Wpedantic -std=char++11 -fno-exceptions -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -64,44 +64,53 @@ select(double, unsigned int, double*, double*):
 LFB0:
 	pushq	%r12	#
 LCFI0:
-	movq	%rdx, %r12	# tmp100, xs
+	movl	%edi, %r12d	# tmp102, size
 	pushq	%rbp	#
 LCFI1:
-	movq	%rsi, %rbp	# tmp99, frac
+	movq	%rdx, %rbp	# tmp104, xs
 	pushq	%rbx	#
 LCFI2:
-	movl	%edi, %ebx	# tmp98, size
+	movq	%rsi, %rbx	# tmp103, frac
 	subq	$16, %rsp	#,
 LCFI3:
 # 4: {
-	vmovsd	%xmm0, 8(%rsp)	# tmp97, %sfp
-# 5:     double cutoff = total * ran();
+	vmovsd	%xmm0, 8(%rsp)	# total, %sfp
+# 7:     double cutoff = -total * ran();
 	call	ran()	#
-# 5:     double cutoff = total * ran();
-	vmulsd	8(%rsp), %xmm0, %xmm0	# %sfp, tmp101, cutoff
-# 7:     for (; int > 0; --int)
-	decl	%ebx	# size
-	movl	%ebx, %r8d	# size, <retval>
-	je	L1	#,
-	movl	%ebx, %eax	# <retval>, <retval>
-	vxorpd	%xmm1, %xmm1, %xmm1	# tmp96
-	salq	$3, %rax	#, ivtmp.13
+# 7:     double cutoff = -total * ran();
+	vmovsd	8(%rsp), %xmm1	# %sfp, total
+# 7:     double cutoff = -total * ran();
+	vmovsd	%xmm0, %xmm0, %xmm2	#, tmp105
+# 7:     double cutoff = -total * ran();
+	vxorpd	lC0(%rip), %xmm1, %xmm0	#, total, tmp95
+# 7:     double cutoff = -total * ran();
+	vmulsd	%xmm2, %xmm0, %xmm0	# tmp105, tmp95, cutoff
+# 10:     for (; int != imax; ++int)
+	cmpl	$1, %r12d	#, size
+	je	L4	#,
+	leal	-1(%r12), %edx	#, _11
+	xorl	%eax, %eax	# ivtmp.5
+	vxorpd	%xmm1, %xmm1, %xmm1	# tmp100
 	jmp	L3	#
 	.p2align 4,,10
 	.p2align 3
-L10:
-	subq	$8, %rax	#, ivtmp.13
-	decl	%r8d	# <retval>
+L8:
+# 10:     for (; int != imax; ++int)
+	leal	1(%rax), %r8d	#, <retval>
+# 10:     for (; int != imax; ++int)
+	incq	%rax	# ivtmp.5
+	cmpq	%rax, %rdx	# ivtmp.5, _11
 	je	L1	#,
 L3:
-# 9:         cutoff -= frac[int] * xs[int];
-	vmovsd	0(%rbp,%rax), %xmm2	# MEM[base: frac_18(D), index: ivtmp.13_34, offset: 0B], tmp104
-	vfnmadd231sd	(%r12,%rax), %xmm2, %xmm0	# MEM[base: xs_19(D), index: ivtmp.13_34, offset: 0B], tmp104, cutoff
-# 10:         if (cutoff <= 0)
-	vcomisd	%xmm0, %xmm1	# cutoff, tmp96
-	jb	L10	#,
+# 12:         cutoff += frac[int] * xs[int];
+	vmovsd	(%rbx,%rax,8), %xmm3	# MEM[base: frac_19(D), index: ivtmp.5_30, step: 8, offset: 0B], tmp106
+	vfmadd231sd	0(%rbp,%rax,8), %xmm3, %xmm0	# MEM[base: xs_20(D), index: ivtmp.5_30, step: 8, offset: 0B], tmp106, cutoff
+	movl	%eax, %r8d	# ivtmp.5, <retval>
+# 13:         if (cutoff >= 0)
+	vcomisd	%xmm1, %xmm0	# tmp100, cutoff
+	jb	L8	#,
 L1:
-# 14: }
+# 17: }
 	addq	$16, %rsp	#,
 LCFI4:
 	movl	%r8d, %eax	# <retval>,
@@ -112,7 +121,20 @@ LCFI6:
 	popq	%r12	#
 LCFI7:
 	ret	
+L4:
+LCFI8:
+# 8:     unsigned int int = 0;
+	xorl	%r8d, %r8d	# <retval>
+# 16:     return int;
+	jmp	L1	#
 LFE0:
+	.literal16
+	.align 4
+lC0:
+	.long	0
+	.long	-2147483648
+	.long	0
+	.long	0
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -171,6 +193,7 @@ LASFDE1:
 	.byte	0x4
 	.set L$set$7,LCFI4-LCFI3
 	.long L$set$7
+	.byte	0xa
 	.byte	0xe
 	.byte	0x20
 	.byte	0x4
@@ -188,6 +211,10 @@ LASFDE1:
 	.long L$set$10
 	.byte	0xe
 	.byte	0x8
+	.byte	0x4
+	.set L$set$11,LCFI8-LCFI7
+	.long L$set$11
+	.byte	0xb
 	.align 3
 LEFDE1:
 	.ident	"GCC: (Homebrew GCC 10.2.0) 10.2.0"

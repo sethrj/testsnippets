@@ -1,6 +1,6 @@
 double ran();
 
-unsigned int select(double total, int size, double* frac, double *xs)
+unsigned int select(double total, unsigned int size, double* frac, double *xs)
 {
     double cutoff = total * ran();
     unsigned int i = size - 1;
