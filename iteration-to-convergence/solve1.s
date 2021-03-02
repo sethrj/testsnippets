@@ -67,25 +67,14 @@ LCFI1:
 LCFI2:
 # 5:     s->setup();
 	call	Solver::setup()	#
-# 6:     for (int i = 0; i < s->max_steps(); ++i)
-	movl	(%rbx), %eax	# MEM[(const struct Solver *)s_5(D)].max_steps_,
+# 6:     for (int i = 0; !UNLIKELY(i >= s->max_steps()); ++i)
+	movl	(%rbx), %eax	# MEM[(const struct Solver *)s_8(D)].max_steps_,
 	testl	%eax, %eax	#
 	jle	L1	#,
-# 6:     for (int i = 0; i < s->max_steps(); ++i)
+# 6:     for (int i = 0; !UNLIKELY(i >= s->max_steps()); ++i)
 	xorl	%ebp, %ebp	# i
-	jmp	L3	#
 	.p2align 4,,10
 	.p2align 3
-L7:
-# 11:         s->pre_step();
-	movq	%rbx, %rdi	# s,
-# 6:     for (int i = 0; i < s->max_steps(); ++i)
-	addl	$1, %ebp	#, i
-# 11:         s->pre_step();
-	call	Solver::pre_step()	#
-# 6:     for (int i = 0; i < s->max_steps(); ++i)
-	cmpl	%ebp, (%rbx)	# i, MEM[(const struct Solver *)s_5(D)].max_steps_
-	jle	L1	#,
 L3:
 # 8:         s->step();
 	movq	%rbx, %rdi	# s,
@@ -95,7 +84,16 @@ L3:
 	call	Solver::is_converged() const	#
 # 9:         if (s->is_converged())
 	testb	%al, %al	# tmp88
-	je	L7	#,
+	jne	L1	#,
+# 11:         s->pre_step();
+	movq	%rbx, %rdi	# s,
+# 6:     for (int i = 0; !UNLIKELY(i >= s->max_steps()); ++i)
+	addl	$1, %ebp	#, i
+# 11:         s->pre_step();
+	call	Solver::pre_step()	#
+# 6:     for (int i = 0; !UNLIKELY(i >= s->max_steps()); ++i)
+	cmpl	%ebp, (%rbx)	# i, MEM[(const struct Solver *)s_8(D)].max_steps_
+	jg	L3	#,
 L1:
 # 13: }
 	addq	$8, %rsp	#,

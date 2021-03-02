@@ -11,7 +11,7 @@ void solve(Solver* s)
         converged = s->is_converged();
         if (!converged)
         {
-            if (--remaining_steps == 0)
+            if (UNLIKELY(--remaining_steps == 0))
                 break;
             s->pre_step();
         }

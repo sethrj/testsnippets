@@ -71,15 +71,11 @@ LCFI2:
 	movq	%rbx, %rdi	# s,
 	call	Solver::step()	#
 # solver.hh:11:     int max_steps() const { return max_steps_; }
-	movl	(%rbx), %ebp	# MEM[(const struct Solver *)s_4(D)].max_steps_, remaining_steps
+	movl	(%rbx), %ebp	# MEM[(const struct Solver *)s_7(D)].max_steps_, remaining_steps
 	jmp	L3	#
 	.p2align 4,,10
 	.p2align 3
 L6:
-# 8:     while (!s->is_converged() && --remaining_steps > 0)
-	subl	$1, %ebp	#, remaining_steps
-	testl	%ebp, %ebp	# remaining_steps
-	jle	L1	#,
 # 10:         s->pre_step();
 	movq	%rbx, %rdi	# s,
 	call	Solver::pre_step()	#
@@ -87,12 +83,16 @@ L6:
 	movq	%rbx, %rdi	# s,
 	call	Solver::step()	#
 L3:
-# 8:     while (!s->is_converged() && --remaining_steps > 0)
+# 8:     while (!s->is_converged() && !UNLIKELY(--remaining_steps <= 0))
 	movq	%rbx, %rdi	# s,
 	call	Solver::is_converged() const	#
-# 8:     while (!s->is_converged() && --remaining_steps > 0)
+# 8:     while (!s->is_converged() && !UNLIKELY(--remaining_steps <= 0))
 	testb	%al, %al	# tmp86
-	je	L6	#,
+	jne	L1	#,
+# 8:     while (!s->is_converged() && !UNLIKELY(--remaining_steps <= 0))
+	subl	$1, %ebp	#, remaining_steps
+	testl	%ebp, %ebp	# remaining_steps
+	jg	L6	#,
 L1:
 # 13: }
 	addq	$8, %rsp	#,

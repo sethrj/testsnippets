@@ -66,7 +66,7 @@ LCFI1:
 	subq	$8, %rsp	#,
 LCFI2:
 # solver.hh:11:     int max_steps() const { return max_steps_; }
-	movl	(%rdi), %ebp	# MEM[(const struct Solver *)s_7(D)].max_steps_, remaining_steps
+	movl	(%rdi), %ebp	# MEM[(const struct Solver *)s_10(D)].max_steps_, remaining_steps
 # 7:     s->setup();
 	call	Solver::setup()	#
 	.p2align 4,,10
@@ -94,7 +94,7 @@ LCFI5:
 	.p2align 3
 L9:
 LCFI6:
-# 14:             if (--remaining_steps == 0)
+# 14:             if (UNLIKELY(--remaining_steps == 0))
 	subl	$1, %ebp	#, remaining_steps
 	je	L1	#,
 # 16:             s->pre_step();

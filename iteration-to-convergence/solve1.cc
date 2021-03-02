@@ -3,7 +3,7 @@
 void solve(Solver* s)
 {
     s->setup();
-    for (int i = 0; i < s->max_steps(); ++i)
+    for (int i = 0; !UNLIKELY(i >= s->max_steps()); ++i)
     {
         s->step();
         if (s->is_converged())
