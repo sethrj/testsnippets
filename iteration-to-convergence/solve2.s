@@ -4,7 +4,7 @@
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ solve2.cc -fPIC
 # -mmacosx-version-min=11.2.0 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -Wpedantic -std=c++11 -fverbose-asm
+# -Wextra -Werror -Wpedantic -std=c++11 -fno-exceptions -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-functions -falign-jumps
 # -falign-labels -falign-loops -fallocation-dce
@@ -13,15 +13,15 @@
 # -fcprop-registers -fcrossjumping -fcse-follow-jumps -fdefer-pop
 # -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
 # -fearly-inlining -feliminate-unused-debug-symbols
-# -feliminate-unused-debug-types -fexceptions -fexpensive-optimizations
-# -ffinite-loops -fforward-propagate -ffp-int-builtin-inexact
-# -ffunction-cse -fgcse -fgcse-lm -fgnu-unique -fguess-branch-probability
-# -fhoist-adjacent-loads -fident -fif-conversion -fif-conversion2
-# -findirect-inlining -finline -finline-atomics -finline-functions
-# -finline-functions-called-once -finline-small-functions -fipa-bit-cp
-# -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
-# -fipa-pure-const -fipa-ra -fipa-reference -fipa-reference-addressable
-# -fipa-sra -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
+# -feliminate-unused-debug-types -fexpensive-optimizations -ffinite-loops
+# -fforward-propagate -ffp-int-builtin-inexact -ffunction-cse -fgcse
+# -fgcse-lm -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads
+# -fident -fif-conversion -fif-conversion2 -findirect-inlining -finline
+# -finline-atomics -finline-functions -finline-functions-called-once
+# -finline-small-functions -fipa-bit-cp -fipa-cp -fipa-icf
+# -fipa-icf-functions -fipa-icf-variables -fipa-profile -fipa-pure-const
+# -fipa-ra -fipa-reference -fipa-reference-addressable -fipa-sra
+# -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
 # -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -flifetime-dse -flra-remat -fmath-errno
@@ -174,3 +174,4 @@ LASFDE1:
 LEFDE1:
 	.ident	"GCC: (Homebrew GCC 10.2.0_4) 10.2.0"
 	.subsections_via_symbols
+# Total code size:      824

@@ -10,13 +10,16 @@ if [ -z "$CXX" ]; then
   exit 1
 fi
 
+: ${CXXFLAGS:=-O2 -std=c++11}
+
 for filename in $*; do
   basename="${filename%.*}"
-  $CXX -Wall -Wextra -Werror -pedantic -O2 ${CXXFLAGS} \
-     -std=c++11 \
+  $CXX -Wall -Wextra -Werror -pedantic ${CXXFLAGS} \
      -fverbose-asm -S  -c ${filename} -o - \
      | c++filt | sed -e "s/${filename}://" \
      > ${basename}.s
+  printf "# Total code size: " >> ${basename}.s
+  $CXX ${CXXFLAGS} -c ${filename} -o - | wc -c >> ${basename}.s
 done
 
 ###############################################################################

@@ -65,13 +65,13 @@ LCFI1:
 	movq	%rdi, %rbx	# tmp85, s
 	subq	$8, %rsp	#,
 LCFI2:
-# 5:     s->setup();
+# solver.hh:11:     int max_steps() const { return max_steps_; }
+	movl	(%rdi), %ebp	# MEM[(const struct Solver *)s_7(D)].max_steps_, remaining_steps
+# 6:     s->setup();
 	call	Solver::setup()	#
-# 6:     s->step();
+# 7:     s->step();
 	movq	%rbx, %rdi	# s,
 	call	Solver::step()	#
-# solver.hh:11:     int max_steps() const { return max_steps_; }
-	movl	(%rbx), %ebp	# MEM[(const struct Solver *)s_7(D)].max_steps_, remaining_steps
 	jmp	L3	#
 	.p2align 4,,10
 	.p2align 3
@@ -170,3 +170,4 @@ LASFDE1:
 LEFDE1:
 	.ident	"GCC: (Homebrew GCC 10.2.0_4) 10.2.0"
 	.subsections_via_symbols
+# Total code size:      840
