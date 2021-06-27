@@ -18,6 +18,27 @@ double upcast(float a)
     return static_cast<double>(a);
 }
 
+float bad_addition(float a)
+{
+    return 1.1 + a;
+}
+
+float bad_addition_2(float a)
+{
+    return a + 1.1;
+}
+
+float good_addition(float a)
+{
+    return a + 1.1f;
+}
+
+#include <cmath>
+decltype(auto) mystery(float a)
+{
+    return std::log(1. - a);
+}
+
 //---------------------------------------------------------------------------//
 // end of double_float_conversion/conversion.cc
 //---------------------------------------------------------------------------//

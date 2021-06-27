@@ -1,10 +1,12 @@
-# GNU C++11 (Homebrew GCC 10.2.0_4) version 10.2.0 (x86_64-apple-darwin20)
-#	compiled by GNU C version 10.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.23-GMP
+# GNU C++11 (Homebrew GCC 10.2.0) version 10.2.0 (x86_64-apple-darwin19)
+#	compiled by GNU C version 10.2.0, GMP version 6.2.0, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.22.1-GMP
 
+# warning: MPFR header version .0.2 differs from library version 4.1.0.
+# warning: MPC header version 1.1.0 differs from library version 1.2.1.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ solve2.cc -fPIC
-# -mmacosx-version-min=11.2.0 -mtune=core2 -auxbase-strip - -O2 -Wall
-# -Wextra -Werror -Wpedantic -std=c++11 -fverbose-asm
+# options passed:  -D__DYNAMIC__ string-const.cc -fPIC
+# -mmacosx-version-min=10.15.0 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -Wpedantic -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
 # -faggressive-loop-optimizations -falign-functions -falign-jumps
 # -falign-labels -falign-loops -fallocation-dce
@@ -20,7 +22,7 @@
 # -findirect-inlining -finline -finline-atomics -finline-functions
 # -finline-functions-called-once -finline-small-functions -fipa-bit-cp
 # -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
-# -fipa-pure-const -fipa-ra -fipa-reference -fipa-reference-addressable
+# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-reference-addressable
 # -fipa-sra -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
 # -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
@@ -46,7 +48,7 @@
 # -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
 # -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
 # -ftree-sink -ftree-slsr -ftree-sra -ftree-switch-conversion
-# -ftree-tail-merge -ftree-ter -ftree-vrp -funit-at-a-time -funwind-tables
+# -ftree-tail-merge -ftree-ter -ftree-vrp -funit-at-signed char-time -funwind-tables
 # -fverbose-asm -fzero-initialized-in-bss -gstrict-dwarf
 # -m128bit-long-double -m64 -m80387 -malign-stringops -matt-stubs
 # -mconstant-cfstrings -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp
@@ -55,53 +57,53 @@
 
 	.text
 	.p2align 4
-	.globl solve(Solver*)
-solve(Solver*):
-LFB1:
-	pushq	%rbp	#
-LCFI0:
-	pushq	%rbx	#
-LCFI1:
-	movq	%rdi, %rbx	# tmp85, s
-	subq	$8, %rsp	#,
-LCFI2:
-# solver.hh:11:     int max_steps() const { return max_steps_; }
-	movl	(%rdi), %ebp	# MEM[(const struct Solver *)s_10(D)].max_steps_, remaining_steps
-# 7:     s->setup();
-	call	Solver::setup()	#
-	.p2align 4,,10
-	.p2align 3
-L3:
-# 10:         s->step();
-	movq	%rbx, %rdi	# s,
-	call	Solver::step()	#
-# 11:         converged = s->is_converged();
-	movq	%rbx, %rdi	# s,
-	call	Solver::is_converged() const	#
-# 12:         if (!converged)
-	testb	%al, %al	# tmp86
-	je	L9	#,
-L1:
-# 19: }
-	addq	$8, %rsp	#,
-LCFI3:
-	popq	%rbx	#
-LCFI4:
-	popq	%rbp	#
-LCFI5:
+	.globl to_cstring(Foo)
+to_cstring(Foo):
+LFB0:
+# 6:     return strings[val];
+	leaq	to_cstring(Foo)::strings(%rip), %rax	#, tmp86
+	movslq	%edi, %rdi	# tmp89, val
+	movq	(%rax,%rdi,8), %rax	# strings[val.0_1], strings[val.0_1]
+# 7: }
 	ret	
-	.p2align 4,,10
-	.p2align 3
-L9:
-LCFI6:
-# 14:             if (UNLIKELY(--remaining_steps == 0))
-	subl	$1, %ebp	#, remaining_steps
-	je	L1	#,
-# 16:             s->pre_step();
-	movq	%rbx, %rdi	# s,
-	call	Solver::pre_step()	#
-	jmp	L3	#
+LFE0:
+	.p2align 4
+	.globl to_cstring(Zaz)
+to_cstring(Zaz):
+LFB1:
+# 12:     return strings[static_cast<int>(val)];
+	leaq	to_cstring(Zaz)::strings(%rip), %rax	#, tmp85
+	movslq	%edi, %rdi	# tmp88, val
+	movq	(%rax,%rdi,8), %rax	# strings[val_2(D)], strings[val_2(D)]
+# 13: }
+	ret	
 LFE1:
+	.cstring
+lC0:
+	.ascii "zip\0"
+lC1:
+	.ascii "zap\0"
+lC2:
+	.ascii "zop\0"
+	.const_data
+	.align 4
+to_cstring(Zaz)::strings:
+	.quad	lC0
+	.quad	lC1
+	.quad	lC2
+	.cstring
+lC3:
+	.ascii "bar\0"
+lC4:
+	.ascii "baz\0"
+lC5:
+	.ascii "blah\0"
+	.const_data
+	.align 4
+to_cstring(Foo)::strings:
+	.quad	lC3
+	.quad	lC4
+	.quad	lC5
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -127,51 +129,22 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB1-.
-	.set L$set$2,LFE1-LFB1
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
-	.byte	0x4
-	.set L$set$3,LCFI0-LFB1
-	.long L$set$3
-	.byte	0xe
-	.byte	0x10
-	.byte	0x86
-	.byte	0x2
-	.byte	0x4
-	.set L$set$4,LCFI1-LCFI0
-	.long L$set$4
-	.byte	0xe
-	.byte	0x18
-	.byte	0x83
-	.byte	0x3
-	.byte	0x4
-	.set L$set$5,LCFI2-LCFI1
-	.long L$set$5
-	.byte	0xe
-	.byte	0x20
-	.byte	0x4
-	.set L$set$6,LCFI3-LCFI2
-	.long L$set$6
-	.byte	0xa
-	.byte	0xe
-	.byte	0x18
-	.byte	0x4
-	.set L$set$7,LCFI4-LCFI3
-	.long L$set$7
-	.byte	0xe
-	.byte	0x10
-	.byte	0x4
-	.set L$set$8,LCFI5-LCFI4
-	.long L$set$8
-	.byte	0xe
-	.byte	0x8
-	.byte	0x4
-	.set L$set$9,LCFI6-LCFI5
-	.long L$set$9
-	.byte	0xb
 	.align 3
 LEFDE1:
-	.ident	"GCC: (Homebrew GCC 10.2.0_4) 10.2.0"
+LSFDE3:
+	.set L$set$3,LEFDE3-LASFDE3
+	.long L$set$3
+LASFDE3:
+	.long	LASFDE3-EH_frame1
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
+	.quad L$set$4
+	.byte	0
+	.align 3
+LEFDE3:
+	.ident	"GCC: (Homebrew GCC 10.2.0) 10.2.0"
 	.subsections_via_symbols
-# Total code size:      824

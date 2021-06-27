@@ -30,6 +30,16 @@ int total_mt(Particle_Type pt)
     return P_TOTAL;
 }
 
+int total_mt_switch(Particle_Type pt)
+{
+    switch (pt)
+    {
+        case NEUTRON: return N_TOTAL;
+        case PHOTON: return P_TOTAL;
+    }
+    __builtin_unreachable();
+}
+
 int total_mt_noenum(Particle_Type pt)
 {
     if (pt == NEUTRON)

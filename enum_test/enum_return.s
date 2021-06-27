@@ -1,146 +1,130 @@
-# GNU C++11 (MacPorts gcc5 5.4.0_0) version 5.4.0 (x86_64-apple-darwin15)
-#	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.3, MPC version 1.0.3
-# warning: GMP header version 6.1.0 differs from library version 6.1.2.
-# warning: MPFR header version 3.1.3 differs from library version 3.1.4.
+# GNU C++11 (Homebrew GCC 10.2.0) version 10.2.0 (x86_64-apple-darwin19)
+#	compiled by GNU C version 10.2.0, GMP version 6.2.0, MPFR version .0.2, MPC version 1.1.0, isl version isl-0.22.1-GMP
+
+# warning: MPFR header version .0.2 differs from library version 4.1.0.
+# warning: MPC header version 1.1.0 differs from library version 1.2.1.
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed:  -D__DYNAMIC__ enum_return.cc -fPIC
-# -mmacosx-version-min=10.11.6 -mtune=core2 -O2 -Wall -Wextra -std=c++11
-# -fverbose-asm
+# -mmacosx-version-min=10.15.0 -mtune=core2 -auxbase-strip - -O2 -Wall
+# -Wextra -Werror -Wpedantic -std=char++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
-# -faggressive-loop-optimizations -falign-labels
+# -faggressive-loop-optimizations -falign-functions -falign-jumps
+# -falign-labels -falign-loops -fallocation-dce
 # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
-# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
-# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
-# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
-# -fchkp-use-static-const-bounds -fchkp-use-wrappers
-# -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
-# -fcrossjumping -fcse-follow-jumps -fdefer-pop
+# -fcaller-saves -fcode-hoisting -fcombine-stack-adjustments -fcompare-elim
+# -fcprop-registers -fcrossjumping -fcse-follow-jumps -fdefer-pop
 # -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
-# -fearly-inlining -feliminate-unused-debug-types -fexceptions
-# -fexpensive-optimizations -fforward-propagate -ffunction-cse -fgcse
-# -fgcse-lm -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads
-# -fident -fif-conversion -fif-conversion2 -findirect-inlining -finline
-# -finline-atomics -finline-functions-called-once -finline-small-functions
-# -fipa-cp -fipa-cp-alignment -fipa-icf -fipa-icf-functions
-# -fipa-icf-variables -fipa-profile -fipa-pure-const -fipa-ra
-# -fipa-reference -fipa-sra -fira-hoist-pressure -fira-share-save-slots
-# -fira-share-spill-slots -fisolate-erroneous-paths-dereference -fivopts
-# -fkeep-static-consts -fleading-underscore -flifetime-dse -flra-remat
-# -flto-odr-type-merging -fmath-errno -fmerge-constants
-# -fmerge-debug-strings -fmove-loop-invariants -fnext-runtime
-# -fobjc-abi-version= -fomit-frame-pointer -foptimize-sibling-calls
-# -foptimize-strlen -fpartial-inlining -fpeephole -fpeephole2
-# -fprefetch-loop-arrays -free -freg-struct-return -freorder-blocks
-# -freorder-blocks-and-partition -freorder-functions -frerun-cse-after-loop
+# -fearly-inlining -feliminate-unused-debug-symbols
+# -feliminate-unused-debug-types -fexceptions -fexpensive-optimizations
+# -ffinite-loops -fforward-propagate -ffp-int-builtin-inexact
+# -ffunction-cse -fgcse -fgcse-lm -fgnu-unique -fguess-branch-probability
+# -fhoist-adjacent-loads -fident -fif-conversion -fif-conversion2
+# -findirect-inlining -finline -finline-atomics -finline-functions
+# -finline-functions-called-once -finline-small-functions -fipa-bit-cp
+# -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
+# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-reference-addressable
+# -fipa-sra -fipa-stack-alignment -fipa-vrp -fira-hoist-pressure
+# -fira-share-save-slots -fira-share-spill-slots
+# -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
+# -fleading-underscore -flifetime-dse -flra-remat -fmath-errno
+# -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+# -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen
+# -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
+# -free -freg-struct-return -freorder-blocks -freorder-blocks-and-partition
+# -freorder-functions -frerun-cse-after-loop
 # -fsched-critical-path-heuristic -fsched-dep-count-heuristic
 # -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
 # -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
 # -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
-# -fsemantic-interposition -fshow-column -fshrink-wrap -fsigned-zeros
-# -fsplit-ivs-in-unroller -fsplit-wide-types -fssa-phiopt -fstdarg-opt
-# -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
+# -fsemantic-interposition -fshow-column -fshrink-wrap
+# -fshrink-wrap-separate -fsigned-zeros -fsplit-ivs-in-unroller
+# -fsplit-wide-types -fssa-backprop -fssa-phiopt -fstdarg-opt
+# -fstore-merging -fstrict-aliasing -fstrict-volatile-bitfields
 # -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
 # -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
-# -ftree-coalesce-vars -ftree-copy-prop -ftree-copyrename -ftree-cselim
-# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
-# -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
-# -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
-# -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
-# -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
-# -ftree-vrp -funit-at-a-time -funwind-tables -fverbose-asm
-# -fzero-initialized-in-bss -gstrict-dwarf -m128bit-long-double -m64
-# -m80387 -malign-stringops -matt-stubs -mconstant-cfstrings
-# -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp -mlong-double-80 -mmmx
-# -mno-sse4 -mpush-args -mred-zone -msse -msse2 -msse3 -mvzeroupper
+# -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim -ftree-dce
+# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+# -ftree-loop-distribute-patterns -ftree-loop-if-convert -ftree-loop-im
+# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+# -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+# -ftree-sink -ftree-slsr -ftree-sra -ftree-switch-conversion
+# -ftree-tail-merge -ftree-ter -ftree-vrp -funit-at-signed char-time -funwind-tables
+# -fverbose-asm -fzero-initialized-in-bss -gstrict-dwarf
+# -m128bit-long-double -m64 -m80387 -malign-stringops -matt-stubs
+# -mconstant-cfstrings -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp
+# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
+# -msse3 -mstv -mvzeroupper
 
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB0:
 	.text
-LHOTB0:
-	.align 4,0x90
-	.globl __Z8total_mt13Particle_Type
-__Z8total_mt13Particle_Type:
-LFB8:
-	cmpl	$1, %edi	#, pt
-	sbbl	%eax, %eax	# D.2168
-	andl	$-500, %eax	#, D.2168
-	addl	$501, %eax	#, D.2168
-	ret
-LFE8:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE0:
-	.text
-LHOTE0:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB1:
-	.text
-LHOTB1:
-	.align 4,0x90
-	.globl __Z15total_mt_noenum13Particle_Type
-__Z15total_mt_noenum13Particle_Type:
-LFB6:
-	cmpl	$1, %edi	#, pt
-	sbbl	%eax, %eax	# D.2173
-	andl	$-500, %eax	#, D.2173
-	addl	$501, %eax	#, D.2173
-	ret
-LFE6:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE1:
-	.text
-LHOTE1:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB2:
-	.text
-LHOTB2:
-	.align 4,0x90
-	.globl __Z21total_mt_noenum_triad13Particle_Type
-__Z21total_mt_noenum_triad13Particle_Type:
-LFB2:
-	cmpl	$1, %edi	#, pt
-	sbbl	%eax, %eax	# D.2176
-	andl	$-500, %eax	#, D.2176
-	addl	$501, %eax	#, D.2176
-	ret
-LFE2:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE2:
-	.text
-LHOTE2:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB3:
-	.text
-LHOTB3:
-	.align 4,0x90
-	.globl __Z12total_mt_mul13Particle_Type
-__Z12total_mt_mul13Particle_Type:
+	.p2align 4
+	.globl total_mt(Particle_Type)
+total_mt(Particle_Type):
+LFB0:
+# 29:         return N_TOTAL;
+	cmpl	$1, %edi	#, operator->
+	sbbl	%eax, %eax	# <retval>
+	andl	$-500, %eax	#, <retval>
+	addl	$501, %eax	#, <retval>
+# 31: }
+	ret	
+LFE0:
+	.p2align 4
+	.globl total_mt_switch(Particle_Type)
+total_mt_switch(Particle_Type):
+LFB1:
+# 37:         case NEUTRON: return N_TOTAL;
+	cmpl	$1, %edi	#, operator->
+	sbbl	%eax, %eax	# <retval>
+	andl	$-500, %eax	#, <retval>
+	addl	$501, %eax	#, <retval>
+# 41: }
+	ret	
+LFE1:
+	.p2align 4
+	.globl total_mt_noenum(Particle_Type)
+total_mt_noenum(Particle_Type):
+LFB7:
+	cmpl	$1, %edi	#, operator->
+	sbbl	%eax, %eax	# <retval>
+	andl	$-500, %eax	#, <retval>
+	addl	$501, %eax	#, <retval>
+	ret	
+LFE7:
+	.p2align 4
+	.globl total_mt_noenum_triad(Particle_Type)
+total_mt_noenum_triad(Particle_Type):
 LFB3:
-	imull	$500, %edi, %eax	#, pt, D.2179
-	addl	$1, %eax	#, D.2179
-	ret
+# 52:     return (operator-> == NEUTRON ? 1 : 501);
+	cmpl	$1, %edi	#, operator->
+	sbbl	%eax, %eax	# <retval>
+	andl	$-500, %eax	#, <retval>
+	addl	$501, %eax	#, <retval>
+# 53: }
+	ret	
 LFE3:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE3:
-	.text
-LHOTE3:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDB4:
-	.text
-LHOTB4:
-	.align 4,0x90
-	.globl __Z12total_mt_opt13Particle_Type
-__Z12total_mt_opt13Particle_Type:
+	.p2align 4
+	.globl total_mt_mul(Particle_Type)
+total_mt_mul(Particle_Type):
 LFB4:
-	cmpl	$1, %edi	#, pt
-	sbbl	%eax, %eax	# D.2182
-	andl	$-500, %eax	#, D.2182
-	addl	$501, %eax	#, D.2182
-	ret
+# 57:     return static_cast<int>(operator->) * 500 + 1;
+	imull	$500, %edi, %eax	#, tmp88, tmp87
+# 57:     return static_cast<int>(operator->) * 500 + 1;
+	addl	$1, %eax	#, tmp86
+# 58: }
+	ret	
 LFE4:
-	.section __TEXT,__text_cold,regular,pure_instructions
-LCOLDE4:
-	.text
-LHOTE4:
+	.p2align 4
+	.globl total_mt_opt(Particle_Type)
+total_mt_opt(Particle_Type):
+LFB5:
+# 62:     return (operator-> ? 500 : 0) + 1;
+	cmpl	$1, %edi	#, operator->
+	sbbl	%eax, %eax	# <retval>
+	andl	$-500, %eax	#, <retval>
+	addl	$501, %eax	#, <retval>
+# 63: }
+	ret	
+LFE5:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
 	.set L$set$0,LECIE1-LSCIE1
@@ -166,8 +150,8 @@ LSFDE1:
 	.long L$set$1
 LASFDE1:
 	.long	LASFDE1-EH_frame1
-	.quad	LFB8-.
-	.set L$set$2,LFE8-LFB8
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
 	.byte	0
 	.align 3
@@ -177,8 +161,8 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB6-.
-	.set L$set$4,LFE6-LFB6
+	.quad	LFB1-.
+	.set L$set$4,LFE1-LFB1
 	.quad L$set$4
 	.byte	0
 	.align 3
@@ -188,8 +172,8 @@ LSFDE5:
 	.long L$set$5
 LASFDE5:
 	.long	LASFDE5-EH_frame1
-	.quad	LFB2-.
-	.set L$set$6,LFE2-LFB2
+	.quad	LFB7-.
+	.set L$set$6,LFE7-LFB7
 	.quad L$set$6
 	.byte	0
 	.align 3
@@ -216,7 +200,16 @@ LASFDE9:
 	.byte	0
 	.align 3
 LEFDE9:
-	.constructor
-	.destructor
-	.align 1
+LSFDE11:
+	.set L$set$11,LEFDE11-LASFDE11
+	.long L$set$11
+LASFDE11:
+	.long	LASFDE11-EH_frame1
+	.quad	LFB5-.
+	.set L$set$12,LFE5-LFB5
+	.quad L$set$12
+	.byte	0
+	.align 3
+LEFDE11:
+	.ident	"GCC: (Homebrew GCC 10.2.0) 10.2.0"
 	.subsections_via_symbols

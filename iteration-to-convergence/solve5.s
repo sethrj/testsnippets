@@ -2,7 +2,7 @@
 #	compiled by GNU C version 10.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.23-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ solve2.cc -fPIC
+# options passed:  -D__DYNAMIC__ solve5.cc -fPIC
 # -mmacosx-version-min=11.2.0 -mtune=core2 -auxbase-strip - -O2 -Wall
 # -Wextra -Werror -Wpedantic -std=c++11 -fverbose-asm
 # options enabled:  -Wnonportable-cfstrings -fPIC
@@ -66,21 +66,30 @@ LCFI1:
 	subq	$8, %rsp	#,
 LCFI2:
 # solver.hh:11:     int max_steps() const { return max_steps_; }
-	movl	(%rdi), %ebp	# MEM[(const struct Solver *)s_10(D)].max_steps_, remaining_steps
+	movl	(%rdi), %ebp	# MEM[(const struct Solver *)s_7(D)].max_steps_, remaining_steps
 # 7:     s->setup();
 	call	Solver::setup()	#
+	jmp	L2	#
 	.p2align 4,,10
 	.p2align 3
-L3:
-# 10:         s->step();
+L9:
+# 15:     s->pre_step();
+	movq	%rbx, %rdi	# s,
+	call	Solver::pre_step()	#
+L2:
+# 10:     s->step();
 	movq	%rbx, %rdi	# s,
 	call	Solver::step()	#
-# 11:         converged = s->is_converged();
+# 11:     if (s->is_converged())
 	movq	%rbx, %rdi	# s,
 	call	Solver::is_converged() const	#
-# 12:         if (!converged)
+# 11:     if (s->is_converged())
 	testb	%al, %al	# tmp86
-	je	L9	#,
+	jne	L1	#,
+# 13:     if (UNLIKELY(--remaining_steps == 0))
+	subl	$1, %ebp	#, remaining_steps
+	jne	L9	#,
+L3:
 L1:
 # 19: }
 	addq	$8, %rsp	#,
@@ -90,17 +99,6 @@ LCFI4:
 	popq	%rbp	#
 LCFI5:
 	ret	
-	.p2align 4,,10
-	.p2align 3
-L9:
-LCFI6:
-# 14:             if (UNLIKELY(--remaining_steps == 0))
-	subl	$1, %ebp	#, remaining_steps
-	je	L1	#,
-# 16:             s->pre_step();
-	movq	%rbx, %rdi	# s,
-	call	Solver::pre_step()	#
-	jmp	L3	#
 LFE1:
 	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
 EH_frame1:
@@ -153,7 +151,6 @@ LASFDE1:
 	.byte	0x4
 	.set L$set$6,LCFI3-LCFI2
 	.long L$set$6
-	.byte	0xa
 	.byte	0xe
 	.byte	0x18
 	.byte	0x4
@@ -166,12 +163,8 @@ LASFDE1:
 	.long L$set$8
 	.byte	0xe
 	.byte	0x8
-	.byte	0x4
-	.set L$set$9,LCFI6-LCFI5
-	.long L$set$9
-	.byte	0xb
 	.align 3
 LEFDE1:
 	.ident	"GCC: (Homebrew GCC 10.2.0_4) 10.2.0"
 	.subsections_via_symbols
-# Total code size:      824
+# Total code size:      816

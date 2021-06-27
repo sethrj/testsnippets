@@ -10,7 +10,7 @@ if [ -z "$CXX" ]; then
   exit 1
 fi
 
-: ${CXXFLAGS:=-O2 -std=c++11}
+: ${CXXFLAGS:=-O2 -std=c++14}
 
 for filename in $*; do
   basename="${filename%.*}"
