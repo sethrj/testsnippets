@@ -9,13 +9,10 @@ loss_scaling(double):
 LFB246:
 	subq	$8, %rsp	#,
 LCFI0:
-# 8:     return real_type(0.5) * std::fmin(fwhm_min_energy / max_energy, 1)
+# 8:     return real_type(0.5) * std::fmin(fwhm_min_energy / max_energy, real_type(1))
 	vmovsd	lC1(%rip), %xmm1	#, tmp88
-# /rnsdhpc/code/spack/opt/spack/apple-clang/gcc/5ict6ia/include/c++/11.2.0/cmath:1452:       return fmin(__type(__x), __type(__y));
 	movq	lC0(%rip), %rax	#, tmp95
-# 8:     return real_type(0.5) * std::fmin(fwhm_min_energy / max_energy, 1)
 	vdivsd	%xmm0, %xmm1, %xmm0	# tmp92, tmp88, tmp87
-# /rnsdhpc/code/spack/opt/spack/apple-clang/gcc/5ict6ia/include/c++/11.2.0/cmath:1452:       return fmin(__type(__x), __type(__y));
 	vmovq	%rax, %xmm1	# tmp95,
 	call	_fmin	#
 # 9:            + real_type(1);

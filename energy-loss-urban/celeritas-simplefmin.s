@@ -7,21 +7,21 @@
 	.globl loss_scaling(double)
 loss_scaling(double):
 LFB247:
-# 13:     return real_type(0.5) * simple_fmin(fwhm_min_energy / max_energy, 1)
+# 14:                * simple_fmin(fwhm_min_energy / max_energy, real_type(1))
 	vmovsd	lC1(%rip), %xmm1	#, tmp85
 	vdivsd	%xmm0, %xmm1, %xmm0	# tmp90, tmp85, _1
 # 8:     return a < b ? a : b;
 	vmovsd	lC2(%rip), %xmm1	#, tmp86
 	vcomisd	%xmm0, %xmm1	# _1, tmp86
 	jbe	L6	#,
-# 14:            + real_type(1);
+# 15:            + real_type(1);
 	vfmadd132sd	lC3(%rip), %xmm1, %xmm0	#, tmp86, <retval>
 	ret	
 	.p2align 4,,10
 	.p2align 3
 L6:
 	vmovsd	lC0(%rip), %xmm0	#, <retval>
-# 15: }
+# 16: }
 	ret	
 LFE247:
 	.literal8
