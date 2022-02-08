@@ -2,7 +2,7 @@
 #	compiled by GNU C version 11.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -fPIC -mmacosx-version-min=11.4.0 -mtune=core2 -O2 -std=c++14 -ffast-math
+# options passed: -march=skylake -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -mno-sse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mno-clwb -mno-clzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mhle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mno-mwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mno-rdpid -mrdrnd -mrdseed -mrtm -mno-serialize -msgx -mno-sha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mno-wbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni --param=l1-cache-size=32 --param=l1-cache-line-size=64 --param=l2-cache-size=8192 -mtune=skylake -fPIC -mmacosx-version-min=11.4.0 -O2 -std=c++14 -ffast-math
 	.text
 	.p2align 4
 	.globl is_inside(Signed_Sense)
@@ -59,14 +59,14 @@ LFE235:
 evaluate_sense(double):
 LFB236:
 # 37:     return quadric > 0 ? Signed_Sense::outside
-	pxor	%xmm1, %xmm1	# tmp86
+	vxorpd	%xmm1, %xmm1, %xmm1	# tmp86
 	xorl	%eax, %eax	# tmp87
-	comisd	%xmm0, %xmm1	# tmp94, tmp86
-	movl	$1, %edx	#, tmp95
+	vcomisd	%xmm0, %xmm1	# quadric, tmp86
+	movl	$1, %edx	#, tmp92
 	seta	%al	#, tmp87
-	negl	%eax	# tmp96
-	comisd	%xmm0, %xmm1	# tmp94, tmp86
-	cmovb	%edx, %eax	# tmp96,, tmp95, <retval>
+	negl	%eax	# tmp93
+	vcomisd	%xmm0, %xmm1	# quadric, tmp86
+	cmovb	%edx, %eax	# tmp93,, tmp92, <retval>
 # 40: }
 	ret	
 LFE236:
@@ -75,12 +75,12 @@ LFE236:
 evaluate_sense_onfirst(double):
 LFB237:
 # 45:     return quadric == 0 ? Signed_Sense::on
-	pxor	%xmm1, %xmm1	# tmp84
-	comisd	%xmm1, %xmm0	# tmp84, quadric
+	vxorpd	%xmm1, %xmm1, %xmm1	# tmp84
+	vcomisd	%xmm1, %xmm0	# tmp84, quadric
 	je	L18	#,
 # 46:         : quadric < 0 ? Signed_Sense::inside
 	xorl	%eax, %eax	# <retval>
-	comisd	%xmm0, %xmm1	# quadric, tmp84
+	vcomisd	%xmm0, %xmm1	# quadric, tmp84
 	setbe	%al	#, <retval>
 	leal	-1(%rax,%rax), %eax	#, <retval>
 	ret	
@@ -97,12 +97,12 @@ LFE237:
 evaluate_sense_signbit(double):
 LFB238:
 # 53:     return quadric == 0 ? Signed_Sense::on
-	pxor	%xmm1, %xmm1	# tmp84
-	comisd	%xmm1, %xmm0	# tmp84, quadric
+	vxorpd	%xmm1, %xmm1, %xmm1	# tmp84
+	vcomisd	%xmm1, %xmm0	# tmp84, quadric
 	je	L25	#,
 # 54:         : std::signbit(quadric) ? Signed_Sense::inside
 	xorl	%eax, %eax	# <retval>
-	comisd	%xmm0, %xmm1	# quadric, tmp84
+	vcomisd	%xmm0, %xmm1	# quadric, tmp84
 	setbe	%al	#, <retval>
 	leal	-1(%rax,%rax), %eax	#, <retval>
 	ret	
@@ -119,13 +119,13 @@ LFE238:
 evaluate_sense_ints(double):
 LFB239:
 # 61:     int gz = quadric > 0 ? 1 : 0;
-	pxor	%xmm1, %xmm1	# tmp91
+	vxorpd	%xmm1, %xmm1, %xmm1	# tmp91
 	xorl	%eax, %eax	# tmp89
-	comisd	%xmm1, %xmm0	# tmp91, quadric
+	vcomisd	%xmm1, %xmm0	# tmp91, quadric
 	seta	%al	#, tmp89
 # 62:     int lz = quadric < 0 ? 1 : 0;
 	xorl	%edx, %edx	# tmp92
-	comisd	%xmm0, %xmm1	# quadric, tmp91
+	vcomisd	%xmm0, %xmm1	# quadric, tmp91
 	seta	%dl	#, tmp92
 # 63:     return static_cast<Signed_Sense>(gz - lz);
 	subl	%edx, %eax	# tmp92, tmp88
@@ -136,12 +136,12 @@ LFE239:
 	.globl evaluate_sense_ints2(double)
 evaluate_sense_ints2(double):
 LFB243:
-	pxor	%xmm1, %xmm1	# tmp91
+	vxorpd	%xmm1, %xmm1, %xmm1	# tmp91
 	xorl	%eax, %eax	# tmp89
-	comisd	%xmm1, %xmm0	# tmp91, quadric
+	vcomisd	%xmm1, %xmm0	# tmp91, quadric
 	seta	%al	#, tmp89
 	xorl	%edx, %edx	# tmp92
-	comisd	%xmm0, %xmm1	# quadric, tmp91
+	vcomisd	%xmm0, %xmm1	# quadric, tmp91
 	seta	%dl	#, tmp92
 	subl	%edx, %eax	# tmp92, tmp88
 	ret	
@@ -151,7 +151,7 @@ LFE243:
 evaluate_sense_old(double):
 LFB241:
 # 76:     return quadric > 0;
-	comisd	lC0(%rip), %xmm0	#, tmp87
+	vcomisd	lC0(%rip), %xmm0	#, tmp87
 	seta	%al	#, tmp85
 # 77: }
 	ret	
