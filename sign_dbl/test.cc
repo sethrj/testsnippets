@@ -45,6 +45,11 @@ double mult_int(double x, int s)
     return s * x;
 }
 
+double mult_bool(double x, bool adj)
+{
+    return (2 * adj - 1) * x;
+}
+
 double return_double(double x)
 {
     return x;

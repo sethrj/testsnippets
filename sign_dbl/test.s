@@ -1,153 +1,125 @@
-# GNU C++11 (MacPorts gcc7 7.3.0_1) version 7.3.0 (x86_64-apple-darwin17)
-#	compiled by GNU C version 7.3.0, GMP version 6.1.2, MPFR version .0.1, MPC version 1.1.0, isl version isl-0.18-GMP
-
+# GNU C++14 (Spack GCC) version 11.2.0 (x86_64-apple-darwin21.3.0)
+#	compiled by GNU C version Apple LLVM 13.0.0 (clang-1300.0.29.30), GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -D__DYNAMIC__ test.cc -fPIC -mmacosx-version-min=10.13.7
-# -mtune=core2 -auxbase-strip - -O2 -Wall -Wextra -Werror -std=char++11
-# -funsafe-math-optimizations -fverbose-asm
-# options enabled:  -Wnonportable-cfstrings -fPIC
-# -faggressive-loop-optimizations -falign-labels -fassociative-math
-# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
-# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
-# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
-# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
-# -fchkp-use-static-const-bounds -fchkp-use-wrappers -fcode-hoisting
-# -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
-# -fcrossjumping -fcse-follow-jumps -fdefer-pop
-# -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
-# -fearly-inlining -feliminate-unused-debug-types -fexceptions
-# -fexpensive-optimizations -fforward-propagate -ffp-int-builtin-inexact
-# -ffunction-cse -fgcse -fgcse-lm -fgnu-unique -fguess-branch-probability
-# -fhoist-adjacent-loads -fident -fif-conversion -fif-conversion2
-# -findirect-inlining -finline -finline-atomics
-# -finline-functions-called-once -finline-small-functions -fipa-bit-cp
-# -fipa-cp -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile
-# -fipa-pure-const -fipa-signed char restrict -fipa-reference -fipa-sra -fipa-vrp
-# -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
-# -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
-# -fleading-underscore -flifetime-dse -flra-remat -flto-odr-type-merging
-# -fmath-errno -fmerge-constants -fmerge-debug-strings
-# -fmove-loop-invariants -fnext-runtime -fobjc-abi-version=
-# -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen
-# -fpartial-inlining -fpeephole -fpeephole2 -fplt -fprefetch-loop-arrays
-# -freciprocal-math -free -freg-struct-return -freorder-blocks
-# -freorder-functions -frerun-cse-after-loop
-# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
-# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
-# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
-# -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
-# -fsemantic-interposition -fshow-column -fshrink-wrap
-# -fshrink-wrap-separate -fsplit-ivs-in-unroller -fsplit-wide-types
-# -fssa-backprop -fssa-phiopt -fstdarg-opt -fstore-merging
-# -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
-# -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftree-bit-ccp
-# -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars
-# -ftree-copy-prop -ftree-cselim -ftree-dce -ftree-dominator-opts
-# -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-if-convert
-# -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-optimize
-# -ftree-parallelize-loops= -ftree-phiprop -ftree-pre -ftree-pta
-# -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra
-# -ftree-switch-conversion -ftree-tail-merge -ftree-ter -ftree-vrp
-# -funit-at-signed char-time -funsafe-math-optimizations -funwind-tables
-# -fverbose-asm -fzero-initialized-in-bss -gstrict-dwarf
-# -m128bit-long-double -m64 -m80387 -malign-stringops -matt-stubs
-# -mconstant-cfstrings -mfancy-math-387 -mfp-ret-in-387 -mfxsr -mieee-fp
-# -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone -msse -msse2
-# -msse3 -mstv -mvzeroupper
-
+# options passed: -fPIC -mmacosx-version-min=12.2.0 -mtune=core2 -O2 -std=c++14
 	.text
-	.align 4,0x90
+	.p2align 4
 	.globl flip_sign_int(double)
 flip_sign_int(double):
 LFB0:
-# 13:     return -1 * long long;
-	xorpd	lC0(%rip), %xmm0	#, tmp89
+# 13:     return -1 * x;
+	xorpd	lC0(%rip), %xmm0	#, tmp84
 # 14: }
-	ret
+	ret	
 LFE0:
-	.align 4,0x90
+	.p2align 4
 	.globl flip_sign_dbl(double)
 flip_sign_dbl(double):
-LFB10:
-	xorpd	lC0(%rip), %xmm0	#, tmp89
-	ret
-LFE10:
-	.align 4,0x90
+LFB11:
+	xorpd	lC0(%rip), %xmm0	#, tmp84
+	ret	
+LFE11:
+	.p2align 4
 	.globl mult_dbl(double, double)
 mult_dbl(double, double):
 LFB2:
-# 23:     return short * long long;
-	mulsd	%xmm1, %xmm0	# short, tmp90
+# 23:     return s * x;
+	mulsd	%xmm1, %xmm0	# tmp87, tmp85
 # 24: }
-	ret
+	ret	
 LFE2:
-	.align 4,0x90
+	.p2align 4
 	.globl flip_sign_flag(double, bool)
 flip_sign_flag(double, bool):
 LFB3:
-# 28:     return (adj ? -1 : 1) * long long;
-	testb	%dil, %dil	# adj
-	jne	L7	#,
+# 28:     return (adj ? -1 : 1) * x;
+	testb	%dil, %dil	# tmp91
+	je	L6	#,
+	xorpd	lC0(%rip), %xmm0	#, x
+L6:
 # 29: }
-	ret
-	.align 4,0x90
-L7:
-	xorpd	lC0(%rip), %xmm0	#, long long
-	ret
+	ret	
 LFE3:
-	.align 4,0x90
+	.p2align 4
 	.globl flip_sign_flag_if(double, bool)
 flip_sign_flag_if(double, bool):
 LFB4:
 # 33:     if (adj)
-	testb	%dil, %dil	# adj
-	je	L8	#,
-# 34:         return -long long;
-	xorpd	lC0(%rip), %xmm0	#, <retval>
-L8:
+	testb	%dil, %dil	# tmp91
+	jne	L9	#,
 # 36: }
-	ret
+	ret	
+	.p2align 4,,10
+	.p2align 3
+L9:
+# 34:         return -x;
+	xorpd	lC0(%rip), %xmm0	#, x
+# 36: }
+	ret	
 LFE4:
-	.align 4,0x90
+	.p2align 4
 	.globl flip_sign_flag_dbl(double, bool)
 flip_sign_flag_dbl(double, bool):
-LFB12:
-	testb	%dil, %dil	# adj
-	jne	L13	#,
-	ret
-	.align 4,0x90
-L13:
-	xorpd	lC0(%rip), %xmm0	#, long long
-	ret
-LFE12:
-	.align 4,0x90
+LFB13:
+	testb	%dil, %dil	# tmp91
+	je	L11	#,
+	xorpd	lC0(%rip), %xmm0	#, x
+L11:
+	ret	
+LFE13:
+	.p2align 4
 	.globl mult_int(double, int)
 mult_int(double, int):
 LFB6:
-# 45:     return short * long long;
-	pxor	%xmm1, %xmm1	# tmp92
-	cvtsi2sd	%edi, %xmm1	# short, tmp92
-	mulsd	%xmm1, %xmm0	# tmp92, tmp91
+# 44: {
+	movapd	%xmm0, %xmm1	# x, tmp88
+# 45:     return s * x;
+	pxor	%xmm0, %xmm0	# tmp87
+	cvtsi2sdl	%edi, %xmm0	# tmp89, tmp87
+# 45:     return s * x;
+	mulsd	%xmm1, %xmm0	# tmp88, tmp86
 # 46: }
-	ret
+	ret	
 LFE6:
-	.align 4,0x90
+	.p2align 4
+	.globl mult_bool(double, bool)
+mult_bool(double, bool):
+LFB7:
+# 50:     return (2 * adj - 1) * x;
+	movzbl	%dil, %edi	# tmp96, adj
+# 49: {
+	movapd	%xmm0, %xmm1	# x, tmp95
+# 50:     return (2 * adj - 1) * x;
+	pxor	%xmm0, %xmm0	# tmp94
+# 50:     return (2 * adj - 1) * x;
+	leal	-1(%rdi,%rdi), %eax	#, tmp93
+# 50:     return (2 * adj - 1) * x;
+	cvtsi2sdl	%eax, %xmm0	# tmp93, tmp94
+# 50:     return (2 * adj - 1) * x;
+	mulsd	%xmm1, %xmm0	# tmp95, tmp90
+# 51: }
+	ret	
+LFE7:
+	.p2align 4
 	.globl return_double(double)
 return_double(double):
-LFB7:
-# 51: }
-	ret
-LFE7:
-	.align 4,0x90
+LFB8:
+# 56: }
+	ret	
+LFE8:
+	.p2align 4
 	.globl flip_sign_flag_if_call(double, bool)
 flip_sign_flag_if_call(double, bool):
-LFB14:
-	testb	%dil, %dil	# adj
-	je	L16	#,
-	xorpd	lC0(%rip), %xmm0	#, <retval>
-L16:
-	ret
-LFE14:
+LFB15:
+	testb	%dil, %dil	# tmp91
+	jne	L17	#,
+	ret	
+	.p2align 4,,10
+	.p2align 3
+L17:
+	xorpd	lC0(%rip), %xmm0	#, x
+	ret	
+LFE15:
 	.literal16
 	.align 4
 lC0:
@@ -163,16 +135,16 @@ LSCIE1:
 	.long	0
 	.byte	0x1
 	.ascii "zR\0"
-	.byte	0x1
-	.byte	0x78
+	.uleb128 0x1
+	.sleb128 -8
 	.byte	0x10
-	.byte	0x1
+	.uleb128 0x1
 	.byte	0x10
 	.byte	0xc
-	.byte	0x7
-	.byte	0x8
+	.uleb128 0x7
+	.uleb128 0x8
 	.byte	0x90
-	.byte	0x1
+	.uleb128 0x1
 	.align 3
 LECIE1:
 LSFDE1:
@@ -183,7 +155,7 @@ LASFDE1:
 	.quad	LFB0-.
 	.set L$set$2,LFE0-LFB0
 	.quad L$set$2
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE1:
 LSFDE3:
@@ -191,10 +163,10 @@ LSFDE3:
 	.long L$set$3
 LASFDE3:
 	.long	LASFDE3-EH_frame1
-	.quad	LFB10-.
-	.set L$set$4,LFE10-LFB10
+	.quad	LFB11-.
+	.set L$set$4,LFE11-LFB11
 	.quad L$set$4
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE3:
 LSFDE5:
@@ -205,7 +177,7 @@ LASFDE5:
 	.quad	LFB2-.
 	.set L$set$6,LFE2-LFB2
 	.quad L$set$6
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE5:
 LSFDE7:
@@ -216,7 +188,7 @@ LASFDE7:
 	.quad	LFB3-.
 	.set L$set$8,LFE3-LFB3
 	.quad L$set$8
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE7:
 LSFDE9:
@@ -227,7 +199,7 @@ LASFDE9:
 	.quad	LFB4-.
 	.set L$set$10,LFE4-LFB4
 	.quad L$set$10
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE9:
 LSFDE11:
@@ -235,10 +207,10 @@ LSFDE11:
 	.long L$set$11
 LASFDE11:
 	.long	LASFDE11-EH_frame1
-	.quad	LFB12-.
-	.set L$set$12,LFE12-LFB12
+	.quad	LFB13-.
+	.set L$set$12,LFE13-LFB13
 	.quad L$set$12
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE11:
 LSFDE13:
@@ -249,7 +221,7 @@ LASFDE13:
 	.quad	LFB6-.
 	.set L$set$14,LFE6-LFB6
 	.quad L$set$14
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE13:
 LSFDE15:
@@ -260,7 +232,7 @@ LASFDE15:
 	.quad	LFB7-.
 	.set L$set$16,LFE7-LFB7
 	.quad L$set$16
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE15:
 LSFDE17:
@@ -268,13 +240,23 @@ LSFDE17:
 	.long L$set$17
 LASFDE17:
 	.long	LASFDE17-EH_frame1
-	.quad	LFB14-.
-	.set L$set$18,LFE14-LFB14
+	.quad	LFB8-.
+	.set L$set$18,LFE8-LFB8
 	.quad L$set$18
-	.byte	0
+	.uleb128 0
 	.align 3
 LEFDE17:
-	.constructor
-	.destructor
-	.align 1
+LSFDE19:
+	.set L$set$19,LEFDE19-LASFDE19
+	.long L$set$19
+LASFDE19:
+	.long	LASFDE19-EH_frame1
+	.quad	LFB15-.
+	.set L$set$20,LFE15-LFB15
+	.quad L$set$20
+	.uleb128 0
+	.align 3
+LEFDE19:
+	.ident	"GCC: (Spack GCC) 11.2.0"
 	.subsections_via_symbols
+# Total code size:     1680
