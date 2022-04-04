@@ -30,8 +30,8 @@ LFE1:
 	.weak_definition virtual thunk to ConcreteAction::label() const
 virtual thunk to ConcreteAction::label() const:
 LFB35:
-	movq	(%rdi), %rax	# MEM[(int (*<T520>) () * *)this_3(D)], MEM[(int (*<T520>) () * *)this_3(D)]
-	movq	-32(%rax), %rax	# MEM[(int (*<T520>) () *)vtableaddr.16_6 + -32B], MEM[(int (*<T520>) () *)vtableaddr.16_6 + -32B]
+	movq	(%rdi), %rax	# MEM[(int (*<T542>) () * *)this_3(D)], MEM[(int (*<T542>) () * *)this_3(D)]
+	movq	-32(%rax), %rax	# MEM[(int (*<T542>) () *)vtableaddr.16_6 + -32B], MEM[(int (*<T542>) () *)vtableaddr.16_6 + -32B]
 	movl	12(%rdi,%rax), %eax	# _2->label_, _2->label_
 	ret	
 LFE35:
@@ -40,34 +40,34 @@ LFE35:
 	.weak_definition virtual thunk to ConcreteAction::action_id() const
 virtual thunk to ConcreteAction::action_id() const:
 LFB36:
-	movq	(%rdi), %rax	# MEM[(int (*<T520>) () * *)this_3(D)], MEM[(int (*<T520>) () * *)this_3(D)]
-	movq	-24(%rax), %rax	# MEM[(int (*<T520>) () *)vtableaddr.21_6 + -24B], MEM[(int (*<T520>) () *)vtableaddr.21_6 + -24B]
+	movq	(%rdi), %rax	# MEM[(int (*<T542>) () * *)this_3(D)], MEM[(int (*<T542>) () * *)this_3(D)]
+	movq	-24(%rax), %rax	# MEM[(int (*<T542>) () *)vtableaddr.21_6 + -24B], MEM[(int (*<T542>) () *)vtableaddr.21_6 + -24B]
 	movl	8(%rdi,%rax), %eax	# _2->id_, _2->id_
 	ret	
 LFE36:
 	.p2align 4
 	.globl get_id(ActionInterface const&)
 get_id(ActionInterface const&):
-LFB30:
+LFB15:
 # 6:     return ai.action_id();
 	movq	(%rdi), %rax	# ai_4(D)->_vptr.ActionInterface, ai_4(D)->_vptr.ActionInterface
 	jmp	*(%rax)	# *_1
-LFE30:
+LFE15:
 	.p2align 4
 	.globl execute(ExplicitActionInterface const&, CHR const&)
 execute(ExplicitActionInterface const&, CHR const&):
-LFB31:
+LFB16:
 # 11:     ai.execute(data);
 	movq	(%rdi), %rax	# ai_4(D)->D.2138._vptr.ActionInterface, ai_4(D)->D.2138._vptr.ActionInterface
 	jmp	*16(%rax)	# MEM[(int (*) () *)_1 + 16B]
-LFE31:
+LFE16:
 	.p2align 4
 	.globl execute_kpa(KernellyPhysicsAction const&, CHR const&)
 execute_kpa(KernellyPhysicsAction const&, CHR const&):
-LFB32:
+LFB17:
 # 16:     ai.execute(data);
 	jmp	KernellyPhysicsAction::execute(CHR const&) const	#
-LFE32:
+LFE17:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDB0:
 	.text
@@ -75,7 +75,7 @@ LHOTB0:
 	.p2align 4
 	.globl new_kpa(int, unsigned int const&)
 new_kpa(int, unsigned int const&):
-LFB33:
+LFB18:
 	pushq	%r13	#
 LCFI0:
 	pushq	%r12	#
@@ -99,7 +99,7 @@ LEHE0:
 	movq	%rax, %rbp	# tmp109, _4
 # ActionInterface.hh:25: class ExplicitActionInterface : public virtual ActionInterface
 	movq	VTT for KernellyPhysicsAction@GOTPCREL(%rip), %rax	#, tmp95
-# ActionInterface.hh:65:         : ConcreteAction{id, label}
+# ActionInterface.hh:65:     using ConcreteAction::ConcreteAction;
 	movq	%rbp, %rdi	# _4,
 # ActionInterface.hh:25: class ExplicitActionInterface : public virtual ActionInterface
 	movq	40(%rax), %rdx	# MEM[(const void * *)&_ZTT21KernellyPhysicsAction + 40B], _11
@@ -107,7 +107,7 @@ LEHE0:
 	movq	%rdx, 16(%rbp)	# _11, MEM[(struct ExplicitActionInterface *)_4 + 16B].D.2138._vptr.ActionInterface
 	movq	-40(%rdx), %rdx	# MEM[(long int *)_11 + -40B], MEM[(long int *)_11 + -40B]
 	movq	%rsi, 16(%rbp,%rdx)	# MEM[(const void * *)&_ZTT21KernellyPhysicsAction + 48B], MEM[(struct ActionInterface *)_14]._vptr.ActionInterface
-# ActionInterface.hh:65:         : ConcreteAction{id, label}
+# ActionInterface.hh:65:     using ConcreteAction::ConcreteAction;
 	leaq	8(%rax), %rsi	#, tmp99
 	movl	%r12d, %edx	# id,
 LEHB1:
@@ -117,11 +117,11 @@ LEHE1:
 	leaq	16(%rbp), %r13	#, <retval>
 	leaq	48(%rax), %rdx	#, tmp101
 	addq	$136, %rax	#, tmp103
-	movq	%rax, 16(%rbp)	# tmp103, MEM[(struct KernellyPhysicsAction *)_4].D.2219.D.2138._vptr.ActionInterface
+	movq	%rax, 16(%rbp)	# tmp103, MEM[(struct KernellyPhysicsAction *)_4].D.2294.D.2138._vptr.ActionInterface
 # 22: }
 	movq	%r13, %rax	# <retval>,
-# ActionInterface.hh:65:         : ConcreteAction{id, label}
-	movq	%rdx, 0(%rbp)	# tmp101, MEM[(struct KernellyPhysicsAction *)_4].D.2216.D.2173._vptr.ActionInterface
+# ActionInterface.hh:65:     using ConcreteAction::ConcreteAction;
+	movq	%rdx, 0(%rbp)	# tmp101, MEM[(struct KernellyPhysicsAction *)_4].D.2291.D.2173._vptr.ActionInterface
 # 22: }
 	addq	$8, %rsp	#,
 LCFI5:
@@ -141,25 +141,25 @@ LCFI10:
 	jmp	L10	#
 	.section __DATA,__gcc_except_tab
 GCC_except_table0:
-LLSDA33:
+LLSDA18:
 	.byte	0xff
 	.byte	0xff
 	.byte	0x1
-	.uleb128 LLSDACSE33-LLSDACSB33
-LLSDACSB33:
-	.uleb128 LEHB0-LFB33
+	.uleb128 LLSDACSE18-LLSDACSB18
+LLSDACSB18:
+	.uleb128 LEHB0-LFB18
 	.uleb128 LEHE0-LEHB0
 	.uleb128 0
 	.uleb128 0
-	.uleb128 LEHB1-LFB33
+	.uleb128 LEHB1-LFB18
 	.uleb128 LEHE1-LEHB1
-	.uleb128 L11-LFB33
+	.uleb128 L11-LFB18
 	.uleb128 0
-LLSDACSE33:
+LLSDACSE18:
 	.text
 	.section __TEXT,__text_cold,regular,pure_instructions
 new_kpa(int, unsigned int const&) (.cold):
-LFSB33:
+LFSB18:
 L10:
 LCFI11:
 # 21:     return new KernellyPhysicsAction{id, name};
@@ -170,20 +170,20 @@ LCFI11:
 LEHB2:
 	call	__Unwind_Resume	#
 LEHE2:
-LFE33:
+LFE18:
 	.section __DATA,__gcc_except_tab
 GCC_except_table1:
-LLSDAC33:
+LLSDAC18:
 	.byte	0xff
 	.byte	0xff
 	.byte	0x1
-	.uleb128 LLSDACSEC33-LLSDACSBC33
-LLSDACSBC33:
+	.uleb128 LLSDACSEC18-LLSDACSBC18
+LLSDACSBC18:
 	.uleb128 LEHB2-LCOLDB0
 	.uleb128 LEHE2-LEHB2
 	.uleb128 0
 	.uleb128 0
-LLSDACSEC33:
+LLSDACSEC18:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE0:
 	.text
@@ -195,7 +195,7 @@ LHOTB1:
 	.p2align 4
 	.globl new_ppa(int, unsigned int const&)
 new_ppa(int, unsigned int const&):
-LFB34:
+LFB28:
 	pushq	%r12	#
 LCFI12:
 	movl	%edi, %r12d	# tmp99, id
@@ -213,17 +213,17 @@ LEHB3:
 	call	operator new(unsigned long)	#
 LEHE3:
 	movl	(%rbx), %ecx	# *name_5(D), _1
-# ActionInterface.hh:79:         : ConcreteAction{id, label}
+# ActionInterface.hh:77:     using ConcreteAction::ConcreteAction;
 	movl	%r12d, %edx	# id,
 # 26:     return new PlaceholderPhysicsAction{id, name};
 	movq	%rax, %rbp	# tmp101, _4
 # ActionInterface.hh:21: class ImplicitActionInterface : public virtual ActionInterface
 	leaq	40+construction vtable for ImplicitActionInterface-in-PlaceholderPhysicsAction(%rip), %rax	#, tmp104
-# ActionInterface.hh:79:         : ConcreteAction{id, label}
+# ActionInterface.hh:77:     using ConcreteAction::ConcreteAction;
 	movq	%rbp, %rdi	# _4,
 # ActionInterface.hh:21: class ImplicitActionInterface : public virtual ActionInterface
 	movq	%rax, 16(%rbp)	# tmp104, MEM[(struct ImplicitActionInterface *)_4 + 16B].D.2112._vptr.ActionInterface
-# ActionInterface.hh:79:         : ConcreteAction{id, label}
+# ActionInterface.hh:77:     using ConcreteAction::ConcreteAction;
 	movq	VTT for PlaceholderPhysicsAction@GOTPCREL(%rip), %rax	#, tmp92
 	leaq	8(%rax), %rsi	#, tmp91
 LEHB4:
@@ -233,14 +233,14 @@ LEHE4:
 # 27: }
 	popq	%rbx	#
 LCFI15:
-# ActionInterface.hh:79:         : ConcreteAction{id, label}
+# ActionInterface.hh:77:     using ConcreteAction::ConcreteAction;
 	leaq	48(%rax), %rdx	#, tmp93
 	addq	$104, %rax	#, tmp95
-	movq	%rax, 16(%rbp)	# tmp95, MEM[(struct PlaceholderPhysicsAction *)_4].D.2390.D.2112._vptr.ActionInterface
+	movq	%rax, 16(%rbp)	# tmp95, MEM[(struct PlaceholderPhysicsAction *)_4].D.2361.D.2112._vptr.ActionInterface
 # 26:     return new PlaceholderPhysicsAction{id, name};
 	leaq	16(%rbp), %rax	#, tmp97
-# ActionInterface.hh:79:         : ConcreteAction{id, label}
-	movq	%rdx, 0(%rbp)	# tmp93, MEM[(struct PlaceholderPhysicsAction *)_4].D.2387.D.2173._vptr.ActionInterface
+# ActionInterface.hh:77:     using ConcreteAction::ConcreteAction;
+	movq	%rdx, 0(%rbp)	# tmp93, MEM[(struct PlaceholderPhysicsAction *)_4].D.2358.D.2173._vptr.ActionInterface
 # 27: }
 	popq	%rbp	#
 LCFI16:
@@ -254,25 +254,25 @@ LCFI18:
 	jmp	L16	#
 	.section __DATA,__gcc_except_tab
 GCC_except_table2:
-LLSDA34:
+LLSDA28:
 	.byte	0xff
 	.byte	0xff
 	.byte	0x1
-	.uleb128 LLSDACSE34-LLSDACSB34
-LLSDACSB34:
-	.uleb128 LEHB3-LFB34
+	.uleb128 LLSDACSE28-LLSDACSB28
+LLSDACSB28:
+	.uleb128 LEHB3-LFB28
 	.uleb128 LEHE3-LEHB3
 	.uleb128 0
 	.uleb128 0
-	.uleb128 LEHB4-LFB34
+	.uleb128 LEHB4-LFB28
 	.uleb128 LEHE4-LEHB4
-	.uleb128 L17-LFB34
+	.uleb128 L17-LFB28
 	.uleb128 0
-LLSDACSE34:
+LLSDACSE28:
 	.text
 	.section __TEXT,__text_cold,regular,pure_instructions
 new_ppa(int, unsigned int const&) (.cold):
-LFSB34:
+LFSB28:
 L16:
 LCFI19:
 # 26:     return new PlaceholderPhysicsAction{id, name};
@@ -283,20 +283,20 @@ LCFI19:
 LEHB5:
 	call	__Unwind_Resume	#
 LEHE5:
-LFE34:
+LFE28:
 	.section __DATA,__gcc_except_tab
 GCC_except_table3:
-LLSDAC34:
+LLSDAC28:
 	.byte	0xff
 	.byte	0xff
 	.byte	0x1
-	.uleb128 LLSDACSEC34-LLSDACSBC34
-LLSDACSBC34:
+	.uleb128 LLSDACSEC28-LLSDACSBC28
+LLSDACSBC28:
 	.uleb128 LEHB5-LCOLDB1
 	.uleb128 LEHE5-LEHB5
 	.uleb128 0
 	.uleb128 0
-LLSDACSEC34:
+LLSDACSEC28:
 	.section __TEXT,__text_cold,regular,pure_instructions
 LCOLDE1:
 	.text
@@ -534,8 +534,8 @@ LSFDE9:
 	.long L$set$9
 LASFDE9:
 	.long	LASFDE9-EH_frame1
-	.quad	LFB30-.
-	.set L$set$10,LFE30-LFB30
+	.quad	LFB15-.
+	.set L$set$10,LFE15-LFB15
 	.quad L$set$10
 	.uleb128 0x8
 	.quad	0
@@ -546,8 +546,8 @@ LSFDE11:
 	.long L$set$11
 LASFDE11:
 	.long	LASFDE11-EH_frame1
-	.quad	LFB31-.
-	.set L$set$12,LFE31-LFB31
+	.quad	LFB16-.
+	.set L$set$12,LFE16-LFB16
 	.quad L$set$12
 	.uleb128 0x8
 	.quad	0
@@ -558,8 +558,8 @@ LSFDE13:
 	.long L$set$13
 LASFDE13:
 	.long	LASFDE13-EH_frame1
-	.quad	LFB32-.
-	.set L$set$14,LFE32-LFB32
+	.quad	LFB17-.
+	.set L$set$14,LFE17-LFB17
 	.quad L$set$14
 	.uleb128 0x8
 	.quad	0
@@ -570,13 +570,13 @@ LSFDE15:
 	.long L$set$15
 LASFDE15:
 	.long	LASFDE15-EH_frame1
-	.quad	LFB33-.
-	.set L$set$16,LHOTE0-LFB33
+	.quad	LFB18-.
+	.set L$set$16,LHOTE0-LFB18
 	.quad L$set$16
 	.uleb128 0x8
-	.quad	LLSDA33-.
+	.quad	LLSDA18-.
 	.byte	0x4
-	.set L$set$17,LCFI0-LFB33
+	.set L$set$17,LCFI0-LFB18
 	.long L$set$17
 	.byte	0xe
 	.uleb128 0x10
@@ -645,13 +645,13 @@ LSFDE17:
 	.long L$set$28
 LASFDE17:
 	.long	LASFDE17-EH_frame1
-	.quad	LFSB33-.
-	.set L$set$29,LCOLDE0-LFSB33
+	.quad	LFSB18-.
+	.set L$set$29,LCOLDE0-LFSB18
 	.quad L$set$29
 	.uleb128 0x8
-	.quad	LLSDAC33-.
+	.quad	LLSDAC18-.
 	.byte	0x4
-	.set L$set$30,LCFI11-LFSB33
+	.set L$set$30,LCFI11-LFSB18
 	.long L$set$30
 	.byte	0xe
 	.uleb128 0x30
@@ -670,13 +670,13 @@ LSFDE19:
 	.long L$set$31
 LASFDE19:
 	.long	LASFDE19-EH_frame1
-	.quad	LFB34-.
-	.set L$set$32,LHOTE1-LFB34
+	.quad	LFB28-.
+	.set L$set$32,LHOTE1-LFB28
 	.quad L$set$32
 	.uleb128 0x8
-	.quad	LLSDA34-.
+	.quad	LLSDA28-.
 	.byte	0x4
-	.set L$set$33,LCFI12-LFB34
+	.set L$set$33,LCFI12-LFB28
 	.long L$set$33
 	.byte	0xe
 	.uleb128 0x10
@@ -723,13 +723,13 @@ LSFDE21:
 	.long L$set$40
 LASFDE21:
 	.long	LASFDE21-EH_frame1
-	.quad	LFSB34-.
-	.set L$set$41,LCOLDE1-LFSB34
+	.quad	LFSB28-.
+	.set L$set$41,LCOLDE1-LFSB28
 	.quad L$set$41
 	.uleb128 0x8
-	.quad	LLSDAC34-.
+	.quad	LLSDAC28-.
 	.byte	0x4
-	.set L$set$42,LCFI19-LFSB34
+	.set L$set$42,LCFI19-LFSB28
 	.long L$set$42
 	.byte	0xe
 	.uleb128 0x20

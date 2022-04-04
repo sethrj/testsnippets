@@ -61,10 +61,8 @@ class KernellyPhysicsAction final : public virtual ExplicitActionInterface,
 
 {
   public:
-    KernellyPhysicsAction(ActionId id, string label)
-        : ConcreteAction{id, label}
-    {
-    }
+    // Construct with ID and label
+    using ConcreteAction::ConcreteAction;
 
     void execute(CoreHostRef const&) const final;
     void execute(CoreDeviceRef const&) const final;
@@ -75,9 +73,7 @@ class PlaceholderPhysicsAction final : public virtual ImplicitActionInterface,
 
 {
   public:
-    PlaceholderPhysicsAction(ActionId id, string label)
-        : ConcreteAction{id, label}
-    {
-    }
+    // Construct with ID and label
+    using ConcreteAction::ConcreteAction;
 };
 
