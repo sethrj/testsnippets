@@ -7,9 +7,10 @@
 //---------------------------------------------------------------------------//
 #pragma once
 
+#include <cmath>
 #include <type_traits>
 
-#define CELER_CONSTEXPR_FUNCTION constexpr inline __attribute__((always_inline))
+#define CELER_CONSTEXPR_FUNCTION inline __attribute__((always_inline))
 
 namespace celeritas
 {
@@ -62,7 +63,7 @@ class PolyEvaluator
     template<unsigned int M, std::enable_if_t<(M < N), int> = 0>
     CELER_CONSTEXPR_FUNCTION T calc_impl(T arg) const
     {
-        return coeffs_[M] + arg * calc_impl<M + 1>(arg);
+        return std::fma(arg, calc_impl<M + 1>(arg), coeffs_[M]);
     }
 
     template<unsigned int M, std::enable_if_t<(M == N), int> = 0>
