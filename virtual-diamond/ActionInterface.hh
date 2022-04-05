@@ -56,7 +56,7 @@ class ConcreteAction : public virtual ActionInterface
     string label_;
 };
 
-class KernellyPhysicsAction final : public virtual ExplicitActionInterface,
+class KernellyPhysicsAction final : public ExplicitActionInterface,
                                     public ConcreteAction
 
 {
@@ -68,7 +68,7 @@ class KernellyPhysicsAction final : public virtual ExplicitActionInterface,
     void execute(CoreDeviceRef const&) const final;
 };
 
-class PlaceholderPhysicsAction final : public virtual ImplicitActionInterface,
+class PlaceholderPhysicsAction final : public ImplicitActionInterface,
                                        public ConcreteAction
 
 {
