@@ -29,3 +29,18 @@ double constant_explicit(double energy)
 {
     return 1.24 - energy * (2.34 - 5.678 * energy);
 }
+
+double zero_term(double energy)
+{
+    return PolyQuad(0, -2.34, 5.678)(energy);
+}
+
+double zero_term_smart(double energy)
+{
+    return energy * PolyLin(-2.34, 5.678)(energy);
+}
+
+double zero_term_explicit(double energy)
+{
+    return energy * (-2.34 + 5.678 * energy);
+}
