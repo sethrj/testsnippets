@@ -1,3 +1,5 @@
 *.o
 *.exe
 *.mod
+*.out
+.ipynb_checkpoints
