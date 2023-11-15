@@ -1,11 +1,10 @@
 #!/bin/bash -e
 
-SOURCE=/Users/seth/.local/src/celeritas
+SOURCE=/Users/seth/Code/celeritas
 BUILD=$SOURCE/build
-: ${CXXFLAGS:=-O2 -std=c++17}
-export CXXFLAGS="${CXXFLAGS} -I${SOURCE}/src -I${BUILD}/include"
-export CXX=/opt/homebrew/bin/g++-12
-exec ../build.sh "$@"
+export CXXFLAGS="${CXXFLAGS} -O2 -std=c++17 -I${SOURCE}/src -I${BUILD}/include"
+export CXX=c++
+exec $(dirname $0)/../build.sh "$@"
 
 ###############################################################################
 # end of testsnippets/build.sh
