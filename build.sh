@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 ###############################################################################
 # File  : testsnippets/build.sh
 # Author: Seth R Johnson
@@ -11,6 +11,8 @@ if [ -z "$CXX" ]; then
 fi
 
 : ${CXXFLAGS:=-O2 -std=c++17 -fverbose-asm}
+
+set -o pipefail
 
 for filename in $*; do
   basename="${filename%.*}"

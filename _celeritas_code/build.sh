@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 
 SOURCE=/Users/seth/Code/celeritas
 BUILD=$SOURCE/build
