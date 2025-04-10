@@ -217,17 +217,79 @@ Lloh15:
 	.loh AdrpAdd	Lloh14, Lloh15
 	.cfi_endproc
                                         ; -- End function
+	.globl	B2::B2()                     ; -- Begin function _ZN2B2C2Ev
+	.p2align	2
+B2::B2():                            ; @_ZN2B2C2Ev
+	.cfi_startproc
+; %bb.0:
+Lloh16:
+	adrp	x8, vtable for Aux@GOTPAGE
+Lloh17:
+	ldr	x8, [x8, vtable for Aux@GOTPAGEOFF]
+	add	x8, x8, #16
+	str	x8, [x0]
+	ldr	x8, [x1, #8]
+	mov	x9, x0
+	str	x8, [x9, #8]!
+	ldr	x10, [x1, #16]
+	ldur	x8, [x8, #-48]
+	str	x10, [x9, x8]
+	ldr	x8, [x1]
+	str	x8, [x0]
+	ldr	x10, [x1, #24]
+	str	x10, [x9]
+	ldr	x9, [x1, #32]
+	ldur	x8, [x8, #-24]
+	str	x9, [x0, x8]
+	ret
+	.loh AdrpLdrGot	Lloh16, Lloh17
+	.cfi_endproc
+                                        ; -- End function
+	.globl	B2::B2()                     ; -- Begin function _ZN2B2C1Ev
+	.p2align	2
+B2::B2():                            ; @_ZN2B2C1Ev
+	.cfi_startproc
+; %bb.0:
+Lloh18:
+	adrp	x8, vtable for Aux@GOTPAGE
+Lloh19:
+	ldr	x8, [x8, vtable for Aux@GOTPAGEOFF]
+Lloh20:
+	adrp	x9, VTT for B2@GOTPAGE
+Lloh21:
+	ldr	x9, [x9, VTT for B2@GOTPAGEOFF]
+	add	x8, x8, #16
+	mov	x10, x0
+	ldp	x11, x9, [x9, #8]
+	str	x11, [x10, #8]!
+	str	x8, [x0]
+	ldur	x8, [x11, #-48]
+	str	x9, [x10, x8]
+Lloh22:
+	adrp	x8, vtable for B2@GOTPAGE
+Lloh23:
+	ldr	x8, [x8, vtable for B2@GOTPAGEOFF]
+	add	x9, x8, #24
+	str	x9, [x0]
+	add	x8, x8, #112
+	str	x8, [x10]
+	ret
+	.loh AdrpLdrGot	Lloh22, Lloh23
+	.loh AdrpLdrGot	Lloh20, Lloh21
+	.loh AdrpLdrGot	Lloh18, Lloh19
+	.cfi_endproc
+                                        ; -- End function
 	.globl	AuxB::label() const              ; -- Begin function _ZNK4AuxB5labelEv
 	.p2align	2
 AuxB::label() const:                     ; @_ZNK4AuxB5labelEv
 	.cfi_startproc
 ; %bb.0:
-Lloh16:
+Lloh24:
 	adrp	x0, l_.str.1@PAGE
-Lloh17:
+Lloh25:
 	add	x0, x0, l_.str.1@PAGEOFF
 	ret
-	.loh AdrpAdd	Lloh16, Lloh17
+	.loh AdrpAdd	Lloh24, Lloh25
 	.cfi_endproc
                                         ; -- End function
 	.globl	C::C()                      ; -- Begin function _ZN1CC2Ev
@@ -246,9 +308,9 @@ C::C():                             ; @_ZN1CC2Ev
 	ldr	x10, [x1, #32]
 	ldur	x8, [x8, #-48]
 	str	x10, [x9, x8]
-Lloh18:
+Lloh26:
 	adrp	x8, vtable for Aux@GOTPAGE
-Lloh19:
+Lloh27:
 	ldr	x8, [x8, vtable for Aux@GOTPAGEOFF]
 	add	x8, x8, #16
 	str	x8, [x0, #16]
@@ -259,15 +321,33 @@ Lloh19:
 	str	x10, [x0, x8]
 	ldr	x8, [x1, #48]
 	str	x8, [x9]
-Lloh20:
+Lloh28:
 	adrp	x8, vtable for C@GOTPAGE
-Lloh21:
+Lloh29:
 	ldr	x8, [x8, vtable for C@GOTPAGEOFF]
 	add	x8, x8, #184
 	str	x8, [x0, #16]
 	ret
-	.loh AdrpLdrGot	Lloh20, Lloh21
-	.loh AdrpLdrGot	Lloh18, Lloh19
+	.loh AdrpLdrGot	Lloh28, Lloh29
+	.loh AdrpLdrGot	Lloh26, Lloh27
+	.cfi_endproc
+                                        ; -- End function
+	.globl	C::C()                      ; -- Begin function _ZN1CC1Ev
+	.p2align	2
+C::C():                             ; @_ZN1CC1Ev
+	.cfi_startproc
+; %bb.0:
+Lloh30:
+	adrp	x8, vtable for C@GOTPAGE
+Lloh31:
+	ldr	x8, [x8, vtable for C@GOTPAGEOFF]
+	add	x9, x8, #48
+	add	x10, x8, #136
+	stp	x9, x10, [x0]
+	add	x8, x8, #184
+	str	x8, [x0, #16]
+	ret
+	.loh AdrpLdrGot	Lloh30, Lloh31
 	.cfi_endproc
                                         ; -- End function
 	.globl	get_aux_label(Aux const*)        ; -- Begin function _Z13get_aux_labelPK3Aux
@@ -503,7 +583,7 @@ non-virtual thunk to A2::~A2():                       ; @_ZThn8_N2A2D0Ev
 C::~C():                             ; @_ZN1CD1Ev
 	.cfi_startproc
 ; %bb.0:
-	brk	#0x1
+	ret
 	.cfi_endproc
                                         ; -- End function
 	.globl	C::~C()                      ; -- Begin function _ZN1CD0Ev
@@ -512,7 +592,16 @@ C::~C():                             ; @_ZN1CD1Ev
 C::~C():                             ; @_ZN1CD0Ev
 	.cfi_startproc
 ; %bb.0:
-	brk	#0x1
+	b	operator delete(void*)
+	.cfi_endproc
+                                        ; -- End function
+	.globl	C::label() const                 ; -- Begin function _ZNK1C5labelEv
+	.weak_def_can_be_hidden	C::label() const
+	.p2align	2
+C::label() const:                        ; @_ZNK1C5labelEv
+	.cfi_startproc
+; %bb.0:
+	b	ConcreteAction::label() const
 	.cfi_endproc
                                         ; -- End function
 	.globl	C::auxid() const                 ; -- Begin function _ZNK1C5auxidEv
@@ -531,7 +620,7 @@ C::auxid() const:                        ; @_ZNK1C5auxidEv
 non-virtual thunk to C::~C():                        ; @_ZThn8_N1CD1Ev
 	.cfi_startproc
 ; %bb.0:
-	brk	#0x1
+	ret
 	.cfi_endproc
                                         ; -- End function
 	.globl	non-virtual thunk to C::~C()                 ; -- Begin function _ZThn8_N1CD0Ev
@@ -540,7 +629,8 @@ non-virtual thunk to C::~C():                        ; @_ZThn8_N1CD1Ev
 non-virtual thunk to C::~C():                        ; @_ZThn8_N1CD0Ev
 	.cfi_startproc
 ; %bb.0:
-	brk	#0x1
+	sub	x0, x0, #8
+	b	operator delete(void*)
 	.cfi_endproc
                                         ; -- End function
 	.globl	non-virtual thunk to C::~C()                ; -- Begin function _ZThn16_N1CD1Ev
@@ -549,7 +639,7 @@ non-virtual thunk to C::~C():                        ; @_ZThn8_N1CD0Ev
 non-virtual thunk to C::~C():                       ; @_ZThn16_N1CD1Ev
 	.cfi_startproc
 ; %bb.0:
-	brk	#0x1
+	ret
 	.cfi_endproc
                                         ; -- End function
 	.globl	non-virtual thunk to C::~C()                ; -- Begin function _ZThn16_N1CD0Ev
@@ -558,7 +648,18 @@ non-virtual thunk to C::~C():                       ; @_ZThn16_N1CD1Ev
 non-virtual thunk to C::~C():                       ; @_ZThn16_N1CD0Ev
 	.cfi_startproc
 ; %bb.0:
-	brk	#0x1
+	sub	x0, x0, #16
+	b	operator delete(void*)
+	.cfi_endproc
+                                        ; -- End function
+	.globl	non-virtual thunk to C::label() const           ; -- Begin function _ZThn16_NK1C5labelEv
+	.weak_def_can_be_hidden	non-virtual thunk to C::label() const
+	.p2align	2
+non-virtual thunk to C::label() const:                  ; @_ZThn16_NK1C5labelEv
+	.cfi_startproc
+; %bb.0:
+	sub	x0, x0, #16
+	b	ConcreteAction::label() const
 	.cfi_endproc
                                         ; -- End function
 	.globl	non-virtual thunk to C::auxid() const           ; -- Begin function _ZThn16_NK1C5auxidEv
@@ -671,7 +772,7 @@ vtable for C:
 	.quad	typeinfo for C
 	.quad	C::~C()
 	.quad	C::~C()
-	.quad	ConcreteAction::label() const
+	.quad	C::label() const
 	.quad	ConcreteAction::actid() const
 	.quad	C::auxid() const
 	.quad	-8
@@ -688,7 +789,7 @@ vtable for C:
 	.quad	typeinfo for C
 	.quad	non-virtual thunk to C::~C()
 	.quad	non-virtual thunk to C::~C()
-	.quad	___cxa_pure_virtual
+	.quad	non-virtual thunk to C::label() const
 	.quad	non-virtual thunk to C::auxid() const
 
 	.globl	construction vtable for OtherAction-in-B          ; @_ZTC1B0_11OtherAction
@@ -874,4 +975,4 @@ vtable for Aux:
 	.quad	___cxa_pure_virtual
 
 .subsections_via_symbols
-; Total code size:     8440
+; Total code size:     9184

@@ -8,7 +8,7 @@ Action::~Action() {}
 
 struct ConcreteAction : public virtual Action
 {
-    char const* label() const final;
+    char const* label() const override;
     int actid() const final;
 };
 
@@ -51,6 +51,17 @@ struct B final : public OtherAction, public Aux
 B::B() {}
 char const* B::label() const { return "foo"; }
 
+// OK:
+struct B2 final : public Aux, public OtherAction
+{
+    B2();
+    char const* label() const final;
+    int actid() const final { return 1; }
+    int auxid() const final { return 2; }
+};
+
+B2::B2() {}
+
 struct AuxB final : public Aux
 {
     char const* label() const final;
@@ -59,9 +70,10 @@ struct AuxB final : public Aux
 char const* AuxB::label() const { return "auxb"; }
 
 // FAILS TO COMPILE (class isn't final, missing Aux::label):
-struct C : public ConcreteAction, public OtherAction, public Aux
+struct C final : public ConcreteAction, public OtherAction, public Aux
 {
     C();
+    char const* label() const final { return ConcreteAction::label(); }
     int auxid() const final { return 2; }
 };
 
