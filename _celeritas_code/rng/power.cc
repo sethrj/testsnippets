@@ -11,6 +11,12 @@ double sample_power(MockEngine& rng, double p)
     return sample(rng);
 }
 
+double sample_reverse(MockEngine& rng, double p)
+{
+    PowerDistribution sample(p, 1.0, 0.0);
+    return sample(rng);
+}
+
 double sample_explicit(MockEngine& rng, double p)
 {
     auto exp_ = 1 / (p + 1);
