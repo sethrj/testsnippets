@@ -11,6 +11,7 @@ if [ -z "$CXX" ]; then
 fi
 
 : ${CXXFLAGS:=-O2 -std=c++17 -fverbose-asm}
+echo "Using ${CXX} ${CXXFLAGS}"
 
 set -o pipefail
 
