@@ -2,3 +2,4 @@
 #undef CELERITAS_DEBUG
 #define CELERITAS_DEBUG 0
 
+using namespace celeritas;

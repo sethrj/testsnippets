@@ -1,5 +1,5 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 15, 0	sdk_version 15, 4
+	.build_version macos, 15, 0	sdk_version 15, 5
 	.globl	sample_power(MockEngine&, double) ; -- Begin function _Z12sample_powerR10MockEngined
 	.p2align	2
 sample_power(MockEngine&, double):        ; @_Z12sample_powerR10MockEngined
@@ -105,5 +105,51 @@ sample_explicit(MockEngine&, double):     ; @_Z15sample_explicitR10MockEngined
 	b	_exp
 	.cfi_endproc
                                         ; -- End function
+	.globl	sample_square(MockEngine&) ; -- Begin function _Z13sample_squareR10MockEngine
+	.p2align	2
+sample_square(MockEngine&):        ; @_Z13sample_squareR10MockEngine
+	.cfi_startproc
+; %bb.0:
+	sub	sp, sp, #32
+	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
+	add	x29, sp, #16
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	mov	x1, x0
+	sub	x0, x29, #1
+	bl	celeritas::GenerateCanonical<MockEngine, double>::operator()(MockEngine&)
+	movi	d1, #0000000000000000
+	fadd	d0, d0, d1
+	bl	_log
+	mov	x8, #6148914691236517205        ; =0x5555555555555555
+	movk	x8, #16341, lsl #48
+	fmov	d1, x8
+	fmul	d0, d0, d1
+	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
+	add	sp, sp, #32
+	b	_exp
+	.cfi_endproc
+                                        ; -- End function
+	.globl	sample_square_explicit(MockEngine&) ; -- Begin function _Z22sample_square_explicitR10MockEngine
+	.p2align	2
+sample_square_explicit(MockEngine&): ; @_Z22sample_square_explicitR10MockEngine
+	.cfi_startproc
+; %bb.0:
+	sub	sp, sp, #32
+	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
+	add	x29, sp, #16
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	mov	x1, x0
+	sub	x0, x29, #1
+	bl	celeritas::GenerateCanonical<MockEngine, double>::operator()(MockEngine&)
+	bl	_cbrt
+	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
+	add	sp, sp, #32
+	ret
+	.cfi_endproc
+                                        ; -- End function
 .subsections_via_symbols
-; Total code size:     1184
+; Total code size:     1536

@@ -14,6 +14,13 @@ int cos_uint(int r)
     return cosval[i % 4];
 }
 
+int cos_abs_cos(int r)
+{
+    constexpr signed char cosval[] = {1, 0, -1, 0};
+    auto i = std::abs(r) % 4;
+    return cosval[i % 4];
+}
+
 int cos_bits(int r)
 {
     // Get the last two bits

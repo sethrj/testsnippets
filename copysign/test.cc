@@ -1,11 +1,16 @@
 #include <cmath>
 
-double copysign_to_unity(double inp)
+double remove_neg_zero_add(double inp)
 {
-    return std::copysign(1.0, inp);
+    return inp + 0.0;
 }
 
-double ternary_copysign(double inp)
+double remove_neg_zero_bra(double inp)
 {
-    return inp > 0 ? 1 : -1;
+    return inp == 0 ? 0 : inp;
+}
+
+double remove_neg_zero_bra2(double inp)
+{
+    return inp != 0 ? inp : 0;
 }
