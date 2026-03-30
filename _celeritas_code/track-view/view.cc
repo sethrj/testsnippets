@@ -5,6 +5,6 @@
 double y_position(G4Track const& t)
 {
     GeantTrackViewConst view{t};
-    return native_value_from(.pos()[1]);
+    return native_value_from(view.pos()[1]);
 }
 
