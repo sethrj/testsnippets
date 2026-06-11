@@ -1,8 +1,8 @@
 	.build_version macos, 26, 0	sdk_version 26, 5
 	.section	__TEXT,__text,regular,pure_instructions
-	.globl	calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections) ; -- Begin function calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections)
+	.globl	calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections) ; -- Begin function calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
 	.p2align	2
-calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections): ; @calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections)
+calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections): ; @calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
 	.cfi_startproc
 ; %bb.0:
 	sub	sp, sp, #64
@@ -17,15 +17,14 @@ calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (cel
 	.cfi_offset w21, -40
 	.cfi_offset w22, -48
 	stp	x0, x1, [sp]
-	ldp	x8, x9, [x2]
-	ldp	x10, x9, [x9]
-	ldr	x8, [x8, #248]
-	add	x11, x8, x10, lsl #3
-	subs	x8, x9, x10
-	csel	x20, xzr, x11, eq
+	ldp	x8, x9, [x3]
+	ldr	x10, [x2, #248]
+	add	x10, x10, x8, lsl #3
+	subs	x8, x9, x8
+	csel	x20, xzr, x10, eq
 	b.eq	LBB0_3
 ; %bb.1:
-	mov	x19, x3
+	mov	x19, x4
 	lsl	x21, x8, #3
 LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
 	ldr	x2, [x20], #8
@@ -2470,4 +2469,4 @@ LBB15_15:
 	.cfi_endproc
                                         ; -- End function
 .subsections_via_symbols
-; Total code size:    11464
+; Total code size:    11408
