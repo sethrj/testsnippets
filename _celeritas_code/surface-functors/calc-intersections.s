@@ -7,7 +7,8 @@ calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::deta
 ; %bb.0:
 	sub	sp, sp, #32
 	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
-	.cfi_def_cfa_offset 32
+	add	x29, sp, #16
+	.cfi_def_cfa w29, 16
 	.cfi_offset w30, -8
 	.cfi_offset w29, -16
 	stp	x0, x1, [sp]
@@ -31,7 +32,8 @@ void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::Cal
 	stp	x22, x21, [sp, #128]            ; 16-byte Folded Spill
 	stp	x20, x19, [sp, #144]            ; 16-byte Folded Spill
 	stp	x29, x30, [sp, #160]            ; 16-byte Folded Spill
-	.cfi_def_cfa_offset 176
+	add	x29, sp, #160
+	.cfi_def_cfa w29, 16
 	.cfi_offset w30, -8
 	.cfi_offset w29, -16
 	.cfi_offset w19, -24
@@ -435,7 +437,8 @@ unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celerita
 	sub	sp, sp, #112
 	stp	x20, x19, [sp, #80]             ; 16-byte Folded Spill
 	stp	x29, x30, [sp, #96]             ; 16-byte Folded Spill
-	.cfi_def_cfa_offset 112
+	add	x29, sp, #96
+	.cfi_def_cfa w29, 16
 	.cfi_offset w30, -8
 	.cfi_offset w29, -16
 	.cfi_offset w19, -24
@@ -2429,4 +2432,4 @@ LBB15_15:
 	.cfi_endproc
                                         ; -- End function
 .subsections_via_symbols
-; Total code size:    11152
+; Total code size:    10856
