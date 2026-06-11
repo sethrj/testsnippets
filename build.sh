@@ -18,11 +18,11 @@ set -o pipefail
 for filename in $*; do
   basename="${filename%.*}"
   $CXX -Wall -Wextra -Werror -pedantic ${CXXFLAGS} \
-      -S  -c ${filename} -o - \
+      -S "${filename}" -o - \
      | c++filt | sed -e "s/${filename}://" \
-     > ${basename}.s
+     > "${basename}.s"
   printf "; Total code size: " >> ${basename}.s
-  $CXX ${CXXFLAGS} -c ${filename} -o - | wc -c >> ${basename}.s
+  $CXX ${CXXFLAGS} -c "${filename}" -o - | wc -c >> ${basename}.s
 done
 
 ###############################################################################
