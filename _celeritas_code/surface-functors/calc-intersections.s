@@ -1,22 +1,44 @@
 	.build_version macos, 26, 0	sdk_version 26, 5
 	.section	__TEXT,__text,regular,pure_instructions
-	.globl	calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) ; -- Begin function calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
+	.globl	calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections) ; -- Begin function calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections)
 	.p2align	2
-calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>): ; @calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
+calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections): ; @calc_all_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::LocalVolumeView const&, celeritas::detail::CalcIntersections)
 	.cfi_startproc
 ; %bb.0:
-	sub	sp, sp, #32
-	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
-	.cfi_def_cfa_offset 32
+	sub	sp, sp, #64
+	stp	x22, x21, [sp, #16]             ; 16-byte Folded Spill
+	stp	x20, x19, [sp, #32]             ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #48]             ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 64
 	.cfi_offset w30, -8
 	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	.cfi_offset w21, -40
+	.cfi_offset w22, -48
 	stp	x0, x1, [sp]
+	ldp	x8, x9, [x2]
+	ldp	x10, x9, [x9]
+	ldr	x8, [x8, #248]
+	add	x11, x8, x10, lsl #3
+	subs	x8, x9, x10
+	csel	x20, xzr, x11, eq
+	b.eq	LBB0_3
+; %bb.1:
+	mov	x19, x3
+	lsl	x21, x8, #3
+LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
+	ldr	x2, [x20], #8
 	mov	x0, sp
-	mov	x1, x2
-	mov	x2, x3
+	mov	x1, x19
 	bl	decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
-	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
-	add	sp, sp, #32
+	subs	x21, x21, #8
+	b.ne	LBB0_2
+LBB0_3:
+	ldp	x29, x30, [sp, #48]             ; 16-byte Folded Reload
+	ldp	x20, x19, [sp, #32]             ; 16-byte Folded Reload
+	ldp	x22, x21, [sp, #16]             ; 16-byte Folded Reload
+	add	sp, sp, #64
 	ret
 	.cfi_endproc
                                         ; -- End function
@@ -2448,4 +2470,4 @@ LBB15_15:
 	.cfi_endproc
                                         ; -- End function
 .subsections_via_symbols
-; Total code size:    11408
+; Total code size:    11464
