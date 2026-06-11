@@ -1,465 +1,435 @@
 	.build_version macos, 26, 0	sdk_version 26, 5
 	.section	__TEXT,__text,regular,pure_instructions
-	.globl	calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections) ; -- Begin function calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
+	.globl	calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections) ; -- Begin function calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
 	.p2align	2
-calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections): ; @calc_all_intersections(celeritas::LocalSurfaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
+calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections): ; @calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
 	.cfi_startproc
 ; %bb.0:
-	sub	sp, sp, #64
-	stp	x22, x21, [sp, #16]             ; 16-byte Folded Spill
-	stp	x20, x19, [sp, #32]             ; 16-byte Folded Spill
-	stp	x29, x30, [sp, #48]             ; 16-byte Folded Spill
-	.cfi_def_cfa_offset 64
+	sub	sp, sp, #32
+	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 32
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	stp	x0, x1, [sp]
+	mov	x0, sp
+	mov	x1, x4
+	bl	void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
+	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
+	add	sp, sp, #32
+	ret
+	.cfi_endproc
+                                        ; -- End function
+	.globl	void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const ; -- Begin function void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
+	.weak_def_can_be_hidden	void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
+	.p2align	2
+void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const: ; @void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
+	.cfi_startproc
+; %bb.0:
+	sub	sp, sp, #176
+	stp	d9, d8, [sp, #96]               ; 16-byte Folded Spill
+	stp	x24, x23, [sp, #112]            ; 16-byte Folded Spill
+	stp	x22, x21, [sp, #128]            ; 16-byte Folded Spill
+	stp	x20, x19, [sp, #144]            ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #160]            ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 176
 	.cfi_offset w30, -8
 	.cfi_offset w29, -16
 	.cfi_offset w19, -24
 	.cfi_offset w20, -32
 	.cfi_offset w21, -40
 	.cfi_offset w22, -48
+	.cfi_offset w23, -56
+	.cfi_offset w24, -64
+	.cfi_offset b8, -72
+	.cfi_offset b9, -80
+	ldr	x8, [x0, #8]
+	ldr	x10, [x8, #16]
 	stp	x0, x1, [sp]
-	ldp	x8, x9, [x3]
-	ldr	x10, [x2, #248]
-	add	x10, x10, x8, lsl #3
-	subs	x8, x9, x8
-	csel	x20, xzr, x10, eq
-	b.eq	LBB0_3
-; %bb.1:
-	mov	x19, x4
-	lsl	x21, x8, #3
-LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
-	ldr	x2, [x20], #8
-	mov	x0, sp
-	mov	x1, x19
-	bl	decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
-	subs	x21, x21, #8
-	b.ne	LBB0_2
-LBB0_3:
-	ldp	x29, x30, [sp, #48]             ; 16-byte Folded Reload
-	ldp	x20, x19, [sp, #32]             ; 16-byte Folded Reload
-	ldp	x22, x21, [sp, #16]             ; 16-byte Folded Reload
-	add	sp, sp, #64
-	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const ; -- Begin function decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
-	.weak_def_can_be_hidden	decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
-	.p2align	2
-decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const: ; @decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
-	.cfi_startproc
-; %bb.0:
-	sub	sp, sp, #112
-	stp	x29, x30, [sp, #96]             ; 16-byte Folded Spill
-	.cfi_def_cfa_offset 112
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
-	str	x2, [sp, #24]
-	ldp	x9, x10, [x0]
-	ldr	x11, [x10]
-	ldr	x12, [x9, #360]
-	add	x11, x12, x11
-	add	x12, sp, #24
-	stp	x0, x12, [sp]
-	str	x1, [sp, #16]
-	ldrb	w11, [x11, x2]
-	mov	x8, x1
-Lloh0:
-	adrp	x12, lJTI1_0@PAGE
-Lloh1:
-	add	x12, x12, lJTI1_0@PAGEOFF
-	adr	x13, LBB1_1
-	ldrh	w14, [x12, x11, lsl #1]
-	add	x13, x13, x14, lsl #2
-	br	x13
+	add	x9, sp, #24
+	stp	x9, x10, [sp, #16]
+	ldp	x8, x9, [x8]
+	subs	x20, x9, x8
+	b.ne	LBB1_2
 LBB1_1:
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-	cmp	x12, x11
-	b.eq	LBB1_31
-; %bb.2:
-	ldr	x12, [x9, #328]
-	ldr	x9, [x9, #280]
-	ldr	x10, [x10, #16]
-	add	x9, x9, x10, lsl #3
-	ldr	x9, [x9, x2, lsl #3]
-	ldr	d0, [x12, x9, lsl #3]
-	ldp	x9, x10, [x8, #8]
-	ldr	d1, [x10]
-	ldr	d2, [x9]
-	fsub	d0, d0, d2
-	fdiv	d0, d0, d1
-	fcmp	d0, #0.0
-	movi.2d	v2, #0000000000000000
-	fccmp	d1, d2, #4, gt
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
-	fmov	d1, x9
-	fcsel	d0, d1, d0, eq
-	ldr	d1, [x8]
-	fcmp	d0, d1
-	b.ls	LBB1_28
-; %bb.3:
-	add	x9, x11, #1
+	ldp	x29, x30, [sp, #160]            ; 16-byte Folded Reload
+	ldp	x20, x19, [sp, #144]            ; 16-byte Folded Reload
+	ldp	x22, x21, [sp, #128]            ; 16-byte Folded Reload
+	ldp	x24, x23, [sp, #112]            ; 16-byte Folded Reload
+	ldp	d9, d8, [sp, #96]               ; 16-byte Folded Reload
+	add	sp, sp, #176
+	ret
+LBB1_2:
+	mov	x19, x0
+	mov	x21, #0                         ; =0x0
+Lloh0:
+	adrp	x22, lJTI1_0@PAGE
+Lloh1:
+	add	x22, x22, lJTI1_0@PAGEOFF
+	movi.2d	v8, #0000000000000000
+	mov	x23, #9218868437227405312       ; =0x7ff0000000000000
+	b	LBB1_7
+LBB1_3:                                 ;   in Loop: Header=BB1_7 Depth=1
+	mov	x10, x9
+LBB1_4:                                 ;   in Loop: Header=BB1_7 Depth=1
+	add	x9, x10, #1
 	str	x9, [x8, #64]
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_4:
+LBB1_5:                                 ;   in Loop: Header=BB1_7 Depth=1
+	mov	w0, #1                          ; =0x1
+LBB1_6:                                 ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x8, [sp, #24]
+	add	x8, x8, x0
+	str	x8, [sp, #24]
+	add	x21, x21, #1
+	cmp	x20, x21
+	b.eq	LBB1_1
+LBB1_7:                                 ; =>This Inner Loop Header: Depth=1
+	ldp	x8, x9, [x19]
+	ldr	x9, [x9]
+	ldr	x8, [x8, #360]
+	add	x8, x8, x9
+	ldrb	w8, [x8, x21]
+	adr	x9, LBB1_8
+	ldrb	w10, [x22, x8]
+	add	x9, x9, x10, lsl #2
+	br	x9
+LBB1_8:                                 ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x8, [sp, #8]
+	ldr	x10, [x8, #24]
+	ldr	x9, [x8, #64]
+	cmp	x10, x9
+	b.eq	LBB1_4
+; %bb.9:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [sp]
+	ldr	x11, [sp, #16]
+	ldr	x10, [x10]
+	ldr	x10, [x10, #328]
+	ldr	x11, [x11]
+	ldr	d0, [x10, x11, lsl #3]
+	ldp	x10, x11, [x8, #8]
+	ldr	d1, [x11]
+	ldr	d2, [x10]
+	b	LBB1_23
+LBB1_10:                                ;   in Loop: Header=BB1_7 Depth=1
 	mov	x0, sp
-	bl	auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_5:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldp	q0, q1, [x9]
+	bl	unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+	b	LBB1_6
+LBB1_11:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldp	q0, q1, [x8]
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_6:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldp	q0, q1, [x9]
+	mov	w0, #4                          ; =0x4
+	b	LBB1_6
+LBB1_12:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldp	q0, q1, [x8]
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_7:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	ldr	d0, [x9, x10, lsl #3]
+	mov	w0, #4                          ; =0x4
+	b	LBB1_6
+LBB1_13:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	ldr	d0, [x8, x9, lsl #3]
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_8:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldp	q0, q1, [x9]
+	b	LBB1_5
+LBB1_14:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldp	q0, q1, [x8]
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_9:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldr	d0, [x9, #16]
-	ldr	q1, [x9]
+	mov	w0, #4                          ; =0x4
+	b	LBB1_6
+LBB1_15:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldr	d0, [x8, #16]
+	ldr	q1, [x8]
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_10:
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-	cmp	x12, x11
-	b.eq	LBB1_31
-; %bb.11:
-	ldr	x12, [x9, #328]
-	ldr	x9, [x9, #280]
-	ldr	x10, [x10, #16]
-	add	x9, x9, x10, lsl #3
-	ldr	x9, [x9, x2, lsl #3]
-	ldr	d0, [x12, x9, lsl #3]
-	ldp	x9, x10, [x8, #8]
-	ldr	d1, [x10, #16]
-	ldr	d2, [x9, #16]
-	fsub	d0, d0, d2
-	fdiv	d0, d0, d1
-	fcmp	d0, #0.0
-	movi.2d	v2, #0000000000000000
-	fccmp	d1, d2, #4, gt
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
-	fmov	d1, x9
-	fcsel	d0, d1, d0, eq
-	ldr	d1, [x8]
-	fcmp	d0, d1
-	b.ls	LBB1_28
-; %bb.12:
-	add	x9, x11, #1
-	str	x9, [x8, #64]
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_13:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldr	q0, [x9]
+	mov	w0, #3                          ; =0x3
+	b	LBB1_6
+LBB1_16:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x8, [sp, #8]
+	ldr	x10, [x8, #24]
+	ldr	x9, [x8, #64]
+	cmp	x10, x9
+	b.eq	LBB1_4
+; %bb.17:                               ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [sp]
+	ldr	x11, [sp, #16]
+	ldr	x10, [x10]
+	ldr	x10, [x10, #328]
+	ldr	x11, [x11]
+	ldr	d0, [x10, x11, lsl #3]
+	ldp	x10, x11, [x8, #8]
+	ldr	d1, [x11, #16]
+	ldr	d2, [x10, #16]
+	b	LBB1_23
+LBB1_18:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldr	q0, [x8]
 	str	q0, [sp, #32]
-	ldr	q0, [x9, #16]
+	ldr	q0, [x8, #16]
 	str	q0, [sp, #48]
-	ldr	q0, [x9, #32]
+	ldr	q0, [x8, #32]
 	str	q0, [sp, #64]
-	ldr	d0, [x9, #48]
+	ldr	d0, [x8, #48]
 	str	d0, [sp, #80]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_14:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	ldr	d0, [x9, x10, lsl #3]
+	mov	w0, #7                          ; =0x7
+	b	LBB1_6
+LBB1_19:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	ldr	d0, [x8, x9, lsl #3]
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_15:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldr	d0, [x9, #16]
-	ldr	q1, [x9]
+	b	LBB1_5
+LBB1_20:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldr	d0, [x8, #16]
+	ldr	q1, [x8]
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_16:
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-	cmp	x12, x11
-	b.eq	LBB1_31
-; %bb.17:
-	ldr	x12, [x9, #328]
-	ldr	x9, [x9, #280]
-	ldr	x10, [x10, #16]
-	add	x9, x9, x10, lsl #3
-	ldr	x9, [x9, x2, lsl #3]
-	ldr	d0, [x12, x9, lsl #3]
-	ldp	x9, x10, [x8, #8]
-	ldr	d1, [x10, #8]
-	ldr	d2, [x9, #8]
+	mov	w0, #3                          ; =0x3
+	b	LBB1_6
+LBB1_21:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x8, [sp, #8]
+	ldr	x10, [x8, #24]
+	ldr	x9, [x8, #64]
+	cmp	x10, x9
+	b.eq	LBB1_4
+; %bb.22:                               ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [sp]
+	ldr	x11, [sp, #16]
+	ldr	x10, [x10]
+	ldr	x10, [x10, #328]
+	ldr	x11, [x11]
+	ldr	d0, [x10, x11, lsl #3]
+	ldp	x10, x11, [x8, #8]
+	ldr	d1, [x11, #8]
+	ldr	d2, [x10, #8]
+LBB1_23:                                ;   in Loop: Header=BB1_7 Depth=1
 	fsub	d0, d0, d2
 	fdiv	d0, d0, d1
 	fcmp	d0, #0.0
-	movi.2d	v2, #0000000000000000
-	fccmp	d1, d2, #4, gt
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
-	fmov	d1, x9
+	fccmp	d1, d8, #4, gt
+	fmov	d1, x23
 	fcsel	d0, d1, d0, eq
 	ldr	d1, [x8]
 	fcmp	d0, d1
-	b.ls	LBB1_28
-; %bb.18:
-	add	x9, x11, #1
-	str	x9, [x8, #64]
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_19:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	ldr	d0, [x9, x10, lsl #3]
-	str	d0, [sp, #32]
-	add	x1, sp, #32
-	mov	x0, x8
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_20:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldp	q0, q1, [x9]
-	stp	q0, q1, [sp, #32]
-	add	x1, sp, #32
-	mov	x0, x8
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_21:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	ldr	d0, [x9, x10, lsl #3]
-	str	d0, [sp, #32]
-	add	x1, sp, #32
-	mov	x0, x8
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_22:
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-	cmp	x12, x11
-	b.eq	LBB1_31
-; %bb.23:
-	ldr	x10, [x10, #16]
-	ldr	x12, [x9, #280]
-	add	x10, x12, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldp	d1, d2, [x9]
-	ldr	d0, [x9, #16]
-	ldr	x10, [x8, #16]
-	movi.2d	v3, #0000000000000000
-	ldp	d4, d5, [x10]
-	fmadd	d4, d1, d4, d3
-	fmadd	d4, d2, d5, d4
-	ldr	d5, [x10, #16]
-	fmadd	d4, d0, d5, d4
-	fcmp	d4, #0.0
-	b.eq	LBB1_25
-; %bb.24:
-	ldr	d5, [x9, #24]
-	ldr	x9, [x8, #8]
-	ldp	d6, d7, [x9]
-	fmadd	d1, d1, d6, d3
-	fmadd	d1, d2, d7, d1
-	ldr	d2, [x9, #16]
-	fmadd	d0, d0, d2, d1
-	fsub	d0, d5, d0
-	fdiv	d0, d0, d4
-	fcmp	d0, #0.0
-	b.gt	LBB1_26
-LBB1_25:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
-	fmov	d0, x9
-LBB1_26:
-	ldr	d1, [x8]
-	fcmp	d0, d1
-	b.ls	LBB1_28
-; %bb.27:
-	add	x9, x11, #1
-	str	x9, [x8, #64]
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_28:
-	ldr	x9, [x8, #40]
-	ldr	x10, [x8, #72]
-	str	x11, [x9, x10, lsl #3]
+	b.hi	LBB1_3
+; %bb.24:                               ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [x8, #40]
+	ldr	x11, [x8, #72]
+	str	x9, [x10, x11, lsl #3]
 	ldr	x10, [x8, #48]
 	ldr	x9, [x8, #72]
 	str	d0, [x10, x9, lsl #3]
 	ldrb	w10, [x8, #32]
 	cmp	w10, #1
-	b.ne	LBB1_30
-; %bb.29:
+	b.ne	LBB1_26
+; %bb.25:                               ;   in Loop: Header=BB1_7 Depth=1
 	ldr	x10, [x8, #56]
 	str	x9, [x10, x9, lsl #3]
 	ldr	x9, [x8, #72]
-LBB1_30:
+LBB1_26:                                ;   in Loop: Header=BB1_7 Depth=1
 	add	x9, x9, #1
 	str	x9, [x8, #72]
-	ldr	x12, [x8, #64]
-LBB1_31:
-	add	x9, x12, #1
-	str	x9, [x8, #64]
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB1_32:
-	ldr	x10, [x10, #16]
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x9, [x9, #328]
-	add	x9, x9, x10, lsl #3
-	ldr	d0, [x9, #16]
-	ldr	q1, [x9]
+	ldr	x10, [x8, #64]
+	b	LBB1_4
+LBB1_27:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	ldr	d0, [x8, x9, lsl #3]
+	str	d0, [sp, #32]
+	add	x1, sp, #32
+	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
+	b	LBB1_5
+LBB1_28:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldp	q0, q1, [x8]
+	stp	q0, q1, [sp, #32]
+	add	x1, sp, #32
+	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
+	mov	w0, #4                          ; =0x4
+	b	LBB1_6
+LBB1_29:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	ldr	d0, [x8, x9, lsl #3]
+	str	d0, [sp, #32]
+	add	x1, sp, #32
+	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
+	b	LBB1_5
+LBB1_30:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x8, [sp, #8]
+	ldr	x10, [x8, #24]
+	ldr	x9, [x8, #64]
+	cmp	x10, x9
+	b.eq	LBB1_40
+; %bb.31:                               ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [sp]
+	ldr	x11, [sp, #16]
+	ldr	x11, [x11]
+	ldr	x10, [x10]
+	ldr	x10, [x10, #328]
+	add	x10, x10, x11, lsl #3
+	ldp	d1, d2, [x10]
+	ldr	d0, [x10, #16]
+	ldr	x11, [x8, #16]
+	ldp	d3, d4, [x11]
+	fmadd	d3, d1, d3, d8
+	fmadd	d3, d2, d4, d3
+	ldr	d4, [x11, #16]
+	fmadd	d3, d0, d4, d3
+	fcmp	d3, #0.0
+	b.eq	LBB1_33
+; %bb.32:                               ;   in Loop: Header=BB1_7 Depth=1
+	ldr	d4, [x10, #24]
+	ldr	x10, [x8, #8]
+	ldp	d5, d6, [x10]
+	fmadd	d1, d1, d5, d8
+	fmadd	d1, d2, d6, d1
+	ldr	d2, [x10, #16]
+	fmadd	d0, d0, d2, d1
+	fsub	d0, d4, d0
+	fdiv	d0, d0, d3
+	fcmp	d0, #0.0
+	b.gt	LBB1_34
+LBB1_33:                                ;   in Loop: Header=BB1_7 Depth=1
+	mov	x10, #9218868437227405312       ; =0x7ff0000000000000
+	fmov	d0, x10
+LBB1_34:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldr	d1, [x8]
+	fcmp	d0, d1
+	b.ls	LBB1_37
+; %bb.35:                               ;   in Loop: Header=BB1_7 Depth=1
+	mov	x10, x9
+	b	LBB1_40
+LBB1_36:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldp	x8, x0, [sp]
+	ldr	x9, [sp, #16]
+	ldr	x9, [x9]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
+	ldr	d0, [x8, #16]
+	ldr	q1, [x8]
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-	mov	x0, x8
 	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
+	mov	w0, #3                          ; =0x3
+	b	LBB1_6
+LBB1_37:                                ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [x8, #40]
+	ldr	x11, [x8, #72]
+	str	x9, [x10, x11, lsl #3]
+	ldr	x10, [x8, #48]
+	ldr	x9, [x8, #72]
+	str	d0, [x10, x9, lsl #3]
+	ldrb	w10, [x8, #32]
+	cmp	w10, #1
+	b.ne	LBB1_39
+; %bb.38:                               ;   in Loop: Header=BB1_7 Depth=1
+	ldr	x10, [x8, #56]
+	str	x9, [x10, x9, lsl #3]
+	ldr	x9, [x8, #72]
+LBB1_39:                                ;   in Loop: Header=BB1_7 Depth=1
+	add	x9, x9, #1
+	str	x9, [x8, #72]
+	ldr	x10, [x8, #64]
+LBB1_40:                                ;   in Loop: Header=BB1_7 Depth=1
+	add	x9, x10, #1
+	str	x9, [x8, #64]
+	mov	w0, #4                          ; =0x4
+	b	LBB1_6
 	.loh AdrpAdd	Lloh0, Lloh1
 	.cfi_endproc
 	.section	__TEXT,__const
-	.p2align	1, 0x0
 lJTI1_0:
-	.short	(LBB1_1-LBB1_1)>>2
-	.short	(LBB1_16-LBB1_1)>>2
-	.short	(LBB1_10-LBB1_1)>>2
-	.short	(LBB1_14-LBB1_1)>>2
-	.short	(LBB1_7-LBB1_1)>>2
-	.short	(LBB1_19-LBB1_1)>>2
-	.short	(LBB1_21-LBB1_1)>>2
-	.short	(LBB1_15-LBB1_1)>>2
-	.short	(LBB1_32-LBB1_1)>>2
-	.short	(LBB1_9-LBB1_1)>>2
-	.short	(LBB1_22-LBB1_1)>>2
-	.short	(LBB1_6-LBB1_1)>>2
-	.short	(LBB1_8-LBB1_1)>>2
-	.short	(LBB1_20-LBB1_1)>>2
-	.short	(LBB1_5-LBB1_1)>>2
-	.short	(LBB1_13-LBB1_1)>>2
-	.short	(LBB1_4-LBB1_1)>>2
+	.byte	(LBB1_8-LBB1_8)>>2
+	.byte	(LBB1_21-LBB1_8)>>2
+	.byte	(LBB1_16-LBB1_8)>>2
+	.byte	(LBB1_19-LBB1_8)>>2
+	.byte	(LBB1_13-LBB1_8)>>2
+	.byte	(LBB1_27-LBB1_8)>>2
+	.byte	(LBB1_29-LBB1_8)>>2
+	.byte	(LBB1_20-LBB1_8)>>2
+	.byte	(LBB1_36-LBB1_8)>>2
+	.byte	(LBB1_15-LBB1_8)>>2
+	.byte	(LBB1_30-LBB1_8)>>2
+	.byte	(LBB1_12-LBB1_8)>>2
+	.byte	(LBB1_14-LBB1_8)>>2
+	.byte	(LBB1_28-LBB1_8)>>2
+	.byte	(LBB1_11-LBB1_8)>>2
+	.byte	(LBB1_18-LBB1_8)>>2
+	.byte	(LBB1_10-LBB1_8)>>2
                                         ; -- End function
 	.section	__TEXT,__text,regular,pure_instructions
-	.globl	auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const ; -- Begin function auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
-	.weak_def_can_be_hidden	auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+	.globl	unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const ; -- Begin function unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+	.weak_def_can_be_hidden	unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
 	.p2align	2
-auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const: ; @auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const: ; @unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
 	.cfi_startproc
 ; %bb.0:
 	sub	sp, sp, #112
@@ -470,16 +440,12 @@ auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail
 	.cfi_offset w29, -16
 	.cfi_offset w19, -24
 	.cfi_offset w20, -32
-	ldp	x8, x9, [x0]
+	ldp	x8, x19, [x0]
+	ldr	x9, [x0, #16]
 	ldr	x9, [x9]
-	ldp	x10, x8, [x8]
-	ldr	x8, [x8, #16]
-	ldr	x11, [x10, #280]
-	add	x8, x11, x8, lsl #3
-	ldr	x8, [x8, x9, lsl #3]
-	ldr	x9, [x10, #328]
-	add	x8, x9, x8, lsl #3
-	ldr	x19, [x0, #16]
+	ldr	x8, [x8]
+	ldr	x8, [x8, #328]
+	add	x8, x8, x9, lsl #3
 	ldp	q0, q1, [x8]
 	stp	q0, q1, [sp]
 	ldp	q0, q1, [x8, #32]
@@ -496,18 +462,8 @@ auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail
 	ldr	d2, [x19]
 	ldr	x8, [x19, #64]
 	fcmp	d0, d2
-	b.ls	LBB2_3
+	b.hi	LBB2_4
 ; %bb.1:
-	fcmp	d1, d2
-	b.ls	LBB2_6
-LBB2_2:
-	add	x8, x8, #1
-	str	x8, [x19, #64]
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	ldp	x20, x19, [sp, #80]             ; 16-byte Folded Reload
-	add	sp, sp, #112
-	ret
-LBB2_3:
 	ldr	x9, [x19, #72]
 	ldp	x10, x11, [x19, #40]
 	str	x8, [x10, x9, lsl #3]
@@ -515,19 +471,20 @@ LBB2_3:
 	str	d0, [x11, x8, lsl #3]
 	ldrb	w9, [x19, #32]
 	cmp	w9, #1
-	b.ne	LBB2_5
-; %bb.4:
+	b.ne	LBB2_3
+; %bb.2:
 	ldr	x9, [x19, #56]
 	str	x8, [x9, x8, lsl #3]
 	ldr	x8, [x19, #72]
-LBB2_5:
+LBB2_3:
 	add	x8, x8, #1
 	str	x8, [x19, #72]
 	ldr	d2, [x19]
 	ldr	x8, [x19, #64]
+LBB2_4:
 	fcmp	d1, d2
-	b.hi	LBB2_2
-LBB2_6:
+	b.hi	LBB2_8
+; %bb.5:
 	ldr	x9, [x19, #72]
 	ldp	x10, x11, [x19, #40]
 	str	x8, [x10, x9, lsl #3]
@@ -535,16 +492,19 @@ LBB2_6:
 	str	d1, [x11, x8, lsl #3]
 	ldrb	w9, [x19, #32]
 	cmp	w9, #1
-	b.ne	LBB2_8
-; %bb.7:
+	b.ne	LBB2_7
+; %bb.6:
 	ldr	x9, [x19, #56]
 	str	x8, [x9, x8, lsl #3]
 	ldr	x8, [x19, #72]
-LBB2_8:
-	add	x9, x8, #1
-	ldr	x8, [x19, #64]
+LBB2_7:
 	add	x8, x8, #1
-	stp	x8, x9, [x19, #64]
+	str	x8, [x19, #72]
+	ldr	x8, [x19, #64]
+LBB2_8:
+	add	x8, x8, #1
+	str	x8, [x19, #64]
+	mov	w0, #10                         ; =0xa
 	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
 	ldp	x20, x19, [sp, #80]             ; 16-byte Folded Reload
 	add	sp, sp, #112
@@ -2469,4 +2429,4 @@ LBB15_15:
 	.cfi_endproc
                                         ; -- End function
 .subsections_via_symbols
-; Total code size:    11408
+; Total code size:    11152
