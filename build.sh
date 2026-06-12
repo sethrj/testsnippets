@@ -5,25 +5,38 @@
 # Date  : Thu Jul 05 13:36:51 2018
 ###############################################################################
 
-if [ -z "$CXX" ]; then
-  echo "\$CXX is not defined"
-  exit 1
-fi
-
+CXX=clang++
+OBJDUMP=objdump
+STRIP=strip
 : ${CXXFLAGS:=-O2 -std=c++17 -fverbose-asm}
-echo "Using ${CXX} ${CXXFLAGS}"
+echo "Building with ${CXX} ${CXXFLAGS}"
 
 set -o pipefail
+TMPDIRNAME=$(mktemp -d)
 
 for filename in $*; do
-  basename="${filename%.*}"
-  $CXX -Wall -Wextra -Werror -pedantic ${CXXFLAGS} \
-      -S "${filename}" -o - \
-     | c++filt | sed -e "s/${filename}://" \
-     > "${basename}.s"
-  printf "; Total code size: " >> ${basename}.s
-  $CXX ${CXXFLAGS} -c "${filename}" -o - | wc -c >> ${basename}.s
+  DIRNAME="$(dirname ${filename})"
+  STEM="${filename%.*}"
+  TMPSTEM="${TMPDIRNAME}/${STEM}"
+  printf "\r%s %s" "Compiling" "${filename}" >&2
+  $CXX \
+    -Wall -Wextra -Werror -pedantic ${CXXFLAGS} \
+    -c "${filename}" \
+    -o "${TMPSTEM}.o"
+  printf "\r%s %s:" "Dumping" "${filename}" >&2
+  $OBJDUMP \
+    -t --no-show-raw-insn -C --line-numbers --symbolize-operands \
+    - < "${TMPSTEM}.o" \
+    > ${STEM}.s
+  $STRIP -x -S "${TMPSTEM}.o" \
+    -o "${TMPSTEM}.stripped.o"
+  CODESIZE=$(wc -c < "${TMPSTEM}.stripped.o")
+  printf "; Total code size: %s" "${CODESIZE}" \
+    >> ${STEM}.s
+  printf "\r%s %s: %d B\n" "Finished" "${filename}" "${CODESIZE}" >&2
 done
+
+rm -rf "$TMPDIRNAME" >/dev/null
 
 ###############################################################################
 # end of testsnippets/build.sh
