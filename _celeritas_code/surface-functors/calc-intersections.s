@@ -1,264 +1,483 @@
-	.build_version macos, 26, 0	sdk_version 26, 5
-	.section	__TEXT,__text,regular,pure_instructions
-	.globl	calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections) ; -- Begin function calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
-	.p2align	2
-calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections): ; @calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
-	.cfi_startproc
-; %bb.0:
+
+<stdin>:	file format mach-o arm64
+
+SYMBOL TABLE:
+0000000000000000 l     F __TEXT,__text ltmp0
+0000000000001ea4 l     O __TEXT,__const lJTI1_0
+0000000000001ea4 l     O __TEXT,__const ltmp1
+000000000006e6a8 l     O __LD,__compact_unwind ltmp2
+0000000000000000 g     F __TEXT,__text calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
+0000000000000cd0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
+0000000000000e70  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
+0000000000001020  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
+0000000000001384  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
+00000000000015cc  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
+0000000000001814  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
+0000000000000644  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
+00000000000007e0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
+0000000000000984  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
+0000000000001a5c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
+0000000000000b20  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
+00000000000011c0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
+0000000000001cc8  w    F __TEXT,__text celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
+0000000000000028  w    F __TEXT,__text void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
+0000000000000540  w    F __TEXT,__text unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+
+Disassembly of section __TEXT,__text:
+
+<ltmp0>:
+; calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)():
+; FILE.cc:11
+; { visit_face(calc_isect); }
 	sub	sp, sp, #32
-	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #16]
 	add	x29, sp, #16
-	.cfi_def_cfa w29, 16
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
 	stp	x0, x1, [sp]
 	mov	x0, sp
 	mov	x1, x4
-	bl	void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
-	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
+<L0>:
+	bl	 <L0>
+	ldp	x29, x30, [sp, #16]
 	add	sp, sp, #32
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const ; -- Begin function void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
-	.weak_def_can_be_hidden	void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
-	.p2align	2
-void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const: ; @void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const>:
+; void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const():
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:89
+; {
 	sub	sp, sp, #176
-	stp	d9, d8, [sp, #96]               ; 16-byte Folded Spill
-	stp	x24, x23, [sp, #112]            ; 16-byte Folded Spill
-	stp	x22, x21, [sp, #128]            ; 16-byte Folded Spill
-	stp	x20, x19, [sp, #144]            ; 16-byte Folded Spill
-	stp	x29, x30, [sp, #160]            ; 16-byte Folded Spill
+	stp	d9, d8, [sp, #96]
+	stp	x24, x23, [sp, #112]
+	stp	x22, x21, [sp, #128]
+	stp	x20, x19, [sp, #144]
+	stp	x29, x30, [sp, #160]
 	add	x29, sp, #160
-	.cfi_def_cfa w29, 16
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
-	.cfi_offset w19, -24
-	.cfi_offset w20, -32
-	.cfi_offset w21, -40
-	.cfi_offset w22, -48
-	.cfi_offset w23, -56
-	.cfi_offset w24, -64
-	.cfi_offset b8, -72
-	.cfi_offset b9, -80
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:90
+;     RealId::size_type data_begin(**faces_.reals.begin());
 	ldr	x8, [x0, #8]
+; SOURCE/src/corecel/cont/Range.hh:90
+;     CELER_CONSTEXPR_FUNCTION const_iterator begin() const { return begin_; }
 	ldr	x10, [x8, #16]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:91
+;     auto surface_visitor = [&](auto s_traits) -> size_type {
 	stp	x0, x1, [sp]
 	add	x9, sp, #24
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:90
+;     RealId::size_type data_begin(**faces_.reals.begin());
 	stp	x9, x10, [sp, #16]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:179
+;     CELER_CONSTEXPR_FUNCTION value_type operator*() const { return value_; }
 	ldp	x8, x9, [x8]
+; SOURCE/src/corecel/cont/Range.hh:105
+;         return TraitsT::to_counter(*end_) - TraitsT::to_counter(*begin_);
 	subs	x20, x9, x8
-	b.ne	LBB1_2
-LBB1_1:
-	ldp	x29, x30, [sp, #160]            ; 16-byte Folded Reload
-	ldp	x20, x19, [sp, #144]            ; 16-byte Folded Reload
-	ldp	x22, x21, [sp, #128]            ; 16-byte Folded Reload
-	ldp	x24, x23, [sp, #112]            ; 16-byte Folded Reload
-	ldp	d9, d8, [sp, #96]               ; 16-byte Folded Reload
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
+;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
+	b.ne	 <L1>
+<L0>:
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:103
+; }
+	ldp	x29, x30, [sp, #160]
+	ldp	x20, x19, [sp, #144]
+	ldp	x22, x21, [sp, #128]
+	ldp	x24, x23, [sp, #112]
+	ldp	d9, d8, [sp, #96]
 	add	sp, sp, #176
 	ret
-LBB1_2:
+<L1>:
 	mov	x19, x0
-	mov	x21, #0                         ; =0x0
-Lloh0:
-	adrp	x22, lJTI1_0@PAGE
-Lloh1:
-	add	x22, x22, lJTI1_0@PAGEOFF
+	mov	x21, #0                 ; =0x0
+	adrp	x22, 0x0 <ltmp0>
+	add	x22, x22, #0
 	movi.2d	v8, #0000000000000000
-	mov	x23, #9218868437227405312       ; =0x7ff0000000000000
-	b	LBB1_7
-LBB1_3:                                 ;   in Loop: Header=BB1_7 Depth=1
+	mov	x23, #9218868437227405312 ; =0x7ff0000000000000
+	b	 <L6>
+<L2>:
 	mov	x10, x9
-LBB1_4:                                 ;   in Loop: Header=BB1_7 Depth=1
+<L3>:
 	add	x9, x10, #1
 	str	x9, [x8, #64]
-LBB1_5:                                 ;   in Loop: Header=BB1_7 Depth=1
-	mov	w0, #1                          ; =0x1
-LBB1_6:                                 ;   in Loop: Header=BB1_7 Depth=1
+<L4>:
+	mov	w0, #1                  ; =0x1
+<L5>:
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:99
+;         data_begin += visit_surface_type(surface_visitor,
 	ldr	x8, [sp, #24]
 	add	x8, x8, x0
 	str	x8, [sp, #24]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:139
+;         temp += i;
 	add	x21, x21, #1
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
+;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
 	cmp	x20, x21
-	b.eq	LBB1_1
-LBB1_7:                                 ; =>This Inner Loop Header: Depth=1
+	b.eq	 <L0>
+<L6>:
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:137
+;     return params_.surface_types[faces_.types[fid]];
 	ldp	x8, x9, [x19]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
 	ldr	x9, [x9]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
 	ldr	x8, [x8, #360]
 	add	x8, x8, x9
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldrb	w8, [x8, x21]
-	adr	x9, LBB1_8
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:74
+;     switch (st)
+	adr	x9,  <L7>
 	ldrb	w10, [x22, x8]
 	add	x9, x9, x10, lsl #2
 	br	x9
-LBB1_8:                                 ;   in Loop: Header=BB1_7 Depth=1
+<L7>:
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x8, [sp, #8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x8, #24]
 	ldr	x9, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+;             if (on_surface == SurfaceState::on)
 	cmp	x10, x9
-	b.eq	LBB1_4
-; %bb.9:                                ;   in Loop: Header=BB1_7 Depth=1
+	b.eq	 <L3>
 	ldr	x10, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [sp, #16]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x10, [x10]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x10, [x10, #328]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [x11]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x10, x11, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldp	x10, x11, [x8, #8]
+; SOURCE/src/orange/surf/PlaneAligned.hh:156
+;     real_type const n_dir = dir[to_int(T)];
 	ldr	d1, [x11]
+; SOURCE/src/orange/surf/PlaneAligned.hh:157
+;     real_type const dist = (position_ - pos[to_int(T)]) / n_dir;
 	ldr	d2, [x10]
-	b	LBB1_23
-LBB1_10:                                ;   in Loop: Header=BB1_7 Depth=1
+	b	 <L17>
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:92
+;         ORANGE_ST_VISIT_CASE(gq);
 	mov	x0, sp
-	bl	unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
-	b	LBB1_6
-LBB1_11:                                ;   in Loop: Header=BB1_7 Depth=1
+<L8>:
+	bl	 <L8>
+	b	 <L5>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldp	q0, q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-	mov	w0, #4                          ; =0x4
-	b	LBB1_6
-LBB1_12:                                ;   in Loop: Header=BB1_7 Depth=1
+<L9>:
+	bl	 <L9>
+	mov	w0, #4                  ; =0x4
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(kz);
+	b	 <L5>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldp	q0, q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-	mov	w0, #4                          ; =0x4
-	b	LBB1_6
-LBB1_13:                                ;   in Loop: Header=BB1_7 Depth=1
+<L10>:
+	bl	 <L10>
+	mov	w0, #4                  ; =0x4
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(kz);
+	b	 <L5>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-	b	LBB1_5
-LBB1_14:                                ;   in Loop: Header=BB1_7 Depth=1
+<L11>:
+	bl	 <L11>
+	b	 <L4>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldp	q0, q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-	mov	w0, #4                          ; =0x4
-	b	LBB1_6
-LBB1_15:                                ;   in Loop: Header=BB1_7 Depth=1
+<L12>:
+	bl	 <L12>
+	mov	w0, #4                  ; =0x4
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(kz);
+	b	 <L5>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, #16]
 	ldr	q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-	mov	w0, #3                          ; =0x3
-	b	LBB1_6
-LBB1_16:                                ;   in Loop: Header=BB1_7 Depth=1
+<L13>:
+	bl	 <L13>
+	mov	w0, #3                  ; =0x3
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:85
+;         ORANGE_ST_VISIT_CASE(cz);
+	b	 <L5>
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x8, [sp, #8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x8, #24]
 	ldr	x9, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+;             if (on_surface == SurfaceState::on)
 	cmp	x10, x9
-	b.eq	LBB1_4
-; %bb.17:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.eq	 <L3>
 	ldr	x10, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [sp, #16]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x10, [x10]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x10, [x10, #328]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [x11]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x10, x11, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldp	x10, x11, [x8, #8]
+; SOURCE/src/orange/surf/PlaneAligned.hh:156
+;     real_type const n_dir = dir[to_int(T)];
 	ldr	d1, [x11, #16]
+; SOURCE/src/orange/surf/PlaneAligned.hh:157
+;     real_type const dist = (position_ - pos[to_int(T)]) / n_dir;
 	ldr	d2, [x10, #16]
-	b	LBB1_23
-LBB1_18:                                ;   in Loop: Header=BB1_7 Depth=1
+	b	 <L17>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	q0, [x8]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:138
+;     : a_{data[0]}
 	str	q0, [sp, #32]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	q0, [x8, #16]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:140
+;     , c_{data[2]}
 	str	q0, [sp, #48]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	q0, [x8, #32]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:142
+;     , e_{data[4]}
 	str	q0, [sp, #64]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, #48]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:144
+;     , g_{data[6]}
 	str	d0, [sp, #80]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-	mov	w0, #7                          ; =0x7
-	b	LBB1_6
-LBB1_19:                                ;   in Loop: Header=BB1_7 Depth=1
+<L14>:
+	bl	 <L14>
+	mov	w0, #7                  ; =0x7
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:91
+;         ORANGE_ST_VISIT_CASE(sq);
+	b	 <L5>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-	b	LBB1_5
-LBB1_20:                                ;   in Loop: Header=BB1_7 Depth=1
+<L15>:
+	bl	 <L15>
+	b	 <L4>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, #16]
 	ldr	q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-	mov	w0, #3                          ; =0x3
-	b	LBB1_6
-LBB1_21:                                ;   in Loop: Header=BB1_7 Depth=1
+<L16>:
+	bl	 <L16>
+	mov	w0, #3                  ; =0x3
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:85
+;         ORANGE_ST_VISIT_CASE(cz);
+	b	 <L5>
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x8, [sp, #8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x8, #24]
 	ldr	x9, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+;             if (on_surface == SurfaceState::on)
 	cmp	x10, x9
-	b.eq	LBB1_4
-; %bb.22:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.eq	 <L3>
 	ldr	x10, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [sp, #16]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x10, [x10]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x10, [x10, #328]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [x11]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x10, x11, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldp	x10, x11, [x8, #8]
+; SOURCE/src/orange/surf/PlaneAligned.hh:156
+;     real_type const n_dir = dir[to_int(T)];
 	ldr	d1, [x11, #8]
+; SOURCE/src/orange/surf/PlaneAligned.hh:157
+;     real_type const dist = (position_ - pos[to_int(T)]) / n_dir;
 	ldr	d2, [x10, #8]
-LBB1_23:                                ;   in Loop: Header=BB1_7 Depth=1
+<L17>:
 	fsub	d0, d0, d2
 	fdiv	d0, d0, d1
 	fcmp	d0, #0.0
@@ -267,8 +486,7 @@ LBB1_23:                                ;   in Loop: Header=BB1_7 Depth=1
 	fcsel	d0, d1, d0, eq
 	ldr	d1, [x8]
 	fcmp	d0, d1
-	b.hi	LBB1_3
-; %bb.24:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.hi	 <L2>
 	ldr	x10, [x8, #40]
 	ldr	x11, [x8, #72]
 	str	x9, [x10, x11, lsl #3]
@@ -277,59 +495,98 @@ LBB1_23:                                ;   in Loop: Header=BB1_7 Depth=1
 	str	d0, [x10, x9, lsl #3]
 	ldrb	w10, [x8, #32]
 	cmp	w10, #1
-	b.ne	LBB1_26
-; %bb.25:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.ne	 <L18>
 	ldr	x10, [x8, #56]
 	str	x9, [x10, x9, lsl #3]
 	ldr	x9, [x8, #72]
-LBB1_26:                                ;   in Loop: Header=BB1_7 Depth=1
+<L18>:
 	add	x9, x9, #1
 	str	x9, [x8, #72]
 	ldr	x10, [x8, #64]
-	b	LBB1_4
-LBB1_27:                                ;   in Loop: Header=BB1_7 Depth=1
+	b	 <L3>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-	b	LBB1_5
-LBB1_28:                                ;   in Loop: Header=BB1_7 Depth=1
+<L19>:
+	bl	 <L19>
+	b	 <L4>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldp	q0, q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-	mov	w0, #4                          ; =0x4
-	b	LBB1_6
-LBB1_29:                                ;   in Loop: Header=BB1_7 Depth=1
+<L20>:
+	bl	 <L20>
+	mov	w0, #4                  ; =0x4
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(kz);
+	b	 <L5>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-	b	LBB1_5
-LBB1_30:                                ;   in Loop: Header=BB1_7 Depth=1
+<L21>:
+	bl	 <L21>
+	b	 <L4>
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x8, [sp, #8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x8, #24]
 	ldr	x9, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+;             if (on_surface == SurfaceState::on)
 	cmp	x10, x9
-	b.eq	LBB1_40
-; %bb.31:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.eq	 <L27>
 	ldr	x10, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x11, [sp, #16]
 	ldr	x11, [x11]
 	ldr	x10, [x10]
@@ -337,1113 +594,1796 @@ LBB1_30:                                ;   in Loop: Header=BB1_7 Depth=1
 	add	x10, x10, x11, lsl #3
 	ldp	d1, d2, [x10]
 	ldr	d0, [x10, #16]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x8, #16]
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldp	d3, d4, [x11]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d3, d1, d3, d8
 	fmadd	d3, d2, d4, d3
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldr	d4, [x11, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d3, d0, d4, d3
+; SOURCE/src/orange/surf/Plane.hh:149
+;     if (on_surface == SurfaceState::off && n_dir != 0)
 	fcmp	d3, #0.0
-	b.eq	LBB1_33
-; %bb.32:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.eq	 <L22>
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	d4, [x10, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x8, #8]
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldp	d5, d6, [x10]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d1, d1, d5, d8
 	fmadd	d1, d2, d6, d1
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldr	d2, [x10, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d0, d0, d2, d1
+; SOURCE/src/orange/surf/Plane.hh:152
+;         real_type dist = (d_ - n_pos) / n_dir;
 	fsub	d0, d4, d0
 	fdiv	d0, d0, d3
+; SOURCE/src/orange/surf/Plane.hh:153
+;         if (dist > 0)
 	fcmp	d0, #0.0
-	b.gt	LBB1_34
-LBB1_33:                                ;   in Loop: Header=BB1_7 Depth=1
-	mov	x10, #9218868437227405312       ; =0x7ff0000000000000
+	b.gt	 <L23>
+<L22>:
+	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x10
-LBB1_34:                                ;   in Loop: Header=BB1_7 Depth=1
+<L23>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d1, [x8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d1
-	b.ls	LBB1_37
-; %bb.35:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.ls	 <L25>
 	mov	x10, x9
-	b	LBB1_40
-LBB1_36:                                ;   in Loop: Header=BB1_7 Depth=1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
+	b	 <L27>
 	ldp	x8, x0, [sp]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [sp, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d0, [x8, #16]
 	ldr	q1, [x8]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-	bl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-	mov	w0, #3                          ; =0x3
-	b	LBB1_6
-LBB1_37:                                ;   in Loop: Header=BB1_7 Depth=1
+<L24>:
+	bl	 <L24>
+	mov	w0, #3                  ; =0x3
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:85
+;         ORANGE_ST_VISIT_CASE(cz);
+	b	 <L5>
+<L25>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x10, [x8, #40]
 	ldr	x11, [x8, #72]
 	str	x9, [x10, x11, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x10, [x8, #48]
 	ldr	x9, [x8, #72]
 	str	d0, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w10, [x8, #32]
 	cmp	w10, #1
-	b.ne	LBB1_39
-; %bb.38:                               ;   in Loop: Header=BB1_7 Depth=1
+	b.ne	 <L26>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x10, [x8, #56]
 	str	x9, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x9, [x8, #72]
-LBB1_39:                                ;   in Loop: Header=BB1_7 Depth=1
+<L26>:
 	add	x9, x9, #1
 	str	x9, [x8, #72]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x10, [x8, #64]
-LBB1_40:                                ;   in Loop: Header=BB1_7 Depth=1
+<L27>:
 	add	x9, x10, #1
 	str	x9, [x8, #64]
-	mov	w0, #4                          ; =0x4
-	b	LBB1_6
-	.loh AdrpAdd	Lloh0, Lloh1
-	.cfi_endproc
-	.section	__TEXT,__const
-lJTI1_0:
-	.byte	(LBB1_8-LBB1_8)>>2
-	.byte	(LBB1_21-LBB1_8)>>2
-	.byte	(LBB1_16-LBB1_8)>>2
-	.byte	(LBB1_19-LBB1_8)>>2
-	.byte	(LBB1_13-LBB1_8)>>2
-	.byte	(LBB1_27-LBB1_8)>>2
-	.byte	(LBB1_29-LBB1_8)>>2
-	.byte	(LBB1_20-LBB1_8)>>2
-	.byte	(LBB1_36-LBB1_8)>>2
-	.byte	(LBB1_15-LBB1_8)>>2
-	.byte	(LBB1_30-LBB1_8)>>2
-	.byte	(LBB1_12-LBB1_8)>>2
-	.byte	(LBB1_14-LBB1_8)>>2
-	.byte	(LBB1_28-LBB1_8)>>2
-	.byte	(LBB1_11-LBB1_8)>>2
-	.byte	(LBB1_18-LBB1_8)>>2
-	.byte	(LBB1_10-LBB1_8)>>2
-                                        ; -- End function
-	.section	__TEXT,__text,regular,pure_instructions
-	.globl	unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const ; -- Begin function unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
-	.weak_def_can_be_hidden	unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
-	.p2align	2
-unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const: ; @unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
-	.cfi_startproc
-; %bb.0:
+	mov	w0, #4                  ; =0x4
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(kz);
+	b	 <L5>
+
+<unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const>:
+; unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const():
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:91
+;     auto surface_visitor = [&](auto s_traits) -> size_type {
 	sub	sp, sp, #112
-	stp	x20, x19, [sp, #80]             ; 16-byte Folded Spill
-	stp	x29, x30, [sp, #96]             ; 16-byte Folded Spill
+	stp	x20, x19, [sp, #80]
+	stp	x29, x30, [sp, #96]
 	add	x29, sp, #96
-	.cfi_def_cfa w29, 16
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
-	.cfi_offset w19, -24
-	.cfi_offset w20, -32
 	ldp	x8, x19, [x0]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
+;         func(this->make_surface<S>(RealId{data_begin}));
 	ldr	x9, [x0, #16]
 	ldr	x9, [x9]
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
+;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
 	ldr	x8, [x8]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
 	ldr	x8, [x8, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x8, x9, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldp	q0, q1, [x8]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:126
+;     : a_(data[0])
 	stp	q0, q1, [sp]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldp	q0, q1, [x8, #32]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:130
+;     , e_(data[4])
 	stp	q0, q1, [sp, #32]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	q0, [x8, #64]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:134
+;     , i_(data[8])
 	str	q0, [sp, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x2, x8, [x19, #16]
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w3, eq
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x1, [x19, #8]
 	mov	x0, sp
-	bl	celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
+<L0>:
+	bl	 <L0>
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x19]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x19, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB2_4
-; %bb.1:
+	b.hi	 <L2>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x19, #72]
 	ldp	x10, x11, [x19, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x19, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x19, #32]
 	cmp	w9, #1
-	b.ne	LBB2_3
-; %bb.2:
+	b.ne	 <L1>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x19, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x19, #72]
-LBB2_3:
+<L1>:
 	add	x8, x8, #1
 	str	x8, [x19, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x19]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x19, #64]
-LBB2_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB2_8
-; %bb.5:
+	b.hi	 <L4>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x19, #72]
 	ldp	x10, x11, [x19, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x19, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x19, #32]
 	cmp	w9, #1
-	b.ne	LBB2_7
-; %bb.6:
+	b.ne	 <L3>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x19, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x19, #72]
-LBB2_7:
+<L3>:
 	add	x8, x8, #1
 	str	x8, [x19, #72]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x19, #64]
-LBB2_8:
+<L4>:
 	add	x8, x8, #1
 	str	x8, [x19, #64]
-	mov	w0, #10                         ; =0xa
-	ldp	x29, x30, [sp, #96]             ; 16-byte Folded Reload
-	ldp	x20, x19, [sp, #80]             ; 16-byte Folded Reload
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:94
+;         return S::StorageSpan::extent;
+	mov	w0, #10                 ; =0xa
+	ldp	x29, x30, [sp, #96]
+	ldp	x20, x19, [sp, #80]
 	add	sp, sp, #112
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
+; SOURCE/src/orange/surf/CylCentered.hh:195
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d0, [x9]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d0, d0
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/CylCentered.hh:195
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d0, d1
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d2, x10
+; SOURCE/src/orange/surf/CylCentered.hh:197
+;     if (a < ipow<2>(Tolerance<>::sqrt_quadratic()))
 	fcmp	d1, d2
-	b.pl	LBB3_2
-LBB3_1:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.pl	 <L1>
+<L0>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
-	b	LBB3_4
-LBB3_2:
+	b	 <L2>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
+; SOURCE/src/orange/surf/CylCentered.hh:203
+;     real_type const u = pos[to_int(U)];
 	ldp	d2, d3, [x11, #8]
+; SOURCE/src/orange/surf/CylCentered.hh:208
+;         a, dir[to_int(U)] * u + dir[to_int(V)] * v);
 	ldp	d4, d5, [x9, #8]
 	fmul	d5, d3, d5
 	fmadd	d4, d4, d2, d5
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d0, d1
 	fmul	d1, d0, d4
+; SOURCE/src/orange/surf/CylCentered.hh:209
+;     if (on_surface == SurfaceState::on)
 	cmp	x10, x8
-	b.ne	LBB3_13
-; %bb.3:
+	b.ne	 <L8>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcsel	d1, d1, d0, hi
-LBB3_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB3_7
-; %bb.5:
+	b.ls	 <L4>
 	fcmp	d0, d2
-	b.ls	LBB3_10
-LBB3_6:
+	b.ls	 <L6>
+<L3>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB3_7:
+<L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB3_9
-; %bb.8:
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB3_9:
+<L5>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB3_6
-LBB3_10:
+	b.hi	 <L3>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB3_12
-; %bb.11:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB3_12:
+<L7>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB3_13:
+<L8>:
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmul	d3, d3, d3
+; SOURCE/src/orange/surf/CylCentered.hh:216
+;     return solve_quadric(ipow<2>(u) + ipow<2>(v) - radius_sq_);
 	fadd	d2, d2, d3
 	ldr	d3, [x1]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB3_17
-; %bb.14:
+	b.le	 <L9>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB3_1
-; %bb.15:
+	b.ls	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB3_4
-; %bb.16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L2>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-	b	LBB3_4
-LBB3_17:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:186
+;         }
+	b	 <L2>
+<L9>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB3_1
-; %bb.18:
+	b.ne	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB3_1
-; %bb.19:
+	b.ge	 <L0>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-	b	LBB3_4
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-	.cfi_startproc
-; %bb.0:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
+	b	 <L2>
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
+; SOURCE/src/orange/surf/CylCentered.hh:195
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d0, [x9, #8]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d0, d0
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/CylCentered.hh:195
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d0, d1
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d2, x10
+; SOURCE/src/orange/surf/CylCentered.hh:197
+;     if (a < ipow<2>(Tolerance<>::sqrt_quadratic()))
 	fcmp	d1, d2
-	b.pl	LBB4_2
-LBB4_1:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.pl	 <L1>
+<L0>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
-	b	LBB4_4
-LBB4_2:
+	b	 <L2>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
+; SOURCE/src/orange/surf/CylCentered.hh:203
+;     real_type const u = pos[to_int(U)];
 	ldr	d2, [x11]
+; SOURCE/src/orange/surf/CylCentered.hh:204
+;     real_type const v = pos[to_int(V)];
 	ldr	d3, [x11, #16]
+; SOURCE/src/orange/surf/CylCentered.hh:208
+;         a, dir[to_int(U)] * u + dir[to_int(V)] * v);
 	ldr	d4, [x9]
 	ldr	d5, [x9, #16]
 	fmul	d5, d3, d5
 	fmadd	d4, d4, d2, d5
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d0, d1
 	fmul	d1, d0, d4
+; SOURCE/src/orange/surf/CylCentered.hh:209
+;     if (on_surface == SurfaceState::on)
 	cmp	x10, x8
-	b.ne	LBB4_13
-; %bb.3:
+	b.ne	 <L8>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcsel	d1, d1, d0, hi
-LBB4_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB4_7
-; %bb.5:
+	b.ls	 <L4>
 	fcmp	d0, d2
-	b.ls	LBB4_10
-LBB4_6:
+	b.ls	 <L6>
+<L3>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB4_7:
+<L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB4_9
-; %bb.8:
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB4_9:
+<L5>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB4_6
-LBB4_10:
+	b.hi	 <L3>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB4_12
-; %bb.11:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB4_12:
+<L7>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB4_13:
+<L8>:
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmul	d3, d3, d3
+; SOURCE/src/orange/surf/CylCentered.hh:216
+;     return solve_quadric(ipow<2>(u) + ipow<2>(v) - radius_sq_);
 	fadd	d2, d2, d3
 	ldr	d3, [x1]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB4_17
-; %bb.14:
+	b.le	 <L9>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB4_1
-; %bb.15:
+	b.ls	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB4_4
-; %bb.16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L2>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-	b	LBB4_4
-LBB4_17:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:186
+;         }
+	b	 <L2>
+<L9>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB4_1
-; %bb.18:
+	b.ne	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB4_1
-; %bb.19:
+	b.ge	 <L0>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-	b	LBB4_4
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-	.cfi_startproc
-; %bb.0:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
+	b	 <L2>
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
+; SOURCE/src/orange/surf/CylCentered.hh:195
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d0, [x9, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d0, d0
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/CylCentered.hh:195
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d0, d1
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d2, x10
+; SOURCE/src/orange/surf/CylCentered.hh:197
+;     if (a < ipow<2>(Tolerance<>::sqrt_quadratic()))
 	fcmp	d1, d2
-	b.pl	LBB5_2
-LBB5_1:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.pl	 <L1>
+<L0>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
-	b	LBB5_4
-LBB5_2:
+	b	 <L2>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
+; SOURCE/src/orange/surf/CylCentered.hh:203
+;     real_type const u = pos[to_int(U)];
 	ldp	d2, d3, [x11]
+; SOURCE/src/orange/surf/CylCentered.hh:208
+;         a, dir[to_int(U)] * u + dir[to_int(V)] * v);
 	ldp	d4, d5, [x9]
 	fmul	d5, d3, d5
 	fmadd	d4, d4, d2, d5
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d0, d1
 	fmul	d1, d0, d4
+; SOURCE/src/orange/surf/CylCentered.hh:209
+;     if (on_surface == SurfaceState::on)
 	cmp	x10, x8
-	b.ne	LBB5_13
-; %bb.3:
+	b.ne	 <L8>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcsel	d1, d1, d0, hi
-LBB5_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB5_7
-; %bb.5:
+	b.ls	 <L4>
 	fcmp	d0, d2
-	b.ls	LBB5_10
-LBB5_6:
+	b.ls	 <L6>
+<L3>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB5_7:
+<L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB5_9
-; %bb.8:
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB5_9:
+<L5>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB5_6
-LBB5_10:
+	b.hi	 <L3>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB5_12
-; %bb.11:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB5_12:
+<L7>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB5_13:
+<L8>:
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmul	d3, d3, d3
+; SOURCE/src/orange/surf/CylCentered.hh:216
+;     return solve_quadric(ipow<2>(u) + ipow<2>(v) - radius_sq_);
 	fadd	d2, d2, d3
 	ldr	d3, [x1]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB5_17
-; %bb.14:
+	b.le	 <L9>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB5_1
-; %bb.15:
+	b.ls	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB5_4
-; %bb.16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L2>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-	b	LBB5_4
-LBB5_17:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:186
+;         }
+	b	 <L2>
+<L9>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB5_1
-; %bb.18:
+	b.ne	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB5_1
-; %bb.19:
+	b.ge	 <L0>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-	b	LBB5_4
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-	.cfi_startproc
-; %bb.0:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
+	b	 <L2>
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 	movi.2d	v0, #0000000000000000
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldp	d2, d3, [x10]
 	ldp	d1, d4, [x11]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d1, d2, d1, d0
 	fmadd	d1, d3, d4, d1
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldr	d4, [x10, #16]
 	ldr	d5, [x11, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d1, d4, d5, d1
+; SOURCE/src/orange/surf/SphereCentered.hh:143
+;     if (on_surface == SurfaceState::off)
 	cmp	x9, x8
-	b.ne	LBB6_2
-; %bb.1:
+	b.ne	 <L0>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d1, d0, hi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB6_6
-	b	LBB6_11
-LBB6_2:
+	b.hi	 <L1>
+	b	 <L6>
+<L0>:
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d0, d2, d2, d0
 	fmadd	d0, d3, d3, d0
 	fmadd	d0, d4, d4, d0
+; SOURCE/src/orange/surf/SphereCentered.hh:145
+;         return solve_quadric(dot_product(pos, pos) - radius_sq_);
 	ldr	d2, [x1]
 	fsub	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB6_8
-; %bb.3:
+	b.le	 <L3>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB6_9
-; %bb.4:
+	b.ls	 <L4>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ls	LBB6_10
-; %bb.5:
+	b.ls	 <L5>
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB6_11
-LBB6_6:
+	b.ls	 <L6>
+<L1>:
 	fcmp	d0, d2
-	b.ls	LBB6_14
-LBB6_7:
+	b.ls	 <L8>
+<L2>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB6_8:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+<L3>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d3, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:191
+;         result[0] = -hba_;
 	fneg	d4, d1
 	fmov	d5, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
 	fmov	d1, x9
 	fcsel	d4, d4, d1, lt
 	fcsel	d5, d5, d1, lt
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
 	fcsel	d1, d3, d4, ne
 	fcsel	d0, d3, d5, ne
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB6_6
-	b	LBB6_11
-LBB6_9:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L1>
+	b	 <L6>
+<L4>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB6_6
-	b	LBB6_11
-LBB6_10:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L1>
+	b	 <L6>
+<L5>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB6_6
-LBB6_11:
+	b.hi	 <L1>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB6_13
-; %bb.12:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB6_13:
+<L7>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB6_7
-LBB6_14:
+	b.hi	 <L2>
+<L8>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB6_16
-; %bb.15:
+	b.ne	 <L9>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB6_16:
+<L9>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
+; SOURCE/src/orange/surf/CylAligned.hh:226
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d0, [x9]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d0, d0
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/CylAligned.hh:226
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d0, d1
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d2, x10
+; SOURCE/src/orange/surf/CylAligned.hh:228
+;     if (a < ipow<2>(Tolerance<>::sqrt_quadratic()))
 	fcmp	d1, d2
-	b.pl	LBB7_2
-LBB7_1:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.pl	 <L1>
+<L0>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
-	b	LBB7_4
-LBB7_2:
+	b	 <L2>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
+; SOURCE/src/orange/surf/CylAligned.hh:234
+;     real_type const u = pos[to_int(U)] - origin_u_;
 	ldur	q2, [x11, #8]
 	ldr	q3, [x1]
 	fsub.2d	v2, v2, v3
+; SOURCE/src/orange/surf/CylAligned.hh:239
+;         a, dir[to_int(U)] * u + dir[to_int(V)] * v);
 	ldp	d3, d4, [x9, #8]
 	fmul.d	d4, d4, v2[1]
 	fmadd	d3, d3, d2, d4
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d0, d1
 	fmul	d1, d0, d3
+; SOURCE/src/orange/surf/CylAligned.hh:240
+;     if (on_surface == SurfaceState::on)
 	cmp	x10, x8
-	b.ne	LBB7_13
-; %bb.3:
+	b.ne	 <L8>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcsel	d1, d1, d0, hi
-LBB7_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB7_7
-; %bb.5:
+	b.ls	 <L4>
 	fcmp	d0, d2
-	b.ls	LBB7_10
-LBB7_6:
+	b.ls	 <L6>
+<L3>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB7_7:
+<L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB7_9
-; %bb.8:
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB7_9:
+<L5>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB7_6
-LBB7_10:
+	b.hi	 <L3>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB7_12
-; %bb.11:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB7_12:
+<L7>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB7_13:
+<L8>:
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul.2d	v2, v2, v2
+; SOURCE/src/orange/surf/CylAligned.hh:247
+;     return solve_quadric(ipow<2>(u) + ipow<2>(v) - radius_sq_);
 	faddp.2d	d2, v2
 	ldr	d3, [x1, #16]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB7_17
-; %bb.14:
+	b.le	 <L9>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB7_1
-; %bb.15:
+	b.ls	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB7_4
-; %bb.16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L2>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-	b	LBB7_4
-LBB7_17:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:186
+;         }
+	b	 <L2>
+<L9>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB7_1
-; %bb.18:
+	b.ne	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB7_1
-; %bb.19:
+	b.ge	 <L0>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-	b	LBB7_4
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-	.cfi_startproc
-; %bb.0:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
+	b	 <L2>
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
+; SOURCE/src/orange/surf/CylAligned.hh:226
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d0, [x9, #8]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d0, d0
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/CylAligned.hh:226
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d0, d1
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d2, x10
+; SOURCE/src/orange/surf/CylAligned.hh:228
+;     if (a < ipow<2>(Tolerance<>::sqrt_quadratic()))
 	fcmp	d1, d2
-	b.pl	LBB8_2
-LBB8_1:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.pl	 <L1>
+<L0>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
-	b	LBB8_4
-LBB8_2:
+	b	 <L2>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
+; SOURCE/src/orange/surf/CylAligned.hh:234
+;     real_type const u = pos[to_int(U)] - origin_u_;
 	ldr	d2, [x11]
 	ldp	d3, d4, [x1]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/CylAligned.hh:235
+;     real_type const v = pos[to_int(V)] - origin_v_;
 	ldr	d3, [x11, #16]
 	fsub	d3, d3, d4
+; SOURCE/src/orange/surf/CylAligned.hh:239
+;         a, dir[to_int(U)] * u + dir[to_int(V)] * v);
 	ldr	d4, [x9]
 	ldr	d5, [x9, #16]
 	fmul	d5, d3, d5
 	fmadd	d4, d4, d2, d5
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d0, d1
 	fmul	d1, d0, d4
+; SOURCE/src/orange/surf/CylAligned.hh:240
+;     if (on_surface == SurfaceState::on)
 	cmp	x10, x8
-	b.ne	LBB8_13
-; %bb.3:
+	b.ne	 <L8>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcsel	d1, d1, d0, hi
-LBB8_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB8_7
-; %bb.5:
+	b.ls	 <L4>
 	fcmp	d0, d2
-	b.ls	LBB8_10
-LBB8_6:
+	b.ls	 <L6>
+<L3>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB8_7:
+<L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB8_9
-; %bb.8:
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB8_9:
+<L5>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB8_6
-LBB8_10:
+	b.hi	 <L3>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB8_12
-; %bb.11:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB8_12:
+<L7>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB8_13:
+<L8>:
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmul	d3, d3, d3
+; SOURCE/src/orange/surf/CylAligned.hh:247
+;     return solve_quadric(ipow<2>(u) + ipow<2>(v) - radius_sq_);
 	fadd	d2, d2, d3
 	ldr	d3, [x1, #16]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB8_17
-; %bb.14:
+	b.le	 <L9>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB8_1
-; %bb.15:
+	b.ls	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB8_4
-; %bb.16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L2>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-	b	LBB8_4
-LBB8_17:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:186
+;         }
+	b	 <L2>
+<L9>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB8_1
-; %bb.18:
+	b.ne	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB8_1
-; %bb.19:
+	b.ge	 <L0>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-	b	LBB8_4
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-	.cfi_startproc
-; %bb.0:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
+	b	 <L2>
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
+; SOURCE/src/orange/surf/CylAligned.hh:226
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d0, [x9, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d0, d0
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/CylAligned.hh:226
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d0, d1
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d2, x10
+; SOURCE/src/orange/surf/CylAligned.hh:228
+;     if (a < ipow<2>(Tolerance<>::sqrt_quadratic()))
 	fcmp	d1, d2
-	b.pl	LBB9_2
-LBB9_1:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.pl	 <L1>
+<L0>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
-	b	LBB9_4
-LBB9_2:
+	b	 <L2>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
+; SOURCE/src/orange/surf/CylAligned.hh:234
+;     real_type const u = pos[to_int(U)] - origin_u_;
 	ldr	q2, [x11]
 	ldr	q3, [x1]
 	fsub.2d	v2, v2, v3
+; SOURCE/src/orange/surf/CylAligned.hh:239
+;         a, dir[to_int(U)] * u + dir[to_int(V)] * v);
 	ldp	d3, d4, [x9]
 	fmul.d	d4, d4, v2[1]
 	fmadd	d3, d3, d2, d4
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d0, d1
 	fmul	d1, d0, d3
+; SOURCE/src/orange/surf/CylAligned.hh:240
+;     if (on_surface == SurfaceState::on)
 	cmp	x10, x8
-	b.ne	LBB9_13
-; %bb.3:
+	b.ne	 <L8>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcsel	d1, d1, d0, hi
-LBB9_4:
+<L2>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB9_7
-; %bb.5:
+	b.ls	 <L4>
 	fcmp	d0, d2
-	b.ls	LBB9_10
-LBB9_6:
+	b.ls	 <L6>
+<L3>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB9_7:
+<L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB9_9
-; %bb.8:
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB9_9:
+<L5>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB9_6
-LBB9_10:
+	b.hi	 <L3>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB9_12
-; %bb.11:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB9_12:
+<L7>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB9_13:
+<L8>:
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul.2d	v2, v2, v2
+; SOURCE/src/orange/surf/CylAligned.hh:247
+;     return solve_quadric(ipow<2>(u) + ipow<2>(v) - radius_sq_);
 	faddp.2d	d2, v2
 	ldr	d3, [x1, #16]
 	fsub	d2, d2, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB9_17
-; %bb.14:
+	b.le	 <L9>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB9_1
-; %bb.15:
+	b.ls	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB9_4
-; %bb.16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L2>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-	b	LBB9_4
-LBB9_17:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:186
+;         }
+	b	 <L2>
+<L9>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB9_1
-; %bb.18:
+	b.ne	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB9_1
-; %bb.19:
+	b.ge	 <L0>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-	b	LBB9_4
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-	.cfi_startproc
-; %bb.0:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
+	b	 <L2>
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
+; SOURCE/src/orange/surf/Sphere.hh:144
+;     Real3 tpos{pos[0] - origin_[0], pos[1] - origin_[1], pos[2] - origin_[2]};
 	ldp	d0, d1, [x10]
 	ldp	d2, d3, [x1]
 	fsub	d0, d0, d2
@@ -1452,670 +2392,1103 @@ void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celerit
 	ldr	d3, [x1, #16]
 	fsub	d3, d1, d3
 	movi.2d	v4, #0000000000000000
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldp	d1, d5, [x11]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d1, d0, d1, d4
 	fmadd	d1, d2, d5, d1
+; SOURCE/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
 	ldr	d5, [x11, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d1, d3, d5, d1
+; SOURCE/src/orange/surf/Sphere.hh:147
+;     if (on_surface == SurfaceState::off)
 	cmp	x9, x8
-	b.ne	LBB10_2
-; %bb.1:
+	b.ne	 <L0>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d1, d0, hi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB10_6
-	b	LBB10_11
-LBB10_2:
+	b.hi	 <L1>
+	b	 <L6>
+<L0>:
+; SOURCE/src/corecel/math/Algorithms.hh:550
+;     return std::fma(a, b, y);
 	fmadd	d0, d0, d0, d4
 	fmadd	d0, d2, d2, d0
 	fmadd	d0, d3, d3, d0
+; SOURCE/src/orange/surf/Sphere.hh:149
+;         return solve_quadric(dot_product(tpos, tpos) - radius_sq_);
 	ldr	d2, [x1, #24]
 	fsub	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB10_8
-; %bb.3:
+	b.le	 <L3>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB10_9
-; %bb.4:
+	b.ls	 <L4>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ls	LBB10_10
-; %bb.5:
+	b.ls	 <L5>
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB10_11
-LBB10_6:
+	b.ls	 <L6>
+<L1>:
 	fcmp	d0, d2
-	b.ls	LBB10_14
-LBB10_7:
+	b.ls	 <L8>
+<L2>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB10_8:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+<L3>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d3, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:191
+;         result[0] = -hba_;
 	fneg	d4, d1
 	fmov	d5, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
 	fmov	d1, x9
 	fcsel	d4, d4, d1, lt
 	fcsel	d5, d5, d1, lt
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
 	fcsel	d1, d3, d4, ne
 	fcsel	d0, d3, d5, ne
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB10_6
-	b	LBB10_11
-LBB10_9:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L1>
+	b	 <L6>
+<L4>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 	mov.16b	v0, v1
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB10_6
-	b	LBB10_11
-LBB10_10:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L1>
+	b	 <L6>
+<L5>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB10_6
-LBB10_11:
+	b.hi	 <L1>
+<L6>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB10_13
-; %bb.12:
+	b.ne	 <L7>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB10_13:
+<L7>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB10_7
-LBB10_14:
+	b.hi	 <L2>
+<L8>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB10_16
-; %bb.15:
+	b.ne	 <L9>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB10_16:
+<L9>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
+; SOURCE/src/orange/surf/ConeAligned.hh:188
+;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
 	ldp	d0, d1, [x10]
 	ldp	d2, d3, [x1]
 	fsub	d4, d0, d2
+; SOURCE/src/orange/surf/ConeAligned.hh:189
+;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
 	fsub	d1, d1, d3
+; SOURCE/src/orange/surf/ConeAligned.hh:190
+;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
 	ldr	d0, [x10, #16]
 	ldp	d2, d3, [x1, #16]
 	fsub	d5, d0, d2
+; SOURCE/src/orange/surf/ConeAligned.hh:192
+;     real_type const u = dir[to_int(T)];
 	ldp	d2, d6, [x11]
+; SOURCE/src/orange/surf/ConeAligned.hh:194
+;     real_type const w = dir[to_int(V)];
 	ldr	d7, [x11, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d2, d2
 	fmul	d16, d6, d6
+; SOURCE/src/orange/surf/ConeAligned.hh:197
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fmsub	d0, d3, d0, d16
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d7, d7
+; SOURCE/src/orange/surf/ConeAligned.hh:197
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fadd	d0, d16, d0
+; SOURCE/src/orange/surf/ConeAligned.hh:198
+;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d4
 	fmul	d6, d1, d6
 	fmadd	d2, d16, d2, d6
 	fmadd	d2, d5, d7, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d4, d4, d4
 	fmul	d1, d1, d1
+; SOURCE/src/orange/surf/ConeAligned.hh:199
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fmsub	d1, d3, d4, d1
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d3, d5, d5
+; SOURCE/src/orange/surf/ConeAligned.hh:199
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fadd	d3, d3, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fabs	d1, d0
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d4, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fcmp	d1, d4
-	b.ge	LBB11_4
-; %bb.1:
-	mov	x10, #9218868437227405312       ; =0x7ff0000000000000
+	b.ge	 <L0>
+	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	cmp	x9, x8
-	b.eq	LBB11_17
-; %bb.2:
+	b.eq	 <L7>
 	fabs	d0, d2
-	mov	x9, #48572                      ; =0xbdbc
+	mov	x9, #48572              ; =0xbdbc
 	movk	x9, #55767, lsl #16
 	movk	x9, #31967, lsl #32
 	movk	x9, #15835, lsl #48
 	fmov	d4, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	fcmp	d0, d4
 	mov.16b	v0, v1
-	b.le	LBB11_13
-; %bb.3:
+	b.le	 <L3>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:121
+;         result[0] = -c / (2 * half_b);
 	fneg	d0, d3
 	fadd	d1, d2, d2
 	fdiv	d1, d0, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:122
+;         if (result[0] < 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d0, d1, mi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB11_18
-	b	LBB11_14
-LBB11_4:
+	b.ls	 <L8>
+	b	 <L4>
+<L0>:
 	fmov	d1, #1.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d1, d0
 	fmul	d1, d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:91
+;         return on_surface == SurfaceState::on ? solve() : solve(c);
 	cmp	x9, x8
-	b.ne	LBB11_6
-; %bb.5:
+	b.ne	 <L1>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d1, d0, hi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB11_18
-	b	LBB11_14
-LBB11_6:
+	b.ls	 <L8>
+	b	 <L4>
+<L1>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d3, d0
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB11_10
-; %bb.7:
+	b.le	 <L2>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB11_16
-; %bb.8:
+	b.ls	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB11_13
-; %bb.9:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L3>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB11_18
-	b	LBB11_14
-LBB11_10:
+	b.ls	 <L8>
+	b	 <L4>
+<L2>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB11_16
-; %bb.11:
+	b.ne	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB11_16
-; %bb.12:
+	b.ge	 <L6>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-LBB11_13:
+<L3>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB11_18
-LBB11_14:
+	b.ls	 <L8>
+<L4>:
 	fcmp	d0, d2
-	b.ls	LBB11_21
-LBB11_15:
+	b.ls	 <L10>
+<L5>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB11_16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+<L6>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-LBB11_17:
+<L7>:
 	mov.16b	v0, v1
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB11_14
-LBB11_18:
+	b.hi	 <L4>
+<L8>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB11_20
-; %bb.19:
+	b.ne	 <L9>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB11_20:
+<L9>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB11_15
-LBB11_21:
+	b.hi	 <L5>
+<L10>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB11_23
-; %bb.22:
+	b.ne	 <L11>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB11_23:
+<L11>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
+; SOURCE/src/orange/surf/ConeAligned.hh:188
+;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
 	ldp	d1, d0, [x10]
 	ldp	d3, d2, [x1]
 	fsub	d4, d0, d2
+; SOURCE/src/orange/surf/ConeAligned.hh:189
+;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
 	fsub	d1, d1, d3
+; SOURCE/src/orange/surf/ConeAligned.hh:190
+;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
 	ldr	d0, [x10, #16]
 	ldp	d2, d3, [x1, #16]
 	fsub	d5, d0, d2
+; SOURCE/src/orange/surf/ConeAligned.hh:192
+;     real_type const u = dir[to_int(T)];
 	ldp	d6, d2, [x11]
+; SOURCE/src/orange/surf/ConeAligned.hh:194
+;     real_type const w = dir[to_int(V)];
 	ldr	d7, [x11, #16]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d2, d2
 	fmul	d16, d6, d6
+; SOURCE/src/orange/surf/ConeAligned.hh:197
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fmsub	d0, d3, d0, d16
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d7, d7
+; SOURCE/src/orange/surf/ConeAligned.hh:197
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fadd	d0, d16, d0
+; SOURCE/src/orange/surf/ConeAligned.hh:198
+;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d4
 	fmul	d6, d1, d6
 	fmadd	d2, d16, d2, d6
 	fmadd	d2, d5, d7, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d4, d4, d4
 	fmul	d1, d1, d1
+; SOURCE/src/orange/surf/ConeAligned.hh:199
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fmsub	d1, d3, d4, d1
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d3, d5, d5
+; SOURCE/src/orange/surf/ConeAligned.hh:199
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fadd	d3, d3, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fabs	d1, d0
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d4, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fcmp	d1, d4
-	b.ge	LBB12_4
-; %bb.1:
-	mov	x10, #9218868437227405312       ; =0x7ff0000000000000
+	b.ge	 <L0>
+	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	cmp	x9, x8
-	b.eq	LBB12_17
-; %bb.2:
+	b.eq	 <L7>
 	fabs	d0, d2
-	mov	x9, #48572                      ; =0xbdbc
+	mov	x9, #48572              ; =0xbdbc
 	movk	x9, #55767, lsl #16
 	movk	x9, #31967, lsl #32
 	movk	x9, #15835, lsl #48
 	fmov	d4, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	fcmp	d0, d4
 	mov.16b	v0, v1
-	b.le	LBB12_13
-; %bb.3:
+	b.le	 <L3>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:121
+;         result[0] = -c / (2 * half_b);
 	fneg	d0, d3
 	fadd	d1, d2, d2
 	fdiv	d1, d0, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:122
+;         if (result[0] < 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d0, d1, mi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB12_18
-	b	LBB12_14
-LBB12_4:
+	b.ls	 <L8>
+	b	 <L4>
+<L0>:
 	fmov	d1, #1.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d1, d0
 	fmul	d1, d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:91
+;         return on_surface == SurfaceState::on ? solve() : solve(c);
 	cmp	x9, x8
-	b.ne	LBB12_6
-; %bb.5:
+	b.ne	 <L1>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d1, d0, hi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB12_18
-	b	LBB12_14
-LBB12_6:
+	b.ls	 <L8>
+	b	 <L4>
+<L1>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d3, d0
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB12_10
-; %bb.7:
+	b.le	 <L2>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB12_16
-; %bb.8:
+	b.ls	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB12_13
-; %bb.9:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L3>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB12_18
-	b	LBB12_14
-LBB12_10:
+	b.ls	 <L8>
+	b	 <L4>
+<L2>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB12_16
-; %bb.11:
+	b.ne	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB12_16
-; %bb.12:
+	b.ge	 <L6>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-LBB12_13:
+<L3>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB12_18
-LBB12_14:
+	b.ls	 <L8>
+<L4>:
 	fcmp	d0, d2
-	b.ls	LBB12_21
-LBB12_15:
+	b.ls	 <L10>
+<L5>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB12_16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+<L6>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-LBB12_17:
+<L7>:
 	mov.16b	v0, v1
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB12_14
-LBB12_18:
+	b.hi	 <L4>
+<L8>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB12_20
-; %bb.19:
+	b.ne	 <L9>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB12_20:
+<L9>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB12_15
-LBB12_21:
+	b.hi	 <L5>
+<L10>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB12_23
-; %bb.22:
+	b.ne	 <L11>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB12_23:
+<L11>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
+; SOURCE/src/orange/surf/ConeAligned.hh:188
+;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
 	ldp	d2, d0, [x10, #8]
 	ldp	d1, d3, [x1, #16]
 	fsub	d1, d0, d1
+; SOURCE/src/orange/surf/ConeAligned.hh:189
+;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
 	ldr	d0, [x10]
 	ldp	d4, d5, [x1]
 	fsub	d4, d0, d4
+; SOURCE/src/orange/surf/ConeAligned.hh:190
+;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
 	fsub	d5, d2, d5
+; SOURCE/src/orange/surf/ConeAligned.hh:192
+;     real_type const u = dir[to_int(T)];
 	ldp	d7, d2, [x11, #8]
+; SOURCE/src/orange/surf/ConeAligned.hh:193
+;     real_type const v = dir[to_int(U)];
 	ldr	d6, [x11]
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d2, d2
 	fmul	d16, d6, d6
+; SOURCE/src/orange/surf/ConeAligned.hh:197
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fmsub	d0, d3, d0, d16
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d7, d7
+; SOURCE/src/orange/surf/ConeAligned.hh:197
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fadd	d0, d16, d0
+; SOURCE/src/orange/surf/ConeAligned.hh:198
+;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d1
 	fmul	d6, d4, d6
 	fmadd	d2, d16, d2, d6
 	fmadd	d2, d5, d7, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
 	fmul	d4, d4, d4
+; SOURCE/src/orange/surf/ConeAligned.hh:199
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fmsub	d1, d3, d1, d4
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d3, d5, d5
+; SOURCE/src/orange/surf/ConeAligned.hh:199
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fadd	d3, d3, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fabs	d1, d0
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d4, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fcmp	d1, d4
-	b.ge	LBB13_4
-; %bb.1:
-	mov	x10, #9218868437227405312       ; =0x7ff0000000000000
+	b.ge	 <L0>
+	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	cmp	x9, x8
-	b.eq	LBB13_17
-; %bb.2:
+	b.eq	 <L7>
 	fabs	d0, d2
-	mov	x9, #48572                      ; =0xbdbc
+	mov	x9, #48572              ; =0xbdbc
 	movk	x9, #55767, lsl #16
 	movk	x9, #31967, lsl #32
 	movk	x9, #15835, lsl #48
 	fmov	d4, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	fcmp	d0, d4
 	mov.16b	v0, v1
-	b.le	LBB13_13
-; %bb.3:
+	b.le	 <L3>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:121
+;         result[0] = -c / (2 * half_b);
 	fneg	d0, d3
 	fadd	d1, d2, d2
 	fdiv	d1, d0, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:122
+;         if (result[0] < 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d0, d1, mi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB13_18
-	b	LBB13_14
-LBB13_4:
+	b.ls	 <L8>
+	b	 <L4>
+<L0>:
 	fmov	d1, #1.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d1, d0
 	fmul	d1, d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:91
+;         return on_surface == SurfaceState::on ? solve() : solve(c);
 	cmp	x9, x8
-	b.ne	LBB13_6
-; %bb.5:
+	b.ne	 <L1>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d1, d0, hi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB13_18
-	b	LBB13_14
-LBB13_6:
+	b.ls	 <L8>
+	b	 <L4>
+<L1>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d3, d0
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB13_10
-; %bb.7:
+	b.le	 <L2>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB13_16
-; %bb.8:
+	b.ls	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB13_13
-; %bb.9:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L3>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB13_18
-	b	LBB13_14
-LBB13_10:
+	b.ls	 <L8>
+	b	 <L4>
+<L2>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB13_16
-; %bb.11:
+	b.ne	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB13_16
-; %bb.12:
+	b.ge	 <L6>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-LBB13_13:
+<L3>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB13_18
-LBB13_14:
+	b.ls	 <L8>
+<L4>:
 	fcmp	d0, d2
-	b.ls	LBB13_21
-LBB13_15:
+	b.ls	 <L10>
+<L5>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB13_16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+<L6>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-LBB13_17:
+<L7>:
 	mov.16b	v0, v1
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB13_14
-LBB13_18:
+	b.hi	 <L4>
+<L8>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB13_20
-; %bb.19:
+	b.ne	 <L9>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB13_20:
+<L9>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB13_15
-LBB13_21:
+	b.hi	 <L5>
+<L10>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB13_23
-; %bb.22:
+	b.ne	 <L11>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB13_23:
+<L11>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&) ; -- Begin function void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-	.weak_def_can_be_hidden	void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-	.p2align	2
-void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&): ; @void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-	.cfi_startproc
-; %bb.0:
+
+<void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)>:
+; void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)():
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:172
+;     real_type const x = pos[to_int(Axis::x)];
 	ldp	d1, d2, [x10]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:174
+;     real_type const z = pos[to_int(Axis::z)];
 	ldr	d3, [x10, #16]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:175
+;     real_type const u = dir[to_int(Axis::x)];
 	ldp	d4, d5, [x11]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:177
+;     real_type const w = dir[to_int(Axis::z)];
 	ldr	d6, [x11, #16]
+; SOURCE/src/orange/surf/SimpleQuadric.hh:180
+;     real_type a = (a_ * u) * u + (b_ * v) * v + (c_ * w) * w;
 	ldp	d7, d16, [x1]
 	fmul	d0, d4, d7
 	fmul	d17, d5, d16
@@ -2124,6 +3497,8 @@ void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(
 	ldp	d17, d18, [x1, #16]
 	fmul	d19, d6, d17
 	fmadd	d0, d19, d6, d0
+; SOURCE/src/orange/surf/SimpleQuadric.hh:181
+;     real_type b = (2 * a_ * x + d_) * u + (2 * b_ * y + e_) * v
 	fadd	d19, d16, d16
 	ldp	d20, d21, [x1, #32]
 	fmadd	d19, d19, d2, d20
@@ -2131,174 +3506,272 @@ void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(
 	fadd	d19, d7, d7
 	fmadd	d19, d19, d1, d18
 	fmadd	d4, d19, d4, d5
+; SOURCE/src/orange/surf/SimpleQuadric.hh:182
+;                   + (2 * c_ * z + f_) * w;
 	fadd	d5, d17, d17
 	fmadd	d5, d5, d3, d21
 	fmadd	d4, d5, d6, d4
+; SOURCE/src/orange/surf/SimpleQuadric.hh:183
+;     real_type c = (a_ * x + d_) * x + (b_ * y + e_) * y + (c_ * z + f_) * z
 	fmadd	d5, d7, d1, d18
 	fmadd	d6, d16, d2, d20
 	fmul	d2, d2, d6
 	fmadd	d1, d5, d1, d2
 	fmadd	d2, d17, d3, d21
 	fmadd	d1, d2, d3, d1
+; SOURCE/src/orange/surf/SimpleQuadric.hh:184
+;                   + g_;
 	ldr	d2, [x1, #48]
 	fadd	d2, d2, d1
 	fmov	d1, #0.50000000
+; SOURCE/src/orange/surf/SimpleQuadric.hh:186
+;     return detail::QuadraticSolver::solve_general(a, b / 2, c, on_surface);
 	fmul	d3, d4, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fabs	d1, d0
-	mov	x10, #48572                     ; =0xbdbc
+	mov	x10, #48572             ; =0xbdbc
 	movk	x10, #55767, lsl #16
 	movk	x10, #31967, lsl #32
 	movk	x10, #15835, lsl #48
 	fmov	d4, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fcmp	d1, d4
-	b.ge	LBB14_4
-; %bb.1:
-	mov	x10, #9218868437227405312       ; =0x7ff0000000000000
+	b.ge	 <L0>
+	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x10
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	cmp	x9, x8
-	b.eq	LBB14_17
-; %bb.2:
+	b.eq	 <L7>
 	fabs	d0, d3
-	mov	x9, #48572                      ; =0xbdbc
+	mov	x9, #48572              ; =0xbdbc
 	movk	x9, #55767, lsl #16
 	movk	x9, #31967, lsl #32
 	movk	x9, #15835, lsl #48
 	fmov	d4, x9
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	fcmp	d0, d4
 	mov.16b	v0, v1
-	b.le	LBB14_13
-; %bb.3:
+	b.le	 <L3>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:121
+;         result[0] = -c / (2 * half_b);
 	fneg	d0, d2
 	fadd	d1, d3, d3
 	fdiv	d1, d0, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:122
+;         if (result[0] < 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d0, d1, mi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB14_18
-	b	LBB14_14
-LBB14_4:
+	b.ls	 <L8>
+	b	 <L4>
+<L0>:
 	fmov	d1, #1.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d1, d0
 	fmul	d1, d0, d3
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:91
+;         return on_surface == SurfaceState::on ? solve() : solve(c);
 	cmp	x9, x8
-	b.ne	LBB14_6
-; %bb.5:
+	b.ne	 <L1>
 	fmov	d0, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d1, d1, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
 	fcsel	d1, d1, d0, hi
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB14_18
-	b	LBB14_14
-LBB14_6:
+	b.ls	 <L8>
+	b	 <L4>
+<L1>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d0, d0, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d1, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d0
-	b.le	LBB14_10
-; %bb.7:
+	b.le	 <L2>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d0, d2, d0
 	fsqrt	d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d0, d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d0, #0.0
-	b.ls	LBB14_16
-; %bb.8:
+	b.ls	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d1, d1
 	fsub	d1, d1, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.hi	LBB14_13
-; %bb.9:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L3>
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB14_18
-	b	LBB14_14
-LBB14_10:
+	b.ls	 <L8>
+	b	 <L4>
+<L2>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d0
-	b.ne	LBB14_16
-; %bb.11:
+	b.ne	 <L6>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d1, #0.0
-	b.ge	LBB14_16
-; %bb.12:
+	b.ge	 <L6>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x9
-LBB14_13:
+<L3>:
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.ls	LBB14_18
-LBB14_14:
+	b.ls	 <L8>
+<L4>:
 	fcmp	d0, d2
-	b.ls	LBB14_21
-LBB14_15:
+	b.ls	 <L10>
+<L5>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-LBB14_16:
-	mov	x9, #9218868437227405312        ; =0x7ff0000000000000
+<L6>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
-LBB14_17:
+<L7>:
 	mov.16b	v0, v1
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
-	b.hi	LBB14_14
-LBB14_18:
+	b.hi	 <L4>
+<L8>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB14_20
-; %bb.19:
+	b.ne	 <L9>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB14_20:
+<L9>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d2, [x0]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	LBB14_15
-LBB14_21:
+	b.hi	 <L5>
+<L10>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
-	b.ne	LBB14_23
-; %bb.22:
+	b.ne	 <L11>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
-LBB14_23:
+<L11>:
 	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;     }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const ; -- Begin function celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
-	.weak_def_can_be_hidden	celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
-	.p2align	2
-celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const: ; @celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
-	.cfi_startproc
-; %bb.0:
+
+<celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const>:
+; celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const():
+; SOURCE/src/orange/surf/GeneralQuadric.hh:165
+;     real_type const x = pos[0];
 	ldp	d1, d2, [x1]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:167
+;     real_type const z = pos[2];
 	ldr	d0, [x1, #16]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:168
+;     real_type const u = dir[0];
 	ldp	d4, d5, [x2]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:170
+;     real_type const w = dir[2];
 	ldr	d6, [x2, #16]
+; SOURCE/src/orange/surf/GeneralQuadric.hh:173
+;     real_type a = (a_ * u + d_ * v) * u + (b_ * v + e_ * w) * v
 	ldp	d16, d7, [x0, #16]
 	fmul	d3, d5, d7
 	ldp	d17, d18, [x0]
@@ -2308,22 +3781,34 @@ celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> cons
 	fmadd	d21, d18, d5, d21
 	fmul	d21, d5, d21
 	fmadd	d3, d3, d4, d21
+; SOURCE/src/orange/surf/GeneralQuadric.hh:174
+;                   + (c_ * w + f_ * u) * w;
 	fmul	d21, d4, d20
 	fmadd	d21, d16, d6, d21
 	fmadd	d3, d21, d6, d3
+; SOURCE/src/orange/surf/GeneralQuadric.hh:175
+;     real_type b = (2 * a_ * x + d_ * y + f_ * z + g_) * u
 	fadd	d21, d17, d17
 	fmul	d22, d2, d7
 	fmadd	d21, d21, d1, d22
 	fmadd	d21, d20, d0, d21
+; SOURCE/src/orange/surf/GeneralQuadric.hh:176
+;                   + (2 * b_ * y + d_ * x + e_ * z + h_) * v
 	fadd	d23, d18, d18
 	fmul	d7, d1, d7
 	fmadd	d7, d23, d2, d7
+; SOURCE/src/orange/surf/GeneralQuadric.hh:175
+;     real_type b = (2 * a_ * x + d_ * y + f_ * z + g_) * u
 	ldp	d23, d24, [x0, #48]
 	fadd	d21, d21, d23
+; SOURCE/src/orange/surf/GeneralQuadric.hh:176
+;                   + (2 * b_ * y + d_ * x + e_ * z + h_) * v
 	fmadd	d7, d19, d0, d7
 	fadd	d7, d7, d24
 	fmul	d5, d5, d7
 	fmadd	d4, d21, d4, d5
+; SOURCE/src/orange/surf/GeneralQuadric.hh:177
+;                   + (2 * c_ * z + e_ * y + f_ * x + i_) * w;
 	fadd	d5, d16, d16
 	fmul	d7, d2, d19
 	fmadd	d5, d5, d0, d7
@@ -2331,6 +3816,8 @@ celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> cons
 	ldp	d7, d21, [x0, #64]
 	fadd	d5, d5, d7
 	fmadd	d4, d5, d6, d4
+; SOURCE/src/orange/surf/GeneralQuadric.hh:178
+;     real_type c = ((a_ * x + d_ * y + g_) * x + (b_ * y + e_ * z + h_) * y
 	fmadd	d5, d17, d1, d22
 	fadd	d5, d5, d23
 	fmul	d6, d0, d19
@@ -2338,98 +3825,140 @@ celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> cons
 	fadd	d6, d6, d24
 	fmul	d2, d2, d6
 	fmadd	d2, d5, d1, d2
+; SOURCE/src/orange/surf/GeneralQuadric.hh:179
+;                    + (c_ * z + f_ * x + i_) * z + j_);
 	fmul	d1, d1, d20
 	fmadd	d1, d16, d0, d1
 	fadd	d1, d1, d7
 	fmadd	d0, d1, d0, d2
 	fadd	d2, d21, d0
 	fmov	d0, #0.50000000
+; SOURCE/src/orange/surf/GeneralQuadric.hh:181
+;     return detail::QuadraticSolver::solve_general(a, b / 2, c, on_surface);
 	fmul	d4, d4, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:87
+;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fabs	d0, d3
-	mov	x8, #48572                      ; =0xbdbc
+	mov	x8, #48572              ; =0xbdbc
 	movk	x8, #55767, lsl #16
 	movk	x8, #31967, lsl #32
 	movk	x8, #15835, lsl #48
 	fmov	d1, x8
 	fcmp	d0, d1
-	b.ge	LBB15_5
-; %bb.1:
-	mov	x8, #9218868437227405312        ; =0x7ff0000000000000
+	b.ge	 <L1>
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x8
-	tbnz	w3, #0, LBB15_11
-; %bb.2:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
+	tbnz	w3, #0,  <L3>
 	fabs	d1, d4
-	mov	x8, #48572                      ; =0xbdbc
+	mov	x8, #48572              ; =0xbdbc
 	movk	x8, #55767, lsl #16
 	movk	x8, #31967, lsl #32
 	movk	x8, #15835, lsl #48
 	fmov	d3, x8
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:93
+;     else if (on_surface == SurfaceState::off)
 	fcmp	d1, d3
 	mov.16b	v1, v0
-	b.le	LBB15_4
-; %bb.3:
+	b.le	 <L0>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:121
+;         result[0] = -c / (2 * half_b);
 	fneg	d0, d2
 	fadd	d1, d4, d4
 	fdiv	d0, d0, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:122
+;         if (result[0] < 0)
 	fcmp	d0, #0.0
-	mov	x8, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x8
 	fcsel	d0, d1, d0, mi
-LBB15_4:
+<L0>:
+; SOURCE/src/orange/surf/GeneralQuadric.hh:182
+; }
 	ret
-LBB15_5:
+<L1>:
 	fmov	d0, #1.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:142
+;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d1, d0, d3
 	fmul	d0, d1, d4
-	cbz	w3, LBB15_7
-; %bb.6:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:91
+;         return on_surface == SurfaceState::on ? solve() : solve(c);
+	cbz	w3,  <L2>
 	fmov	d1, #-2.00000000
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:217
+;     Intersections result{-2 * hba_, no_intersection()};
 	fmul	d0, d0, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:219
+;     if (result[0] <= 0)
 	fcmp	d0, #0.0
-	mov	x8, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x8
 	fcsel	d0, d0, d1, hi
+; SOURCE/src/orange/surf/GeneralQuadric.hh:182
+; }
 	ret
-LBB15_7:
+<L2>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:164
+;     c *= a_inv_;
 	fmul	d1, d1, d2
+; SOURCE/src/corecel/math/Algorithms.hh:503
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d0, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:169
+;     if (b2_4 > c)
 	fcmp	d2, d1
-	b.le	LBB15_12
-; %bb.8:
+	b.le	 <L4>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:172
+;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
 	fsub	d1, d2, d1
 	fsqrt	d2, d1
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:174
+;         result[1] = -hba_ + t2;
 	fsub	d1, d2, d0
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:176
+;         if (result[1] <= 0)
 	fcmp	d1, #0.0
-	b.ls	LBB15_15
-; %bb.9:
+	b.ls	 <L5>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:173
+;         result[0] = -hba_ - t2;
 	fneg	d0, d0
 	fsub	d0, d0, d2
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:182
+;         else if (result[0] <= 0)
 	fcmp	d0, #0.0
-	b.hi	LBB15_4
-; %bb.10:
-	mov	x8, #9218868437227405312        ; =0x7ff0000000000000
+	b.hi	 <L0>
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x8
+; SOURCE/src/orange/surf/GeneralQuadric.hh:182
+; }
 	ret
-LBB15_11:
+<L3>:
 	mov.16b	v1, v0
+; SOURCE/src/orange/surf/GeneralQuadric.hh:182
+; }
 	ret
-LBB15_12:
+<L4>:
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:188
+;     else if (b2_4 == c)
 	fcmp	d2, d1
-	b.ne	LBB15_15
-; %bb.13:
+	b.ne	 <L5>
+; SOURCE/src/orange/surf/detail/QuadraticSolver.hh:194
+;         if (result[0] <= 0)
 	fcmp	d0, #0.0
-	b.ge	LBB15_15
-; %bb.14:
+	b.ge	 <L5>
 	fneg	d0, d0
-	mov	x8, #9218868437227405312        ; =0x7ff0000000000000
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x8
+; SOURCE/src/orange/surf/GeneralQuadric.hh:182
+; }
 	ret
-LBB15_15:
-	mov	x8, #9218868437227405312        ; =0x7ff0000000000000
+<L5>:
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x8
 	mov.16b	v1, v0
+; SOURCE/src/orange/surf/GeneralQuadric.hh:182
+; }
 	ret
-	.cfi_endproc
-                                        ; -- End function
-.subsections_via_symbols
-; Total code size:    10856
+; Total code size:    10768

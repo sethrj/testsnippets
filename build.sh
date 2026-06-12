@@ -20,13 +20,20 @@ for filename in $*; do
   TMPSTEM="${TMPDIRNAME}/${STEM}"
   printf "\r%s %s" "Compiling" "${filename}" >&2
   $CXX \
-    -Wall -Wextra -Werror -pedantic ${CXXFLAGS} \
+    -Wall -Wextra -Werror -pedantic -g ${CXXFLAGS} \
     -c "${filename}" \
     -o "${TMPSTEM}.o"
   printf "\r%s %s:" "Dumping" "${filename}" >&2
   $OBJDUMP \
-    -t --no-show-raw-insn -C --line-numbers --symbolize-operands \
+    -d -t -C --symbolize-operands \
+    -S -l \
+    --no-leading-addr --no-print-imm-hex \
+    --no-leading-headers --no-show-raw-insn \
     - < "${TMPSTEM}.o" \
+  | sed -E \
+        -e "s|^; ${SOURCE}|; SOURCE|" \
+        -e "s|^; ${PWD}/${STEM}|; FILE|" \
+        -e "s|^ *\\t|\\t|" \
     > ${STEM}.s
   $STRIP -x -S "${TMPSTEM}.o" \
     -o "${TMPSTEM}.stripped.o"
