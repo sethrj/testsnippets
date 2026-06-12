@@ -3,15 +3,15 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-000000000005d308 l     O __LD,__compact_unwind ltmp1
-0000000000000000 g     F __TEXT,__text do_something(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&)
-0000000000000064 g     F __TEXT,__text do_something(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)
+000000000005c4d0 l     O __LD,__compact_unwind ltmp1
+0000000000000000 g     F __TEXT,__text do_all(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&)
+0000000000000064 g     F __TEXT,__text do_one(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)
 0000000000000000         *UND* void do_something<celeritas::Plane>(celeritas::Plane const&)
 
 Disassembly of section __TEXT,__text:
 
 <ltmp0>:
-; do_something(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&)():
+; do_all(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&)():
 ; FILE.cc:14
 ; {
 	sub	sp, sp, #80
@@ -26,14 +26,14 @@ Disassembly of section __TEXT,__text:
 ;         return TraitsT::to_counter(*end_) - TraitsT::to_counter(*begin_);
 	subs	x20, x8, x9
 ; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
-;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
+;     for (MakeSize_t<FaceId> face_idx = 0, end_idx = faces_.size();
 	b.eq	 <L2>
 	mov	x19, x0
 ; SOURCE/src/corecel/cont/Range.hh:90
 ;     CELER_CONSTEXPR_FUNCTION const_iterator begin() const { return begin_; }
 	ldr	x8, [x1, #16]
 ; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
-;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
+;     for (MakeSize_t<FaceId> face_idx = 0, end_idx = faces_.size();
 	lsl	x21, x8, #3
 <L0>:
 ; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:86
@@ -51,12 +51,12 @@ Disassembly of section __TEXT,__text:
 	mov	x0, sp
 <L1>:
 	bl	 <L1>
-; SOURCE/src/corecel/OpaqueId.hh:269
-;     CELER_DEFINE_OPAQUEID_CMP(==)
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:98
+;          face_idx != end_idx;
 	add	x21, x21, #32
 	subs	x20, x20, #1
 ; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
-;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
+;     for (MakeSize_t<FaceId> face_idx = 0, end_idx = faces_.size();
 	b.ne	 <L0>
 <L2>:
 ; FILE.cc:26
@@ -67,8 +67,8 @@ Disassembly of section __TEXT,__text:
 	add	sp, sp, #80
 	ret
 
-<do_something(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)>:
-; do_something(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)():
+<do_one(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)>:
+; do_one(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)():
 ; FILE.cc:32
 ; {
 	sub	sp, sp, #48
@@ -110,4 +110,4 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #32]
 	add	sp, sp, #48
 	ret
-; Total code size:      992
+; Total code size:      976
