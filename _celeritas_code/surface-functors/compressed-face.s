@@ -3,7 +3,7 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-000000000005c480 l     O __LD,__compact_unwind ltmp1
+000000000005c840 l     O __LD,__compact_unwind ltmp1
 0000000000000000 g     F __TEXT,__text do_all(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&)
 0000000000000058 g     F __TEXT,__text do_one(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::CompressedFacesRecord const&, celeritas::OpaqueId<celeritas::Face_, unsigned long>)
 0000000000000000         *UND* void do_something<celeritas::Plane>(celeritas::Plane const&)
@@ -18,18 +18,18 @@ Disassembly of section __TEXT,__text:
 	stp	x20, x19, [sp, #32]
 	stp	x29, x30, [sp, #48]
 	add	x29, sp, #48
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:179
-;     CELER_CONSTEXPR_FUNCTION value_type operator*() const { return value_; }
-	ldp	x9, x8, [x1]
+; SOURCE/src/corecel/cont/Range.hh:90
+;     CELER_CONSTEXPR_FUNCTION const_iterator begin() const { return begin_; }
+	ldp	x8, x9, [x1]
 ; SOURCE/src/corecel/cont/Range.hh:105
 ;         return TraitsT::to_counter(*end_) - TraitsT::to_counter(*begin_);
-	subs	x19, x8, x9
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:99
+	subs	x19, x9, x8
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:101
 ;     for (MakeSize_t<FaceId> face_idx = 0, end_idx = faces_.size();
 	b.eq	 <L2>
 	ldr	x8, [x0, #328]
 	ldr	x9, [x1, #16]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:99
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:101
 ;     for (MakeSize_t<FaceId> face_idx = 0, end_idx = faces_.size();
 	add	x8, x8, x9, lsl #3
 	add	x20, x8, #16
@@ -43,11 +43,11 @@ Disassembly of section __TEXT,__text:
 	mov	x0, sp
 <L1>:
 	bl	 <L1>
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:100
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:102
 ;          face_idx != end_idx;
 	add	x20, x20, #32
 	subs	x19, x19, #1
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:99
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:101
 ;     for (MakeSize_t<FaceId> face_idx = 0, end_idx = faces_.size();
 	b.ne	 <L0>
 <L2>:
@@ -81,10 +81,10 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldr	x10, [x10, x2, lsl #3]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:80
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:82
 ;     , reals_{params_.reals.data().get() + **faces_.reals.begin()}
 	add	x8, x8, x9, lsl #3
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:157
+; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:159
 ;     return T{LdgSpanT{reals_ + offset, reals_ + offset + size}};
 	add	x8, x8, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
