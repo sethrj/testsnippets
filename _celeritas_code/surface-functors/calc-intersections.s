@@ -3,747 +3,799 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-0000000000001ea4 l     O __TEXT,__const lJTI1_0
-0000000000001ea4 l     O __TEXT,__const ltmp1
-000000000006e6a8 l     O __LD,__compact_unwind ltmp2
-0000000000000000 g     F __TEXT,__text calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)
-0000000000000cd0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-0000000000000e70  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-0000000000001020  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-0000000000001384  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-00000000000015cc  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-0000000000001814  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-0000000000000644  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-00000000000007e0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-0000000000000984  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-0000000000001a5c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-0000000000000b20  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-00000000000011c0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-0000000000001cc8  w    F __TEXT,__text celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
-0000000000000028  w    F __TEXT,__text void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const
-0000000000000540  w    F __TEXT,__text unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+0000000000001f20 l     O __TEXT,__const lJTI1_0
+0000000000001f20 l     O __TEXT,__const ltmp1
+000000000006fe90 l     O __LD,__compact_unwind ltmp2
+0000000000000000 g     F __TEXT,__text calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
+000000000000002c  w    F __TEXT,__text decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
+0000000000000d4c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
+0000000000000eec  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
+000000000000109c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
+0000000000001400  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
+0000000000001648  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
+0000000000001890  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
+00000000000006c0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
+000000000000085c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
+0000000000000a00  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
+0000000000001ad8  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
+0000000000000b9c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
+000000000000123c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
+0000000000001d44  w    F __TEXT,__text celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
+0000000000000598  w    F __TEXT,__text auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
 
 Disassembly of section __TEXT,__text:
 
 <ltmp0>:
-; calc_all_intersections(celeritas::detail::CompressedFaceVisitor, celeritas::detail::LocalVolumeView, celeritas::detail::CalcIntersections)():
-; FILE.cc:11
-; { visit_face(calc_isect); }
+; calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)():
+; FILE.cc:12
+; {
 	sub	sp, sp, #32
 	stp	x29, x30, [sp, #16]
 	add	x29, sp, #16
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:86
+;     : params_{params}, surfaces_{local_surfaces}
 	stp	x0, x1, [sp]
+; FILE.cc:14
+;     visit_surface(calc_isect, surf_id);
 	mov	x0, sp
-	mov	x1, x4
+	mov	x1, x2
+	mov	x2, x3
 <L0>:
 	bl	 <L0>
+; FILE.cc:15
+; }
 	ldp	x29, x30, [sp, #16]
 	add	sp, sp, #32
 	ret
 
-<void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const>:
-; void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const():
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:89
+<decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)>:
+; decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)():
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:109
 ; {
-	sub	sp, sp, #176
-	stp	d9, d8, [sp, #96]
-	stp	x24, x23, [sp, #112]
-	stp	x22, x21, [sp, #128]
-	stp	x20, x19, [sp, #144]
-	stp	x29, x30, [sp, #160]
-	add	x29, sp, #160
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:90
-;     RealId::size_type data_begin(**faces_.reals.begin());
-	ldr	x8, [x0, #8]
-; SOURCE/src/corecel/cont/Range.hh:90
-;     CELER_CONSTEXPR_FUNCTION const_iterator begin() const { return begin_; }
-	ldr	x10, [x8, #16]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:91
-;     auto surface_visitor = [&](auto s_traits) -> size_type {
-	stp	x0, x1, [sp]
-	add	x9, sp, #24
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:90
-;     RealId::size_type data_begin(**faces_.reals.begin());
-	stp	x9, x10, [sp, #16]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:179
-;     CELER_CONSTEXPR_FUNCTION value_type operator*() const { return value_; }
-	ldp	x8, x9, [x8]
-; SOURCE/src/corecel/cont/Range.hh:105
-;         return TraitsT::to_counter(*end_) - TraitsT::to_counter(*begin_);
-	subs	x20, x9, x8
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
-;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
-	b.ne	 <L1>
-<L0>:
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:103
-; }
-	ldp	x29, x30, [sp, #160]
-	ldp	x20, x19, [sp, #144]
-	ldp	x22, x21, [sp, #128]
-	ldp	x24, x23, [sp, #112]
-	ldp	d9, d8, [sp, #96]
-	add	sp, sp, #176
-	ret
-<L1>:
-	mov	x19, x0
-	mov	x21, #0                 ; =0x0
-	adrp	x22, 0x0 <ltmp0>
-	add	x22, x22, #0
-	movi.2d	v8, #0000000000000000
-	mov	x23, #9218868437227405312 ; =0x7ff0000000000000
-	b	 <L6>
-<L2>:
-	mov	x10, x9
-<L3>:
-	add	x9, x10, #1
-	str	x9, [x8, #64]
-<L4>:
-	mov	w0, #1                  ; =0x1
-<L5>:
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:99
-;         data_begin += visit_surface_type(surface_visitor,
-	ldr	x8, [sp, #24]
-	add	x8, x8, x0
-	str	x8, [sp, #24]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:139
-;         temp += i;
-	add	x21, x21, #1
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:97
-;     for (auto face_id : range(id_cast<FaceId>(faces_.size())))
-	cmp	x20, x21
-	b.eq	 <L0>
-<L6>:
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:137
-;     return params_.surface_types[faces_.types[fid]];
-	ldp	x8, x9, [x19]
+	sub	sp, sp, #112
+	stp	x29, x30, [sp, #96]
+	add	x29, sp, #96
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:114
+;         [this, &func, id](auto s_traits) {
+	stp	x0, x1, [sp, #8]
+	str	x2, [sp, #24]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:119
+;         params_.surface_types[surfaces_.types[id]]);
+	ldp	x9, x10, [x0]
 ; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
 ;         return {TraitsT::increment(value_, inc)};
-	ldr	x9, [x9]
+	ldr	x11, [x10]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
-	ldr	x8, [x8, #360]
-	add	x8, x8, x9
+	ldr	x12, [x9, #344]
+	add	x11, x12, x11
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldrb	w8, [x8, x21]
+	ldrb	w11, [x11, x2]
+	mov	x8, x1
+	adrp	x12, 0x0 <ltmp0>
+	add	x12, x12, #0
 ; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:74
 ;     switch (st)
-	adr	x9,  <L7>
-	ldrb	w10, [x22, x8]
-	add	x9, x9, x10, lsl #2
-	br	x9
-<L7>:
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x8, [sp, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+	adr	x13,  <L0>
+	ldrh	w14, [x12, x11, lsl #1]
+	add	x13, x13, x14, lsl #2
+	br	x13
+<L0>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x10, [x8, #24]
-	ldr	x9, [x8, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+	ldr	x12, [x8, #24]
+	ldr	x11, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:154
 ;             if (on_surface == SurfaceState::on)
-	cmp	x10, x9
-	b.eq	 <L3>
-	ldr	x10, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [sp, #16]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x10, [x10]
+	cmp	x12, x11
+	b.eq	 <L17>
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x10, [x10, #328]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [x11]
+	ldr	x12, [x9, #328]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x9, [x9, #280]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x10, x11, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+	ldr	x9, [x9, x2, lsl #3]
+	ldr	d0, [x12, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
-	ldp	x10, x11, [x8, #8]
+	ldp	x9, x10, [x8, #8]
 ; SOURCE/src/orange/surf/PlaneAligned.hh:156
 ;     real_type const n_dir = dir[to_int(T)];
-	ldr	d1, [x11]
+	ldr	d1, [x10]
 ; SOURCE/src/orange/surf/PlaneAligned.hh:157
 ;     real_type const dist = (position_ - pos[to_int(T)]) / n_dir;
-	ldr	d2, [x10]
-	b	 <L17>
+	ldr	d2, [x9]
+	fsub	d0, d0, d2
+	fdiv	d0, d0, d1
+; SOURCE/src/orange/surf/PlaneAligned.hh:160
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
+	fcmp	d0, #0.0
+	movi.2d	v2, #0000000000000000
+	fccmp	d1, d2, #4, gt
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x9
+; SOURCE/src/corecel/math/Algorithms.hh:855
+;     return (true && ... && static_cast<bool>(args));
+	fcsel	d0, d1, d0, eq
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
+	ldr	d1, [x8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
+;             if (is_valid_isect_(dist))
+	fcmp	d0, d1
+	b.ls	 <L15>
+	add	x9, x11, #1
+	str	x9, [x8, #64]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
 ; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:92
 ;         ORANGE_ST_VISIT_CASE(gq);
-	mov	x0, sp
-<L8>:
-	bl	 <L8>
-	b	 <L5>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
+	add	x0, sp, #8
+<L1>:
+	bl	 <L1>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x10, [x10, x2, lsl #3]
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	ldr	x9, [x9, #328]
 ; SOURCE/src/corecel/data/Collection.hh:570
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldp	q0, q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldp	q0, q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-<L9>:
-	bl	 <L9>
-	mov	w0, #4                  ; =0x4
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
-;         ORANGE_ST_VISIT_CASE(kz);
-	b	 <L5>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
+	mov	x0, x8
+<L2>:
+	bl	 <L2>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x10, [x10, x2, lsl #3]
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	ldr	x9, [x9, #328]
 ; SOURCE/src/corecel/data/Collection.hh:570
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldp	q0, q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldp	q0, q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-<L10>:
-	bl	 <L10>
-	mov	w0, #4                  ; =0x4
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
-;         ORANGE_ST_VISIT_CASE(kz);
-	b	 <L5>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	mov	x0, x8
+<L3>:
+	bl	 <L3>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, x10, lsl #3]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-<L11>:
-	bl	 <L11>
-	b	 <L4>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
-;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	mov	x0, x8
+<L4>:
+	bl	 <L4>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldp	q0, q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
+	add	x9, x9, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	q0, q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-<L12>:
-	bl	 <L12>
-	mov	w0, #4                  ; =0x4
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
-;         ORANGE_ST_VISIT_CASE(kz);
-	b	 <L5>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
-;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	mov	x0, x8
+<L5>:
+	bl	 <L5>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, #16]
-	ldr	q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
+	add	x9, x9, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, #16]
+	ldr	q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-<L13>:
-	bl	 <L13>
-	mov	w0, #3                  ; =0x3
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:85
-;         ORANGE_ST_VISIT_CASE(cz);
-	b	 <L5>
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x8, [sp, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+	mov	x0, x8
+<L6>:
+	bl	 <L6>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x10, [x8, #24]
-	ldr	x9, [x8, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+	ldr	x12, [x8, #24]
+	ldr	x11, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:154
 ;             if (on_surface == SurfaceState::on)
-	cmp	x10, x9
-	b.eq	 <L3>
-	ldr	x10, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [sp, #16]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x10, [x10]
+	cmp	x12, x11
+	b.eq	 <L17>
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x10, [x10, #328]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [x11]
+	ldr	x12, [x9, #328]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x9, [x9, #280]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x10, x11, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+	ldr	x9, [x9, x2, lsl #3]
+	ldr	d0, [x12, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
-	ldp	x10, x11, [x8, #8]
+	ldp	x9, x10, [x8, #8]
 ; SOURCE/src/orange/surf/PlaneAligned.hh:156
 ;     real_type const n_dir = dir[to_int(T)];
-	ldr	d1, [x11, #16]
+	ldr	d1, [x10, #16]
 ; SOURCE/src/orange/surf/PlaneAligned.hh:157
 ;     real_type const dist = (position_ - pos[to_int(T)]) / n_dir;
-	ldr	d2, [x10, #16]
-	b	 <L17>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
-;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	ldr	d2, [x9, #16]
+	fsub	d0, d0, d2
+	fdiv	d0, d0, d1
+; SOURCE/src/orange/surf/PlaneAligned.hh:160
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
+	fcmp	d0, #0.0
+	movi.2d	v2, #0000000000000000
+	fccmp	d1, d2, #4, gt
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x9
+; SOURCE/src/corecel/math/Algorithms.hh:855
+;     return (true && ... && static_cast<bool>(args));
+	fcsel	d0, d1, d0, eq
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
+	ldr	d1, [x8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
+;             if (is_valid_isect_(dist))
+	fcmp	d0, d1
+	b.ls	 <L15>
+	add	x9, x11, #1
+	str	x9, [x8, #64]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x8]
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
+	add	x9, x9, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	q0, [x9]
 ; SOURCE/src/orange/surf/SimpleQuadric.hh:138
 ;     : a_{data[0]}
 	str	q0, [sp, #32]
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x8, #16]
+	ldr	q0, [x9, #16]
 ; SOURCE/src/orange/surf/SimpleQuadric.hh:140
 ;     , c_{data[2]}
 	str	q0, [sp, #48]
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x8, #32]
+	ldr	q0, [x9, #32]
 ; SOURCE/src/orange/surf/SimpleQuadric.hh:142
 ;     , e_{data[4]}
 	str	q0, [sp, #64]
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, #48]
+	ldr	d0, [x9, #48]
 ; SOURCE/src/orange/surf/SimpleQuadric.hh:144
 ;     , g_{data[6]}
 	str	d0, [sp, #80]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	add	x1, sp, #32
-<L14>:
-	bl	 <L14>
-	mov	w0, #7                  ; =0x7
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:91
-;         ORANGE_ST_VISIT_CASE(sq);
-	b	 <L5>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	mov	x0, x8
+<L7>:
+	bl	 <L7>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, x10, lsl #3]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-<L15>:
-	bl	 <L15>
-	b	 <L4>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
-;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	mov	x0, x8
+<L8>:
+	bl	 <L8>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, #16]
-	ldr	q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
+	add	x9, x9, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, #16]
+	ldr	q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	str	q1, [sp, #32]
 	str	d0, [sp, #48]
 	add	x1, sp, #32
-<L16>:
-	bl	 <L16>
-	mov	w0, #3                  ; =0x3
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:85
-;         ORANGE_ST_VISIT_CASE(cz);
-	b	 <L5>
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x8, [sp, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+	mov	x0, x8
+<L9>:
+	bl	 <L9>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x10, [x8, #24]
-	ldr	x9, [x8, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+	ldr	x12, [x8, #24]
+	ldr	x11, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:154
 ;             if (on_surface == SurfaceState::on)
-	cmp	x10, x9
-	b.eq	 <L3>
-	ldr	x10, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [sp, #16]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x10, [x10]
+	cmp	x12, x11
+	b.eq	 <L17>
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x10, [x10, #328]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [x11]
+	ldr	x12, [x9, #328]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x9, [x9, #280]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x10, x11, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+	ldr	x9, [x9, x2, lsl #3]
+	ldr	d0, [x12, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
-	ldp	x10, x11, [x8, #8]
+	ldp	x9, x10, [x8, #8]
 ; SOURCE/src/orange/surf/PlaneAligned.hh:156
 ;     real_type const n_dir = dir[to_int(T)];
-	ldr	d1, [x11, #8]
+	ldr	d1, [x10, #8]
 ; SOURCE/src/orange/surf/PlaneAligned.hh:157
 ;     real_type const dist = (position_ - pos[to_int(T)]) / n_dir;
-	ldr	d2, [x10, #8]
-<L17>:
+	ldr	d2, [x9, #8]
 	fsub	d0, d0, d2
 	fdiv	d0, d0, d1
+; SOURCE/src/orange/surf/PlaneAligned.hh:160
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
 	fcmp	d0, #0.0
-	fccmp	d1, d8, #4, gt
-	fmov	d1, x23
+	movi.2d	v2, #0000000000000000
+	fccmp	d1, d2, #4, gt
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x9
+; SOURCE/src/corecel/math/Algorithms.hh:855
+;     return (true && ... && static_cast<bool>(args));
 	fcsel	d0, d1, d0, eq
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
 	ldr	d1, [x8]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
+;             if (is_valid_isect_(dist))
 	fcmp	d0, d1
-	b.hi	 <L2>
-	ldr	x10, [x8, #40]
-	ldr	x11, [x8, #72]
-	str	x9, [x10, x11, lsl #3]
-	ldr	x10, [x8, #48]
-	ldr	x9, [x8, #72]
-	str	d0, [x10, x9, lsl #3]
-	ldrb	w10, [x8, #32]
-	cmp	w10, #1
-	b.ne	 <L18>
-	ldr	x10, [x8, #56]
-	str	x9, [x10, x9, lsl #3]
-	ldr	x9, [x8, #72]
-<L18>:
-	add	x9, x9, #1
-	str	x9, [x8, #72]
-	ldr	x10, [x8, #64]
-	b	 <L3>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	b.ls	 <L15>
+	add	x9, x11, #1
+	str	x9, [x8, #64]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	str	d0, [sp, #32]
-	add	x1, sp, #32
-<L19>:
-	bl	 <L19>
-	b	 <L4>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
+	ldr	x10, [x10, x2, lsl #3]
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, x10, lsl #3]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
+	str	d0, [sp, #32]
+	add	x1, sp, #32
+	mov	x0, x8
+<L10>:
+	bl	 <L10>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
 ; SOURCE/src/corecel/data/Collection.hh:570
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldp	q0, q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldp	q0, q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	stp	q0, q1, [sp, #32]
 	add	x1, sp, #32
-<L20>:
-	bl	 <L20>
-	mov	w0, #4                  ; =0x4
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
-;         ORANGE_ST_VISIT_CASE(kz);
-	b	 <L5>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	mov	x0, x8
+<L11>:
+	bl	 <L11>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x8, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, x10, lsl #3]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	str	d0, [sp, #32]
 	add	x1, sp, #32
-<L21>:
-	bl	 <L21>
-	b	 <L4>
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x8, [sp, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+	mov	x0, x8
+<L12>:
+	bl	 <L12>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x10, [x8, #24]
-	ldr	x9, [x8, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:153
+	ldr	x12, [x8, #24]
+	ldr	x11, [x8, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:154
 ;             if (on_surface == SurfaceState::on)
-	cmp	x10, x9
-	b.eq	 <L27>
-	ldr	x10, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x11, [sp, #16]
-	ldr	x11, [x11]
-	ldr	x10, [x10]
-	ldr	x10, [x10, #328]
-	add	x10, x10, x11, lsl #3
-	ldp	d1, d2, [x10]
-	ldr	d0, [x10, #16]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+	cmp	x12, x11
+	b.eq	 <L17>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
+	ldr	x10, [x10, #16]
+	ldr	x12, [x9, #280]
+	add	x10, x12, x10, lsl #3
+	ldr	x10, [x10, x2, lsl #3]
+	ldr	x9, [x9, #328]
+	add	x9, x9, x10, lsl #3
+	ldp	d1, d2, [x9]
+	ldr	d0, [x9, #16]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
-	ldr	x11, [x8, #16]
+	ldr	x10, [x8, #16]
+	movi.2d	v3, #0000000000000000
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d3, d4, [x11]
+	ldp	d4, d5, [x10]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
-	fmadd	d3, d1, d3, d8
-	fmadd	d3, d2, d4, d3
+	fmadd	d4, d1, d4, d3
+	fmadd	d4, d2, d5, d4
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d4, [x11, #16]
+	ldr	d5, [x10, #16]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
-	fmadd	d3, d0, d4, d3
+	fmadd	d4, d0, d5, d4
 ; SOURCE/src/orange/surf/Plane.hh:149
 ;     if (on_surface == SurfaceState::off && n_dir != 0)
-	fcmp	d3, #0.0
-	b.eq	 <L22>
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	d4, [x10, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+	fcmp	d4, #0.0
+	b.eq	 <L13>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
+	ldr	d5, [x9, #24]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
-	ldr	x10, [x8, #8]
+	ldr	x9, [x8, #8]
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d5, d6, [x10]
+	ldp	d6, d7, [x9]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
-	fmadd	d1, d1, d5, d8
-	fmadd	d1, d2, d6, d1
+	fmadd	d1, d1, d6, d3
+	fmadd	d1, d2, d7, d1
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d2, [x10, #16]
+	ldr	d2, [x9, #16]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
 	fmadd	d0, d0, d2, d1
 ; SOURCE/src/orange/surf/Plane.hh:152
 ;         real_type dist = (d_ - n_pos) / n_dir;
-	fsub	d0, d4, d0
-	fdiv	d0, d0, d3
+	fsub	d0, d5, d0
+	fdiv	d0, d0, d4
 ; SOURCE/src/orange/surf/Plane.hh:153
 ;         if (dist > 0)
 	fcmp	d0, #0.0
-	b.gt	 <L23>
-<L22>:
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x10
-<L23>:
+	b.gt	 <L14>
+<L13>:
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d0, x9
+<L14>:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d1, [x8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d1
-	b.ls	 <L25>
-	mov	x10, x9
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
-;             if (is_valid_isect_(dist))
-	b	 <L27>
-	ldp	x8, x0, [sp]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	ldr	x9, [sp, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
-;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
-; SOURCE/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x8, #16]
-	ldr	q1, [x8]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
-	str	q1, [sp, #32]
-	str	d0, [sp, #48]
-	add	x1, sp, #32
-<L24>:
-	bl	 <L24>
-	mov	w0, #3                  ; =0x3
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:85
-;         ORANGE_ST_VISIT_CASE(cz);
-	b	 <L5>
-<L25>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x10, [x8, #40]
-	ldr	x11, [x8, #72]
-	str	x9, [x10, x11, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
-;                 distance_[isect_idx_] = dist;
+	b.ls	 <L15>
+	add	x9, x11, #1
+	str	x9, [x8, #64]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+<L15>:
+	ldr	x9, [x8, #40]
+	ldr	x10, [x8, #72]
+	str	x11, [x9, x10, lsl #3]
 	ldr	x10, [x8, #48]
 	ldr	x9, [x8, #72]
 	str	d0, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
-;                 if (fill_isect_)
 	ldrb	w10, [x8, #32]
 	cmp	w10, #1
-	b.ne	 <L26>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                     isect_[isect_idx_] = isect_idx_;
+	b.ne	 <L16>
 	ldr	x10, [x8, #56]
 	str	x9, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 ++isect_idx_;
 	ldr	x9, [x8, #72]
-<L26>:
+<L16>:
 	add	x9, x9, #1
 	str	x9, [x8, #72]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
-;         ++face_idx_;
-	ldr	x10, [x8, #64]
-<L27>:
-	add	x9, x10, #1
+	ldr	x12, [x8, #64]
+<L17>:
+	add	x9, x12, #1
 	str	x9, [x8, #64]
-	mov	w0, #4                  ; =0x4
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:90
-;         ORANGE_ST_VISIT_CASE(kz);
-	b	 <L5>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x10, [x10, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x9, #280]
+	add	x10, x11, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Collection.hh:570
+;     return {data + ps.begin()->unchecked_get(),
+	add	x9, x9, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x9, #16]
+	ldr	q1, [x9]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
+	str	q1, [sp, #32]
+	str	d0, [sp, #48]
+	add	x1, sp, #32
+	mov	x0, x8
+<L18>:
+	bl	 <L18>
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:113
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #96]
+	add	sp, sp, #112
+	ret
 
-<unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const>:
-; unsigned long void celeritas::detail::CompressedFaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&) const::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const():
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:91
-;     auto surface_visitor = [&](auto s_traits) -> size_type {
+<auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const>:
+; auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const():
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:114
+;         [this, &func, id](auto s_traits) {
 	sub	sp, sp, #112
 	stp	x20, x19, [sp, #80]
 	stp	x29, x30, [sp, #96]
 	add	x29, sp, #96
 	ldp	x8, x19, [x0]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:93
-;         func(this->make_surface<S>(RealId{data_begin}));
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	ldr	x9, [x0, #16]
-	ldr	x9, [x9]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:152
-;     auto data = params_.reals[ItemRange<real_type>{data_begin, data_end}];
-	ldr	x8, [x8]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:134
+;     RealIdT offset = params_.real_ids[surfaces_.data_offsets[id]];
+	ldp	x10, x8, [x8]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
+;         return {TraitsT::increment(value_, inc)};
+	ldr	x8, [x8, #16]
+; SOURCE/src/corecel/cont/Span.hh:228
+;         return s_.data[i];
+	ldr	x11, [x10, #280]
+	add	x8, x11, x8, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x8, [x8, x9, lsl #3]
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
-	ldr	x8, [x8, #328]
+	ldr	x9, [x10, #328]
 ; SOURCE/src/corecel/data/Collection.hh:570
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x8, x8, x9, lsl #3
+	add	x8, x9, x8, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	q0, q1, [x8]
@@ -762,13 +814,13 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/GeneralQuadric.hh:134
 ;     , i_(data[8])
 	str	q0, [sp, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x2, x8, [x19, #16]
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w3, eq
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x1, [x19, #8]
 	mov	x0, sp
@@ -777,81 +829,94 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x19]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x19, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
-	b.hi	 <L2>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+	b.ls	 <L2>
+	fcmp	d1, d2
+	b.ls	 <L4>
+<L1>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;         ++face_idx_;
+	add	x8, x8, #1
+	str	x8, [x19, #64]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
+	ldp	x29, x30, [sp, #96]
+	ldp	x20, x19, [sp, #80]
+	add	sp, sp, #112
+	ret
+<L2>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x19, #72]
 	ldp	x10, x11, [x19, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x19, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
-;                 if (fill_isect_)
-	ldrb	w9, [x19, #32]
-	cmp	w9, #1
-	b.ne	 <L1>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x19, #56]
-	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 ++isect_idx_;
-	ldr	x8, [x19, #72]
-<L1>:
-	add	x8, x8, #1
-	str	x8, [x19, #72]
-; SOURCE/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x19]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
-;         ++face_idx_;
-	ldr	x8, [x19, #64]
-<L2>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x19, #72]
-	ldp	x10, x11, [x19, #40]
-	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x19, #72]
-	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x19, #32]
 	cmp	w9, #1
 	b.ne	 <L3>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x19, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x19, #72]
 <L3>:
 	add	x8, x8, #1
 	str	x8, [x19, #72]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/Utils.hh:38
+;         return distance <= max_dist_;
+	ldr	d2, [x19]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x19, #64]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
+;             if (is_valid_isect_(dist))
+	fcmp	d1, d2
+	b.hi	 <L1>
 <L4>:
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+;                 face_[isect_idx_] = FaceId{face_idx_};
+	ldr	x9, [x19, #72]
+	ldp	x10, x11, [x19, #40]
+	str	x8, [x10, x9, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+;                 distance_[isect_idx_] = dist;
+	ldr	x8, [x19, #72]
+	str	d1, [x11, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
+;                 if (fill_isect_)
+	ldrb	w9, [x19, #32]
+	cmp	w9, #1
+	b.ne	 <L5>
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
+;                     isect_[isect_idx_] = isect_idx_;
+	ldr	x9, [x19, #56]
+	str	x8, [x9, x8, lsl #3]
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
+;                 ++isect_idx_;
+	ldr	x8, [x19, #72]
+<L5>:
+	add	x9, x8, #1
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+;         ++face_idx_;
+	ldr	x8, [x19, #64]
 	add	x8, x8, #1
-	str	x8, [x19, #64]
-; SOURCE/src/orange/univ/detail/CompressedFaceVisitor.hh:94
-;         return S::StorageSpan::extent;
-	mov	w0, #10                 ; =0xa
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
+;                 ++isect_idx_;
+	stp	x8, x9, [x19, #64]
+; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:117
+;             return func(this->make_surface<S>(id));
 	ldp	x29, x30, [sp, #96]
 	ldp	x20, x19, [sp, #80]
 	add	sp, sp, #112
@@ -859,10 +924,10 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
 ; SOURCE/src/orange/surf/CylCentered.hh:195
@@ -890,10 +955,10 @@ Disassembly of section __TEXT,__text:
 	mov.16b	v0, v1
 	b	 <L2>
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
 ; SOURCE/src/orange/surf/CylCentered.hh:203
@@ -928,40 +993,40 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L4>
 	fcmp	d0, d2
 	b.ls	 <L6>
 <L3>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L4>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L5>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L5>:
@@ -970,45 +1035,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L3>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L8>:
@@ -1073,10 +1138,10 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
 ; SOURCE/src/orange/surf/CylCentered.hh:195
@@ -1104,10 +1169,10 @@ Disassembly of section __TEXT,__text:
 	mov.16b	v0, v1
 	b	 <L2>
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
 ; SOURCE/src/orange/surf/CylCentered.hh:203
@@ -1146,40 +1211,40 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L4>
 	fcmp	d0, d2
 	b.ls	 <L6>
 <L3>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L4>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L5>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L5>:
@@ -1188,45 +1253,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L3>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L8>:
@@ -1291,10 +1356,10 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
 ; SOURCE/src/orange/surf/CylCentered.hh:195
@@ -1322,10 +1387,10 @@ Disassembly of section __TEXT,__text:
 	mov.16b	v0, v1
 	b	 <L2>
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
 ; SOURCE/src/orange/surf/CylCentered.hh:203
@@ -1360,40 +1425,40 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L4>
 	fcmp	d0, d2
 	b.ls	 <L6>
 <L3>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L4>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L5>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L5>:
@@ -1402,45 +1467,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L3>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L8>:
@@ -1505,11 +1570,11 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 	movi.2d	v0, #0000000000000000
@@ -1545,7 +1610,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
@@ -1589,7 +1654,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L6>
@@ -1597,11 +1662,11 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L8>
 <L2>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L3>:
@@ -1625,7 +1690,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
@@ -1637,7 +1702,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
@@ -1648,30 +1713,30 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
@@ -1680,54 +1745,54 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L2>
 <L8>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
 ; SOURCE/src/orange/surf/CylAligned.hh:226
@@ -1755,10 +1820,10 @@ Disassembly of section __TEXT,__text:
 	mov.16b	v0, v1
 	b	 <L2>
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
 ; SOURCE/src/orange/surf/CylAligned.hh:234
@@ -1795,40 +1860,40 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L4>
 	fcmp	d0, d2
 	b.ls	 <L6>
 <L3>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L4>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L5>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L5>:
@@ -1837,45 +1902,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L3>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L8>:
@@ -1939,10 +2004,10 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
 ; SOURCE/src/orange/surf/CylAligned.hh:226
@@ -1970,10 +2035,10 @@ Disassembly of section __TEXT,__text:
 	mov.16b	v0, v1
 	b	 <L2>
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
 ; SOURCE/src/orange/surf/CylAligned.hh:234
@@ -2015,40 +2080,40 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L4>
 	fcmp	d0, d2
 	b.ls	 <L6>
 <L3>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L4>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L5>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L5>:
@@ -2057,45 +2122,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L3>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L8>:
@@ -2160,10 +2225,10 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x9, [x0, #16]
 ; SOURCE/src/orange/surf/CylAligned.hh:226
@@ -2191,10 +2256,10 @@ Disassembly of section __TEXT,__text:
 	mov.16b	v0, v1
 	b	 <L2>
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldr	x10, [x0, #24]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x11, [x0, #8]
 ; SOURCE/src/orange/surf/CylAligned.hh:234
@@ -2231,40 +2296,40 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L4>
 	fcmp	d0, d2
 	b.ls	 <L6>
 <L3>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L4>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L5>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L5>:
@@ -2273,45 +2338,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L3>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L8>:
@@ -2375,11 +2440,11 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 ; SOURCE/src/orange/surf/Sphere.hh:144
@@ -2422,7 +2487,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
@@ -2466,7 +2531,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L6>
@@ -2474,11 +2539,11 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L8>
 <L2>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L3>:
@@ -2502,7 +2567,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
@@ -2514,7 +2579,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
@@ -2525,30 +2590,30 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L1>
 <L6>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L7>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L7>:
@@ -2557,55 +2622,55 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L2>
 <L8>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 ; SOURCE/src/orange/surf/ConeAligned.hh:188
@@ -2702,7 +2767,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -2730,7 +2795,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -2770,7 +2835,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -2791,7 +2856,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -2799,11 +2864,11 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L10>
 <L5>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L6>:
@@ -2814,30 +2879,30 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L4>
 <L8>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
@@ -2846,55 +2911,55 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L5>
 <L10>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L11>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L11>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 ; SOURCE/src/orange/surf/ConeAligned.hh:188
@@ -2991,7 +3056,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3019,7 +3084,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3059,7 +3124,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3080,7 +3145,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3088,11 +3153,11 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L10>
 <L5>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L6>:
@@ -3103,30 +3168,30 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L4>
 <L8>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
@@ -3135,55 +3200,55 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L5>
 <L10>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L11>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L11>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 ; SOURCE/src/orange/surf/ConeAligned.hh:188
@@ -3280,7 +3345,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3308,7 +3373,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3348,7 +3413,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3369,7 +3434,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3377,11 +3442,11 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L10>
 <L5>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L6>:
@@ -3392,30 +3457,30 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L4>
 <L8>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
@@ -3424,55 +3489,55 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L5>
 <L10>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L11>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L11>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)>:
 ; void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)():
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:149
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:150
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x11, x9, [x0, #16]
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:162
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
 	ldr	x10, [x0, #8]
 ; SOURCE/src/orange/surf/SimpleQuadric.hh:172
@@ -3570,7 +3635,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3598,7 +3663,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3638,7 +3703,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3659,7 +3724,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3667,11 +3732,11 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L10>
 <L5>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	add	x8, x8, #1
 	str	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 <L6>:
@@ -3682,30 +3747,30 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L4>
 <L8>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
@@ -3714,45 +3779,45 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:168
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:169
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L5>
 <L10>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:171
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldr	x9, [x0, #72]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:172
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:173
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:174
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L11>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:175
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L11>:
 	add	x9, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:181
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
 ;         ++face_idx_;
 	ldr	x8, [x0, #64]
 	add	x8, x8, #1
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:177
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:178
 ;                 ++isect_idx_;
 	stp	x8, x9, [x0, #64]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:182
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:183
 ;     }
 	ret
 
@@ -3961,4 +4026,4 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/GeneralQuadric.hh:182
 ; }
 	ret
-; Total code size:    10768
+; Total code size:    11040

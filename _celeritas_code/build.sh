@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-SOURCE=/Users/seth/Code/celeritas-temp
+SOURCE=/Users/seth/Code/celeritas
 BUILD=$SOURCE/build
 export CXXFLAGS="${CXXFLAGS} -O3 -std=c++20 -I${SOURCE}/src -I${BUILD}/include"
 export CXX=c++

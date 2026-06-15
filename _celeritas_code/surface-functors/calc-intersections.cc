@@ -1,11 +1,15 @@
 #include "../common.hh"
 
 #include "orange/univ/detail/SurfaceFunctors.hh"
-#include "orange/univ/detail/CompressedFaceVisitor.hh"
+#include "orange/surf/LocalSurfaceVisitor.hh"
 
 using namespace celeritas;
 
-void calc_all_intersections(detail::CompressedFaceVisitor visit_face,
-                            detail::LocalVolumeView,
-                            detail::CalcIntersections calc_isect)
-{ visit_face(calc_isect); }
+void calc_intersections(NativeCRef<OrangeParamsData> const& params,
+                        SurfacesRecord const&               surfaces,
+                        detail::CalcIntersections           calc_isect,
+                        LocalSurfaceId                      surf_id)
+{
+    LocalSurfaceVisitor visit_surface(params, surfaces);
+    visit_surface(calc_isect, surf_id);
+}
