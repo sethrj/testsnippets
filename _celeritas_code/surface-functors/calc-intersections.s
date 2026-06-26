@@ -3,25 +3,25 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-0000000000001ef8 l     O __TEXT,__const lJTI1_0
-0000000000001ef8 l     O __TEXT,__const ltmp1
-0000000000070b28 l     O __LD,__compact_unwind ltmp2
+0000000000001f14 l     O __TEXT,__const lJTI1_0
+0000000000001f14 l     O __TEXT,__const ltmp1
+0000000000071bd8 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
 000000000000002c  w    F __TEXT,__text decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
-0000000000000d24  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-0000000000000ec4  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-0000000000001074  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-00000000000013d8  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-0000000000001620  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-0000000000001868  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-0000000000000698  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-0000000000000834  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-00000000000009d8  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-0000000000001ab0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-0000000000000b74  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-0000000000001214  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-0000000000001d1c  w    F __TEXT,__text celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
-0000000000000570  w    F __TEXT,__text auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
+0000000000000d40  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
+0000000000000ee0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
+0000000000001090  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
+00000000000013f4  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
+000000000000163c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
+0000000000001884  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
+00000000000006b4  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
+0000000000000850  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
+00000000000009f4  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
+0000000000001acc  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
+0000000000000b90  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
+0000000000001230  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
+0000000000001d38  w    F __TEXT,__text celeritas::GeneralQuadric::calc_intersections(celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, celeritas::SurfaceState) const
+000000000000058c  w    F __TEXT,__text auto decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)::'lambda'(celeritas::detail::CalcIntersections&)::operator()<celeritas::SurfaceTypeTraits<(celeritas::SurfaceType)16>>(celeritas::detail::CalcIntersections&) const
 
 Disassembly of section __TEXT,__text:
 
@@ -62,8 +62,8 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:119
 ;         params_.surface_types[surfaces_.types[id]]);
 	ldp	x9, x10, [x0]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x11, [x10]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -96,8 +96,8 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
 	ldr	x9, [x9, #280]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -117,14 +117,16 @@ Disassembly of section __TEXT,__text:
 ;     real_type const dist = (this->displacement() - n_pos) / n_dir;
 	fsub	d0, d0, d1
 	fdiv	d0, d0, d2
-; SOURCE/src/orange/surf/PlaneAligned.hh:185
-;     return {valid ? dist : no_intersection()};
+; SOURCE/src/orange/surf/PlaneAligned.hh:183
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
 	fcmp	d0, #0.0
+	movi.2d	v1, #0000000000000000
+	fccmp	d2, d1, #4, gt
 	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 ; SOURCE/src/orange/surf/PlaneAligned.hh:185
 ;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d1, d0, le
+	fcsel	d0, d0, d1, ne
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d1, [x8]
@@ -149,8 +151,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -162,7 +164,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -180,8 +182,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -193,7 +195,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -211,8 +213,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -239,8 +241,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -252,7 +254,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -270,8 +272,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -283,7 +285,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -317,8 +319,8 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
 	ldr	x9, [x9, #280]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -338,14 +340,16 @@ Disassembly of section __TEXT,__text:
 ;     real_type const dist = (this->displacement() - n_pos) / n_dir;
 	fsub	d0, d0, d1
 	fdiv	d0, d0, d2
-; SOURCE/src/orange/surf/PlaneAligned.hh:185
-;     return {valid ? dist : no_intersection()};
+; SOURCE/src/orange/surf/PlaneAligned.hh:183
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
 	fcmp	d0, #0.0
+	movi.2d	v1, #0000000000000000
+	fccmp	d2, d1, #4, gt
 	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 ; SOURCE/src/orange/surf/PlaneAligned.hh:185
 ;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d1, d0, le
+	fcsel	d0, d0, d1, ne
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d1, [x8]
@@ -360,8 +364,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -373,7 +377,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -411,8 +415,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -439,8 +443,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -452,7 +456,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -486,8 +490,8 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
 	ldr	x9, [x9, #280]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -507,14 +511,16 @@ Disassembly of section __TEXT,__text:
 ;     real_type const dist = (this->displacement() - n_pos) / n_dir;
 	fsub	d0, d0, d1
 	fdiv	d0, d0, d2
-; SOURCE/src/orange/surf/PlaneAligned.hh:185
-;     return {valid ? dist : no_intersection()};
+; SOURCE/src/orange/surf/PlaneAligned.hh:183
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
 	fcmp	d0, #0.0
+	movi.2d	v1, #0000000000000000
+	fccmp	d2, d1, #4, gt
 	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d1, x9
 ; SOURCE/src/orange/surf/PlaneAligned.hh:185
 ;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d1, d0, le
+	fcsel	d0, d0, d1, ne
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d1, [x8]
@@ -529,8 +535,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -557,8 +563,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -570,7 +576,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -588,8 +594,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -624,74 +630,71 @@ Disassembly of section __TEXT,__text:
 ;             if (on_surface == SurfaceState::on)
 	cmp	x12, x11
 	b.eq	 <L15>
-; SOURCE/src/corecel/cont/Span.hh:237
-;         return static_cast<pointer>(s_.data);
-	ldr	x12, [x9, #328]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
-	ldr	x9, [x9, #280]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+	ldr	x12, [x9, #280]
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
+	add	x10, x12, x10, lsl #3
+; SOURCE/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x10, [x10, x2, lsl #3]
+; SOURCE/src/corecel/cont/Span.hh:237
+;         return static_cast<pointer>(s_.data);
+	ldr	x9, [x9, #328]
+; SOURCE/src/corecel/data/Collection.hh:577
+;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	x9, [x9, x2, lsl #3]
-; SOURCE/src/corecel/data/Collection.hh:570
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x12, x9, lsl #3
-; SOURCE/src/corecel/data/Ldg.hh:123
-;     return *ptr;
 	ldp	d1, d0, [x9]
+	ldp	d2, d3, [x9, #16]
 ; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:163
 ;         auto all_dist = surf.calc_intersections(pos_, dir_, on_surface);
-	ldp	x10, x12, [x8, #8]
-	movi.2d	v2, #0000000000000000
+	ldp	x9, x10, [x8, #8]
+	movi.2d	v4, #0000000000000000
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d3, d4, [x10]
+	ldp	d5, d6, [x9]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
-	fmadd	d3, d1, d3, d2
+	fmadd	d5, d1, d5, d4
+	fmadd	d5, d0, d6, d5
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d5, d6, [x12]
+	ldr	d6, [x9, #16]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
-	fmadd	d1, d1, d5, d2
-; SOURCE/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldp	d2, d5, [x9, #16]
-; SOURCE/src/corecel/math/Algorithms.hh:550
-;     return std::fma(a, b, y);
-	fmadd	d3, d0, d4, d3
+	fmadd	d5, d2, d6, d5
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d4, [x10, #16]
+	ldp	d6, d7, [x10]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
-	fmadd	d3, d2, d4, d3
-	fmadd	d0, d0, d6, d1
+	fmadd	d1, d1, d6, d4
+	fmadd	d0, d0, d7, d1
 ; SOURCE/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d1, [x12, #16]
+	ldr	d1, [x10, #16]
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
 	fmadd	d0, d2, d1, d0
 ; SOURCE/src/orange/surf/Plane.hh:164
 ;     real_type const dist = (this->displacement() - n_pos) / n_dir;
-	fsub	d1, d5, d3
-	fdiv	d0, d1, d0
-; SOURCE/src/orange/surf/Plane.hh:169
-;     return {valid ? dist : no_intersection()};
-	fcmp	d0, #0.0
+	fsub	d1, d3, d5
+	fdiv	d1, d1, d0
+; SOURCE/src/orange/surf/Plane.hh:167
+;         (on_surface == SurfaceState::off), (n_dir != 0), (dist > 0));
+	fcmp	d1, #0.0
+	fccmp	d0, d4, #4, gt
 	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
+	fmov	d0, x9
 ; SOURCE/src/orange/surf/Plane.hh:169
 ;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d1, d0, le
+	fcsel	d0, d1, d0, ne
 ; SOURCE/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d1, [x8]
@@ -731,8 +734,8 @@ Disassembly of section __TEXT,__text:
 	ldp	x29, x30, [sp, #96]
 	add	sp, sp, #112
 	ret
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x10, [x10, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -744,7 +747,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x9, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x9, x9, x10, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -780,8 +783,8 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:134
 ;     RealIdT offset = params_.real_ids[surfaces_.data_offsets[id]];
 	ldp	x10, x8, [x8]
-; SOURCE/src/corecel/cont/detail/RangeImpl.hh:207
-;         return {TraitsT::increment(value_, inc)};
+; SOURCE/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x8, #16]
 ; SOURCE/src/corecel/cont/Span.hh:228
 ;         return s_.data[i];
@@ -793,7 +796,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/cont/Span.hh:237
 ;         return static_cast<pointer>(s_.data);
 	ldr	x9, [x10, #328]
-; SOURCE/src/corecel/data/Collection.hh:570
+; SOURCE/src/corecel/data/Collection.hh:577
 ;     return {data + ps.begin()->unchecked_get(),
 	add	x8, x9, x8, lsl #3
 ; SOURCE/src/corecel/data/Ldg.hh:123
@@ -4026,4 +4029,4 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/GeneralQuadric.hh:182
 ; }
 	ret
-; Total code size:    11000
+; Total code size:    11024

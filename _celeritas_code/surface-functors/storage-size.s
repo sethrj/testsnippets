@@ -5,7 +5,7 @@ SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
 0000000000000010 l     O __TEXT,__const l_switch.table._Z12surface_sizeN9celeritas11SurfaceTypeE
 0000000000000010 l     O __TEXT,__const ltmp1
-000000000000fec8 l     O __LD,__compact_unwind ltmp2
+0000000000010138 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text surface_size(celeritas::SurfaceType)
 
 Disassembly of section __TEXT,__text:
