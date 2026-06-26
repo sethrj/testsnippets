@@ -5,7 +5,7 @@ SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
 000000000000040c l     O __TEXT,__const lJTI1_0
 000000000000040c l     O __TEXT,__const ltmp1
-00000000000662d8 l     O __LD,__compact_unwind ltmp2
+00000000000662e8 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_sense(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcSense, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
 0000000000000030  w    F __TEXT,__text decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcSense&>(celeritas::detail::CalcSense&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
 
@@ -54,7 +54,7 @@ Disassembly of section __TEXT,__text:
 ;         if (is_plane(st))
 	cmp	w9, #3
 	b.hi	 <L0>
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:74
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:113
 ;     switch (st)
 	cmp	w9, #1
 	b.gt	 <L2>
@@ -65,7 +65,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/PlaneAligned.hh:149
 ;     return x[to_int(T)];
 	ldr	d0, [x8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:51
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:50
 ;         return real_to_sense(n_pos - displacement);
 	fsub	d0, d0, d0
 	fcmp	d0, #0.0
@@ -95,7 +95,7 @@ Disassembly of section __TEXT,__text:
 	add	x11, x11, x12, lsl #2
 	br	x11
 <L1>:
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 	movi.2d	v1, #0000000000000000
@@ -123,7 +123,7 @@ Disassembly of section __TEXT,__text:
 ; }
 	ret
 <L2>:
-; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:74
+; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:113
 ;     switch (st)
 	cmp	w9, #2
 	b.ne	 <L4>
@@ -133,7 +133,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/PlaneAligned.hh:149
 ;     return x[to_int(T)];
 	ldr	d0, [x8, #16]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:51
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:50
 ;         return real_to_sense(n_pos - displacement);
 	fsub	d0, d0, d0
 	fcmp	d0, #0.0
@@ -150,7 +150,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/PlaneAligned.hh:149
 ;     return x[to_int(T)];
 	ldr	d0, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:51
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:50
 ;         return real_to_sense(n_pos - displacement);
 	fsub	d0, d0, d0
 	fcmp	d0, #0.0
@@ -202,7 +202,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/math/Algorithms.hh:550
 ;     return std::fma(a, b, y);
 	fmadd	d0, d2, d1, d0
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:51
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:50
 ;         return real_to_sense(n_pos - displacement);
 	fsub	d0, d0, d0
 	fcmp	d0, #0.0
@@ -217,7 +217,7 @@ Disassembly of section __TEXT,__text:
 	ldp	d1, d2, [x8, #8]
 	ldp	d3, d4, [x8, #24]
 	ldp	d5, d6, [x8, #40]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/SimpleQuadric.hh:154
@@ -254,7 +254,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:157
 ; }
 	ret
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/CylCentered.hh:177
@@ -270,7 +270,7 @@ Disassembly of section __TEXT,__text:
 	ldp	d5, d6, [x8, #40]
 	ldp	d7, d16, [x8, #56]
 	ldr	d17, [x8, #72]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/GeneralQuadric.hh:145
@@ -305,7 +305,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x9, [x1]
 ; SOURCE/src/orange/surf/ConeAligned.hh:165
@@ -332,7 +332,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/math/Algorithms.hh:503
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	b	 <L8>
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/CylCentered.hh:177
@@ -349,7 +349,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/surf/LocalSurfaceVisitor.hh:157
 ; }
 	ret
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/CylCentered.hh:177
@@ -376,7 +376,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/CylAligned.hh:208
@@ -386,7 +386,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x9, [x1]
 ; SOURCE/src/orange/surf/Sphere.hh:128
@@ -420,7 +420,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/CylAligned.hh:208
@@ -433,7 +433,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x8, [x1]
 ; SOURCE/src/orange/surf/CylAligned.hh:208
@@ -459,7 +459,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x9, [x1]
 ; SOURCE/src/orange/surf/ConeAligned.hh:165
@@ -499,7 +499,7 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:58
+; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:57
 ;         return surf.calc_sense(this->pos);
 	ldr	x9, [x1]
 ; SOURCE/src/orange/surf/ConeAligned.hh:165
