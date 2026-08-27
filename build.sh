@@ -53,7 +53,8 @@ for filename in $*; do
   printf "\r%s %s (%d B)\n" "Finished" "${STEM}.s" "${CODESIZE}" >&2
 done
 
-rm -rf "$TMPDIRNAME" >/dev/null
+# Clean temporary files
+rm -rf "${TMPDIRNAME}" >/dev/null
 
 ###############################################################################
 # end of testsnippets/build.sh
