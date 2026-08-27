@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+extern char const srj_filename[] = __FILE__;
+
 struct Isect
 {
     double hw[3];   // Half-widths of bounding box
@@ -11,7 +13,7 @@ struct Isect
 
     double passes(int j, int k) const;
     double fails(int j, int k) const;
-    double also_fails(int j, int k) const;
+    double original(int j, int k) const;
 };
 
 double Isect::passes(int j, int k) const
@@ -27,16 +29,16 @@ double Isect::passes(int j, int k) const
 
 double Isect::fails(int j, int k) const
 {
-    return std::fabs(mid[j] * hseg[k] - mid[k] * hseg[j])
-           - (hw[j] * abs_hseg[k] + hw[k] * abs_hseg[j]);
-}
-
-double Isect::also_fails(int j, int k) const
-{
     auto b = mid[k] * hseg[j];
     auto c = hw[j] * abs_hseg[k];
     auto d = hw[k] * abs_hseg[j];
 
     auto result = std::fabs(mid[j] * hseg[k] - b) - (c + d);
     return result;
+}
+
+double Isect::original(int j, int k) const
+{
+    return std::fabs(mid[j] * hseg[k] - mid[k] * hseg[j])
+           - (hw[j] * abs_hseg[k] + hw[k] * abs_hseg[j]);
 }
