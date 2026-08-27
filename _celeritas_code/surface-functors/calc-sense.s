@@ -5,7 +5,7 @@ SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
 00000000000003c0 l     O __TEXT,__const lJTI1_0
 00000000000003c0 l     O __TEXT,__const ltmp1
-0000000000065cc8 l     O __LD,__compact_unwind ltmp2
+0000000000065dc8 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_sense(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcSense, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>)
 0000000000000030  w    F __TEXT,__text decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcSense&>(celeritas::detail::CalcSense&, celeritas::OpaqueId<celeritas::LocalSurface_, unsigned long>) const
 
@@ -68,8 +68,8 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:42
 ;                 n_pos = p.dot_normal(this->pos);
 	ldr	x9, [x1]
-; SOURCE/src/orange/surf/PlaneAligned.hh:149
-;     return x[to_int(T)];
+; SOURCE/src/orange/surf/PlaneAligned.hh:61
+;         return pos[to_int(ax)];
 	ldr	d0, [x9]
 ; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:115
 ;         ORANGE_ST_VISIT_CASE(F, func, px);
@@ -123,16 +123,16 @@ Disassembly of section __TEXT,__text:
 ; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:42
 ;                 n_pos = p.dot_normal(this->pos);
 	ldr	x9, [x1]
-; SOURCE/src/orange/surf/PlaneAligned.hh:149
-;     return x[to_int(T)];
+; SOURCE/src/orange/surf/PlaneAligned.hh:61
+;         return pos[to_int(ax)];
 	ldr	d0, [x9, #16]
 	b	 <L5>
 <L3>:
 ; SOURCE/src/orange/univ/detail/SurfaceFunctors.hh:42
 ;                 n_pos = p.dot_normal(this->pos);
 	ldr	x9, [x1]
-; SOURCE/src/orange/surf/PlaneAligned.hh:149
-;     return x[to_int(T)];
+; SOURCE/src/orange/surf/PlaneAligned.hh:61
+;         return pos[to_int(ax)];
 	ldr	d0, [x9, #8]
 ; SOURCE/src/orange/surf/SurfaceTypeTraits.hh:116
 ;         ORANGE_ST_VISIT_CASE(F, func, py);
