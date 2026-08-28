@@ -3,7 +3,7 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-00000000000082c8 l     O __LD,__compact_unwind ltmp1
+00000000000082d8 l     O __LD,__compact_unwind ltmp1
 0000000000000000 g     F __TEXT,__text isect(celeritas::BoundingBox<double> const&, celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, double)
 
 Disassembly of section __TEXT,__text:
@@ -12,103 +12,114 @@ Disassembly of section __TEXT,__text:
 ; isect(celeritas::BoundingBox<double> const&, celeritas::Array<double, 3ul> const&, celeritas::Array<double, 3ul> const&, double)():
 ; FILE.cc:11
 ; { return intersects_segment(bbox, pos, dir, distance); }
-	fmov	d1, #0.50000000
-; CELER/src/orange/BoundingBoxUtils.hh:303
-;     T const half_distance = distance / 2;
-	fmul	d0, d0, d1
-	add	x8, x0, #24
-; CELER/src/orange/BoundingBoxUtils.hh:308
+	fmov	d2, #0.50000000
+	fmul	d3, d0, d2
+; CELER/src/orange/BoundingBoxUtils.hh:323
 ;         T const lower = bbox.point(Bound::lo, ax);
-	ldur	q1, [x0, #8]
-; CELER/src/orange/BoundingBoxUtils.hh:309
+	ldr	d4, [x0, #16]
+; CELER/src/orange/BoundingBoxUtils.hh:324
 ;         T const upper = bbox.point(Bound::hi, ax);
-	ldr	q2, [x0, #32]
-; CELER/src/orange/BoundingBoxUtils.hh:310
-;         T const center = (lower + upper) / 2;
-	dup.2d	v3, v1[1]
-	ld1.d	{ v3 }[1], [x0]
-	fadd.2d	v4, v1, v2
-	dup.2d	v5, v2[1]
-	ld1.d	{ v5 }[1], [x8]
-	fadd.2d	v6, v3, v5
-	fmov.2d	v7, #0.50000000
-	fmul.2d	v4, v4, v7
-	fmul.2d	v6, v6, v7
-; CELER/src/orange/BoundingBoxUtils.hh:313
+	ldr	d5, [x0, #40]
+; CELER/src/orange/BoundingBoxUtils.hh:327
 ;         hw[i] = (upper - lower) / 2;
-	fsub.2d	v1, v2, v1
-	fsub.2d	v2, v5, v3
-	fmul.2d	v1, v1, v7
-	fmul.2d	v2, v2, v7
-; CELER/src/orange/BoundingBoxUtils.hh:314
-;         hseg[i] = dir[i] * half_distance;
-	ldur	q3, [x2, #8]
-	ldr	d5, [x2, #16]
-	ld1.d	{ v5 }[1], [x2]
-	fmul.2d	v3, v3, v0[0]
-	fmul.2d	v0, v5, v0[0]
-; CELER/src/orange/BoundingBoxUtils.hh:315
-;         abs_hseg[i] = std::fabs(hseg[i]) + eps;
-	fabs.2d	v5, v3
-	fabs.2d	v7, v0
-	mov	x8, #4372995238176751616 ; =0x3cb0000000000000
+	fsub	d0, d5, d4
+	fmul	d0, d0, d2
+; CELER/src/orange/BoundingBoxUtils.hh:328
+;         hseg[i] = dir[i] * (distance / 2);
+	ldr	d6, [x2, #16]
+	fmul	d1, d3, d6
+; CELER/src/orange/BoundingBoxUtils.hh:329
+;         sep[i] = std::fabs(hseg[i]) * tol;
+	fabs	d7, d1
+	mov	x8, #2                  ; =0x2
+	movk	x8, #16368, lsl #48
 	dup.2d	v16, x8
-	fadd.2d	v5, v5, v16
-	fadd.2d	v7, v7, v16
-; CELER/src/orange/BoundingBoxUtils.hh:316
-;         mid[i] = pos[i] + hseg[i] - center;
-	ldr	d16, [x1, #16]
-	ld1.d	{ v16 }[1], [x1], #8
-	ldr	q17, [x1]
-	fadd.2d	v17, v3, v17
-	fadd.2d	v16, v0, v16
-	fsub.2d	v18, v17, v4
-	fsub.2d	v6, v16, v6
-; CELER/src/orange/BoundingBoxUtils.hh:325
-;         return std::fabs(mid[j] * hseg[k] - mid[k] * hseg[j])
-	mov	d16, v6[1]
-; CELER/src/orange/BoundingBoxUtils.hh:321
-;         = [&](int i) { return std::fabs(mid[i]) > hw[i] + abs_hseg[i]; };
-	fabs	d16, d16
-; CELER/src/orange/BoundingBoxUtils.hh:326
-;                > hw[j] * abs_hseg[k] + hw[k] * abs_hseg[j];
-	mov	d19, v7[1]
-	mov	d20, v2[1]
-; CELER/src/orange/BoundingBoxUtils.hh:321
-;         = [&](int i) { return std::fabs(mid[i]) > hw[i] + abs_hseg[i]; };
-	fadd	d19, d20, d19
-	fcmp	d16, d19
+	fmov	d17, x8
+	fmul	d7, d7, d17
+; CELER/src/orange/BoundingBoxUtils.hh:330
+;         bbm[i] = (lower + upper) / 2 - pos[i];
+	fadd	d4, d4, d5
+	fmul	d2, d4, d2
+	ldr	d4, [x1, #16]
+	fsub	d2, d2, d4
+; CELER/src/orange/BoundingBoxUtils.hh:335
+;         = [&](int i) { return std::fabs(hseg[i] - bbm[i]) > hw[i] + sep[i]; };
+	fsub	d4, d1, d2
+	fadd	d5, d0, d7
+; CELER/src/orange/BoundingBoxUtils.hh:339
+;         return std::fabs(bbm[k] * hseg[j] - bbm[j] * hseg[k])
+	fnmul	d6, d3, d6
+; CELER/src/orange/BoundingBoxUtils.hh:323
+;         T const lower = bbox.point(Bound::lo, ax);
+	ldr	q17, [x0]
+; CELER/src/orange/BoundingBoxUtils.hh:324
+;         T const upper = bbox.point(Bound::hi, ax);
+	ldur	q18, [x0, #24]
+; CELER/src/orange/BoundingBoxUtils.hh:327
+;         hw[i] = (upper - lower) / 2;
+	fsub.2d	v19, v18, v17
+	fmov.2d	v20, #0.50000000
+	fmul.2d	v19, v19, v20
+; CELER/src/orange/BoundingBoxUtils.hh:328
+;         hseg[i] = dir[i] * (distance / 2);
+	ldr	q21, [x2]
+	fmul.2d	v3, v21, v3[0]
+; CELER/src/orange/BoundingBoxUtils.hh:329
+;         sep[i] = std::fabs(hseg[i]) * tol;
+	fabs.2d	v21, v3
+	fmul.2d	v16, v21, v16
+; CELER/src/orange/BoundingBoxUtils.hh:330
+;         bbm[i] = (lower + upper) / 2 - pos[i];
+	fadd.2d	v17, v17, v18
+	fmul.2d	v17, v17, v20
+	ldr	q18, [x1]
+	fsub.2d	v17, v17, v18
+; CELER/src/orange/BoundingBoxUtils.hh:335
+;         = [&](int i) { return std::fabs(hseg[i] - bbm[i]) > hw[i] + sep[i]; };
+	fadd.2d	v18, v19, v16
+; CELER/src/orange/BoundingBoxUtils.hh:339
+;         return std::fabs(bbm[k] * hseg[j] - bbm[j] * hseg[k])
+	fmul.d	d6, d6, v17[1]
+	mov	d20, v3[1]
+	fmla.d	d6, d2, v3[1]
+; CELER/src/orange/BoundingBoxUtils.hh:335
+;         = [&](int i) { return std::fabs(hseg[i] - bbm[i]) > hw[i] + sep[i]; };
+	mov.d	v4[1], v6[0]
+	fabs.2d	v4, v4
+	fabd.2d	v6, v3, v17
+; CELER/src/orange/BoundingBoxUtils.hh:340
+;                > (hw[k] * sep[j] + hw[j] * sep[k]);
+	fmul.d	d21, d7, v19[1]
+	fmla.d	d21, d0, v16[1]
+; CELER/src/orange/BoundingBoxUtils.hh:335
+;         = [&](int i) { return std::fabs(hseg[i] - bbm[i]) > hw[i] + sep[i]; };
+	mov.d	v5[1], v21[0]
+; CELER/src/orange/BoundingBoxUtils.hh:339
+;         return std::fabs(bbm[k] * hseg[j] - bbm[j] * hseg[k])
+	fnmul	d2, d3, d2
+	fmadd	d1, d17, d1, d2
+	fabs	d1, d1
+; CELER/src/orange/BoundingBoxUtils.hh:340
+;                > (hw[k] * sep[j] + hw[j] * sep[k]);
+	fmul	d0, d0, d16
+	fmadd	d0, d19, d7, d0
+	fcmp	d1, d0
 	cset	w8, le
-	fadd.2d	v16, v1, v5
-; CELER/src/orange/BoundingBoxUtils.hh:325
-;         return std::fabs(mid[j] * hseg[k] - mid[k] * hseg[j])
-	fneg.2d	v19, v3
-	fmul.2d	v19, v6, v19
-	fmla.2d	v19, v0, v18
-; CELER/src/orange/BoundingBoxUtils.hh:321
-;         = [&](int i) { return std::fabs(mid[i]) > hw[i] + abs_hseg[i]; };
-	fabs.2d	v19, v19
-	fabd.2d	v4, v17, v4
-; CELER/src/orange/BoundingBoxUtils.hh:326
-;                > hw[j] * abs_hseg[k] + hw[k] * abs_hseg[j];
-	fmul.2d	v17, v5, v2
-	fmla.2d	v17, v7, v1
-; CELER/src/orange/BoundingBoxUtils.hh:325
-;         return std::fabs(mid[j] * hseg[k] - mid[k] * hseg[j])
-	mov	d0, v0[1]
-	fneg	d0, d0
-	fmul	d0, d0, d18
-	fmla.d	d0, d3, v6[1]
+; CELER/src/orange/BoundingBoxUtils.hh:339
+;         return std::fabs(bbm[k] * hseg[j] - bbm[j] * hseg[k])
+	fneg	d0, d20
+	fmul	d0, d0, d17
+	fmla.d	d0, d3, v17[1]
 	fabs	d0, d0
-; CELER/src/orange/BoundingBoxUtils.hh:326
-;                > hw[j] * abs_hseg[k] + hw[k] * abs_hseg[j];
-	fmul.d	d1, d1, v7[1]
-	fmla.d	d1, d5, v2[1]
+; CELER/src/orange/BoundingBoxUtils.hh:340
+;                > (hw[k] * sep[j] + hw[j] * sep[k]);
+	fmul.d	d1, d19, v16[1]
+	fmla.d	d1, d16, v19[1]
 	fcmp	d0, d1
-; CELER/src/orange/BoundingBoxUtils.hh:334
+; CELER/src/orange/BoundingBoxUtils.hh:348
 ;     return !logical_any(found_sep_ortho_axis(x),
-	fcmgt.2d	v0, v19, v17
-	fcmgt.2d	v1, v4, v16
+	fcmgt.2d	v0, v4, v5
+	fcmgt.2d	v1, v6, v18
 	uzp1.4s	v0, v1, v0
 	umaxv.4s	s0, v0
 	fmov	w9, s0
@@ -116,7 +127,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/Algorithms.hh:854
 ;     return (0 | ... | (args ? 1 : 0));
 	csel	w8, wzr, w8, gt
-; CELER/src/orange/BoundingBoxUtils.hh:334
+; CELER/src/orange/BoundingBoxUtils.hh:348
 ;     return !logical_any(found_sep_ortho_axis(x),
 	and	w0, w8, w9
 ; FILE.cc:11
