@@ -46,7 +46,7 @@ for filename in $*; do
   $STRIP -x -S "${TMPSTEM}.o" \
     -o "${TMPSTEM}.stripped.o"
   CODESIZE=$(wc -c < "${TMPSTEM}.stripped.o")
-  printf "; Total code size: %s" "${CODESIZE}" \
+  printf "; Total code size: %4d B" "${CODESIZE}" \
     >> ${STEM}.s
 
   # Clear output

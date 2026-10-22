@@ -3,9 +3,9 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-000000000000001c l     O __TEXT,__const celeritas::detail::(anonymous namespace)::SourceFileChars<(char)116, (char)101, (char)115, (char)116, (char)46, (char)99, (char)99>::value
-000000000000001c l     O __TEXT,__const ltmp1
-0000000000007c00 l     O __LD,__compact_unwind ltmp2
+000000000000001c l     O __TEXT,__cstring l_.str
+000000000000001c l     O __TEXT,__cstring ltmp1
+0000000000007828 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text prov()
 
 Disassembly of section __TEXT,__text:
@@ -26,4 +26,4 @@ Disassembly of section __TEXT,__text:
 ;     return CELER_CODE_PROVENANCE;
 	str	w9, [x8, #16]
 	ret
-; Total code size:      600
+; Total code size:  600 B
