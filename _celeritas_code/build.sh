@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-CELER_SOURCE_DIR=$CELER_SOURCE_DIR-temp
+CELER_SOURCE_DIR=$CELER_SOURCE_DIR
 
 if [ -z "${CELER_SOURCE_DIR}" ]; then
   printf "error: Define CELER_SOURCE_DIR\n" >&2

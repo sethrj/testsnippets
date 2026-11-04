@@ -5,11 +5,11 @@
 
 using namespace celeritas;
 
-void calc_sense(NativeCRef<OrangeParamsData> const& params,
-                SurfacesRecord const&               surfaces,
-                detail::CalcSense                   calc_sense,
-                LocalSurfaceId                      surf_id)
+SignedSense calc_sense(NativeCRef<OrangeParamsData> const& params,
+                       SurfacesRecord const&               surfaces,
+                       Real3 const&                        pos,
+                       LocalSurfaceId                      surf_id)
 {
     LocalSurfaceVisitor visit_surface(params, surfaces);
-    visit_surface(calc_sense, surf_id);
+    return visit_surface(detail::CalcSense{pos}, surf_id);
 }
