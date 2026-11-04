@@ -1,3 +1,4 @@
+#include "corecel/Macros.hh"
 #include "celeritas/field/FieldDriverOptions.hh"
 
 namespace celeritas
@@ -5,16 +6,29 @@ namespace celeritas
 namespace mock
 {
 
-struct Substepper
+class Substepper
 {
-    FieldDriverOptions const& opts;
+  public:
+    using SubstepFunc
+        = Substep (*)(real_type step, OdeState const& state) noexcept;
 
-    // For a given trial step, advance by a sub_step within a tolerance error
-    Substep operator()(real_type step, OdeState const& state);
+    Substepper(FieldDriverOptions const& opts, SubstepFunc ss)
+        : opts_{opts}
+        , ss_{ss}
+    {
+    }
 
-    short int max_substeps() const { return opts.max_substeps; }
-    real_type minimum_step() const { return opts.minimum_step; }
-    real_type delta_intersection() const { return opts.delta_intersection; }
+    CELER_FORCEINLINE Substep operator()(real_type       step,
+                                         OdeState const& state) noexcept
+    { return ss_(step, state); }
+
+    short int max_substeps() const { return opts_.max_substeps; }
+    real_type minimum_step() const { return opts_.minimum_step; }
+    real_type delta_intersection() const { return opts_.delta_intersection; }
+
+  private:
+    FieldDriverOptions const& opts_;
+    SubstepFunc ss_;
 };
 
 } // namespace mock

@@ -5,11 +5,11 @@
 #include "MockSubstepper.hh"
 #include "MockGeoTrackView.hh"
 
-Propagation propagate(ParticleTrackView const& par,
+Propagation propagate(mock::Substepper substepper,
+                      ParticleTrackView const& par,
                       mock::GeoTrackView& geo,
-                      FieldDriverOptions const& field_options,
                       real_type step)
 {
-    FieldPropagator propagate{mock::Substepper{field_options}, par, geo};
+    FieldPropagator propagate{substepper, par, geo};
     return propagate(step);
 }
