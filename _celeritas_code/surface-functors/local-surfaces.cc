@@ -23,7 +23,7 @@ void do_something(NativeCRef<OrangeParamsData> const& params,
             }
             else
             {
-                CELER_UNREACHABLE;
+                unreachable();
             }
         },
         vols.faces()[*face_id]);
