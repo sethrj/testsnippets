@@ -3,10 +3,17 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-0000000000021000 l     O __LD,__compact_unwind ltmp1
+0000000000021738 l     O __LD,__compact_unwind ltmp1
 0000000000000000 g     F __TEXT,__text propagate(celeritas::ParticleTrackView const&, celeritas::mock::GeoTrackView&, celeritas::FieldDriverOptions const&, double)
-00000000000000c8  w    F __TEXT,__text celeritas::FieldPropagator<celeritas::mock::Substepper, celeritas::mock::GeoTrackView&>::operator()(double)
+00000000000000b8  w    F __TEXT,__text celeritas::FieldPropagator<celeritas::mock::Substepper, celeritas::mock::GeoTrackView&>::operator()(double)
 0000000000000000         *UND* celeritas::mock::Substepper::operator()(double, celeritas::OdeState const&)
+0000000000000000         *UND* celeritas::mock::GeoTrackView::move_internal(celeritas::Array<double, 3ul> const&)
+0000000000000000         *UND* celeritas::mock::GeoTrackView::find_next_step(double)
+0000000000000000         *UND* celeritas::mock::GeoTrackView::move_to_boundary()
+0000000000000000         *UND* celeritas::mock::GeoTrackView::set_dir(celeritas::Array<double, 3ul> const&)
+0000000000000000         *UND* celeritas::mock::GeoTrackView::is_on_boundary() const
+0000000000000000         *UND* celeritas::mock::GeoTrackView::dir() const
+0000000000000000         *UND* celeritas::mock::GeoTrackView::pos() const
 
 Disassembly of section __TEXT,__text:
 
@@ -27,14 +34,13 @@ Disassembly of section __TEXT,__text:
 	stp	x2, x1, [sp, #16]
 ; CELER/src/celeritas/field/FieldPropagator.hh:102
 ;     state_.pos = geo_.pos();
-	ldr	x8, [x1]
-	ldr	x8, [x8, #24]
 	mov	x0, x1
-	blr	x8
-	ldr	x8, [x0, #16]
+<L0>:
+	bl	 <L0>
 	ldr	q0, [x0]
-	str	q0, [sp, #32]
+	ldr	x8, [x0, #16]
 	str	x8, [sp, #48]
+	str	q0, [sp, #32]
 ; CELER/src/celeritas/phys/ParticleTrackView.hh:180
 ;     return Energy{states_.particle_energy[track_slot_]};
 	ldp	x9, x8, [x20, #8]
@@ -47,6 +53,9 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/phys/ParticleTrackView.hh:180
 ;     return Energy{states_.particle_energy[track_slot_]};
 	ldr	d0, [x11, x8, lsl #3]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d1, d0, d0
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
 	ldr	x9, [x9]
@@ -58,24 +67,20 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x10]
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d1, [x9, x8, lsl #3]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d0, d0
+	ldr	d2, [x9, x8, lsl #3]
 ; CELER/src/celeritas/phys/ParticleTrackView.hh:373
 ;     real_type result = ipow<2>(energy) + 2 * this->mass().value() * energy;
-	fadd	d1, d1, d1
-	fmadd	d0, d1, d0, d2
+	fadd	d2, d2, d2
+	fmadd	d0, d2, d0, d1
 ; CELER/src/celeritas/phys/ParticleTrackView.hh:386
 ;     return Momentum{std::sqrt(this->momentum_sq().value())};
 	fsqrt	d0, d0
 	str	q0, [sp]
 ; CELER/src/celeritas/field/FieldPropagator.hh:103
 ;     state_.mom = value_as<MomentumUnits>(particle.momentum()) * geo_.dir();
-	ldr	x8, [x19]
-	ldr	x8, [x8, #32]
 	mov	x0, x19
-	blr	x8
+<L1>:
+	bl	 <L1>
 ; CELER/src/corecel/math/ArrayOperators.hh:78
 ; CELER_DEFINE_ARRAY_ARITHM(*)
 	ldr	d0, [x0, #16]
@@ -97,8 +102,8 @@ Disassembly of section __TEXT,__text:
 ;     return propagate(step);
 	add	x0, sp, #16
 	mov.16b	v0, v8
-<L0>:
-	bl	 <L0>
+<L2>:
+	bl	 <L2>
 ; FILE.cc:15
 ; }
 	and	x1, x1, #0xffff
@@ -126,9 +131,8 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:138
 ;     result.boundary = geo_.is_on_boundary();
 	ldr	x0, [x0, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #104]
-	blr	x8
+<L0>:
+	bl	 <L0>
 	mov	x20, x0
 ; ././MockSubstepper.hh:15
 ;     short int max_substeps() const { return opts.max_substeps; }
@@ -145,15 +149,15 @@ Disassembly of section __TEXT,__text:
 	movi.2d	v0, #0000000000000000
 	str	q0, [sp]
 	mov.16b	v9, v8
-<L0>:
+<L1>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:153
 ;         Substep substep = advance_(remaining, state_);
 	add	x8, sp, #48
 	add	x1, x19, #16
 	mov	x0, x19
 	mov.16b	v0, v9
-<L1>:
-	bl	 <L1>
+<L2>:
+	bl	 <L2>
 ; CELER/src/corecel/math/ArrayOperators.hh:77
 ; CELER_DEFINE_ARRAY_ARITHM(-)
 	ldr	d0, [sp, #64]
@@ -194,21 +198,20 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:162
 ;         if (chord.length >= this->minimum_substep())
 	fcmp	d0, d1
-	b.lt	 <L2>
+	b.lt	 <L4>
 ; CELER/src/celeritas/field/FieldPropagator.hh:172
 ;             geo_.set_dir(chord.dir);
 	ldr	x0, [x19, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #176]
 	add	x1, x22, #8
-	blr	x8
+<L3>:
+	bl	 <L3>
 ; CELER/src/celeritas/field/FieldPropagator.hh:175
 ;             = geo_.find_next_step(chord.length + this->delta_intersection());
 	ldr	d0, [sp, #16]
 ; ././MockSubstepper.hh:17
 ;     real_type delta_intersection() const { return opts.delta_intersection; }
 	ldr	x8, [x19]
-<L2>:
+<L4>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:175
 ;             = geo_.find_next_step(chord.length + this->delta_intersection());
 	ldr	x0, [x19, #8]
@@ -218,15 +221,14 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:175
 ;             = geo_.find_next_step(chord.length + this->delta_intersection());
 	fadd	d0, d0, d1
-	ldr	x8, [x0]
-	ldr	x8, [x8, #128]
-	blr	x8
+<L5>:
+	bl	 <L5>
 ; CELER/src/celeritas/field/FieldPropagator.hh:181
 ;         real_type const update_length = substep.length * linear_step.distance
 	ldr	d0, [sp, #96]
 ; CELER/src/celeritas/field/FieldPropagator.hh:184
 ;         if (!linear_step.boundary)
-	tbz	w1, #0,  <L6>
+	tbz	w1, #0,  <L10>
 	fmov	d2, x0
 	ldr	d1, [sp, #16]
 ; ././MockSubstepper.hh:16
@@ -234,7 +236,7 @@ Disassembly of section __TEXT,__text:
 	ldr	x8, [x19]
 ; CELER/src/celeritas/field/FieldPropagator.hh:199
 ;         else if (CELER_UNLIKELY(
-	tbz	w20, #0,  <L3>
+	tbz	w20, #0,  <L6>
 ; ././MockSubstepper.hh:17
 ;     real_type delta_intersection() const { return opts.delta_intersection; }
 	ldr	d3, [x8, #16]
@@ -244,8 +246,8 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:199
 ;         else if (CELER_UNLIKELY(
 	fcmp	d3, d2
-	b.gt	 <L9>
-<L3>:
+	b.gt	 <L14>
+<L6>:
 	fmul	d3, d0, d2
 	fdiv	d9, d3, d1
 ; ././MockSubstepper.hh:16
@@ -254,7 +256,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:211
 ;                  || detail::is_intercept_close(state_.pos,
 	fcmp	d9, d3
-	b.ls	 <L4>
+	b.ls	 <L7>
 ; ././MockSubstepper.hh:17
 ;     real_type delta_intersection() const { return opts.delta_intersection; }
 	ldr	d3, [x8, #16]
@@ -288,23 +290,23 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:216
 ;                  || chord.length == 0)
 	fcmp	d4, d3
-	b.ls	 <L4>
+	b.ls	 <L7>
 	fcmp	d1, #0.0
-	b.ne	 <L7>
-<L4>:
+	b.ne	 <L12>
+<L7>:
 	mov	w20, #1                 ; =0x1
 ; CELER/src/celeritas/field/FieldPropagator.hh:232
 ;                                || result.distance + update_length <= step
 	fcmp	d1, d2
-	b.ge	 <L5>
+	b.ge	 <L9>
 	ldr	q2, [sp]
 	fadd	d2, d2, d9
 ; CELER/src/celeritas/field/FieldPropagator.hh:232
 ;                                || result.distance + update_length <= step
 	fcmp	d2, d8
-	b.ls	 <L5>
+	b.ls	 <L9>
 	fcmp	d1, #0.0
-	b.eq	 <L5>
+	b.eq	 <L9>
 ; CELER/src/celeritas/field/FieldPropagator.hh:240
 ;                 state_.pos = substep.state.pos;
 	ldr	q0, [sp, #48]
@@ -314,15 +316,14 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:241
 ;                 geo_.move_internal(substep.state.pos);
 	ldr	x0, [x19, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #184]
 	add	x1, sp, #48
-	blr	x8
+<L8>:
+	bl	 <L8>
 	mov	w20, #0                 ; =0x0
 ; CELER/src/celeritas/field/FieldPropagator.hh:247
 ;             result.distance += celeritas::min(update_length, substep.length);
 	ldr	d0, [sp, #96]
-<L5>:
+<L9>:
 ; CELER/src/corecel/math/Algorithms.hh:438
 ;     return std::fmin(a, b);
 	fminnm	d0, d9, d0
@@ -345,9 +346,9 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:258
 ;     } while (remaining > this->minimum_substep() && remaining_substeps > 0);
 	fcmp	d9, d0
-	b.gt	 <L8>
-	b	 <L10>
-<L6>:
+	b.gt	 <L13>
+	b	 <L15>
+<L10>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:192
 ;             state_ = substep.state;
 	ldp	q1, q2, [sp, #48]
@@ -365,15 +366,14 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:196
 ;             geo_.move_internal(state_.pos);
 	ldr	x0, [x19, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #184]
 	add	x1, x19, #16
-	blr	x8
+<L11>:
+	bl	 <L11>
 	mov	w20, #0                 ; =0x0
 ; CELER/src/celeritas/field/FieldPropagator.hh:197
 ;             --remaining_substeps;
 	sub	w21, w21, #1
-<L7>:
+<L12>:
 ; ././MockSubstepper.hh:16
 ;     real_type minimum_step() const { return opts.minimum_step; }
 	ldr	x8, [x19]
@@ -381,15 +381,15 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:258
 ;     } while (remaining > this->minimum_substep() && remaining_substeps > 0);
 	fcmp	d9, d0
-	b.le	 <L10>
-<L8>:
+	b.le	 <L15>
+<L13>:
 	sxth	w8, w21
 ; CELER/src/celeritas/field/FieldPropagator.hh:258
 ;     } while (remaining > this->minimum_substep() && remaining_substeps > 0);
 	cmp	w8, #0
-	b.gt	 <L0>
-	b	 <L10>
-<L9>:
+	b.gt	 <L1>
+	b	 <L15>
+<L14>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:208
 ;             remaining = substep.length / 2;
 	fmul	d9, d0, d12
@@ -401,39 +401,37 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:258
 ;     } while (remaining > this->minimum_substep() && remaining_substeps > 0);
 	fcmp	d9, d0
-	b.gt	 <L8>
-<L10>:
+	b.gt	 <L13>
+<L15>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:260
 ;     if (remaining_substeps == 0 && result.distance < step)
 	tst	w21, #0xffff
 	ldr	q0, [sp]
-	b.ne	 <L11>
+	b.ne	 <L16>
 	fcmp	d0, d8
-	b.pl	 <L11>
+	b.pl	 <L16>
 	mov	w21, #256               ; =0x100
 ; CELER/src/celeritas/field/FieldPropagator.hh:260
 ;     if (remaining_substeps == 0 && result.distance < step)
-	b	 <L14>
-<L11>:
+	b	 <L21>
+<L16>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:266
 ;     else if (result.distance > 0)
 	fcmp	d0, #0.0
-	b.le	 <L12>
+	b.le	 <L19>
 ; CELER/src/celeritas/field/FieldPropagator.hh:268
 ;         if (result.boundary)
-	tbz	w20, #0,  <L13>
+	tbz	w20, #0,  <L20>
 ; CELER/src/celeritas/field/FieldPropagator.hh:273
 ;             geo_.move_to_boundary();
 	ldr	x0, [x19, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #144]
-	blr	x8
+<L17>:
+	bl	 <L17>
 ; CELER/src/celeritas/field/FieldPropagator.hh:274
 ;             state_.pos = geo_.pos();
 	ldr	x0, [x19, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #24]
-	blr	x8
+<L18>:
+	bl	 <L18>
 	mov	x21, #0                 ; =0x0
 ; CELER/src/celeritas/field/FieldPropagator.hh:274
 ;             state_.pos = geo_.pos();
@@ -443,19 +441,19 @@ Disassembly of section __TEXT,__text:
 	stur	x8, [x19, #32]
 ; CELER/src/celeritas/field/FieldPropagator.hh:275
 ;         }
-	b	 <L14>
-<L12>:
+	b	 <L21>
+<L19>:
 	mov	x21, #0                 ; =0x0
 ; CELER/src/celeritas/field/FieldPropagator.hh:276
 ;         else if (CELER_UNLIKELY(result.distance < step))
-	b	 <L14>
-<L13>:
+	b	 <L21>
+<L20>:
 	mov	x21, #0                 ; =0x0
 ; CELER/src/celeritas/field/FieldPropagator.hh:276
 ;         else if (CELER_UNLIKELY(result.distance < step))
 	fcmp	d0, d8
-	b.mi	 <L17>
-<L14>:
+	b.mi	 <L26>
+<L21>:
 ; CELER/src/corecel/math/ArrayUtils.hh:161
 ;     Array<T, N> result{v};
 	ldr	d0, [x19, #56]
@@ -485,16 +483,15 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/celeritas/field/FieldPropagator.hh:291
 ;     geo_.set_dir(dir);
 	ldr	x0, [x19, #8]
-	ldr	x8, [x0]
-	ldr	x8, [x8, #176]
 	add	x1, sp, #48
-	blr	x8
+<L22>:
+	bl	 <L22>
 	ldr	q0, [sp]
 ; CELER/src/celeritas/field/FieldPropagator.hh:293
 ;     if (CELER_UNLIKELY(result.distance == 0))
 	fcmp	d0, #0.0
-	b.eq	 <L16>
-<L15>:
+	b.eq	 <L24>
+<L23>:
 ; CELER/src/celeritas/field/FieldPropagator.hh:317
 ; }
 	fmov	x0, d0
@@ -509,7 +506,7 @@ Disassembly of section __TEXT,__text:
 	ldp	d13, d12, [sp, #112]
 	add	sp, sp, #224
 	ret
-<L16>:
+<L24>:
 ; ././MockSubstepper.hh:17
 ;     real_type delta_intersection() const { return opts.delta_intersection; }
 	ldp	x8, x0, [x19]
@@ -545,15 +542,14 @@ Disassembly of section __TEXT,__text:
 	str	d0, [x19, #32]
 ; CELER/src/celeritas/field/FieldPropagator.hh:303
 ;         geo_.move_internal(state_.pos);
-	ldr	x8, [x0]
-	ldr	x8, [x8, #184]
 	add	x1, x19, #16
-	blr	x8
+<L25>:
+	bl	 <L25>
 	ldr	q0, [sp]
 	mov	w20, #0                 ; =0x0
-	b	 <L15>
-<L17>:
+	b	 <L23>
+<L26>:
 	mov.16b	v0, v8
 	str	q0, [sp]
-	b	 <L14>
-; Total code size: 1968 B
+	b	 <L21>
+; Total code size: 2456 B
