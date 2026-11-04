@@ -1,6 +1,5 @@
 #include "../common.hh"
 
-#include "orange/univ/detail/SurfaceFunctors.hh"
 #include "orange/surf/LocalSurfaceVisitor.hh"
 
 using namespace celeritas;
@@ -11,5 +10,8 @@ SignedSense calc_sense(NativeCRef<OrangeParamsData> const& params,
                        LocalSurfaceId                      surf_id)
 {
     LocalSurfaceVisitor visit_surface(params, surfaces);
-    return visit_surface(detail::CalcSense{pos}, surf_id);
+    auto val = visit_surface([&pos](auto&& surf) {
+        return surf.calc_value(pos); }, surf_id);
+    static_assert(std::is_same_v<decltype(val), real_type>);
+    return real_to_sense(val);
 }

@@ -3,9 +3,9 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-000000000000043c l     O __TEXT,__const lJTI0_0
-000000000000043c l     O __TEXT,__const ltmp1
-000000000006b5c8 l     O __LD,__compact_unwind ltmp2
+00000000000003c4 l     O __TEXT,__const lJTI0_0
+00000000000003c4 l     O __TEXT,__const ltmp1
+000000000006afc0 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_norm(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::Array<double, 3ul> const&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)
 
 Disassembly of section __TEXT,__text:
@@ -37,9 +37,9 @@ Disassembly of section __TEXT,__text:
 <L1>:
 	movi.2d	v0, #0000000000000000
 	fmov	d1, #1.00000000
-; FILE.cc:15
-; }
-	ret
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:80
+;         ORANGE_ST_VISIT_CASE(py);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -90,7 +90,9 @@ Disassembly of section __TEXT,__text:
 	fmadd	d2, d2, d19, d3
 	fmadd	d2, d5, d17, d2
 	fadd	d2, d16, d2
-	b	 <L5>
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:95
+;         ORANGE_ST_VISIT_CASE(gq);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -129,7 +131,9 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/ConeAligned.hh:244
 ;   norm[to_int(T)] = -tsq_ * x;
 	fnmul	d2, d3, d2
-	b	 <L5>
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:93
+;         ORANGE_ST_VISIT_CASE(kz);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -149,21 +153,28 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d0, d1, [x8]
+; CELER/src/orange/surf/Sphere.hh:186
+;     return {2 * (pos[0] - origin_[0]),
+	ldp	d2, d3, [x2]
+	fsub	d0, d2, d0
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
 	ldr	d2, [x8, #16]
 ; CELER/src/orange/surf/Sphere.hh:186
 ;     return {2 * (pos[0] - origin_[0]),
-	ldp	d3, d4, [x2]
-	fsub	d0, d3, d0
 	fadd	d0, d0, d0
 ; CELER/src/orange/surf/Sphere.hh:187
 ;             2 * (pos[1] - origin_[1]),
-	fsub	d1, d4, d1
+	fsub	d1, d3, d1
 	fadd	d1, d1, d1
 ; CELER/src/orange/surf/Sphere.hh:188
 ;             2 * (pos[2] - origin_[2])};
 	ldr	d3, [x2, #16]
 	fsub	d2, d3, d2
-	b	 <L4>
+	fadd	d2, d2, d2
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(s);
+	b	 <L3>
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
 ;             return func(this->make_surface<S>(id));
 	ldr	d0, [x2]
@@ -171,7 +182,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/CylCentered.hh:252
 ;     norm[to_int(U)] = 2 * pos[to_int(U)];
 	fadd	d0, d0, d0
-	b	 <L8>
+	b	 <L2>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -208,7 +219,9 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/ConeAligned.hh:244
 ;   norm[to_int(T)] = -tsq_ * x;
 	fnmul	d0, d3, d0
-	b	 <L5>
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:91
+;         ORANGE_ST_VISIT_CASE(kx);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -230,24 +243,23 @@ Disassembly of section __TEXT,__text:
 	ldp	d0, d1, [x8]
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
 ;             return func(this->make_surface<S>(id));
-	ldp	d2, d3, [x2]
+	ldp	d3, d4, [x2]
 ; CELER/src/orange/surf/CylAligned.hh:283
 ;   norm[to_int(U)] = 2 * (pos[to_int(U)] - origin_u_);
-	fsub	d0, d2, d0
+	fsub	d0, d3, d0
 	fadd	d0, d0, d0
 ; CELER/src/orange/surf/CylAligned.hh:284
 ;   norm[to_int(V)] = 2 * (pos[to_int(V)] - origin_v_);
-	fsub	d1, d3, d1
+	fsub	d1, d4, d1
 	fadd	d1, d1, d1
-	movi.2d	v2, #0000000000000000
-; CELER/src/corecel/math/Algorithms.hh:545
-;     return std::fma(a, b, y);
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:88
+;         ORANGE_ST_VISIT_CASE(cz);
 	b	 <L3>
 	fmov	d2, #1.00000000
 	movi.2d	v0, #0000000000000000
-; FILE.cc:15
-; }
-	ret
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:86
+;         ORANGE_ST_VISIT_CASE(cx);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -283,17 +295,22 @@ Disassembly of section __TEXT,__text:
 	fmadd	d1, d1, d7, d4
 	fadd	d2, d2, d2
 	fmadd	d2, d2, d16, d5
-	b	 <L5>
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:94
+;         ORANGE_ST_VISIT_CASE(sq);
+	b	 <L3>
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
 ;             return func(this->make_surface<S>(id));
-	ldp	d0, d1, [x2, #8]
+	ldp	d0, d2, [x2, #8]
 ; CELER/src/orange/surf/CylCentered.hh:252
 ;     norm[to_int(U)] = 2 * pos[to_int(U)];
-	fadd	d2, d0, d0
+	fadd	d1, d0, d0
 ; CELER/src/orange/surf/CylCentered.hh:253
 ;     norm[to_int(V)] = 2 * pos[to_int(V)];
-	fadd	d3, d1, d1
-	b	 <L2>
+	fadd	d2, d2, d2
+	movi.2d	v0, #0000000000000000
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:86
+;         ORANGE_ST_VISIT_CASE(cx);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -312,31 +329,22 @@ Disassembly of section __TEXT,__text:
 	add	x8, x9, x8, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldp	d0, d1, [x8]
+	ldp	d0, d2, [x8]
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
 ;             return func(this->make_surface<S>(id));
-	ldp	d2, d3, [x2, #8]
+	ldp	d1, d3, [x2, #8]
 ; CELER/src/orange/surf/CylAligned.hh:283
 ;   norm[to_int(U)] = 2 * (pos[to_int(U)] - origin_u_);
-	fsub	d0, d2, d0
-	fadd	d2, d0, d0
+	fsub	d0, d1, d0
+	fadd	d1, d0, d0
 ; CELER/src/orange/surf/CylAligned.hh:284
 ;   norm[to_int(V)] = 2 * (pos[to_int(V)] - origin_v_);
-	fsub	d0, d3, d1
-	fadd	d3, d0, d0
-<L2>:
+	fsub	d0, d3, d2
+	fadd	d2, d0, d0
 	movi.2d	v0, #0000000000000000
-	fmadd	d1, d2, d2, d0
-	fmadd	d1, d3, d3, d1
-	fsqrt	d1, d1
-	fmov	d4, #1.00000000
-	fdiv	d4, d4, d1
-	fmul	d0, d4, d0
-	fmul	d1, d2, d4
-	fmul	d2, d3, d4
-; FILE.cc:15
-; }
-	ret
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:86
+;         ORANGE_ST_VISIT_CASE(cx);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -361,22 +369,22 @@ Disassembly of section __TEXT,__text:
 	ldr	d2, [x2, #16]
 ; CELER/src/corecel/math/ArrayOperators.hh:68
 ; CELER_DEFINE_ARRAY_ASSIGN(-=)
-	fsub	d0, d2, d0
+	fsub	d2, d2, d0
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q2, [x8]
+	ldr	q0, [x8]
 ; CELER/src/corecel/math/ArrayOperators.hh:77
 ; CELER_DEFINE_ARRAY_ARITHM(-)
 	ldr	q3, [x2]
 ; CELER/src/corecel/math/ArrayOperators.hh:68
 ; CELER_DEFINE_ARRAY_ASSIGN(-=)
-	fsub.2d	v2, v3, v2
+	fsub.2d	v3, v3, v0
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul.2d	v3, v2, v2
+	fmul.2d	v0, v3, v3
 ; CELER/src/orange/surf/Toroid.hh:276
 ;     real_type const rho_sq = sq(x0) + sq(y0);
-	faddp.2d	d3, v3
+	faddp.2d	d0, v0
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldr	q4, [x8, #32]
@@ -389,47 +397,31 @@ Disassembly of section __TEXT,__text:
 	fdiv.2d	v5, v4, v5
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d6, d0, d0
+	fmul	d6, d2, d2
 ; CELER/src/orange/surf/Toroid.hh:278
 ;     real_type const q = rho_sq + scale_z * sq(z0) + (sq(r_) - sq(a_));
-	fmadd	d3, d5, d6, d3
+	fmadd	d0, d5, d6, d0
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
 ; CELER/src/orange/surf/Toroid.hh:278
 ;     real_type const q = rho_sq + scale_z * sq(z0) + (sq(r_) - sq(a_));
 	fsub	d4, d1, d4
-	fadd	d3, d4, d3
-	fmov	d4, #-2.00000000
+	fadd	d4, d4, d0
+	fmov	d0, #-2.00000000
 ; CELER/src/orange/surf/Toroid.hh:279
 ;     real_type const common = 4 * (q - 2 * sq(r_));
-	fmadd	d1, d1, d4, d3
-	fmov	d4, #4.00000000
-	fmul	d1, d1, d4
+	fmadd	d0, d1, d0, d4
+	fmov	d6, #4.00000000
+	fmul	d1, d0, d6
 ; CELER/src/orange/surf/Toroid.hh:280
 ;     return {common * x0, common * y0, 4 * scale_z * q * z0};
-	fmul	d6, d1, d2
-	fmul.d	d1, d1, v2[1]
-	fmul	d2, d4, d5
+	fmul	d0, d1, d3
+	fmul.d	d1, d1, v3[1]
+	fmul	d3, d6, d5
+	fmul	d3, d3, d4
 	fmul	d2, d2, d3
-	fmul	d2, d0, d2
-	movi.2d	v0, #0000000000000000
-; CELER/src/corecel/math/Algorithms.hh:545
-;     return std::fma(a, b, y);
-	fmadd	d0, d6, d6, d0
-	fmadd	d0, d1, d1, d0
-	fmadd	d0, d2, d2, d0
-; CELER/src/corecel/math/ArrayUtils.hh:149
-;     return std::sqrt(dot_product(v, v));
-	fsqrt	d0, d0
-	fmov	d3, #1.00000000
-; CELER/src/corecel/math/ArrayUtils.hh:162
-;     T const scale_factor = 1 / norm(result);
-	fdiv	d3, d3, d0
-; CELER/src/corecel/math/ArrayUtils.hh:165
-;         el *= scale_factor;
-	fmul	d0, d6, d3
-	b	 <L6>
+	b	 <L3>
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
 ;             return func(this->make_surface<S>(id));
 	ldp	d0, d1, [x2]
@@ -439,18 +431,9 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/CylCentered.hh:253
 ;     norm[to_int(V)] = 2 * pos[to_int(V)];
 	fadd	d1, d1, d1
-<L3>:
-	fmadd	d3, d0, d0, d2
-	fmadd	d3, d1, d1, d3
-	fsqrt	d3, d3
-	fmov	d4, #1.00000000
-	fdiv	d3, d4, d3
-	fmul	d0, d0, d3
-	fmul	d1, d1, d3
-	fmul	d2, d3, d2
-; FILE.cc:15
-; }
-	ret
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:88
+;         ORANGE_ST_VISIT_CASE(cz);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -487,31 +470,19 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/ConeAligned.hh:244
 ;   norm[to_int(T)] = -tsq_ * x;
 	fnmul	d1, d3, d1
-	b	 <L5>
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:92
+;         ORANGE_ST_VISIT_CASE(ky);
+	b	 <L3>
 ; CELER/src/orange/surf/SphereCentered.hh:182
 ;     return {2 * pos[0], 2 * pos[1], 2 * pos[2]};
 	ldp	d0, d1, [x2]
 	fadd	d0, d0, d0
 	fadd	d1, d1, d1
 	ldr	d2, [x2, #16]
-<L4>:
 	fadd	d2, d2, d2
-<L5>:
-	movi.2d	v3, #0000000000000000
-	fmadd	d3, d0, d0, d3
-	fmadd	d3, d1, d1, d3
-	fmadd	d3, d2, d2, d3
-	fsqrt	d3, d3
-	fmov	d4, #1.00000000
-	fdiv	d3, d4, d3
-	fmul	d0, d0, d3
-<L6>:
-	fmul	d1, d1, d3
-<L7>:
-	fmul	d2, d2, d3
-; FILE.cc:15
-; }
-	ret
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:90
+;         ORANGE_ST_VISIT_CASE(s);
+	b	 <L3>
 ; CELER/src/orange/surf/SurfaceTypeTraits.hh:89
 ;         ORANGE_ST_VISIT_CASE(p);
 	ldr	x8, [x0, #280]
@@ -530,9 +501,9 @@ Disassembly of section __TEXT,__text:
 ;     return *ptr;
 	ldp	d0, d1, [x8]
 	ldr	d2, [x8, #16]
-; FILE.cc:15
-; }
-	ret
+; CELER/src/orange/surf/SurfaceTypeTraits.hh:89
+;         ORANGE_ST_VISIT_CASE(p);
+	b	 <L3>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
 	ldr	x8, [x1, #16]
@@ -563,15 +534,29 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/CylAligned.hh:284
 ;   norm[to_int(V)] = 2 * (pos[to_int(V)] - origin_v_);
 	fsub	d1, d3, d1
-<L8>:
+<L2>:
 	fadd	d2, d1, d1
 	movi.2d	v1, #0000000000000000
-	fmadd	d3, d0, d0, d1
+<L3>:
+	movi.2d	v3, #0000000000000000
+; CELER/src/corecel/math/Algorithms.hh:545
+;     return std::fma(a, b, y);
+	fmadd	d3, d0, d0, d3
+	fmadd	d3, d1, d1, d3
 	fmadd	d3, d2, d2, d3
+; CELER/src/corecel/math/ArrayUtils.hh:149
+;     return std::sqrt(dot_product(v, v));
 	fsqrt	d3, d3
 	fmov	d4, #1.00000000
+; CELER/src/corecel/math/ArrayUtils.hh:162
+;     T const scale_factor = 1 / norm(result);
 	fdiv	d3, d4, d3
+; CELER/src/corecel/math/ArrayUtils.hh:165
+;         el *= scale_factor;
 	fmul	d0, d0, d3
-	fmul	d1, d3, d1
-	b	 <L7>
-; Total code size: 1816 B
+	fmul	d1, d1, d3
+	fmul	d2, d2, d3
+; FILE.cc:16
+; }
+	ret
+; Total code size: 1696 B

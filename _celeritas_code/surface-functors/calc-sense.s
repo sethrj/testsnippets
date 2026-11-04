@@ -3,82 +3,56 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-0000000000000448 l     O __TEXT,__const lJTI1_0
-0000000000000448 l     O __TEXT,__const ltmp1
-000000000006a150 l     O __LD,__compact_unwind ltmp2
+00000000000003c4 l     O __TEXT,__const lJTI0_0
+00000000000003c4 l     O __TEXT,__const ltmp1
+0000000000069ff0 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_sense(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::Array<double, 3ul> const&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)
-0000000000000030  w    F __TEXT,__text decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcSense>(celeritas::detail::CalcSense&&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)
 
 Disassembly of section __TEXT,__text:
 
 <ltmp0>:
-; calc_sense(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::Array<double, 3ul> const&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)():
-; FILE.cc:12
-; {
-	sub	sp, sp, #48
-	stp	x29, x30, [sp, #32]
-	add	x29, sp, #32
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:84
-;     : params_{params}, surfaces_{local_surfaces}
-	stp	x0, x1, [sp, #16]
-; FILE.cc:14
-;     return visit_surface(detail::CalcSense{pos}, surf_id);
-	str	x2, [sp, #8]
-	add	x0, sp, #16
-	add	x1, sp, #8
-	mov	x2, x3
 <L0>:
-	bl	 <L0>
-	ldp	x29, x30, [sp, #32]
-	add	sp, sp, #48
-	ret
-
-<decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcSense>(celeritas::detail::CalcSense&&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)>:
-; decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcSense>(celeritas::detail::CalcSense&&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)():
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:116
-;         params_.surface_types[surfaces_.types[id]]);
-	ldp	x8, x10, [x0]
+; calc_sense(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::Array<double, 3ul> const&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)():
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x9, [x10]
+	ldr	x8, [x1]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	ldr	x11, [x8, #344]
-	add	x9, x11, x9
+	ldr	x9, [x0, #344]
+	add	x8, x9, x8
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldrb	w9, [x9, x2]
-	ldr	x10, [x10, #16]
-	ldr	x11, [x8, #280]
-	add	x10, x11, x10, lsl #3
-	ldr	x10, [x10, x2, lsl #3]
-	ldr	x8, [x8, #328]
-	add	x8, x8, x10, lsl #3
+	ldrb	w9, [x8, x3]
+	ldr	x8, [x1, #16]
+	ldr	x10, [x0, #280]
+	add	x8, x10, x8, lsl #3
+	ldr	x8, [x8, x3, lsl #3]
+	ldr	x10, [x0, #328]
+	add	x8, x10, x8, lsl #3
 	ldr	d0, [x8]
 	adrp	x10, 0x0 <ltmp0>
 	add	x10, x10, #0
 ; CELER/src/orange/surf/SurfaceTypeTraits.hh:77
 ;     switch (st)
-	adr	x11,  <L0>
+	adr	x11,  <L1>
 	ldrb	w12, [x10, x9]
 	add	x11, x11, x12, lsl #2
 	br	x11
-<L0>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/PlaneAligned.hh:160
-;     return x[to_int(T)];
-	ldr	d1, [x8]
+<L1>:
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldr	d1, [x2]
 ; CELER/src/orange/surf/PlaneAligned.hh:180
 ;     return this->dot_normal(pos) - this->displacement();
 	fsub	d0, d1, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
@@ -87,15 +61,12 @@ Disassembly of section __TEXT,__text:
 	ldp	d5, d6, [x8, #40]
 	ldp	d7, d16, [x8, #56]
 	ldr	d17, [x8, #72]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
 ; CELER/src/orange/surf/GeneralQuadric.hh:160
 ;     real_type const x = pos[0];
-	ldp	d18, d19, [x8]
+	ldp	d18, d19, [x2]
 ; CELER/src/orange/surf/GeneralQuadric.hh:162
 ;     real_type const z = pos[2];
-	ldr	d20, [x8, #16]
+	ldr	d20, [x2, #16]
 ; CELER/src/orange/surf/GeneralQuadric.hh:164
 ;     real_type result = (a_ * x + d_ * y + f_ * z + g_) * x
 	fmul	d3, d3, d19
@@ -112,33 +83,30 @@ Disassembly of section __TEXT,__text:
 	fmadd	d1, d2, d20, d16
 	fmadd	d0, d1, d20, d0
 	fadd	d0, d17, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x9, [x1]
+	ldr	d3, [x8, #24]
 ; CELER/src/orange/surf/ConeAligned.hh:181
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
-	ldp	d4, d3, [x9, #8]
-	fsub	d2, d3, d2
+	ldp	d5, d4, [x2, #8]
+	fsub	d2, d4, d2
 ; CELER/src/orange/surf/ConeAligned.hh:182
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
-	ldr	d3, [x9]
-	fsub	d0, d3, d0
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d3, [x8, #24]
+	ldr	d4, [x2]
+	fsub	d0, d4, d0
 ; CELER/src/orange/surf/ConeAligned.hh:183
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
-	fsub	d1, d4, d1
+	fsub	d1, d5, d1
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
@@ -152,30 +120,25 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/ConeAligned.hh:185
 ;   return (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fadd	d0, d0, d1
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x9, [x1]
-; CELER/src/orange/surf/Sphere.hh:143
-;     Real3 const tpos{pos[0] - origin_[0], pos[1] - origin_[1], pos[2] - origin_[2]};
-	ldp	d3, d4, [x9]
-	fsub	d0, d3, d0
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
 	ldr	d3, [x8, #24]
 ; CELER/src/orange/surf/Sphere.hh:143
 ;     Real3 const tpos{pos[0] - origin_[0], pos[1] - origin_[1], pos[2] - origin_[2]};
-	fsub	d1, d4, d1
-	ldr	d4, [x9, #16]
+	ldp	d4, d5, [x2]
+	fsub	d0, d4, d0
+	fsub	d1, d5, d1
+	ldr	d4, [x2, #16]
 	fsub	d2, d4, d2
 	movi.2d	v4, #0000000000000000
 ; CELER/src/corecel/math/Algorithms.hh:545
@@ -186,22 +149,19 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/Sphere.hh:145
 ;     return dot_product(tpos, tpos) - radius_sq_;
 	fsub	d0, d0, d3
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/CylCentered.hh:193
-;     real_type const u = pos[to_int(U)];
-	ldr	d1, [x8]
-; CELER/src/orange/surf/CylCentered.hh:194
-;     real_type const v = pos[to_int(V)];
-	ldr	d2, [x8, #16]
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldr	d1, [x2]
+	ldr	d2, [x2, #16]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
@@ -210,32 +170,29 @@ Disassembly of section __TEXT,__text:
 ;     return ipow<2>(u) + ipow<2>(v) - radius_sq_;
 	fadd	d1, d1, d2
 	fsub	d0, d1, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x9, [x1]
+	ldr	d3, [x8, #24]
 ; CELER/src/orange/surf/ConeAligned.hh:181
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
-	ldp	d3, d4, [x9]
-	fsub	d0, d3, d0
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d3, [x8, #24]
+	ldp	d4, d5, [x2]
+	fsub	d0, d4, d0
 ; CELER/src/orange/surf/ConeAligned.hh:182
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
-	fsub	d1, d4, d1
+	fsub	d1, d5, d1
 ; CELER/src/orange/surf/ConeAligned.hh:183
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
-	ldr	d4, [x9, #16]
+	ldr	d4, [x2, #16]
 	fsub	d2, d4, d2
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
@@ -248,43 +205,38 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldp	d3, d4, [x2]
 ; CELER/src/orange/surf/CylAligned.hh:224
 ;     real_type const u = pos[to_int(U)] - origin_u_;
-	ldp	d3, d4, [x8]
-	b	 <L1>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/PlaneAligned.hh:160
-;     return x[to_int(T)];
-	ldr	d1, [x8, #16]
+	b	 <L5>
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldr	d1, [x2, #16]
 ; CELER/src/orange/surf/PlaneAligned.hh:180
 ;     return this->dot_normal(pos) - this->displacement();
 	fsub	d0, d1, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
 	ldp	d3, d4, [x8, #24]
 	ldp	d5, d6, [x8, #40]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
 ; CELER/src/orange/surf/SimpleQuadric.hh:169
 ;     real_type const x = pos[to_int(Axis::x)];
-	ldp	d7, d16, [x8]
+	ldp	d7, d16, [x2]
 ; CELER/src/orange/surf/SimpleQuadric.hh:171
 ;     real_type const z = pos[to_int(Axis::z)];
-	ldr	d17, [x8, #16]
+	ldr	d17, [x2, #16]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d18, d7, d7
@@ -306,61 +258,48 @@ Disassembly of section __TEXT,__text:
 	fmadd	d1, d5, d17, d1
 	fadd	d0, d1, d0
 	fadd	d0, d6, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/CylCentered.hh:193
-;     real_type const u = pos[to_int(U)];
-	ldur	q1, [x8, #8]
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldur	q1, [x2, #8]
 	b	 <L2>
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/CylAligned.hh:224
-;     real_type const u = pos[to_int(U)] - origin_u_;
-	ldp	d3, d4, [x8, #8]
-<L1>:
-	fsub	d0, d3, d0
-	fsub	d1, d4, d1
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldr	d3, [x2, #8]
 	b	 <L4>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/PlaneAligned.hh:160
-;     return x[to_int(T)];
-	ldr	d1, [x8, #8]
+	ldr	d1, [x2, #8]
 ; CELER/src/orange/surf/PlaneAligned.hh:180
 ;     return this->dot_normal(pos) - this->displacement();
 	fsub	d0, d1, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
 	ldp	d3, d4, [x8, #24]
 	ldr	d5, [x8, #40]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
 ; CELER/src/corecel/math/ArrayOperators.hh:77
 ; CELER_DEFINE_ARRAY_ARITHM(-)
-	ldp	d6, d7, [x8]
-	ldr	d16, [x8, #16]
+	ldp	d6, d7, [x2]
+	ldr	d16, [x2, #16]
 ; CELER/src/corecel/math/ArrayOperators.hh:68
 ; CELER_DEFINE_ARRAY_ASSIGN(-=)
 	fsub	d0, d6, d0
@@ -397,49 +336,45 @@ Disassembly of section __TEXT,__text:
 ;             - (4 * sq(r_)) * (sq(x0) + sq(y0)));
 	fmul	d2, d2, d3
 	fmadd	d0, d2, d0, d1
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/CylCentered.hh:193
-;     real_type const u = pos[to_int(U)];
-	ldr	q1, [x8]
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldr	q1, [x2]
 <L2>:
 	fmul.2d	v1, v1, v1
 	faddp.2d	d1, v1
 	fsub	d0, d1, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x9, [x1]
+	ldr	d3, [x8, #24]
 ; CELER/src/orange/surf/ConeAligned.hh:181
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
-	ldp	d4, d3, [x9]
-	fsub	d1, d3, d1
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d3, [x8, #24]
+	ldp	d5, d4, [x2]
+	fsub	d1, d4, d1
 ; CELER/src/orange/surf/ConeAligned.hh:182
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
-	fsub	d0, d4, d0
+	fsub	d0, d5, d0
 ; CELER/src/orange/surf/ConeAligned.hh:183
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
-	ldr	d4, [x9, #16]
+	ldr	d4, [x2, #16]
 	fsub	d2, d4, d2
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
@@ -451,95 +386,93 @@ Disassembly of section __TEXT,__text:
 <L3>:
 	fmul	d1, d2, d2
 	fadd	d0, d0, d1
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
 	movi.2d	v1, #0000000000000000
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d2, d3, [x8]
+	ldp	d2, d3, [x2]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d1, d2, d2, d1
 	fmadd	d1, d3, d3, d1
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d2, [x8, #16]
+	ldr	d2, [x2, #16]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d1, d2, d2, d1
 ; CELER/src/orange/surf/SphereCentered.hh:143
 ;     return dot_product(pos, pos) - radius_sq_;
 	fsub	d0, d1, d0
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
 	ldr	d3, [x8, #24]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
 	movi.2d	v4, #0000000000000000
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d5, d6, [x8]
+	ldp	d5, d6, [x2]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d0, d0, d5, d4
 	fmadd	d0, d1, d6, d0
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d1, [x8, #16]
+	ldr	d1, [x2, #16]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d0, d2, d1, d0
 ; CELER/src/orange/surf/Plane.hh:165
 ;     return this->dot_normal(pos) - this->displacement();
 	fsub	d0, d0, d3
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d1, d2, [x8, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:31
-;         return surf.calc_sense(this->pos);
-	ldr	x8, [x1]
-; CELER/src/orange/surf/CylAligned.hh:224
-;     real_type const u = pos[to_int(U)] - origin_u_;
-	ldr	d3, [x8]
-	fsub	d0, d3, d0
-; CELER/src/orange/surf/CylAligned.hh:225
-;     real_type const v = pos[to_int(V)] - origin_v_;
-	ldr	d3, [x8, #16]
-	fsub	d1, d3, d1
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:114
+;             return func(this->make_surface<S>(id));
+	ldr	d3, [x2]
 <L4>:
+	ldr	d4, [x2, #16]
+<L5>:
+	fsub	d0, d3, d0
+	fsub	d1, d4, d1
 	fmul	d0, d0, d0
 	fmul	d1, d1, d1
 	fadd	d0, d0, d1
 	fsub	d0, d0, d2
+; CELER/src/orange/SenseUtils.hh:69
+;     return static_cast<SignedSense>(!(quadric <= 0) - (quadric < 0));
 	fcmp	d0, #0.0
 	cset	w8, hi
 	cset	w9, mi
 	sub	w0, w8, w9
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:110
-;     return visit_surface_type(
+; FILE.cc:16
+;     return real_to_sense(val);
 	ret
-; Total code size: 2008 B
+; Total code size: 1696 B

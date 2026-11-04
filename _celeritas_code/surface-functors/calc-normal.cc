@@ -10,6 +10,7 @@ Real3 calc_norm(NativeCRef<OrangeParamsData> const& params,
                        LocalSurfaceId                      surf_id)
 {
     LocalSurfaceVisitor visit_surface(params, surfaces);
-    return visit_surface([&pos](auto&& surf) {
-        return surf.calc_normal(pos); }, surf_id);
+    auto grad = visit_surface([&pos](auto&& surf) {
+        return surf.calc_gradient(pos); }, surf_id);
+    return make_unit_vector(grad);
 }
