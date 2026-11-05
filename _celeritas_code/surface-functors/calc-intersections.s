@@ -3,27 +3,15 @@
 
 SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
-0000000000002ed4 l     O __TEXT,__const lJTI1_0
-0000000000002ed4 l     O __TEXT,__const ltmp1
-000000000007d328 l     O __LD,__compact_unwind ltmp2
+000000000000179c l     O __TEXT,__const lJTI1_0
+000000000000179c l     O __TEXT,__const ltmp1
+00000000000789e8 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)
-00000000000023dc  w    F __TEXT,__text void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)
-0000000000000e18  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)
-0000000000001040  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)
-000000000000126c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)
-0000000000001658  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)
-00000000000018a0  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)
-0000000000001ae8  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)
-0000000000000610  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)
-000000000000082c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)
-0000000000000a4c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)
-0000000000001d30  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)
-0000000000001f9c  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::GeneralQuadric>(celeritas::GeneralQuadric const&)
-0000000000000c68  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)
-0000000000001494  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)
-0000000000002250  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Toroid>(celeritas::Toroid const&)
-0000000000002518  w    F __TEXT,__text celeritas::FerrariSolver::operator()(celeritas::Array<double, 4ul> const&) const
-00000000000027dc  w    F __TEXT,__text celeritas::FerrariSolver::operator()(celeritas::Array<double, 5ul> const&) const
+0000000000000948  w    F __TEXT,__text celeritas::detail::CalcIntersections::solve_and_store(celeritas::detail::QuadraticIntersectionInput const&)
+0000000000000ca4  w    F __TEXT,__text void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)
+0000000000000b18  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Toroid>(celeritas::Toroid const&)
+0000000000000de0  w    F __TEXT,__text celeritas::FerrariSolver::operator()(celeritas::Array<double, 4ul> const&) const
+00000000000010a4  w    F __TEXT,__text celeritas::FerrariSolver::operator()(celeritas::Array<double, 5ul> const&) const
 000000000000002c  w    F __TEXT,__text decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>) const
 0000000000000000         *UND* _acos
 0000000000000000         *UND* _cbrt
@@ -58,467 +46,649 @@ Disassembly of section __TEXT,__text:
 ; decltype(auto) celeritas::LocalSurfaceVisitor::operator()<celeritas::detail::CalcIntersections&>(celeritas::detail::CalcIntersections&, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>) const():
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:115
 ;         params_.surface_types[surfaces_.types[id]]);
-	ldp	x9, x10, [x0]
+	ldp	x8, x9, [x0]
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x11, [x10]
+	ldr	x10, [x9]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	ldr	x12, [x9, #344]
-	add	x11, x12, x11
+	ldr	x11, [x8, #344]
+	add	x10, x11, x10
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldrb	w11, [x11, x2]
-	sub	sp, sp, #96
-	stp	x29, x30, [sp, #80]
-	add	x29, sp, #80
-	mov	x8, x1
-	adrp	x12, 0x0 <ltmp0>
-	add	x12, x12, #0
+	ldrb	w10, [x10, x2]
+	sub	sp, sp, #80
+	stp	x20, x19, [sp, #48]
+	stp	x29, x30, [sp, #64]
+	add	x29, sp, #64
+	mov	x19, x1
+	adrp	x11, 0x0 <ltmp0>
+	add	x11, x11, #0
 ; CELER/src/orange/surf/SurfaceTypeTraits.hh:77
 ;     switch (st)
-	adr	x13,  <L0>
-	ldrh	w14, [x12, x11, lsl #1]
-	add	x13, x13, x14, lsl #2
-	br	x13
+	adr	x12,  <L0>
+	ldrh	w13, [x11, x10, lsl #1]
+	add	x12, x12, x13, lsl #2
+	br	x12
 <L0>:
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
+	ldr	x11, [x19, #24]
+	ldr	x10, [x19, #64]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
 ;             if (on_surface == SurfaceState::on)
-	cmp	x12, x11
-	b.eq	 <L11>
+	cmp	x11, x10
+	b.eq	 <L3>
 ; CELER/src/corecel/cont/Span.hh:240
 ;         return static_cast<pointer>(s_.data);
-	ldr	x12, [x9, #328]
+	ldr	x11, [x8, #328]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	ldr	x9, [x9, #280]
+	ldr	x8, [x8, #280]
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
+	ldr	x9, [x9, #16]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	add	x9, x9, x10, lsl #3
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x8, [x8, x2, lsl #3]
+	ldr	d0, [x11, x8, lsl #3]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
+;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+	ldp	x8, x9, [x19, #8]
+; CELER/src/orange/surf/PlaneAligned.hh:167
+;     return x[to_int(T)];
+	ldr	d1, [x8]
+	ldr	d2, [x9]
+	b	 <L13>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldr	x9, [x9, x2, lsl #3]
-	ldr	d0, [x12, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface)));
-	ldp	x9, x10, [x8, #8]
-; CELER/src/orange/surf/PlaneAligned.hh:168
-;     return x[to_int(T)];
-	ldr	d1, [x9]
-	ldr	d2, [x10]
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
-;         = (input.displacement - input.dot_pos) / input.dot_dir;
-	fsub	d0, d0, d1
-	fdiv	d0, d0, d2
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:56
-;         input.on_surface == SurfaceState::off, input.dot_dir != 0, dist > 0);
-	fcmp	d0, #0.0
-	movi.2d	v1, #0000000000000000
-	fccmp	d2, d1, #4, gt
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:57
-;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d0, d1, ne
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d1, [x8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d1
-	b.ls	 <L9>
-	add	x9, x11, #1
-	str	x9, [x8, #64]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
 ; CELER/src/corecel/cont/Span.hh:240
 ;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
+	ldr	x8, [x8, #328]
 ; CELER/src/corecel/data/Collection.hh:580
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
+	add	x8, x8, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x9]
-; CELER/src/orange/surf/GeneralQuadric.hh:138
-;     : a_(data[0])
-	str	q0, [sp]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	q0, [x9, #16]
-; CELER/src/orange/surf/GeneralQuadric.hh:140
-;     , c_(data[2])
-	str	q0, [sp, #16]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	q0, [x9, #32]
-; CELER/src/orange/surf/GeneralQuadric.hh:142
-;     , e_(data[4])
-	str	q0, [sp, #32]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	q0, [x9, #48]
-; CELER/src/orange/surf/GeneralQuadric.hh:144
-;     , g_(data[6])
-	str	q0, [sp, #48]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	q0, [x9, #64]
-; CELER/src/orange/surf/GeneralQuadric.hh:146
-;     , i_(data[8])
-	str	q0, [sp, #64]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	mov	x1, sp
-	mov	x0, x8
-<L1>:
-	bl	 <L1>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldp	q0, q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	stp	q0, q1, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L2>:
-	bl	 <L2>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldp	q0, q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	stp	q0, q1, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L3>:
-	bl	 <L3>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, x10, lsl #3]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	d0, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L4>:
-	bl	 <L4>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldp	q0, q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	stp	q0, q1, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L5>:
-	bl	 <L5>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, #16]
-	ldr	q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	q1, [sp]
-	str	d0, [sp, #16]
-	mov	x1, sp
-	mov	x0, x8
-<L6>:
-	bl	 <L6>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
+	ldp	d0, d1, [x8]
+	ldp	d2, d3, [x8, #16]
+	ldp	d4, d5, [x8, #32]
+	ldp	d6, d7, [x8, #48]
+	ldp	d16, d17, [x8, #64]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
-	cmp	x12, x11
-	b.eq	 <L11>
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x12, [x9, #328]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x9, [x9, #280]
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/GeneralQuadric.hh:196
+;     real_type const x = pos[0];
+	ldp	d18, d19, [x9]
+; CELER/src/orange/surf/GeneralQuadric.hh:198
+;     real_type const z = pos[2];
+	ldr	d20, [x9, #16]
+; CELER/src/orange/surf/GeneralQuadric.hh:199
+;     real_type const u = dir[0];
+	ldp	d21, d22, [x10]
+; CELER/src/orange/surf/GeneralQuadric.hh:201
+;     real_type const w = dir[2];
+	ldr	d23, [x10, #16]
+; CELER/src/orange/surf/GeneralQuadric.hh:204
+;     real_type a = (a_ * u + d_ * v) * u + (b_ * v + e_ * w) * v
+	fmul	d24, d3, d22
+	fmadd	d24, d0, d21, d24
+	fmul	d25, d4, d23
+	fmadd	d25, d1, d22, d25
+	fmul	d25, d22, d25
+	fmadd	d24, d24, d21, d25
+; CELER/src/orange/surf/GeneralQuadric.hh:205
+;                   + (c_ * w + f_ * u) * w;
+	fmul	d25, d5, d21
+	fmadd	d25, d2, d23, d25
+	fmadd	d24, d25, d23, d24
+; CELER/src/orange/surf/GeneralQuadric.hh:206
+;     real_type b = (2 * a_ * x + d_ * y + f_ * z + g_) * u
+	fadd	d25, d0, d0
+	fmul	d26, d3, d19
+	fmadd	d25, d25, d18, d26
+	fmadd	d25, d5, d20, d25
+	fadd	d25, d6, d25
+; CELER/src/orange/surf/GeneralQuadric.hh:207
+;                   + (2 * b_ * y + d_ * x + e_ * z + h_) * v
+	fadd	d27, d1, d1
+	fmul	d3, d3, d18
+	fmadd	d3, d27, d19, d3
+	fmadd	d3, d4, d20, d3
+	fadd	d3, d7, d3
+	fmul	d3, d22, d3
+	fmadd	d3, d25, d21, d3
+; CELER/src/orange/surf/GeneralQuadric.hh:208
+;                   + (2 * c_ * z + e_ * y + f_ * x + i_) * w;
+	fadd	d21, d2, d2
+	fmul	d22, d4, d19
+	fmadd	d21, d21, d20, d22
+	fmadd	d21, d5, d18, d21
+	fadd	d21, d16, d21
+	fmadd	d3, d21, d23, d3
+; CELER/src/orange/surf/GeneralQuadric.hh:209
+;     real_type c = ((a_ * x + d_ * y + g_) * x + (b_ * y + e_ * z + h_) * y
+	fmadd	d0, d0, d18, d26
+	fadd	d0, d6, d0
+	fmul	d4, d4, d20
+	fmadd	d1, d1, d19, d4
+	fadd	d1, d7, d1
+	fmul	d1, d19, d1
+	fmadd	d0, d0, d18, d1
+; CELER/src/orange/surf/GeneralQuadric.hh:210
+;                    + (c_ * z + f_ * x + i_) * z + j_);
+	fmul	d1, d5, d18
+	fmadd	d1, d2, d20, d1
+	fadd	d1, d16, d1
+	fmadd	d0, d1, d20, d0
+	fmov	d1, #0.50000000
+; CELER/src/orange/surf/GeneralQuadric.hh:212
+;     return {a, b / 2, c, on_surface};
+	fmul	d1, d3, d1
+	stp	d24, d1, [sp]
+; CELER/src/orange/surf/GeneralQuadric.hh:210
+;                    + (c_ * z + f_ * x + i_) * z + j_);
+	fadd	d0, d17, d0
+; CELER/src/orange/surf/GeneralQuadric.hh:212
+;     return {a, b / 2, c, on_surface};
+	b	 <L10>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
+	ldr	x9, [x9, #16]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	add	x9, x9, x10, lsl #3
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldr	x9, [x9, x2, lsl #3]
-	ldr	d0, [x12, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface)));
-	ldp	x9, x10, [x8, #8]
-; CELER/src/orange/surf/PlaneAligned.hh:168
-;     return x[to_int(T)];
-	ldr	d1, [x9, #16]
-	ldr	d2, [x10, #16]
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
-;         = (input.displacement - input.dot_pos) / input.dot_dir;
-	fsub	d0, d0, d1
-	fdiv	d0, d0, d2
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:56
-;         input.on_surface == SurfaceState::off, input.dot_dir != 0, dist > 0);
-	fcmp	d0, #0.0
-	movi.2d	v1, #0000000000000000
-	fccmp	d2, d1, #4, gt
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:57
-;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d0, d1, ne
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d1, [x8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d1
-	b.ls	 <L9>
-	add	x9, x11, #1
-	str	x9, [x8, #64]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
 ; CELER/src/corecel/cont/Span.hh:240
 ;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
+	ldr	x8, [x8, #328]
 ; CELER/src/corecel/data/Collection.hh:580
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
+	add	x8, x8, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x9]
-; CELER/src/orange/surf/SimpleQuadric.hh:150
-;     : a_{data[0]}
-	str	q0, [sp]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	q0, [x9, #16]
-; CELER/src/orange/surf/SimpleQuadric.hh:152
-;     , c_{data[2]}
-	str	q0, [sp, #16]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	q0, [x9, #32]
-; CELER/src/orange/surf/SimpleQuadric.hh:154
-;     , e_{data[4]}
-	str	q0, [sp, #32]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, #48]
-; CELER/src/orange/surf/SimpleQuadric.hh:156
-;     , g_{data[6]}
-	str	d0, [sp, #48]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	mov	x1, sp
-	mov	x0, x8
-<L7>:
-	bl	 <L7>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
+	ldp	d0, d1, [x8]
+	ldp	d2, d3, [x8, #16]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
-	cmp	x12, x11
-	b.eq	 <L11>
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x12, [x9, #280]
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/ConeAligned.hh:221
+;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
+	ldp	d5, d4, [x9, #8]
+	fsub	d2, d4, d2
+; CELER/src/orange/surf/ConeAligned.hh:222
+;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
+	ldr	d4, [x9]
+	fsub	d0, d4, d0
+; CELER/src/orange/surf/ConeAligned.hh:223
+;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
+	fsub	d1, d5, d1
+; CELER/src/orange/surf/ConeAligned.hh:225
+;     real_type const u = dir[to_int(T)];
+	ldp	d6, d4, [x10, #8]
+; CELER/src/orange/surf/ConeAligned.hh:226
+;     real_type const v = dir[to_int(U)];
+	ldr	d5, [x10]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d7, d4, d4
+	fmul	d16, d5, d5
+; CELER/src/orange/surf/ConeAligned.hh:230
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
+	fmsub	d7, d3, d7, d16
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d16, d6, d6
+; CELER/src/orange/surf/ConeAligned.hh:230
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
+	fadd	d7, d16, d7
+; CELER/src/orange/surf/ConeAligned.hh:231
+;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
+	fnmul	d16, d3, d2
+	fmul	d5, d0, d5
+	fmadd	d4, d16, d4, d5
+	fmadd	d4, d1, d6, d4
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d2, d2, d2
+	fmul	d0, d0, d0
+; CELER/src/orange/surf/ConeAligned.hh:232
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
+	fmsub	d0, d3, d2, d0
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d1, d1, d1
+; CELER/src/orange/surf/ConeAligned.hh:232
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
+	b	 <L7>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
+	ldr	x9, [x9, #16]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	add	x10, x12, x10, lsl #3
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
+	ldr	x9, [x9, x2, lsl #3]
 ; CELER/src/corecel/cont/Span.hh:240
 ;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
+	ldr	x8, [x8, #328]
 ; CELER/src/corecel/data/Collection.hh:580
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
+	add	x8, x8, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldp	d1, d0, [x9]
-	ldp	d2, d3, [x9, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface)));
-	ldp	x9, x10, [x8, #8]
+	ldp	d0, d1, [x8]
+	ldp	d2, d3, [x8, #16]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/Sphere.hh:175
+;     Real3 const tpos{pos[0] - origin_[0],
+	ldp	d4, d5, [x9]
+	fsub	d0, d4, d0
+; CELER/src/orange/surf/Sphere.hh:176
+;                      pos[1] - origin_[1],
+	fsub	d1, d5, d1
+; CELER/src/orange/surf/Sphere.hh:177
+;                      pos[2] - origin_[2]};
+	ldr	d4, [x9, #16]
+	fsub	d2, d4, d2
 	movi.2d	v4, #0000000000000000
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d5, d6, [x9]
+	ldp	d5, d6, [x10]
+; CELER/src/corecel/math/Algorithms.hh:545
+;     return std::fma(a, b, y);
+	fmadd	d5, d0, d5, d4
+	fmadd	d5, d1, d6, d5
+; CELER/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
+	ldr	d6, [x10, #16]
+; CELER/src/corecel/math/Algorithms.hh:545
+;     return std::fma(a, b, y);
+	fmadd	d5, d2, d6, d5
+	fmadd	d0, d0, d0, d4
+	fmadd	d0, d1, d1, d0
+	fmadd	d0, d2, d2, d0
+; CELER/src/orange/surf/Sphere.hh:179
+;     real_type const c = dot_product(tpos, tpos) - radius_sq_;
+	fsub	d0, d0, d3
+	mov	x9, #4607182418800017408 ; =0x3ff0000000000000
+; CELER/src/orange/surf/Sphere.hh:180
+;     return {1, half_b, c, on_surface};
+	str	x9, [sp]
+	str	d5, [sp, #8]
+	b	 <L10>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x8, x9, lsl #3]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/CylCentered.hh:227
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	ldp	d1, d2, [x10]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d1, d1, d1
+	fmov	d3, #1.00000000
+; CELER/src/orange/surf/CylCentered.hh:227
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	fsub	d1, d3, d1
+; CELER/src/orange/surf/CylCentered.hh:228
+;     real_type const u = pos[to_int(U)];
+	ldr	d3, [x9, #8]
+	b	 <L5>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d0, d1, [x8]
+	ldp	d2, d3, [x8, #16]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/ConeAligned.hh:221
+;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
+	ldp	d4, d5, [x9]
+	fsub	d0, d4, d0
+; CELER/src/orange/surf/ConeAligned.hh:222
+;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
+	fsub	d1, d5, d1
+; CELER/src/orange/surf/ConeAligned.hh:223
+;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
+	ldr	d4, [x9, #16]
+	fsub	d2, d4, d2
+; CELER/src/orange/surf/ConeAligned.hh:225
+;     real_type const u = dir[to_int(T)];
+	ldp	d4, d5, [x10]
+; CELER/src/orange/surf/ConeAligned.hh:227
+;     real_type const w = dir[to_int(V)];
+	ldr	d6, [x10, #16]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d7, d4, d4
+	fmul	d16, d5, d5
+; CELER/src/orange/surf/ConeAligned.hh:230
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
+	fmsub	d7, d3, d7, d16
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d16, d6, d6
+; CELER/src/orange/surf/ConeAligned.hh:230
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
+	fadd	d7, d16, d7
+; CELER/src/orange/surf/ConeAligned.hh:231
+;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
+	fnmul	d16, d3, d0
+	fmul	d5, d1, d5
+	fmadd	d4, d16, d4, d5
+	fmadd	d4, d2, d6, d4
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d0, d0, d0
+	fmul	d1, d1, d1
+; CELER/src/orange/surf/ConeAligned.hh:232
+;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
+	fmsub	d0, d3, d0, d1
+	b	 <L6>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d0, d1, [x8]
+	ldr	d2, [x8, #16]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/CylAligned.hh:258
+;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	ldp	d4, d3, [x10]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d3, d3, d3
+	fmov	d5, #1.00000000
+; CELER/src/orange/surf/CylAligned.hh:258
+;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	fsub	d3, d5, d3
+; CELER/src/orange/surf/CylAligned.hh:259
+;   real_type const u = pos[to_int(U)] - origin_u_;
+	ldr	d5, [x9]
+	fsub	d0, d5, d0
+; CELER/src/orange/surf/CylAligned.hh:260
+;   real_type const v = pos[to_int(V)] - origin_v_;
+	ldr	d5, [x9, #16]
+	fsub	d1, d5, d1
+; CELER/src/orange/surf/CylAligned.hh:261
+;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+	ldr	d5, [x10, #16]
+	b	 <L8>
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldr	x11, [x19, #24]
+	ldr	x10, [x19, #64]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
+;             if (on_surface == SurfaceState::on)
+	cmp	x11, x10
+	b.eq	 <L3>
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x11, [x8, #328]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x8, [x8, #280]
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x8, [x8, x2, lsl #3]
+	ldr	d0, [x11, x8, lsl #3]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
+;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+	ldp	x8, x9, [x19, #8]
+; CELER/src/orange/surf/PlaneAligned.hh:167
+;     return x[to_int(T)];
+	ldr	d1, [x8, #16]
+	ldr	d2, [x9, #16]
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
+;         = (input.displacement - input.dot_pos) / input.dot_dir;
+	b	 <L13>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d0, d1, [x8]
+	ldp	d2, d3, [x8, #16]
+	ldp	d4, d5, [x8, #32]
+	ldr	d6, [x8, #48]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/SimpleQuadric.hh:203
+;     real_type const x = pos[to_int(Axis::x)];
+	ldp	d7, d16, [x9]
+; CELER/src/orange/surf/SimpleQuadric.hh:205
+;     real_type const z = pos[to_int(Axis::z)];
+	ldr	d17, [x9, #16]
+; CELER/src/orange/surf/SimpleQuadric.hh:206
+;     real_type const u = dir[to_int(Axis::x)];
+	ldp	d18, d19, [x10]
+; CELER/src/orange/surf/SimpleQuadric.hh:208
+;     real_type const w = dir[to_int(Axis::z)];
+	ldr	d20, [x10, #16]
+; CELER/src/orange/surf/SimpleQuadric.hh:211
+;     real_type a = (a_ * u) * u + (b_ * v) * v + (c_ * w) * w;
+	fmul	d21, d0, d18
+	fmul	d22, d1, d19
+	fmul	d22, d19, d22
+	fmadd	d21, d21, d18, d22
+	fmul	d22, d2, d20
+	fmadd	d21, d22, d20, d21
+; CELER/src/orange/surf/SimpleQuadric.hh:212
+;     real_type b = (2 * a_ * x + d_) * u + (2 * b_ * y + e_) * v
+	fadd	d22, d0, d0
+	fmadd	d22, d22, d7, d3
+	fadd	d23, d1, d1
+	fmadd	d23, d23, d16, d4
+	fmul	d19, d23, d19
+	fmadd	d18, d22, d18, d19
+; CELER/src/orange/surf/SimpleQuadric.hh:213
+;                   + (2 * c_ * z + f_) * w;
+	fadd	d19, d2, d2
+	fmadd	d19, d19, d17, d5
+	fmadd	d18, d19, d20, d18
+; CELER/src/orange/surf/SimpleQuadric.hh:214
+;     real_type c = (a_ * x + d_) * x + (b_ * y + e_) * y + (c_ * z + f_) * z
+	fmadd	d0, d0, d7, d3
+	fmadd	d1, d1, d16, d4
+	fmul	d1, d16, d1
+	fmadd	d0, d0, d7, d1
+	fmadd	d1, d2, d17, d5
+	fmadd	d0, d1, d17, d0
+; CELER/src/orange/surf/SimpleQuadric.hh:215
+;                   + g_;
+	fadd	d0, d6, d0
+	fmov	d1, #0.50000000
+; CELER/src/orange/surf/SimpleQuadric.hh:217
+;     return {a, b / 2, c, on_surface};
+	fmul	d1, d18, d1
+	stp	d21, d1, [sp]
+	b	 <L10>
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldr	x11, [x19, #24]
+	ldr	x10, [x19, #64]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
+;             if (on_surface == SurfaceState::on)
+	cmp	x11, x10
+	b.eq	 <L3>
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x11, [x8, #280]
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	add	x9, x11, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d1, d0, [x8]
+	ldp	d2, d3, [x8, #16]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
+;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+	ldp	x8, x9, [x19, #8]
+	movi.2d	v4, #0000000000000000
+; CELER/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
+	ldp	d5, d6, [x8]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d5, d1, d5, d4
 	fmadd	d5, d0, d6, d5
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d6, [x9, #16]
+	ldr	d6, [x8, #16]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d5, d2, d6, d5
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldp	d6, d7, [x10]
+	ldp	d6, d7, [x9]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d1, d1, d6, d4
 	fmadd	d0, d0, d7, d1
 ; CELER/src/corecel/math/ArrayUtils.hh:124
 ;         result = fma(x[i], y[i], result);
-	ldr	d1, [x10, #16]
+	ldr	d1, [x9, #16]
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d0, d2, d1, d0
@@ -530,3315 +700,545 @@ Disassembly of section __TEXT,__text:
 ;         input.on_surface == SurfaceState::off, input.dot_dir != 0, dist > 0);
 	fcmp	d1, #0.0
 	fccmp	d0, d4, #4, gt
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d0, x8
 ; CELER/src/orange/surf/detail/IntersectionSolver.hh:57
 ;     return {valid ? dist : no_intersection()};
 	fcsel	d0, d1, d0, ne
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
-	ldr	d1, [x8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+	ldr	d1, [x19]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d1
-	b.ls	 <L9>
-	add	x9, x11, #1
-	str	x9, [x8, #64]
+	b.hi	 <L14>
+<L1>:
+	ldr	x8, [x19, #40]
+	ldr	x9, [x19, #72]
+	str	x10, [x8, x9, lsl #3]
+	ldr	x9, [x19, #48]
+	ldr	x8, [x19, #72]
+	str	d0, [x9, x8, lsl #3]
+	ldrb	w9, [x19, #32]
+	cmp	w9, #1
+	b.ne	 <L2>
+	ldr	x9, [x19, #56]
+	str	x8, [x9, x8, lsl #3]
+	ldr	x8, [x19, #72]
+<L2>:
+	add	x9, x8, #1
+	ldr	x11, [x19, #64]
+	add	x8, x11, #1
+	stp	x8, x9, [x19, #64]
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
 ;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
+	ldp	x29, x30, [sp, #64]
+	ldp	x20, x19, [sp, #48]
+	add	sp, sp, #80
 	ret
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
+	ldr	x9, [x9, #16]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, x10, lsl #3]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	d0, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L8>:
-	bl	 <L8>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldr	x12, [x8, #24]
-	ldr	x11, [x8, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
-	cmp	x12, x11
-	b.eq	 <L11>
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x12, [x9, #328]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x9, [x9, #280]
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	add	x9, x9, x10, lsl #3
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldr	x9, [x9, x2, lsl #3]
-	ldr	d0, [x12, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface)));
-	ldp	x9, x10, [x8, #8]
-; CELER/src/orange/surf/PlaneAligned.hh:168
-;     return x[to_int(T)];
-	ldr	d1, [x9, #8]
-	ldr	d2, [x10, #8]
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
-;         = (input.displacement - input.dot_pos) / input.dot_dir;
-	fsub	d0, d0, d1
-	fdiv	d0, d0, d2
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:56
-;         input.on_surface == SurfaceState::off, input.dot_dir != 0, dist > 0);
-	fcmp	d0, #0.0
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x8, x9, lsl #3]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
 	movi.2d	v1, #0000000000000000
-	fccmp	d2, d1, #4, gt
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:57
-;     return {valid ? dist : no_intersection()};
-	fcsel	d0, d0, d1, ne
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d1, [x8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d1
-	b.ls	 <L9>
-	add	x9, x11, #1
-	str	x9, [x8, #64]
+; CELER/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
+	ldp	d2, d3, [x9]
+	ldp	d4, d5, [x10]
+; CELER/src/corecel/math/Algorithms.hh:545
+;     return std::fma(a, b, y);
+	fmadd	d4, d2, d4, d1
+	fmadd	d4, d3, d5, d4
+; CELER/src/corecel/math/ArrayUtils.hh:124
+;         result = fma(x[i], y[i], result);
+	ldr	d5, [x9, #16]
+	ldr	d6, [x10, #16]
+; CELER/src/corecel/math/Algorithms.hh:545
+;     return std::fma(a, b, y);
+	fmadd	d4, d5, d6, d4
+	fmadd	d1, d2, d2, d1
+	fmadd	d1, d3, d3, d1
+	fmadd	d1, d5, d5, d1
+; CELER/src/orange/surf/SphereCentered.hh:173
+;     real_type const c = dot_product(pos, pos) - radius_sq_;
+	fsub	d0, d1, d0
+	mov	x9, #4607182418800017408 ; =0x3ff0000000000000
+; CELER/src/orange/surf/SphereCentered.hh:174
+;     return {1, half_b, c, on_surface};
+	str	x9, [sp]
+	b	 <L9>
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldr	x11, [x19, #24]
+	ldr	x10, [x19, #64]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
+;             if (on_surface == SurfaceState::on)
+	cmp	x11, x10
+	b.ne	 <L12>
+<L3>:
+	add	x8, x11, #1
+	str	x8, [x19, #64]
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
 ;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-<L9>:
-	ldr	x9, [x8, #40]
-	ldr	x10, [x8, #72]
-	str	x11, [x9, x10, lsl #3]
-	ldr	x10, [x8, #48]
-	ldr	x9, [x8, #72]
-	str	d0, [x10, x9, lsl #3]
-	ldrb	w10, [x8, #32]
-	cmp	w10, #1
-	b.ne	 <L10>
-	ldr	x10, [x8, #56]
-	str	x9, [x10, x9, lsl #3]
-	ldr	x9, [x8, #72]
-<L10>:
-	add	x9, x9, #1
-	str	x9, [x8, #72]
-	ldr	x12, [x8, #64]
-<L11>:
-	add	x9, x12, #1
-	str	x9, [x8, #64]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
+	ldp	x29, x30, [sp, #64]
+	ldp	x20, x19, [sp, #48]
+	add	sp, sp, #80
 	ret
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
+	ldr	x9, [x9, #16]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
+	ldr	x9, [x9, x2, lsl #3]
 ; CELER/src/corecel/cont/Span.hh:240
 ;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
+	ldr	x8, [x8, #328]
 ; CELER/src/corecel/data/Collection.hh:580
 ;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
+	add	x8, x8, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x9]
+	ldr	q0, [x8]
 ; CELER/src/corecel/cont/Array.hh:85
 ;         : d_{first, static_cast<T>(rest)...}
 	str	q0, [sp]
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x9, #16]
+	ldr	q0, [x8, #16]
 ; CELER/src/corecel/cont/Array.hh:85
 ;         : d_{first, static_cast<T>(rest)...}
 	str	q0, [sp, #16]
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	q0, [x9, #32]
-; CELER/src/orange/surf/Toroid.hh:168
+	ldr	q0, [x8, #32]
+; CELER/src/orange/surf/Toroid.hh:167
 ;     : origin_{data[0], data[1], data[2]}, r_{data[3]}, a_{data[4]}, b_{data[5]}
 	str	q0, [sp, #32]
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
 ;             return func(this->make_surface<S>(id));
 	mov	x1, sp
-	mov	x0, x8
-<L12>:
-	bl	 <L12>
+	mov	x0, x19
+<L4>:
+	bl	 <L4>
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
 ;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
+	ldp	x29, x30, [sp, #64]
+	ldp	x20, x19, [sp, #48]
+	add	sp, sp, #80
 	ret
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
+	ldr	x9, [x9, #16]
 ; CELER/src/corecel/cont/Span.hh:231
 ;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
+	ldr	x9, [x9, x2, lsl #3]
 ; CELER/src/corecel/cont/Span.hh:240
 ;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
+	ldr	x8, [x8, #328]
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
-	ldr	d0, [x9, x10, lsl #3]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	d0, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L13>:
-	bl	 <L13>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldp	q0, q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	stp	q0, q1, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L14>:
-	bl	 <L14>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, x10, lsl #3]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	d0, [sp]
-	mov	x1, sp
-	mov	x0, x8
-<L15>:
-	bl	 <L15>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, #16]
-	ldr	q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	q1, [sp]
-	str	d0, [sp, #16]
-	mov	x1, sp
-	mov	x0, x8
-<L16>:
-	bl	 <L16>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-; CELER/src/corecel/cont/detail/RangeImpl.hh:209
-;         return range_iter{TraitsT::increment(value_, inc)};
-	ldr	x10, [x10, #16]
-; CELER/src/corecel/cont/Span.hh:231
-;         return s_.data[i];
-	ldr	x11, [x9, #280]
-	add	x10, x11, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	x10, [x10, x2, lsl #3]
-; CELER/src/corecel/cont/Span.hh:240
-;         return static_cast<pointer>(s_.data);
-	ldr	x9, [x9, #328]
-; CELER/src/corecel/data/Collection.hh:580
-;     return {data + ps.begin()->unchecked_get(),
-	add	x9, x9, x10, lsl #3
-; CELER/src/corecel/data/Ldg.hh:123
-;     return *ptr;
-	ldr	d0, [x9, #16]
-	ldr	q1, [x9]
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
-;             return func(this->make_surface<S>(id));
-	str	q1, [sp]
-	str	d0, [sp, #16]
-	mov	x1, sp
-	mov	x0, x8
-<L17>:
-	bl	 <L17>
-; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
-;     return visit_surface_type(
-	ldp	x29, x30, [sp, #80]
-	add	sp, sp, #96
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)0>>(celeritas::CylCentered<(celeritas::Axis)0> const&)():
+	ldr	d0, [x8, x9, lsl #3]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
 ; CELER/src/orange/surf/CylCentered.hh:227
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
-	ldp	d0, d2, [x11]
+	ldp	d2, d1, [x10]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d0, d0
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/CylCentered.hh:228
-;     real_type const u = pos[to_int(U)];
-	ldp	d3, d4, [x10, #8]
-; CELER/src/orange/surf/CylCentered.hh:230
-;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
-	ldr	d5, [x11, #16]
-	fmul	d5, d4, d5
-	fmadd	d2, d2, d3, d5
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d3, d3, d3
-	fmul	d4, d4, d4
-; CELER/src/orange/surf/CylCentered.hh:231
-;     real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
-	fadd	d3, d3, d4
-	ldr	d4, [x1]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabd	d4, d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d5, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d4, d5
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fsub	d0, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d0, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d3
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)1>>(celeritas::CylCentered<(celeritas::Axis)1> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
+	fmul	d1, d1, d1
+	fmov	d3, #1.00000000
 ; CELER/src/orange/surf/CylCentered.hh:227
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
-	ldp	d2, d0, [x11]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d0, d0
-	fmov	d1, #1.00000000
+	fsub	d1, d3, d1
 ; CELER/src/orange/surf/CylCentered.hh:228
 ;     real_type const u = pos[to_int(U)];
-	ldr	d3, [x10]
-; CELER/src/orange/surf/CylCentered.hh:229
-;     real_type const v = pos[to_int(V)];
-	ldr	d4, [x10, #16]
-; CELER/src/orange/surf/CylCentered.hh:230
-;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
-	ldr	d5, [x11, #16]
+	ldr	d3, [x9]
+<L5>:
+	ldr	d4, [x9, #16]
+	ldr	d5, [x10, #16]
 	fmul	d5, d4, d5
 	fmadd	d2, d2, d3, d5
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d3, d3, d3
 	fmul	d4, d4, d4
-; CELER/src/orange/surf/CylCentered.hh:231
-;     real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
 	fadd	d3, d3, d4
-	ldr	d4, [x1]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabd	d4, d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d5, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d4, d5
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fsub	d0, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d0, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d3
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::CylCentered<(celeritas::Axis)2>>(celeritas::CylCentered<(celeritas::Axis)2> const&)():
+	fsub	d0, d3, d0
+	stp	d1, d2, [sp]
+	b	 <L10>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d0, d1, [x8]
+	ldp	d2, d3, [x8, #16]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/CylCentered.hh:227
-;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
-	ldp	d5, d0, [x11, #8]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d0, d0
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/CylCentered.hh:228
-;     real_type const u = pos[to_int(U)];
-	ldp	d3, d4, [x10]
-; CELER/src/orange/surf/CylCentered.hh:230
-;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
-	ldr	d2, [x11]
-	fmul	d5, d4, d5
-	fmadd	d2, d2, d3, d5
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d3, d3, d3
-	fmul	d4, d4, d4
-; CELER/src/orange/surf/CylCentered.hh:231
-;     real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
-	fadd	d3, d3, d4
-	ldr	d4, [x1]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabd	d4, d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d5, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d4, d5
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fsub	d0, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d0, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d3
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::SphereCentered>(celeritas::SphereCentered const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-	movi.2d	v0, #0000000000000000
-; CELER/src/corecel/math/ArrayUtils.hh:124
-;         result = fma(x[i], y[i], result);
-	ldp	d2, d3, [x10]
-	ldp	d1, d4, [x11]
-; CELER/src/corecel/math/Algorithms.hh:545
-;     return std::fma(a, b, y);
-	fmadd	d1, d2, d1, d0
-	fmadd	d1, d3, d4, d1
-; CELER/src/corecel/math/ArrayUtils.hh:124
-;         result = fma(x[i], y[i], result);
-	ldr	d4, [x10, #16]
-	ldr	d5, [x11, #16]
-; CELER/src/corecel/math/Algorithms.hh:545
-;     return std::fma(a, b, y);
-	fmadd	d1, d4, d5, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L0>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-	b	 <L6>
-<L0>:
-	fmadd	d0, d2, d2, d0
-	fmadd	d0, d3, d3, d0
-	fmadd	d0, d4, d4, d0
-	ldr	d2, [x1]
-	fsub	d0, d0, d2
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L4>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ls	 <L5>
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L6>
-<L1>:
-	fcmp	d0, d2
-	b.ls	 <L8>
-<L2>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L3>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d3, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:188
-;         result[0] = -hba_;
-	fneg	d4, d1
-	fmov	d5, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	fmov	d1, x9
-	fcsel	d4, d4, d1, lt
-	fcsel	d5, d5, d1, lt
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	fcsel	d1, d3, d4, ne
-	fcsel	d0, d3, d5, ne
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-	b	 <L6>
-<L4>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-	b	 <L6>
-<L5>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-<L6>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L7>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L7>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L2>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)0>>(celeritas::CylAligned<(celeritas::Axis)0> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
-	ldp	d0, d2, [x11]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d0, d0
-; CELER/src/orange/surf/CylAligned.hh:259
-;   real_type const u = pos[to_int(U)] - origin_u_;
-	ldp	d1, d3, [x10, #8]
-	ldp	d4, d5, [x1]
-	fsub	d4, d1, d4
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/CylAligned.hh:260
-;   real_type const v = pos[to_int(V)] - origin_v_;
-	fsub	d3, d3, d5
-; CELER/src/orange/surf/CylAligned.hh:261
-;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
-	ldr	d5, [x11, #16]
-	fmul	d5, d3, d5
-	fmadd	d2, d2, d4, d5
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d4, d4, d4
-	fmul	d3, d3, d3
-; CELER/src/orange/surf/CylAligned.hh:262
-;   real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
-	fadd	d3, d4, d3
-	ldr	d4, [x1, #16]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabd	d4, d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d5, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d4, d5
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fsub	d0, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d0, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d3
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)1>>(celeritas::CylAligned<(celeritas::Axis)1> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
-	ldp	d2, d0, [x11]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d0, d0
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/CylAligned.hh:259
-;   real_type const u = pos[to_int(U)] - origin_u_;
-	ldr	d3, [x10]
-	ldp	d4, d5, [x1]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/CylAligned.hh:260
-;   real_type const v = pos[to_int(V)] - origin_v_;
-	ldr	d4, [x10, #16]
-	fsub	d4, d4, d5
-; CELER/src/orange/surf/CylAligned.hh:261
-;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
-	ldr	d5, [x11, #16]
-	fmul	d5, d4, d5
-	fmadd	d2, d2, d3, d5
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d3, d3, d3
-	fmul	d4, d4, d4
-; CELER/src/orange/surf/CylAligned.hh:262
-;   real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
-	fadd	d3, d3, d4
-	ldr	d4, [x1, #16]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabd	d4, d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d5, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d4, d5
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fsub	d0, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d0, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d3
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::CylAligned<(celeritas::Axis)2>>(celeritas::CylAligned<(celeritas::Axis)2> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
-	ldr	d0, [x11, #16]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d0, d0
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/CylAligned.hh:259
-;   real_type const u = pos[to_int(U)] - origin_u_;
-	ldp	d2, d3, [x10]
-	ldp	d4, d5, [x1]
-	fsub	d4, d2, d4
-; CELER/src/orange/surf/CylAligned.hh:260
-;   real_type const v = pos[to_int(V)] - origin_v_;
-	fsub	d3, d3, d5
-; CELER/src/orange/surf/CylAligned.hh:261
-;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
-	ldp	d2, d5, [x11]
-	fmul	d5, d3, d5
-	fmadd	d2, d2, d4, d5
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d4, d4, d4
-	fmul	d3, d3, d3
-; CELER/src/orange/surf/CylAligned.hh:262
-;   real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
-	fadd	d3, d4, d3
-	ldr	d4, [x1, #16]
-	fsub	d3, d3, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabd	d4, d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d5, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d4, d5
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fsub	d0, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d0, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d3
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::Sphere>(celeritas::Sphere const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/Sphere.hh:175
-;     Real3 const tpos{pos[0] - origin_[0],
-	ldp	d0, d1, [x10]
-	ldp	d2, d3, [x1]
-	fsub	d0, d0, d2
-; CELER/src/orange/surf/Sphere.hh:176
-;                      pos[1] - origin_[1],
-	fsub	d2, d1, d3
-; CELER/src/orange/surf/Sphere.hh:177
-;                      pos[2] - origin_[2]};
-	ldr	d1, [x10, #16]
-	ldr	d3, [x1, #16]
-	fsub	d3, d1, d3
-	movi.2d	v4, #0000000000000000
-; CELER/src/corecel/math/ArrayUtils.hh:124
-;         result = fma(x[i], y[i], result);
-	ldp	d1, d5, [x11]
-; CELER/src/corecel/math/Algorithms.hh:545
-;     return std::fma(a, b, y);
-	fmadd	d1, d0, d1, d4
-	fmadd	d1, d2, d5, d1
-; CELER/src/corecel/math/ArrayUtils.hh:124
-;         result = fma(x[i], y[i], result);
-	ldr	d5, [x11, #16]
-; CELER/src/corecel/math/Algorithms.hh:545
-;     return std::fma(a, b, y);
-	fmadd	d1, d3, d5, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L0>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-	b	 <L6>
-<L0>:
-	fmadd	d0, d0, d0, d4
-	fmadd	d0, d2, d2, d0
-	fmadd	d0, d3, d3, d0
-	ldr	d2, [x1, #24]
-	fsub	d0, d0, d2
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L4>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ls	 <L5>
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L6>
-<L1>:
-	fcmp	d0, d2
-	b.ls	 <L8>
-<L2>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L3>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d3, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:188
-;         result[0] = -hba_;
-	fneg	d4, d1
-	fmov	d5, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	fmov	d1, x9
-	fcsel	d4, d4, d1, lt
-	fcsel	d5, d5, d1, lt
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	fcsel	d1, d3, d4, ne
-	fcsel	d0, d3, d5, ne
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-	b	 <L6>
-<L4>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-	b	 <L6>
-<L5>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L1>
-<L6>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L7>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L7>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L2>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)0>>(celeritas::ConeAligned<(celeritas::Axis)0> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
 ; CELER/src/orange/surf/ConeAligned.hh:221
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
-	ldp	d0, d1, [x10]
-	ldp	d2, d3, [x1]
-	fsub	d4, d0, d2
+	ldp	d5, d4, [x9]
+	fsub	d1, d4, d1
 ; CELER/src/orange/surf/ConeAligned.hh:222
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
-	fsub	d1, d1, d3
+	fsub	d0, d5, d0
 ; CELER/src/orange/surf/ConeAligned.hh:223
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
-	ldr	d0, [x10, #16]
-	ldp	d2, d3, [x1, #16]
-	fsub	d5, d0, d2
+	ldr	d4, [x9, #16]
+	fsub	d2, d4, d2
 ; CELER/src/orange/surf/ConeAligned.hh:225
 ;     real_type const u = dir[to_int(T)];
-	ldp	d2, d6, [x11]
+	ldp	d5, d4, [x10]
 ; CELER/src/orange/surf/ConeAligned.hh:227
 ;     real_type const w = dir[to_int(V)];
-	ldr	d7, [x11, #16]
+	ldr	d6, [x10, #16]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d2, d2
+	fmul	d7, d4, d4
+	fmul	d16, d5, d5
+; CELER/src/orange/surf/ConeAligned.hh:230
+;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
+	fmsub	d7, d3, d7, d16
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d6, d6
 ; CELER/src/orange/surf/ConeAligned.hh:230
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
-	fmsub	d0, d3, d0, d16
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d16, d7, d7
-; CELER/src/orange/surf/ConeAligned.hh:230
-;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
-	fadd	d0, d16, d0
-; CELER/src/orange/surf/ConeAligned.hh:231
-;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
-	fnmul	d16, d3, d4
-	fmul	d6, d1, d6
-	fmadd	d2, d16, d2, d6
-	fmadd	d2, d5, d7, d2
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d4, d4, d4
-	fmul	d1, d1, d1
-; CELER/src/orange/surf/ConeAligned.hh:232
-;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
-	fmsub	d1, d3, d4, d1
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d3, d5, d5
-; CELER/src/orange/surf/ConeAligned.hh:232
-;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
-	fadd	d3, d3, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabs	d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d4, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d1, d4
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d3, d0
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)1>>(celeritas::ConeAligned<(celeritas::Axis)1> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/ConeAligned.hh:221
-;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
-	ldp	d1, d0, [x10]
-	ldp	d3, d2, [x1]
-	fsub	d4, d0, d2
-; CELER/src/orange/surf/ConeAligned.hh:222
-;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
-	fsub	d1, d1, d3
-; CELER/src/orange/surf/ConeAligned.hh:223
-;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
-	ldr	d0, [x10, #16]
-	ldp	d2, d3, [x1, #16]
-	fsub	d5, d0, d2
-; CELER/src/orange/surf/ConeAligned.hh:225
-;     real_type const u = dir[to_int(T)];
-	ldp	d6, d2, [x11]
-; CELER/src/orange/surf/ConeAligned.hh:227
-;     real_type const w = dir[to_int(V)];
-	ldr	d7, [x11, #16]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d2, d2
-	fmul	d16, d6, d6
-; CELER/src/orange/surf/ConeAligned.hh:230
-;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
-	fmsub	d0, d3, d0, d16
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d16, d7, d7
-; CELER/src/orange/surf/ConeAligned.hh:230
-;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
-	fadd	d0, d16, d0
-; CELER/src/orange/surf/ConeAligned.hh:231
-;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
-	fnmul	d16, d3, d4
-	fmul	d6, d1, d6
-	fmadd	d2, d16, d2, d6
-	fmadd	d2, d5, d7, d2
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d4, d4, d4
-	fmul	d1, d1, d1
-; CELER/src/orange/surf/ConeAligned.hh:232
-;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
-	fmsub	d1, d3, d4, d1
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d3, d5, d5
-; CELER/src/orange/surf/ConeAligned.hh:232
-;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
-	fadd	d3, d3, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabs	d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d4, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d1, d4
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d3, d0
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::ConeAligned<(celeritas::Axis)2>>(celeritas::ConeAligned<(celeritas::Axis)2> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/ConeAligned.hh:221
-;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
-	ldp	d2, d0, [x10, #8]
-	ldp	d1, d3, [x1, #16]
-	fsub	d1, d0, d1
-; CELER/src/orange/surf/ConeAligned.hh:222
-;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
-	ldr	d0, [x10]
-	ldp	d4, d5, [x1]
-	fsub	d4, d0, d4
-; CELER/src/orange/surf/ConeAligned.hh:223
-;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
-	fsub	d5, d2, d5
-; CELER/src/orange/surf/ConeAligned.hh:225
-;     real_type const u = dir[to_int(T)];
-	ldp	d7, d2, [x11, #8]
-; CELER/src/orange/surf/ConeAligned.hh:226
-;     real_type const v = dir[to_int(U)];
-	ldr	d6, [x11]
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d0, d2, d2
-	fmul	d16, d6, d6
-; CELER/src/orange/surf/ConeAligned.hh:230
-;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
-	fmsub	d0, d3, d0, d16
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d16, d7, d7
-; CELER/src/orange/surf/ConeAligned.hh:230
-;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
-	fadd	d0, d16, d0
+	fadd	d7, d16, d7
 ; CELER/src/orange/surf/ConeAligned.hh:231
 ;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d1
-	fmul	d6, d4, d6
-	fmadd	d2, d16, d2, d6
-	fmadd	d2, d5, d7, d2
+	fmul	d5, d0, d5
+	fmadd	d4, d16, d4, d5
+	fmadd	d4, d2, d6, d4
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
-	fmul	d4, d4, d4
+	fmul	d0, d0, d0
 ; CELER/src/orange/surf/ConeAligned.hh:232
 ;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
-	fmsub	d1, d3, d1, d4
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d3, d5, d5
-; CELER/src/orange/surf/ConeAligned.hh:232
-;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
-	fadd	d3, d3, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabs	d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d4, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d1, d4
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d2
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d4, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d4
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d3
-	fadd	d1, d2, d2
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fmov	d1, #1.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d1, d0
-	fmul	d1, d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d3, d0
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
+	fmsub	d0, d3, d1, d0
 <L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
+	fmul	d1, d2, d2
 <L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
-	add	x8, x8, #1
-	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::SimpleQuadric>(celeritas::SimpleQuadric const&)():
+	fadd	d0, d1, d0
+	str	d7, [sp]
+	b	 <L9>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d0, [x8, x9, lsl #3]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/SimpleQuadric.hh:203
-;     real_type const x = pos[to_int(Axis::x)];
-	ldp	d1, d2, [x10]
-; CELER/src/orange/surf/SimpleQuadric.hh:205
-;     real_type const z = pos[to_int(Axis::z)];
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/CylCentered.hh:227
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	ldp	d5, d1, [x10, #8]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d1, d1, d1
+	fmov	d2, #1.00000000
+; CELER/src/orange/surf/CylCentered.hh:227
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	fsub	d1, d2, d1
+; CELER/src/orange/surf/CylCentered.hh:228
+;     real_type const u = pos[to_int(U)];
+	ldp	d2, d3, [x9]
+; CELER/src/orange/surf/CylCentered.hh:230
+;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+	ldr	d4, [x10]
+	fmul	d5, d3, d5
+	fmadd	d4, d4, d2, d5
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d2, d2, d2
+	fmul	d3, d3, d3
+; CELER/src/orange/surf/CylCentered.hh:231
+;     real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
+	fadd	d2, d2, d3
+	fsub	d0, d2, d0
+; CELER/src/orange/surf/CylCentered.hh:232
+;     return {a, half_b, c, on_surface};
+	str	d1, [sp]
+	b	 <L9>
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d0, d1, [x8]
+	ldr	d2, [x8, #16]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldp	x10, x8, [x19, #16]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldr	x9, [x19, #8]
+; CELER/src/orange/surf/CylAligned.hh:258
+;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d3, [x10, #16]
-; CELER/src/orange/surf/SimpleQuadric.hh:206
-;     real_type const u = dir[to_int(Axis::x)];
-	ldp	d4, d5, [x11]
-; CELER/src/orange/surf/SimpleQuadric.hh:208
-;     real_type const w = dir[to_int(Axis::z)];
-	ldr	d6, [x11, #16]
-; CELER/src/orange/surf/SimpleQuadric.hh:211
-;     real_type a = (a_ * u) * u + (b_ * v) * v + (c_ * w) * w;
-	ldp	d7, d16, [x1]
-	fmul	d0, d4, d7
-	fmul	d17, d5, d16
-	fmul	d17, d5, d17
-	fmadd	d0, d0, d4, d17
-	ldp	d17, d18, [x1, #16]
-	fmul	d19, d6, d17
-	fmadd	d0, d19, d6, d0
-; CELER/src/orange/surf/SimpleQuadric.hh:212
-;     real_type b = (2 * a_ * x + d_) * u + (2 * b_ * y + e_) * v
-	fadd	d19, d16, d16
-	ldp	d20, d21, [x1, #32]
-	fmadd	d19, d19, d2, d20
-	fmul	d5, d5, d19
-	fadd	d19, d7, d7
-	fmadd	d19, d19, d1, d18
-	fmadd	d4, d19, d4, d5
-; CELER/src/orange/surf/SimpleQuadric.hh:213
-;                   + (2 * c_ * z + f_) * w;
-	fadd	d5, d17, d17
-	fmadd	d5, d5, d3, d21
-	fmadd	d4, d5, d6, d4
-; CELER/src/orange/surf/SimpleQuadric.hh:214
-;     real_type c = (a_ * x + d_) * x + (b_ * y + e_) * y + (c_ * z + f_) * z
-	fmadd	d5, d7, d1, d18
-	fmadd	d6, d16, d2, d20
-	fmul	d2, d2, d6
-	fmadd	d1, d5, d1, d2
-	fmadd	d2, d17, d3, d21
-	fmadd	d1, d2, d3, d1
-; CELER/src/orange/surf/SimpleQuadric.hh:215
-;                   + g_;
-	ldr	d2, [x1, #48]
-	fadd	d2, d2, d1
-	fmov	d1, #0.50000000
-; CELER/src/orange/surf/SimpleQuadric.hh:217
-;     return {a, b / 2, c, on_surface};
-	fmul	d3, d4, d1
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d3, d3, d3
+	fmov	d4, #1.00000000
+; CELER/src/orange/surf/CylAligned.hh:258
+;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	fsub	d3, d4, d3
+; CELER/src/orange/surf/CylAligned.hh:259
+;   real_type const u = pos[to_int(U)] - origin_u_;
+	ldp	d4, d5, [x9]
+	fsub	d0, d4, d0
+; CELER/src/orange/surf/CylAligned.hh:260
+;   real_type const v = pos[to_int(V)] - origin_v_;
+	fsub	d1, d5, d1
+; CELER/src/orange/surf/CylAligned.hh:261
+;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+	ldp	d4, d5, [x10]
+<L8>:
+	fmul	d5, d1, d5
+	fmadd	d4, d4, d0, d5
+	fmul	d0, d0, d0
+	fmul	d1, d1, d1
+	fadd	d0, d0, d1
+	fsub	d0, d0, d2
+	str	d3, [sp]
+<L9>:
+	str	d4, [sp, #8]
+<L10>:
+	str	d0, [sp, #16]
+	strb	w8, [sp, #24]
+	mov	x1, sp
+	mov	x0, x19
+<L11>:
+	bl	 <L11>
+	ldr	x8, [x19, #64]
+	add	x8, x8, #1
+	str	x8, [x19, #64]
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #64]
+	ldp	x20, x19, [sp, #48]
+	add	sp, sp, #80
+	ret
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x10, [x8, #280]
+	add	x9, x10, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x9, [x9, x2, lsl #3]
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x8, [x8, #328]
+; CELER/src/corecel/data/Collection.hh:580
+;     return {data + ps.begin()->unchecked_get(),
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldp	d0, d1, [x8]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
+	ldp	x9, x10, [x19, #8]
+; CELER/src/orange/surf/CylAligned.hh:258
+;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	ldp	d2, d3, [x10]
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d2, d2, d2
+	fmov	d4, #1.00000000
+; CELER/src/orange/surf/CylAligned.hh:258
+;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+	fsub	d2, d4, d2
+; CELER/src/orange/surf/CylAligned.hh:259
+;   real_type const u = pos[to_int(U)] - origin_u_;
+	ldp	d4, d5, [x9, #8]
+	fsub	d0, d4, d0
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	d4, [x8, #16]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
+;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
+	ldr	x8, [x19, #24]
+	ldr	x9, [x19, #64]
+	cmp	x8, x9
+	cset	w8, eq
+; CELER/src/orange/surf/CylAligned.hh:260
+;   real_type const v = pos[to_int(V)] - origin_v_;
+	fsub	d1, d5, d1
+; CELER/src/orange/surf/CylAligned.hh:261
+;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+	ldr	d5, [x10, #16]
+	fmul	d5, d1, d5
+	fmadd	d3, d3, d0, d5
+; CELER/src/corecel/math/Algorithms.hh:498
+;         return ipow<N / 2>(v) * ipow<N / 2>(v);
+	fmul	d0, d0, d0
+	fmul	d1, d1, d1
+; CELER/src/orange/surf/CylAligned.hh:262
+;   real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
+	fadd	d0, d0, d1
+	fsub	d0, d0, d4
+; CELER/src/orange/surf/CylAligned.hh:263
+;   return {a, half_b, c, on_surface};
+	stp	d2, d3, [sp]
+	b	 <L10>
+<L12>:
+; CELER/src/corecel/cont/Span.hh:240
+;         return static_cast<pointer>(s_.data);
+	ldr	x11, [x8, #328]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	ldr	x8, [x8, #280]
+; CELER/src/corecel/cont/detail/RangeImpl.hh:209
+;         return range_iter{TraitsT::increment(value_, inc)};
+	ldr	x9, [x9, #16]
+; CELER/src/corecel/cont/Span.hh:231
+;         return s_.data[i];
+	add	x8, x8, x9, lsl #3
+; CELER/src/corecel/data/Ldg.hh:123
+;     return *ptr;
+	ldr	x8, [x8, x2, lsl #3]
+	ldr	d0, [x11, x8, lsl #3]
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
+;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+	ldp	x8, x9, [x19, #8]
+; CELER/src/orange/surf/PlaneAligned.hh:167
+;     return x[to_int(T)];
+	ldr	d1, [x8, #8]
+	ldr	d2, [x9, #8]
+<L13>:
+	fsub	d0, d0, d1
+	fdiv	d0, d0, d2
+	fcmp	d0, #0.0
+	movi.2d	v1, #0000000000000000
+	fccmp	d2, d1, #4, gt
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x8
+	fcsel	d0, d0, d1, ne
+	ldr	d1, [x19]
+	fcmp	d0, d1
+	b.ls	 <L1>
+<L14>:
+	add	x8, x10, #1
+	str	x8, [x19, #64]
+; CELER/src/orange/surf/LocalSurfaceVisitor.hh:109
+;     return visit_surface_type(
+	ldp	x29, x30, [sp, #64]
+	ldp	x20, x19, [sp, #48]
+	add	sp, sp, #80
+	ret
+
+<celeritas::detail::CalcIntersections::solve_and_store(celeritas::detail::QuadraticIntersectionInput const&)>:
+; celeritas::detail::CalcIntersections::solve_and_store(celeritas::detail::QuadraticIntersectionInput const&)():
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:66
+;         input.a, input.half_b, input.c, input.on_surface);
+	ldp	d0, d3, [x1]
+	ldr	d2, [x1, #16]
+	ldrb	w8, [x1, #24]
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
 ;     if (std::fabs(a) >= QuadraticSolver::min_a())
 	fabs	d1, d0
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d4, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
+	mov	x9, #48572              ; =0xbdbc
+	movk	x9, #55767, lsl #16
+	movk	x9, #31967, lsl #32
+	movk	x9, #15835, lsl #48
+	fmov	d4, x9
 	fcmp	d1, d4
 	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
 	fabs	d0, d3
+	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x9
 	mov	x9, #48572              ; =0xbdbc
 	movk	x9, #55767, lsl #16
 	movk	x9, #31967, lsl #32
@@ -3847,8 +1247,11 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
 ;     else if (on_surface == SurfaceState::off)
 	fcmp	d0, d4
+	b.le	 <L7>
 	mov.16b	v0, v1
-	b.le	 <L3>
+; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
+;     else if (on_surface == SurfaceState::off)
+	tbnz	w8, #0,  <L3>
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
 ;         result[0] = -c / (2 * half_b);
 	fneg	d0, d2
@@ -3857,13 +1260,13 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
 ;         if (result[0] < 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d0, x8
 	fcsel	d1, d0, d1, mi
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3873,11 +1276,10 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
 ;     : a_inv_(1 / a), hba_(half_b * a_inv_)
 	fdiv	d0, d1, d0
-	fmul	d1, d0, d3
+	fmul	d1, d3, d0
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
 ;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
+	cbz	w8,  <L1>
 	fmov	d0, #-2.00000000
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
 ;     Intersections result{-2 * hba_, no_intersection()};
@@ -3885,13 +1287,13 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
 ;     if (result[0] <= 0)
 	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d0, x8
 	fcsel	d1, d1, d0, hi
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3926,12 +1328,12 @@ Disassembly of section __TEXT,__text:
 ;         else if (result[0] <= 0)
 	fcmp	d1, #0.0
 	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x8
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3946,13 +1348,13 @@ Disassembly of section __TEXT,__text:
 	fcmp	d1, #0.0
 	b.ge	 <L6>
 	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d0, x8
 <L3>:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
@@ -3960,45 +1362,41 @@ Disassembly of section __TEXT,__text:
 	fcmp	d0, d2
 	b.ls	 <L10>
 <L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
 ;     }
 	ret
 <L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
+	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
+	fmov	d1, x8
 <L7>:
 	mov.16b	v0, v1
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L4>
 <L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
 ;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
+	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
@@ -4007,361 +1405,36 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L5>
 <L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
 ;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
+	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-
-<void celeritas::detail::CalcIntersections::operator()<celeritas::GeneralQuadric>(celeritas::GeneralQuadric const&)>:
-; void celeritas::detail::CalcIntersections::operator()<celeritas::GeneralQuadric>(celeritas::GeneralQuadric const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
-;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
-	ldp	x11, x9, [x0, #16]
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
-;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface)));
-	ldr	x10, [x0, #8]
-; CELER/src/orange/surf/GeneralQuadric.hh:196
-;     real_type const x = pos[0];
-	ldp	d1, d2, [x10]
-; CELER/src/orange/surf/GeneralQuadric.hh:198
-;     real_type const z = pos[2];
-	ldr	d0, [x10, #16]
-; CELER/src/orange/surf/GeneralQuadric.hh:199
-;     real_type const u = dir[0];
-	ldp	d4, d5, [x11]
-; CELER/src/orange/surf/GeneralQuadric.hh:201
-;     real_type const w = dir[2];
-	ldr	d6, [x11, #16]
-; CELER/src/orange/surf/GeneralQuadric.hh:204
-;     real_type a = (a_ * u + d_ * v) * u + (b_ * v + e_ * w) * v
-	ldp	d16, d7, [x1, #16]
-	fmul	d3, d5, d7
-	ldp	d17, d18, [x1]
-	fmadd	d3, d17, d4, d3
-	ldp	d19, d20, [x1, #32]
-	fmul	d21, d6, d19
-	fmadd	d21, d18, d5, d21
-	fmul	d21, d5, d21
-	fmadd	d3, d3, d4, d21
-; CELER/src/orange/surf/GeneralQuadric.hh:205
-;                   + (c_ * w + f_ * u) * w;
-	fmul	d21, d4, d20
-	fmadd	d21, d16, d6, d21
-	fmadd	d3, d21, d6, d3
-; CELER/src/orange/surf/GeneralQuadric.hh:206
-;     real_type b = (2 * a_ * x + d_ * y + f_ * z + g_) * u
-	fadd	d21, d17, d17
-	fmul	d22, d2, d7
-	fmadd	d21, d21, d1, d22
-	fmadd	d21, d20, d0, d21
-; CELER/src/orange/surf/GeneralQuadric.hh:207
-;                   + (2 * b_ * y + d_ * x + e_ * z + h_) * v
-	fadd	d23, d18, d18
-	fmul	d7, d1, d7
-	fmadd	d7, d23, d2, d7
-; CELER/src/orange/surf/GeneralQuadric.hh:206
-;     real_type b = (2 * a_ * x + d_ * y + f_ * z + g_) * u
-	ldp	d23, d24, [x1, #48]
-	fadd	d21, d21, d23
-; CELER/src/orange/surf/GeneralQuadric.hh:207
-;                   + (2 * b_ * y + d_ * x + e_ * z + h_) * v
-	fmadd	d7, d19, d0, d7
-	fadd	d7, d7, d24
-	fmul	d5, d5, d7
-	fmadd	d4, d21, d4, d5
-; CELER/src/orange/surf/GeneralQuadric.hh:208
-;                   + (2 * c_ * z + e_ * y + f_ * x + i_) * w;
-	fadd	d5, d16, d16
-	fmul	d7, d2, d19
-	fmadd	d5, d5, d0, d7
-	fmadd	d5, d20, d1, d5
-	ldp	d7, d21, [x1, #64]
-	fadd	d5, d5, d7
-	fmadd	d4, d5, d6, d4
-; CELER/src/orange/surf/GeneralQuadric.hh:209
-;     real_type c = ((a_ * x + d_ * y + g_) * x + (b_ * y + e_ * z + h_) * y
-	fmadd	d5, d17, d1, d22
-	fadd	d5, d5, d23
-	fmul	d6, d0, d19
-	fmadd	d6, d18, d2, d6
-	fadd	d6, d6, d24
-	fmul	d2, d2, d6
-	fmadd	d2, d5, d1, d2
-; CELER/src/orange/surf/GeneralQuadric.hh:210
-;                    + (c_ * z + f_ * x + i_) * z + j_);
-	fmul	d1, d1, d20
-	fmadd	d1, d16, d0, d1
-	fadd	d1, d1, d7
-	fmadd	d0, d1, d0, d2
-	fadd	d2, d21, d0
-	fmov	d0, #0.50000000
-; CELER/src/orange/surf/GeneralQuadric.hh:212
-;     return {a, b / 2, c, on_surface};
-	fmul	d4, d4, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fabs	d0, d3
-	mov	x10, #48572             ; =0xbdbc
-	movk	x10, #55767, lsl #16
-	movk	x10, #31967, lsl #32
-	movk	x10, #15835, lsl #48
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:85
-;     if (std::fabs(a) >= QuadraticSolver::min_a())
-	fcmp	d0, d1
-	b.ge	 <L0>
-	mov	x10, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x10
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	cmp	x9, x8
-	b.eq	 <L7>
-	fabs	d0, d4
-	mov	x9, #48572              ; =0xbdbc
-	movk	x9, #55767, lsl #16
-	movk	x9, #31967, lsl #32
-	movk	x9, #15835, lsl #48
-	fmov	d3, x9
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:91
-;     else if (on_surface == SurfaceState::off)
-	fcmp	d0, d3
-	mov.16b	v0, v1
-	b.le	 <L3>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:118
-;         result[0] = -c / (2 * half_b);
-	fneg	d0, d2
-	fadd	d1, d4, d4
-	fdiv	d1, d0, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:119
-;         if (result[0] < 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d0, d1, mi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L0>:
-	fmov	d0, #1.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:139
-;     : a_inv_(1 / a), hba_(half_b * a_inv_)
-	fdiv	d0, d0, d3
-	fmul	d1, d0, d4
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:89
-;         return on_surface == SurfaceState::on ? solve() : solve(c);
-	cmp	x9, x8
-	b.ne	 <L1>
-	fmov	d0, #-2.00000000
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:214
-;     Intersections result{-2 * hba_, no_intersection()};
-	fmul	d1, d1, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:216
-;     if (result[0] <= 0)
-	fcmp	d1, #0.0
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-	fcsel	d1, d1, d0, hi
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L1>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:161
-;     c *= a_inv_;
-	fmul	d0, d0, d2
-; CELER/src/corecel/math/Algorithms.hh:498
-;         return ipow<N / 2>(v) * ipow<N / 2>(v);
-	fmul	d2, d1, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:166
-;     if (b2_4 > c)
-	fcmp	d2, d0
-	b.le	 <L2>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:169
-;         real_type t2 = std::sqrt(b2_4 - c);  // (b^2 - 4ac) / 4
-	fsub	d0, d2, d0
-	fsqrt	d2, d0
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:171
-;         result[1] = -hba_ + t2;
-	fsub	d0, d2, d1
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:173
-;         if (result[1] <= 0)
-	fcmp	d0, #0.0
-	b.ls	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:170
-;         result[0] = -hba_ - t2;
-	fneg	d1, d1
-	fsub	d1, d1, d2
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:179
-;         else if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.hi	 <L3>
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-	b	 <L4>
-<L2>:
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:185
-;     else if (b2_4 == c)
-	fcmp	d2, d0
-	b.ne	 <L6>
-; CELER/src/orange/surf/detail/QuadraticSolver.hh:191
-;         if (result[0] <= 0)
-	fcmp	d1, #0.0
-	b.ge	 <L6>
-	fneg	d1, d1
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d0, x9
-<L3>:
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.ls	 <L8>
-<L4>:
-	fcmp	d0, d2
-	b.ls	 <L10>
-<L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	add	x8, x8, #1
-	str	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
-;     }
-	ret
-<L6>:
-	mov	x9, #9218868437227405312 ; =0x7ff0000000000000
-	fmov	d1, x9
-<L7>:
-	mov.16b	v0, v1
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d1, d2
-	b.hi	 <L4>
-<L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L9>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/Utils.hh:38
-;         return distance <= max_dist_;
-	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
-;             if (is_valid_isect_(dist))
-	fcmp	d0, d2
-	b.hi	 <L5>
-<L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
-;                 face_[isect_idx_] = FaceId{face_idx_};
-	ldr	x9, [x0, #72]
-	ldp	x10, x11, [x0, #40]
-	str	x8, [x10, x9, lsl #3]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;                 distance_[isect_idx_] = dist;
-	ldr	x8, [x0, #72]
-	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
-;                 if (fill_isect_)
-	ldrb	w9, [x0, #32]
-	cmp	w9, #1
-	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
-;                     isect_[isect_idx_] = isect_idx_;
-	ldr	x9, [x0, #56]
-	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	ldr	x8, [x0, #72]
-<L11>:
-	add	x9, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
-;         ++face_idx_;
-	ldr	x8, [x0, #64]
-	add	x8, x8, #1
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
-;                 ++isect_idx_;
-	stp	x8, x9, [x0, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
 ;     }
 	ret
 
@@ -4378,7 +1451,7 @@ Disassembly of section __TEXT,__text:
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x10, x8, [x0, #16]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:154
-;                 surf.calc_intersection_quartic(pos_, dir_, on_surface)));
+;                 surf.calc_intersection_quartic(pos_, dir_, on_surface));
 	ldr	x9, [x0, #8]
 ; CELER/src/corecel/math/ArrayOperators.hh:77
 ; CELER_DEFINE_ARRAY_ARITHM(-)
@@ -4416,26 +1489,26 @@ Disassembly of section __TEXT,__text:
 	fmul	d3, d3, d16
 	fmul	d5, d5, d16
 	fmul	d6, d6, d16
-; CELER/src/orange/surf/Toroid.hh:245
+; CELER/src/orange/surf/Toroid.hh:244
 ;     real_type p = sq(a_) / sq(b_);
 	ldp	d16, d18, [x1, #32]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d16, d16
 	fmul	d18, d18, d18
-; CELER/src/orange/surf/Toroid.hh:245
+; CELER/src/orange/surf/Toroid.hh:244
 ;     real_type p = sq(a_) / sq(b_);
 	fdiv	d18, d16, d18
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d19, d6, d6
-; CELER/src/orange/surf/Toroid.hh:247
+; CELER/src/orange/surf/Toroid.hh:246
 ;     real_type f = 1 - sq(az);
 	fsub	d17, d17, d19
-; CELER/src/orange/surf/Toroid.hh:248
+; CELER/src/orange/surf/Toroid.hh:247
 ;     real_type g = f + p * sq(az);
 	fmadd	d19, d18, d19, d17
-; CELER/src/orange/surf/Toroid.hh:249
+; CELER/src/orange/surf/Toroid.hh:248
 ;     real_type h = 2 * (x0 * ax + y0 * ay);
 	fmul	d5, d1, d5
 	fmadd	d3, d0, d3, d5
@@ -4444,23 +1517,23 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d0, d0
 	fmul	d1, d1, d1
-; CELER/src/orange/surf/Toroid.hh:250
+; CELER/src/orange/surf/Toroid.hh:249
 ;     real_type t = sq(x0) + sq(y0);
 	fadd	d5, d0, d1
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d4, d4
 	fmov	d1, #4.00000000
-; CELER/src/orange/surf/Toroid.hh:251
+; CELER/src/orange/surf/Toroid.hh:250
 ;     real_type q = 4 * sq(r_) / sq(g);
 	fmul	d1, d0, d1
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d4, d19, d19
-; CELER/src/orange/surf/Toroid.hh:251
+; CELER/src/orange/surf/Toroid.hh:250
 ;     real_type q = 4 * sq(r_) / sq(g);
 	fdiv	d4, d1, d4
-; CELER/src/orange/surf/Toroid.hh:252
+; CELER/src/orange/surf/Toroid.hh:251
 ;     real_type m = (h + 2 * p * z0 * az) / g;
 	fadd	d1, d18, d18
 	fmul	d1, d2, d1
@@ -4469,7 +1542,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
-; CELER/src/orange/surf/Toroid.hh:253
+; CELER/src/orange/surf/Toroid.hh:252
 ;     real_type u = (t + p * sq(z0) + sq(r_) - sq(a_)) / g;
 	fmadd	d2, d18, d2, d5
 	fadd	d0, d0, d2
@@ -4478,11 +1551,11 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d6, d1, d1
-; CELER/src/orange/surf/Toroid.hh:257
+; CELER/src/orange/surf/Toroid.hh:256
 ;     real_type c3 = 2 * m;
 	fadd	d0, d1, d1
 	fmov	d1, #2.00000000
-; CELER/src/orange/surf/Toroid.hh:258
+; CELER/src/orange/surf/Toroid.hh:257
 ;     real_type c2 = sq(m) + 2 * u - q * f;
 	fmadd	d1, d2, d1, d6
 	fmsub	d1, d4, d17, d1
@@ -4502,19 +1575,19 @@ Disassembly of section __TEXT,__text:
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/surf/Toroid.hh:260
+; CELER/src/orange/surf/Toroid.hh:259
 ;     real_type c0 = on_surface == SurfaceState::on ? 0 : sq(u) - q * t;
 	fmul	d6, d2, d2
 	fmsub	d5, d4, d5, d6
 	fcsel	d5, d7, d5, eq
-; CELER/src/orange/surf/Toroid.hh:259
+; CELER/src/orange/surf/Toroid.hh:258
 ;     real_type c1 = 2 * m * u - q * h;
 	fnmul	d3, d3, d4
 	fmadd	d2, d0, d2, d3
 ; CELER/src/corecel/cont/Array.hh:85
 ;         : d_{first, static_cast<T>(rest)...}
 	stp	d2, d5, [sp, #32]
-; CELER/src/orange/surf/Toroid.hh:227
+; CELER/src/orange/surf/Toroid.hh:226
 ;     return {this->calc_intersection_polynomial(pos, dir, on_surface),
 	strb	w8, [sp, #48]
 ; CELER/src/orange/surf/detail/IntersectionSolver.hh:75
@@ -4540,8 +1613,8 @@ Disassembly of section __TEXT,__text:
 <L2>:
 	bl	 <L2>
 <L3>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:153
-;             this->store_intersections(detail::solve_intersections(
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:180
+;         this->store_intersections(detail::solve_intersections(input));
 	stp	d0, d1, [sp, #56]
 	stp	d2, d3, [sp, #72]
 	add	x1, sp, #56
@@ -4562,63 +1635,63 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)>:
 ; void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1]
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L3>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L5>
 <L0>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L7>
 <L1>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #24]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L9>
 <L2>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:184
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:201
 ;     }
 	ret
 <L3>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L4>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L4>:
@@ -4627,33 +1700,33 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.hi	 <L0>
 <L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L6>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L6>:
@@ -4662,33 +1735,33 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.hi	 <L1>
 <L7>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L8>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L8>:
@@ -4697,39 +1770,39 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:170
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #24]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:173
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
 ;             if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.hi	 <L2>
 <L9>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:175
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
 ;                 face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
 ;                 distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:177
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
 ;                 if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L10>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
 ;                     isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:181
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
 ;                 ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L10>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:184
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:201
 ;     }
 	ret
 
@@ -5738,4 +2811,4 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/FerrariSolver.hh:236
 ;     }
 	b	 <L19>
-; Total code size: 15456 B
+; Total code size: 7824 B
