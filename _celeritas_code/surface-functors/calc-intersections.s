@@ -5,9 +5,9 @@ SYMBOL TABLE:
 0000000000000000 l     F __TEXT,__text ltmp0
 000000000000179c l     O __TEXT,__const lJTI1_0
 000000000000179c l     O __TEXT,__const ltmp1
-00000000000789e8 l     O __LD,__compact_unwind ltmp2
+0000000000078cd8 l     O __LD,__compact_unwind ltmp2
 0000000000000000 g     F __TEXT,__text calc_intersections(celeritas::OrangeParamsData<(celeritas::Ownership)2, (celeritas::MemSpace)0> const&, celeritas::SurfacesRecord const&, celeritas::detail::CalcIntersections, celeritas::OpaqueId<celeritas::OrangeLocalSurface_, unsigned long>)
-0000000000000948  w    F __TEXT,__text celeritas::detail::CalcIntersections::solve_and_store(celeritas::detail::QuadraticIntersectionInput const&)
+0000000000000948  w    F __TEXT,__text void celeritas::detail::CalcIntersections::solve_and_store<celeritas::detail::QuadraticIntersectionInput>(celeritas::detail::QuadraticIntersectionInput const&)
 0000000000000ca4  w    F __TEXT,__text void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)
 0000000000000b18  w    F __TEXT,__text void celeritas::detail::CalcIntersections::operator()<celeritas::Toroid>(celeritas::Toroid const&)
 0000000000000de0  w    F __TEXT,__text celeritas::FerrariSolver::operator()(celeritas::Array<double, 4ul> const&) const
@@ -76,7 +76,7 @@ Disassembly of section __TEXT,__text:
 	ldr	x11, [x19, #24]
 	ldr	x10, [x19, #64]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
+;             if (on_surface == SurfaceState::off)
 	cmp	x11, x10
 	b.eq	 <L3>
 ; CELER/src/corecel/cont/Span.hh:240
@@ -95,10 +95,10 @@ Disassembly of section __TEXT,__text:
 ;     return *ptr;
 	ldr	x8, [x8, x2, lsl #3]
 	ldr	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:139
+;                     surf.calc_intersection_planar(pos_, dir_, on_surface));
 	ldp	x8, x9, [x19, #8]
-; CELER/src/orange/surf/PlaneAligned.hh:167
+; CELER/src/orange/surf/PlaneAligned.hh:166
 ;     return x[to_int(T)];
 	ldr	d1, [x8]
 	ldr	d2, [x9]
@@ -132,22 +132,22 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/GeneralQuadric.hh:196
+; CELER/src/orange/surf/GeneralQuadric.hh:195
 ;     real_type const x = pos[0];
 	ldp	d18, d19, [x9]
-; CELER/src/orange/surf/GeneralQuadric.hh:198
+; CELER/src/orange/surf/GeneralQuadric.hh:197
 ;     real_type const z = pos[2];
 	ldr	d20, [x9, #16]
-; CELER/src/orange/surf/GeneralQuadric.hh:199
+; CELER/src/orange/surf/GeneralQuadric.hh:198
 ;     real_type const u = dir[0];
 	ldp	d21, d22, [x10]
-; CELER/src/orange/surf/GeneralQuadric.hh:201
+; CELER/src/orange/surf/GeneralQuadric.hh:200
 ;     real_type const w = dir[2];
 	ldr	d23, [x10, #16]
-; CELER/src/orange/surf/GeneralQuadric.hh:204
+; CELER/src/orange/surf/GeneralQuadric.hh:203
 ;     real_type a = (a_ * u + d_ * v) * u + (b_ * v + e_ * w) * v
 	fmul	d24, d3, d22
 	fmadd	d24, d0, d21, d24
@@ -155,19 +155,19 @@ Disassembly of section __TEXT,__text:
 	fmadd	d25, d1, d22, d25
 	fmul	d25, d22, d25
 	fmadd	d24, d24, d21, d25
-; CELER/src/orange/surf/GeneralQuadric.hh:205
+; CELER/src/orange/surf/GeneralQuadric.hh:204
 ;                   + (c_ * w + f_ * u) * w;
 	fmul	d25, d5, d21
 	fmadd	d25, d2, d23, d25
 	fmadd	d24, d25, d23, d24
-; CELER/src/orange/surf/GeneralQuadric.hh:206
+; CELER/src/orange/surf/GeneralQuadric.hh:205
 ;     real_type b = (2 * a_ * x + d_ * y + f_ * z + g_) * u
 	fadd	d25, d0, d0
 	fmul	d26, d3, d19
 	fmadd	d25, d25, d18, d26
 	fmadd	d25, d5, d20, d25
 	fadd	d25, d6, d25
-; CELER/src/orange/surf/GeneralQuadric.hh:207
+; CELER/src/orange/surf/GeneralQuadric.hh:206
 ;                   + (2 * b_ * y + d_ * x + e_ * z + h_) * v
 	fadd	d27, d1, d1
 	fmul	d3, d3, d18
@@ -176,7 +176,7 @@ Disassembly of section __TEXT,__text:
 	fadd	d3, d7, d3
 	fmul	d3, d22, d3
 	fmadd	d3, d25, d21, d3
-; CELER/src/orange/surf/GeneralQuadric.hh:208
+; CELER/src/orange/surf/GeneralQuadric.hh:207
 ;                   + (2 * c_ * z + e_ * y + f_ * x + i_) * w;
 	fadd	d21, d2, d2
 	fmul	d22, d4, d19
@@ -184,7 +184,7 @@ Disassembly of section __TEXT,__text:
 	fmadd	d21, d5, d18, d21
 	fadd	d21, d16, d21
 	fmadd	d3, d21, d23, d3
-; CELER/src/orange/surf/GeneralQuadric.hh:209
+; CELER/src/orange/surf/GeneralQuadric.hh:208
 ;     real_type c = ((a_ * x + d_ * y + g_) * x + (b_ * y + e_ * z + h_) * y
 	fmadd	d0, d0, d18, d26
 	fadd	d0, d6, d0
@@ -193,21 +193,21 @@ Disassembly of section __TEXT,__text:
 	fadd	d1, d7, d1
 	fmul	d1, d19, d1
 	fmadd	d0, d0, d18, d1
-; CELER/src/orange/surf/GeneralQuadric.hh:210
+; CELER/src/orange/surf/GeneralQuadric.hh:209
 ;                    + (c_ * z + f_ * x + i_) * z + j_);
 	fmul	d1, d5, d18
 	fmadd	d1, d2, d20, d1
 	fadd	d1, d16, d1
 	fmadd	d0, d1, d20, d0
 	fmov	d1, #0.50000000
-; CELER/src/orange/surf/GeneralQuadric.hh:212
+; CELER/src/orange/surf/GeneralQuadric.hh:211
 ;     return {a, b / 2, c, on_surface};
 	fmul	d1, d3, d1
 	stp	d24, d1, [sp]
-; CELER/src/orange/surf/GeneralQuadric.hh:210
+; CELER/src/orange/surf/GeneralQuadric.hh:209
 ;                    + (c_ * z + f_ * x + i_) * z + j_);
 	fadd	d0, d17, d0
-; CELER/src/orange/surf/GeneralQuadric.hh:212
+; CELER/src/orange/surf/GeneralQuadric.hh:211
 ;     return {a, b / 2, c, on_surface};
 	b	 <L10>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
@@ -236,40 +236,40 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/ConeAligned.hh:221
+; CELER/src/orange/surf/ConeAligned.hh:220
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
 	ldp	d5, d4, [x9, #8]
 	fsub	d2, d4, d2
-; CELER/src/orange/surf/ConeAligned.hh:222
+; CELER/src/orange/surf/ConeAligned.hh:221
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
 	ldr	d4, [x9]
 	fsub	d0, d4, d0
-; CELER/src/orange/surf/ConeAligned.hh:223
+; CELER/src/orange/surf/ConeAligned.hh:222
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
 	fsub	d1, d5, d1
-; CELER/src/orange/surf/ConeAligned.hh:225
+; CELER/src/orange/surf/ConeAligned.hh:224
 ;     real_type const u = dir[to_int(T)];
 	ldp	d6, d4, [x10, #8]
-; CELER/src/orange/surf/ConeAligned.hh:226
+; CELER/src/orange/surf/ConeAligned.hh:225
 ;     real_type const v = dir[to_int(U)];
 	ldr	d5, [x10]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d7, d4, d4
 	fmul	d16, d5, d5
-; CELER/src/orange/surf/ConeAligned.hh:230
+; CELER/src/orange/surf/ConeAligned.hh:229
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fmsub	d7, d3, d7, d16
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d6, d6
-; CELER/src/orange/surf/ConeAligned.hh:230
+; CELER/src/orange/surf/ConeAligned.hh:229
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fadd	d7, d16, d7
-; CELER/src/orange/surf/ConeAligned.hh:231
+; CELER/src/orange/surf/ConeAligned.hh:230
 ;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d2
 	fmul	d5, d0, d5
@@ -279,13 +279,13 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmul	d0, d0, d0
-; CELER/src/orange/surf/ConeAligned.hh:232
+; CELER/src/orange/surf/ConeAligned.hh:231
 ;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fmsub	d0, d3, d2, d0
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
-; CELER/src/orange/surf/ConeAligned.hh:232
+; CELER/src/orange/surf/ConeAligned.hh:231
 ;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	b	 <L7>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
@@ -314,18 +314,14 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
 ; CELER/src/orange/surf/Sphere.hh:175
-;     Real3 const tpos{pos[0] - origin_[0],
+;         pos[0] - origin_[0], pos[1] - origin_[1], pos[2] - origin_[2]};
 	ldp	d4, d5, [x9]
 	fsub	d0, d4, d0
-; CELER/src/orange/surf/Sphere.hh:176
-;                      pos[1] - origin_[1],
 	fsub	d1, d5, d1
-; CELER/src/orange/surf/Sphere.hh:177
-;                      pos[2] - origin_[2]};
 	ldr	d4, [x9, #16]
 	fsub	d2, d4, d2
 	movi.2d	v4, #0000000000000000
@@ -345,11 +341,11 @@ Disassembly of section __TEXT,__text:
 	fmadd	d0, d0, d0, d4
 	fmadd	d0, d1, d1, d0
 	fmadd	d0, d2, d2, d0
-; CELER/src/orange/surf/Sphere.hh:179
+; CELER/src/orange/surf/Sphere.hh:177
 ;     real_type const c = dot_product(tpos, tpos) - radius_sq_;
 	fsub	d0, d0, d3
 	mov	x9, #4607182418800017408 ; =0x3ff0000000000000
-; CELER/src/orange/surf/Sphere.hh:180
+; CELER/src/orange/surf/Sphere.hh:178
 ;     return {1, half_b, c, on_surface};
 	str	x9, [sp]
 	str	d5, [sp, #8]
@@ -376,20 +372,20 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/CylCentered.hh:227
+; CELER/src/orange/surf/CylCentered.hh:226
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldp	d1, d2, [x10]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
 	fmov	d3, #1.00000000
-; CELER/src/orange/surf/CylCentered.hh:227
+; CELER/src/orange/surf/CylCentered.hh:226
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d3, d1
-; CELER/src/orange/surf/CylCentered.hh:228
+; CELER/src/orange/surf/CylCentered.hh:227
 ;     real_type const u = pos[to_int(U)];
 	ldr	d3, [x9, #8]
 	b	 <L5>
@@ -419,40 +415,40 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/ConeAligned.hh:221
+; CELER/src/orange/surf/ConeAligned.hh:220
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
 	ldp	d4, d5, [x9]
 	fsub	d0, d4, d0
-; CELER/src/orange/surf/ConeAligned.hh:222
+; CELER/src/orange/surf/ConeAligned.hh:221
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
 	fsub	d1, d5, d1
-; CELER/src/orange/surf/ConeAligned.hh:223
+; CELER/src/orange/surf/ConeAligned.hh:222
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
 	ldr	d4, [x9, #16]
 	fsub	d2, d4, d2
-; CELER/src/orange/surf/ConeAligned.hh:225
+; CELER/src/orange/surf/ConeAligned.hh:224
 ;     real_type const u = dir[to_int(T)];
 	ldp	d4, d5, [x10]
-; CELER/src/orange/surf/ConeAligned.hh:227
+; CELER/src/orange/surf/ConeAligned.hh:226
 ;     real_type const w = dir[to_int(V)];
 	ldr	d6, [x10, #16]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d7, d4, d4
 	fmul	d16, d5, d5
-; CELER/src/orange/surf/ConeAligned.hh:230
+; CELER/src/orange/surf/ConeAligned.hh:229
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fmsub	d7, d3, d7, d16
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d6, d6
-; CELER/src/orange/surf/ConeAligned.hh:230
+; CELER/src/orange/surf/ConeAligned.hh:229
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fadd	d7, d16, d7
-; CELER/src/orange/surf/ConeAligned.hh:231
+; CELER/src/orange/surf/ConeAligned.hh:230
 ;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d0
 	fmul	d5, d1, d5
@@ -462,7 +458,7 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d0, d0
 	fmul	d1, d1, d1
-; CELER/src/orange/surf/ConeAligned.hh:232
+; CELER/src/orange/surf/ConeAligned.hh:231
 ;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fmsub	d0, d3, d0, d1
 	b	 <L6>
@@ -492,29 +488,29 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+; CELER/src/orange/surf/CylAligned.hh:257
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldp	d4, d3, [x10]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d3, d3, d3
 	fmov	d5, #1.00000000
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+; CELER/src/orange/surf/CylAligned.hh:257
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d3, d5, d3
-; CELER/src/orange/surf/CylAligned.hh:259
-;   real_type const u = pos[to_int(U)] - origin_u_;
+; CELER/src/orange/surf/CylAligned.hh:258
+;     real_type const u = pos[to_int(U)] - origin_u_;
 	ldr	d5, [x9]
 	fsub	d0, d5, d0
-; CELER/src/orange/surf/CylAligned.hh:260
-;   real_type const v = pos[to_int(V)] - origin_v_;
+; CELER/src/orange/surf/CylAligned.hh:259
+;     real_type const v = pos[to_int(V)] - origin_v_;
 	ldr	d5, [x9, #16]
 	fsub	d1, d5, d1
-; CELER/src/orange/surf/CylAligned.hh:261
-;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+; CELER/src/orange/surf/CylAligned.hh:260
+;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
 	ldr	d5, [x10, #16]
 	b	 <L8>
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
@@ -522,7 +518,7 @@ Disassembly of section __TEXT,__text:
 	ldr	x11, [x19, #24]
 	ldr	x10, [x19, #64]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
+;             if (on_surface == SurfaceState::off)
 	cmp	x11, x10
 	b.eq	 <L3>
 ; CELER/src/corecel/cont/Span.hh:240
@@ -541,15 +537,15 @@ Disassembly of section __TEXT,__text:
 ;     return *ptr;
 	ldr	x8, [x8, x2, lsl #3]
 	ldr	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:139
+;                     surf.calc_intersection_planar(pos_, dir_, on_surface));
 	ldp	x8, x9, [x19, #8]
-; CELER/src/orange/surf/PlaneAligned.hh:167
+; CELER/src/orange/surf/PlaneAligned.hh:166
 ;     return x[to_int(T)];
 	ldr	d1, [x8, #16]
 	ldr	d2, [x9, #16]
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
-;         = (input.displacement - input.dot_pos) / input.dot_dir;
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:52
+;     real_type const dist = (input.displacement - input.dot_pos) / input.dot_dir;
 	b	 <L13>
 ; CELER/src/corecel/cont/detail/RangeImpl.hh:209
 ;         return range_iter{TraitsT::increment(value_, inc)};
@@ -579,22 +575,22 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/SimpleQuadric.hh:203
+; CELER/src/orange/surf/SimpleQuadric.hh:202
 ;     real_type const x = pos[to_int(Axis::x)];
 	ldp	d7, d16, [x9]
-; CELER/src/orange/surf/SimpleQuadric.hh:205
+; CELER/src/orange/surf/SimpleQuadric.hh:204
 ;     real_type const z = pos[to_int(Axis::z)];
 	ldr	d17, [x9, #16]
-; CELER/src/orange/surf/SimpleQuadric.hh:206
+; CELER/src/orange/surf/SimpleQuadric.hh:205
 ;     real_type const u = dir[to_int(Axis::x)];
 	ldp	d18, d19, [x10]
-; CELER/src/orange/surf/SimpleQuadric.hh:208
+; CELER/src/orange/surf/SimpleQuadric.hh:207
 ;     real_type const w = dir[to_int(Axis::z)];
 	ldr	d20, [x10, #16]
-; CELER/src/orange/surf/SimpleQuadric.hh:211
+; CELER/src/orange/surf/SimpleQuadric.hh:210
 ;     real_type a = (a_ * u) * u + (b_ * v) * v + (c_ * w) * w;
 	fmul	d21, d0, d18
 	fmul	d22, d1, d19
@@ -602,7 +598,7 @@ Disassembly of section __TEXT,__text:
 	fmadd	d21, d21, d18, d22
 	fmul	d22, d2, d20
 	fmadd	d21, d22, d20, d21
-; CELER/src/orange/surf/SimpleQuadric.hh:212
+; CELER/src/orange/surf/SimpleQuadric.hh:211
 ;     real_type b = (2 * a_ * x + d_) * u + (2 * b_ * y + e_) * v
 	fadd	d22, d0, d0
 	fmadd	d22, d22, d7, d3
@@ -610,12 +606,12 @@ Disassembly of section __TEXT,__text:
 	fmadd	d23, d23, d16, d4
 	fmul	d19, d23, d19
 	fmadd	d18, d22, d18, d19
-; CELER/src/orange/surf/SimpleQuadric.hh:213
+; CELER/src/orange/surf/SimpleQuadric.hh:212
 ;                   + (2 * c_ * z + f_) * w;
 	fadd	d19, d2, d2
 	fmadd	d19, d19, d17, d5
 	fmadd	d18, d19, d20, d18
-; CELER/src/orange/surf/SimpleQuadric.hh:214
+; CELER/src/orange/surf/SimpleQuadric.hh:213
 ;     real_type c = (a_ * x + d_) * x + (b_ * y + e_) * y + (c_ * z + f_) * z
 	fmadd	d0, d0, d7, d3
 	fmadd	d1, d1, d16, d4
@@ -623,11 +619,11 @@ Disassembly of section __TEXT,__text:
 	fmadd	d0, d0, d7, d1
 	fmadd	d1, d2, d17, d5
 	fmadd	d0, d1, d17, d0
-; CELER/src/orange/surf/SimpleQuadric.hh:215
+; CELER/src/orange/surf/SimpleQuadric.hh:214
 ;                   + g_;
 	fadd	d0, d6, d0
 	fmov	d1, #0.50000000
-; CELER/src/orange/surf/SimpleQuadric.hh:217
+; CELER/src/orange/surf/SimpleQuadric.hh:216
 ;     return {a, b / 2, c, on_surface};
 	fmul	d1, d18, d1
 	stp	d21, d1, [sp]
@@ -637,7 +633,7 @@ Disassembly of section __TEXT,__text:
 	ldr	x11, [x19, #24]
 	ldr	x10, [x19, #64]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
+;             if (on_surface == SurfaceState::off)
 	cmp	x11, x10
 	b.eq	 <L3>
 ; CELER/src/corecel/cont/Span.hh:231
@@ -662,8 +658,8 @@ Disassembly of section __TEXT,__text:
 ;     return *ptr;
 	ldp	d1, d0, [x8]
 	ldp	d2, d3, [x8, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:139
+;                     surf.calc_intersection_planar(pos_, dir_, on_surface));
 	ldp	x8, x9, [x19, #8]
 	movi.2d	v4, #0000000000000000
 ; CELER/src/corecel/math/ArrayUtils.hh:124
@@ -692,24 +688,24 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/Algorithms.hh:545
 ;     return std::fma(a, b, y);
 	fmadd	d0, d2, d1, d0
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
-;         = (input.displacement - input.dot_pos) / input.dot_dir;
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:52
+;     real_type const dist = (input.displacement - input.dot_pos) / input.dot_dir;
 	fsub	d1, d3, d5
 	fdiv	d1, d1, d0
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:56
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:54
 ;         input.on_surface == SurfaceState::off, input.dot_dir != 0, dist > 0);
 	fcmp	d1, #0.0
 	fccmp	d0, d4, #4, gt
 	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
 	fmov	d0, x8
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:57
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:55
 ;     return {valid ? dist : no_intersection()};
 	fcsel	d0, d1, d0, ne
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d1, [x19]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d0, d1
 	b.hi	 <L14>
 <L1>:
@@ -758,7 +754,7 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
 	movi.2d	v1, #0000000000000000
@@ -780,11 +776,11 @@ Disassembly of section __TEXT,__text:
 	fmadd	d1, d2, d2, d1
 	fmadd	d1, d3, d3, d1
 	fmadd	d1, d5, d5, d1
-; CELER/src/orange/surf/SphereCentered.hh:173
+; CELER/src/orange/surf/SphereCentered.hh:172
 ;     real_type const c = dot_product(pos, pos) - radius_sq_;
 	fsub	d0, d1, d0
 	mov	x9, #4607182418800017408 ; =0x3ff0000000000000
-; CELER/src/orange/surf/SphereCentered.hh:174
+; CELER/src/orange/surf/SphereCentered.hh:173
 ;     return {1, half_b, c, on_surface};
 	str	x9, [sp]
 	b	 <L9>
@@ -793,7 +789,7 @@ Disassembly of section __TEXT,__text:
 	ldr	x11, [x19, #24]
 	ldr	x10, [x19, #64]
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:135
-;             if (on_surface == SurfaceState::on)
+;             if (on_surface == SurfaceState::off)
 	cmp	x11, x10
 	b.ne	 <L12>
 <L3>:
@@ -836,7 +832,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldr	q0, [x8, #32]
-; CELER/src/orange/surf/Toroid.hh:167
+; CELER/src/orange/surf/Toroid.hh:166
 ;     : origin_{data[0], data[1], data[2]}, r_{data[3]}, a_{data[4]}, b_{data[5]}
 	str	q0, [sp, #32]
 ; CELER/src/orange/surf/LocalSurfaceVisitor.hh:113
@@ -873,20 +869,20 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/CylCentered.hh:227
+; CELER/src/orange/surf/CylCentered.hh:226
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldp	d2, d1, [x10]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
 	fmov	d3, #1.00000000
-; CELER/src/orange/surf/CylCentered.hh:227
+; CELER/src/orange/surf/CylCentered.hh:226
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d3, d1
-; CELER/src/orange/surf/CylCentered.hh:228
+; CELER/src/orange/surf/CylCentered.hh:227
 ;     real_type const u = pos[to_int(U)];
 	ldr	d3, [x9]
 <L5>:
@@ -926,40 +922,40 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/ConeAligned.hh:221
+; CELER/src/orange/surf/ConeAligned.hh:220
 ;     real_type const x = pos[to_int(T)] - origin_[to_int(T)];
 	ldp	d5, d4, [x9]
 	fsub	d1, d4, d1
-; CELER/src/orange/surf/ConeAligned.hh:222
+; CELER/src/orange/surf/ConeAligned.hh:221
 ;     real_type const y = pos[to_int(U)] - origin_[to_int(U)];
 	fsub	d0, d5, d0
-; CELER/src/orange/surf/ConeAligned.hh:223
+; CELER/src/orange/surf/ConeAligned.hh:222
 ;     real_type const z = pos[to_int(V)] - origin_[to_int(V)];
 	ldr	d4, [x9, #16]
 	fsub	d2, d4, d2
-; CELER/src/orange/surf/ConeAligned.hh:225
+; CELER/src/orange/surf/ConeAligned.hh:224
 ;     real_type const u = dir[to_int(T)];
 	ldp	d5, d4, [x10]
-; CELER/src/orange/surf/ConeAligned.hh:227
+; CELER/src/orange/surf/ConeAligned.hh:226
 ;     real_type const w = dir[to_int(V)];
 	ldr	d6, [x10, #16]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d7, d4, d4
 	fmul	d16, d5, d5
-; CELER/src/orange/surf/ConeAligned.hh:230
+; CELER/src/orange/surf/ConeAligned.hh:229
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fmsub	d7, d3, d7, d16
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d6, d6
-; CELER/src/orange/surf/ConeAligned.hh:230
+; CELER/src/orange/surf/ConeAligned.hh:229
 ;     real_type a = (-tsq_ * ipow<2>(u)) + ipow<2>(v) + ipow<2>(w);
 	fadd	d7, d16, d7
-; CELER/src/orange/surf/ConeAligned.hh:231
+; CELER/src/orange/surf/ConeAligned.hh:230
 ;     real_type half_b = (-tsq_ * x * u) + (y * v) + (z * w);
 	fnmul	d16, d3, d1
 	fmul	d5, d0, d5
@@ -969,7 +965,7 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
 	fmul	d0, d0, d0
-; CELER/src/orange/surf/ConeAligned.hh:232
+; CELER/src/orange/surf/ConeAligned.hh:231
 ;     real_type c = (-tsq_ * ipow<2>(x)) + ipow<2>(y) + ipow<2>(z);
 	fmsub	d0, d3, d1, d0
 <L6>:
@@ -1000,23 +996,23 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/CylCentered.hh:227
+; CELER/src/orange/surf/CylCentered.hh:226
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldp	d5, d1, [x10, #8]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d1, d1, d1
 	fmov	d2, #1.00000000
-; CELER/src/orange/surf/CylCentered.hh:227
+; CELER/src/orange/surf/CylCentered.hh:226
 ;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d1, d2, d1
-; CELER/src/orange/surf/CylCentered.hh:228
+; CELER/src/orange/surf/CylCentered.hh:227
 ;     real_type const u = pos[to_int(U)];
 	ldp	d2, d3, [x9]
-; CELER/src/orange/surf/CylCentered.hh:230
+; CELER/src/orange/surf/CylCentered.hh:229
 ;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
 	ldr	d4, [x10]
 	fmul	d5, d3, d5
@@ -1025,11 +1021,11 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmul	d3, d3, d3
-; CELER/src/orange/surf/CylCentered.hh:231
+; CELER/src/orange/surf/CylCentered.hh:230
 ;     real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
 	fadd	d2, d2, d3
 	fsub	d0, d2, d0
-; CELER/src/orange/surf/CylCentered.hh:232
+; CELER/src/orange/surf/CylCentered.hh:231
 ;     return {a, half_b, c, on_surface};
 	str	d1, [sp]
 	b	 <L9>
@@ -1059,28 +1055,28 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldr	x9, [x19, #8]
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+; CELER/src/orange/surf/CylAligned.hh:257
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldr	d3, [x10, #16]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d3, d3, d3
 	fmov	d4, #1.00000000
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+; CELER/src/orange/surf/CylAligned.hh:257
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d3, d4, d3
-; CELER/src/orange/surf/CylAligned.hh:259
-;   real_type const u = pos[to_int(U)] - origin_u_;
+; CELER/src/orange/surf/CylAligned.hh:258
+;     real_type const u = pos[to_int(U)] - origin_u_;
 	ldp	d4, d5, [x9]
 	fsub	d0, d4, d0
-; CELER/src/orange/surf/CylAligned.hh:260
-;   real_type const v = pos[to_int(V)] - origin_v_;
+; CELER/src/orange/surf/CylAligned.hh:259
+;     real_type const v = pos[to_int(V)] - origin_v_;
 	fsub	d1, d5, d1
-; CELER/src/orange/surf/CylAligned.hh:261
-;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+; CELER/src/orange/surf/CylAligned.hh:260
+;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
 	ldp	d4, d5, [x10]
 <L8>:
 	fmul	d5, d1, d5
@@ -1127,21 +1123,21 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/data/Ldg.hh:123
 ;     return *ptr;
 	ldp	d0, d1, [x8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:149
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:146
 ;                 surf.calc_intersection_quadratic(pos_, dir_, on_surface));
 	ldp	x9, x10, [x19, #8]
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+; CELER/src/orange/surf/CylAligned.hh:257
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	ldp	d2, d3, [x10]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
 	fmov	d4, #1.00000000
-; CELER/src/orange/surf/CylAligned.hh:258
-;   real_type const a = 1 - ipow<2>(dir[to_int(T)]);
+; CELER/src/orange/surf/CylAligned.hh:257
+;     real_type const a = 1 - ipow<2>(dir[to_int(T)]);
 	fsub	d2, d4, d2
-; CELER/src/orange/surf/CylAligned.hh:259
-;   real_type const u = pos[to_int(U)] - origin_u_;
+; CELER/src/orange/surf/CylAligned.hh:258
+;     real_type const u = pos[to_int(U)] - origin_u_;
 	ldp	d4, d5, [x9, #8]
 	fsub	d0, d4, d0
 ; CELER/src/corecel/data/Ldg.hh:123
@@ -1153,11 +1149,11 @@ Disassembly of section __TEXT,__text:
 	ldr	x9, [x19, #64]
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/surf/CylAligned.hh:260
-;   real_type const v = pos[to_int(V)] - origin_v_;
+; CELER/src/orange/surf/CylAligned.hh:259
+;     real_type const v = pos[to_int(V)] - origin_v_;
 	fsub	d1, d5, d1
-; CELER/src/orange/surf/CylAligned.hh:261
-;   real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
+; CELER/src/orange/surf/CylAligned.hh:260
+;     real_type const half_b = dir[to_int(U)] * u + dir[to_int(V)] * v;
 	ldr	d5, [x10, #16]
 	fmul	d5, d1, d5
 	fmadd	d3, d3, d0, d5
@@ -1165,12 +1161,12 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d0, d0
 	fmul	d1, d1, d1
-; CELER/src/orange/surf/CylAligned.hh:262
-;   real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
+; CELER/src/orange/surf/CylAligned.hh:261
+;     real_type const c = ipow<2>(u) + ipow<2>(v) - radius_sq_;
 	fadd	d0, d0, d1
 	fsub	d0, d0, d4
-; CELER/src/orange/surf/CylAligned.hh:263
-;   return {a, half_b, c, on_surface};
+; CELER/src/orange/surf/CylAligned.hh:262
+;     return {a, half_b, c, on_surface};
 	stp	d2, d3, [sp]
 	b	 <L10>
 <L12>:
@@ -1190,10 +1186,10 @@ Disassembly of section __TEXT,__text:
 ;     return *ptr;
 	ldr	x8, [x8, x2, lsl #3]
 	ldr	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:143
-;                 surf.calc_intersection_planar(pos_, dir_, on_surface));
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:139
+;                     surf.calc_intersection_planar(pos_, dir_, on_surface));
 	ldp	x8, x9, [x19, #8]
-; CELER/src/orange/surf/PlaneAligned.hh:167
+; CELER/src/orange/surf/PlaneAligned.hh:166
 ;     return x[to_int(T)];
 	ldr	d1, [x8, #8]
 	ldr	d2, [x9, #8]
@@ -1219,9 +1215,9 @@ Disassembly of section __TEXT,__text:
 	add	sp, sp, #80
 	ret
 
-<celeritas::detail::CalcIntersections::solve_and_store(celeritas::detail::QuadraticIntersectionInput const&)>:
-; celeritas::detail::CalcIntersections::solve_and_store(celeritas::detail::QuadraticIntersectionInput const&)():
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:66
+<void celeritas::detail::CalcIntersections::solve_and_store<celeritas::detail::QuadraticIntersectionInput>(celeritas::detail::QuadraticIntersectionInput const&)>:
+; void celeritas::detail::CalcIntersections::solve_and_store<celeritas::detail::QuadraticIntersectionInput>(celeritas::detail::QuadraticIntersectionInput const&)():
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:63
 ;         input.a, input.half_b, input.c, input.on_surface);
 	ldp	d0, d3, [x1]
 	ldr	d2, [x1, #16]
@@ -1266,8 +1262,8 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
 	b	 <L4>
@@ -1293,8 +1289,8 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
 	b	 <L4>
@@ -1333,8 +1329,8 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
 	b	 <L4>
@@ -1354,16 +1350,16 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.ls	 <L8>
 <L4>:
 	fcmp	d0, d2
 	b.ls	 <L10>
 <L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;     }
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+;         return this->store_intersections(detail::solve_intersections(input));
 	ret
 <L6>:
 	mov	x8, #9218868437227405312 ; =0x7ff0000000000000
@@ -1373,31 +1369,31 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d2
 	b.hi	 <L4>
 <L8>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
-;                 face_[isect_idx_] = FaceId{face_idx_};
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
+;             face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
-;                 distance_[isect_idx_] = dist;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:197
+;             distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
-;                 if (fill_isect_)
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
+;             if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L9>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
-;                     isect_[isect_idx_] = isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:200
+;                 isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
-;                 ++isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:202
+;             ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L9>:
 	add	x8, x8, #1
@@ -1405,37 +1401,37 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d2, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d0, d2
 	b.hi	 <L5>
 <L10>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
-;                 face_[isect_idx_] = FaceId{face_idx_};
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
+;             face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
-;                 distance_[isect_idx_] = dist;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:197
+;             distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d0, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
-;                 if (fill_isect_)
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
+;             if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L11>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
-;                     isect_[isect_idx_] = isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:200
+;                 isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
-;                 ++isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:202
+;             ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L11>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:176
-;     }
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+;         return this->store_intersections(detail::solve_intersections(input));
 	ret
 
 <void celeritas::detail::CalcIntersections::operator()<celeritas::Toroid>(celeritas::Toroid const&)>:
@@ -1450,7 +1446,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/SurfaceFunctors.hh:125
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	ldp	x10, x8, [x0, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:154
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:151
 ;                 surf.calc_intersection_quartic(pos_, dir_, on_surface));
 	ldr	x9, [x0, #8]
 ; CELER/src/corecel/math/ArrayOperators.hh:77
@@ -1489,26 +1485,26 @@ Disassembly of section __TEXT,__text:
 	fmul	d3, d3, d16
 	fmul	d5, d5, d16
 	fmul	d6, d6, d16
-; CELER/src/orange/surf/Toroid.hh:244
+; CELER/src/orange/surf/Toroid.hh:243
 ;     real_type p = sq(a_) / sq(b_);
 	ldp	d16, d18, [x1, #32]
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d16, d16, d16
 	fmul	d18, d18, d18
-; CELER/src/orange/surf/Toroid.hh:244
+; CELER/src/orange/surf/Toroid.hh:243
 ;     real_type p = sq(a_) / sq(b_);
 	fdiv	d18, d16, d18
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d19, d6, d6
-; CELER/src/orange/surf/Toroid.hh:246
+; CELER/src/orange/surf/Toroid.hh:245
 ;     real_type f = 1 - sq(az);
 	fsub	d17, d17, d19
-; CELER/src/orange/surf/Toroid.hh:247
+; CELER/src/orange/surf/Toroid.hh:246
 ;     real_type g = f + p * sq(az);
 	fmadd	d19, d18, d19, d17
-; CELER/src/orange/surf/Toroid.hh:248
+; CELER/src/orange/surf/Toroid.hh:247
 ;     real_type h = 2 * (x0 * ax + y0 * ay);
 	fmul	d5, d1, d5
 	fmadd	d3, d0, d3, d5
@@ -1517,23 +1513,23 @@ Disassembly of section __TEXT,__text:
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d0, d0
 	fmul	d1, d1, d1
-; CELER/src/orange/surf/Toroid.hh:249
+; CELER/src/orange/surf/Toroid.hh:248
 ;     real_type t = sq(x0) + sq(y0);
 	fadd	d5, d0, d1
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d0, d4, d4
 	fmov	d1, #4.00000000
-; CELER/src/orange/surf/Toroid.hh:250
+; CELER/src/orange/surf/Toroid.hh:249
 ;     real_type q = 4 * sq(r_) / sq(g);
 	fmul	d1, d0, d1
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d4, d19, d19
-; CELER/src/orange/surf/Toroid.hh:250
+; CELER/src/orange/surf/Toroid.hh:249
 ;     real_type q = 4 * sq(r_) / sq(g);
 	fdiv	d4, d1, d4
-; CELER/src/orange/surf/Toroid.hh:251
+; CELER/src/orange/surf/Toroid.hh:250
 ;     real_type m = (h + 2 * p * z0 * az) / g;
 	fadd	d1, d18, d18
 	fmul	d1, d2, d1
@@ -1542,7 +1538,7 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d2, d2, d2
-; CELER/src/orange/surf/Toroid.hh:252
+; CELER/src/orange/surf/Toroid.hh:251
 ;     real_type u = (t + p * sq(z0) + sq(r_) - sq(a_)) / g;
 	fmadd	d2, d18, d2, d5
 	fadd	d0, d0, d2
@@ -1551,11 +1547,11 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/Algorithms.hh:498
 ;         return ipow<N / 2>(v) * ipow<N / 2>(v);
 	fmul	d6, d1, d1
-; CELER/src/orange/surf/Toroid.hh:256
+; CELER/src/orange/surf/Toroid.hh:255
 ;     real_type c3 = 2 * m;
 	fadd	d0, d1, d1
 	fmov	d1, #2.00000000
-; CELER/src/orange/surf/Toroid.hh:257
+; CELER/src/orange/surf/Toroid.hh:256
 ;     real_type c2 = sq(m) + 2 * u - q * f;
 	fmadd	d1, d2, d1, d6
 	fmsub	d1, d4, d17, d1
@@ -1575,22 +1571,22 @@ Disassembly of section __TEXT,__text:
 ;         auto on_surface = (on_face_idx_ == face_idx_) ? SurfaceState::on
 	cmp	x8, x9
 	cset	w8, eq
-; CELER/src/orange/surf/Toroid.hh:259
+; CELER/src/orange/surf/Toroid.hh:258
 ;     real_type c0 = on_surface == SurfaceState::on ? 0 : sq(u) - q * t;
 	fmul	d6, d2, d2
 	fmsub	d5, d4, d5, d6
 	fcsel	d5, d7, d5, eq
-; CELER/src/orange/surf/Toroid.hh:258
+; CELER/src/orange/surf/Toroid.hh:257
 ;     real_type c1 = 2 * m * u - q * h;
 	fnmul	d3, d3, d4
 	fmadd	d2, d0, d2, d3
 ; CELER/src/corecel/cont/Array.hh:85
 ;         : d_{first, static_cast<T>(rest)...}
 	stp	d2, d5, [sp, #32]
-; CELER/src/orange/surf/Toroid.hh:226
+; CELER/src/orange/surf/Toroid.hh:225
 ;     return {this->calc_intersection_polynomial(pos, dir, on_surface),
 	strb	w8, [sp, #48]
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:75
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:71
 ;     if (input.on_surface == SurfaceState::on)
 	b.ne	 <L1>
 ; CELER/src/corecel/cont/Array.hh:85
@@ -1598,7 +1594,7 @@ Disassembly of section __TEXT,__text:
 	str	x10, [sp, #56]
 	stp	d0, d1, [sp, #64]
 	str	d2, [sp, #80]
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:78
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:74
 ;         return solve(FerrariSolver::Real4{a, b, c, d});
 	sub	x0, x29, #24
 	add	x1, sp, #56
@@ -1606,27 +1602,27 @@ Disassembly of section __TEXT,__text:
 	bl	 <L0>
 	b	 <L3>
 <L1>:
-; CELER/src/orange/surf/detail/IntersectionSolver.hh:80
+; CELER/src/orange/surf/detail/IntersectionSolver.hh:76
 ;     return solve(input.coeffs);
 	sub	x0, x29, #24
 	add	x1, sp, #8
 <L2>:
 	bl	 <L2>
 <L3>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:180
-;         this->store_intersections(detail::solve_intersections(input));
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:179
+;         return this->store_intersections(detail::solve_intersections(input));
 	stp	d0, d1, [sp, #56]
 	stp	d2, d3, [sp, #72]
 	add	x1, sp, #56
 	mov	x0, x19
 <L4>:
 	bl	 <L4>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:157
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:154
 ;         ++face_idx_;
 	ldr	x8, [x19, #64]
 	add	x8, x8, #1
 	str	x8, [x19, #64]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:158
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:155
 ;     }
 	ldp	x29, x30, [sp, #112]
 	ldp	x20, x19, [sp, #96]
@@ -1635,64 +1631,64 @@ Disassembly of section __TEXT,__text:
 
 <void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)>:
 ; void celeritas::detail::CalcIntersections::store_intersections<4ul>(celeritas::Array<double, 4ul> const&)():
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1]
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L3>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L5>
 <L0>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L7>
 <L1>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #24]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.ls	 <L9>
 <L2>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:201
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:189
 ;     }
 	ret
 <L3>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
-;                 face_[isect_idx_] = FaceId{face_idx_};
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
+;             face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
-;                 distance_[isect_idx_] = dist;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:197
+;             distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
-;                 if (fill_isect_)
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
+;             if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L4>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
-;                     isect_[isect_idx_] = isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:200
+;                 isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
-;                 ++isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:202
+;             ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L4>:
 	add	x8, x8, #1
@@ -1700,34 +1696,34 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #8]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.hi	 <L0>
 <L5>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
-;                 face_[isect_idx_] = FaceId{face_idx_};
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
+;             face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
-;                 distance_[isect_idx_] = dist;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:197
+;             distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
-;                 if (fill_isect_)
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
+;             if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L6>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
-;                     isect_[isect_idx_] = isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:200
+;                 isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
-;                 ++isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:202
+;             ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L6>:
 	add	x8, x8, #1
@@ -1735,34 +1731,34 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #16]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.hi	 <L1>
 <L7>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
-;                 face_[isect_idx_] = FaceId{face_idx_};
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
+;             face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
-;                 distance_[isect_idx_] = dist;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:197
+;             distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
-;                 if (fill_isect_)
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
+;             if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L8>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
-;                     isect_[isect_idx_] = isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:200
+;                 isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
-;                 ++isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:202
+;             ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L8>:
 	add	x8, x8, #1
@@ -1770,39 +1766,39 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/orange/univ/detail/Utils.hh:38
 ;         return distance <= max_dist_;
 	ldr	d0, [x0]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:187
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:185
 ;         for (real_type dist : all_dist)
 	ldr	d1, [x1, #24]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:190
-;             if (is_valid_isect_(dist))
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
+;         if (is_valid_isect_(dist))
 	fcmp	d1, d0
 	b.hi	 <L2>
 <L9>:
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:192
-;                 face_[isect_idx_] = FaceId{face_idx_};
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
+;             face_[isect_idx_] = FaceId{face_idx_};
 	ldp	x8, x9, [x0, #64]
 	ldp	x10, x11, [x0, #40]
 	str	x8, [x10, x9, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:193
-;                 distance_[isect_idx_] = dist;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:197
+;             distance_[isect_idx_] = dist;
 	ldr	x8, [x0, #72]
 	str	d1, [x11, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:194
-;                 if (fill_isect_)
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
+;             if (fill_isect_)
 	ldrb	w9, [x0, #32]
 	cmp	w9, #1
 	b.ne	 <L10>
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:196
-;                     isect_[isect_idx_] = isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:200
+;                 isect_[isect_idx_] = isect_idx_;
 	ldr	x9, [x0, #56]
 	str	x8, [x9, x8, lsl #3]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:198
-;                 ++isect_idx_;
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:202
+;             ++isect_idx_;
 	ldr	x8, [x0, #72]
 <L10>:
 	add	x8, x8, #1
 	str	x8, [x0, #72]
-; CELER/src/orange/univ/detail/SurfaceFunctors.hh:201
+; CELER/src/orange/univ/detail/SurfaceFunctors.hh:189
 ;     }
 	ret
 
@@ -2811,4 +2807,4 @@ Disassembly of section __TEXT,__text:
 ; CELER/src/corecel/math/FerrariSolver.hh:236
 ;     }
 	b	 <L19>
-; Total code size: 7824 B
+; Total code size: 7832 B
