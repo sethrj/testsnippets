@@ -1,15 +1,26 @@
 #include "../common.hh"
 
 #include "orange/surf/LocalSurfaceVisitor.hh"
-#include "orange/univ/detail/SurfaceFunctors.hh"
 
 using namespace celeritas;
 
 Real3 calc_norm(NativeCRef<OrangeParamsData> const& params,
-                SurfacesRecord const&               surfaces,
-                Real3 const&                        pos,
-                LocalSurfaceId                      surf_id)
+                SurfacesRecord const& surfaces,
+                Real3 const& pos,
+                LocalSurfaceId surf_id)
 {
     LocalSurfaceVisitor visit_surface(params, surfaces);
-    return visit_surface(detail::CalcNormal{pos}, surf_id);
+    bool is_normalized{false};
+    auto grad = visit_surface(
+        [&pos, &is_normalized](auto&& surf) {
+            // is_normalized = surf.normalized_gradient();
+            is_normalized = false;
+            return surf.calc_gradient(pos);
+        },
+        surf_id);
+    if (!is_normalized)
+    {
+        grad = make_unit_vector(grad);
+    }
+    return grad;
 }
