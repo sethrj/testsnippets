@@ -14,7 +14,7 @@ Real3 calc_norm(NativeCRef<OrangeParamsData> const& params,
     auto grad = visit_surface(
         [&pos, &is_normalized](auto&& surf) {
             is_normalized = surf.normalized_gradient();
-            //is_normalized = false;
+            // is_normalized = false;
             return surf.calc_gradient(pos);
         },
         surf_id);
