@@ -11,16 +11,16 @@ Real3 calc_norm(NativeCRef<OrangeParamsData> const& params,
 {
     LocalSurfaceVisitor visit_surface(params, surfaces);
     bool is_normalized{false};
-    auto grad = visit_surface(
-        [&pos, &is_normalized](auto&& surf) {
-            is_normalized = surf.normalized_gradient();
-            // is_normalized = false;
-            return surf.calc_gradient(pos);
+    Real3 result = visit_surface(
+        [&pos, &is_normalized](auto&& s) {
+            auto result = s.calc_gradient(pos);
+            is_normalized = decltype(result)::unit_type::value() == 1;
+            return result.value();
         },
         surf_id);
     if (!is_normalized)
     {
-        grad = make_unit_vector(grad);
+        result = make_unit_vector(result);
     }
-    return grad;
+    return result;
 }
